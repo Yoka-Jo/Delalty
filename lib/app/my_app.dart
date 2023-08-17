@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
                       FocusManager.instance.primaryFocus?.unfocus();
                     },
                     child: MaterialApp.router(
-                      title: 'app name',
+                      title: 'Delalty',
                       debugShowCheckedModeBanner: false,
                       theme: _lightTheme.materialThemeData,
                       darkTheme: _darkTheme.materialThemeData,
@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
                       localizationsDelegates: context.localizationDelegates,
                       locale: context.locale,
                       routerConfig: _appRouter.config(initialRoutes: [
-                        const VerificationCodeRoute(),
+                        const ProductRoute(),
                       ]),
                     ),
                   );

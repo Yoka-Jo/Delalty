@@ -1,0 +1,31 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../core/common/components/widgets/my_elevated_button.dart';
+import '../../../../core/common/components/widgets/product_card_widget.dart';
+import '../../../../core/common/components/widgets/simple_text.dart';
+import '../../../../core/resources/assets_manager.dart';
+import '../../../../core/resources/colors_manager.dart';
+import '../../../../core/resources/strings_manager.dart';
+
+part 'product_appbar.dart';
+part 'product_body.dart';
+part 'product_contact_options.dart';
+part 'product_container.dart';
+part 'product_descripe.dart';
+part 'product_images.dart';
+part 'product_location.dart';
+part 'product_model_widget.dart';
+part 'product_price.dart';
+part 'product_report.dart';
+part 'product_seller_chat_button.dart';
+part 'product_seller_comments.dart';
+part 'product_seller_image.dart';
+part 'product_seller_info.dart';
+part 'product_seller_rating.dart';
+part 'product_specification.dart';
+part 'product_such_products.dart';
+part 'product_title.dart';

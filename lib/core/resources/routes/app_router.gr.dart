@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AppRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AppScreen(),
+      );
+    },
     ChooseLanguageRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -27,10 +33,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LoginScreen(),
       );
     },
+    NotificationsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NotificationsScreen(),
+      );
+    },
     OnBoardingRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const OnBoardingScreen(),
+      );
+    },
+    ProductRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProductScreen(),
       );
     },
     SignupRoute.name: (routeData) {
@@ -52,6 +70,20 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [AppScreen]
+class AppRoute extends PageRouteInfo<void> {
+  const AppRoute({List<PageRouteInfo>? children})
+      : super(
+          AppRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AppRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -83,6 +115,20 @@ class LoginRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NotificationsScreen]
+class NotificationsRoute extends PageRouteInfo<void> {
+  const NotificationsRoute({List<PageRouteInfo>? children})
+      : super(
+          NotificationsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NotificationsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [OnBoardingScreen]
 class OnBoardingRoute extends PageRouteInfo<void> {
   const OnBoardingRoute({List<PageRouteInfo>? children})
@@ -92,6 +138,20 @@ class OnBoardingRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'OnBoardingRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProductScreen]
+class ProductRoute extends PageRouteInfo<void> {
+  const ProductRoute({List<PageRouteInfo>? children})
+      : super(
+          ProductRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

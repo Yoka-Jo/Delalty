@@ -3,6 +3,7 @@ import 'package:delalty/core/common/components/widgets/or_divider_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/common/components/widgets/default_text_form_field.dart';
 import '../../../../core/common/components/widgets/loading_button.dart';

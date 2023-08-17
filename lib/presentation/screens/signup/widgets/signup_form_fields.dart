@@ -20,9 +20,9 @@ class SignupFormFields extends StatelessWidget {
             DefaultTextFormField(
               inputType: TextInputType.text,
               textInputAction: TextInputAction.next,
-              prefixIcon: Image.asset(
+              prefixIcon: SvgPicture.asset(
                 ImageAssets.person,
-                height: 16.h,
+                fit: BoxFit.scaleDown,
               ),
               onChangedFunction: cubit.onUsernameChanged,
               hintTxt: AppStrings.fullName,
@@ -33,9 +33,9 @@ class SignupFormFields extends StatelessWidget {
               inputType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
               onChangedFunction: cubit.onEmailChanged,
-              prefixIcon: Image.asset(
+              prefixIcon: SvgPicture.asset(
                 ImageAssets.mail,
-                height: 16.h,
+                fit: BoxFit.scaleDown,
               ),
               hintTxt: AppStrings.email,
               errorTxt: emailError,
@@ -44,9 +44,9 @@ class SignupFormFields extends StatelessWidget {
             DefaultTextFormField(
               inputType: TextInputType.phone,
               textInputAction: TextInputAction.next,
-              prefixIcon: Image.asset(
+              prefixIcon: SvgPicture.asset(
                 ImageAssets.phone,
-                height: 16.h,
+                fit: BoxFit.scaleDown,
               ),
               onChangedFunction: cubit.onPhoneChanged,
               hintTxt: AppStrings.number,
@@ -56,9 +56,9 @@ class SignupFormFields extends StatelessWidget {
             DefaultTextFormField(
               inputType: TextInputType.text,
               textInputAction: TextInputAction.done,
-              prefixIcon: Image.asset(
+              prefixIcon: SvgPicture.asset(
                 ImageAssets.lock,
-                height: 16.h,
+                fit: BoxFit.scaleDown,
               ),
               onChangedFunction: cubit.onPasswordChanged,
               hintTxt: AppStrings.password,
@@ -66,11 +66,17 @@ class SignupFormFields extends StatelessWidget {
               isPassword: state.isPasswordShown,
               suffixIcon: InkWell(
                 onTap: cubit.togglePasswordShown,
-                child: Icon(
-                  state.isPasswordShown
-                      ? Icons.visibility_outlined
-                      : Icons.visibility_off,
-                ),
+                child: state.isPasswordShown
+                    ? const Icon(
+                        Icons.visibility_outlined,
+                        color: AppColors.primaryColor,
+                        key: Key('visibility_outlined'),
+                      )
+                    : const Icon(
+                        Icons.visibility_off,
+                        color: AppColors.grey,
+                        key: Key('visibility_off'),
+                      ),
               ),
             ),
           ],

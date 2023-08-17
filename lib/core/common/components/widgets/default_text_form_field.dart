@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../resources/colors_manager.dart';
 import '../../../resources/theme/app_theme.dart';
@@ -136,7 +137,11 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
                           )
                         : widget.suffixIcon,
                     prefixWidget: widget.prefix,
-                    prefixIcon: widget.prefixIcon,
+                    prefixIcon: SizedBox(
+                      height: 18.h,
+                      width: 18.h,
+                      child: widget.prefixIcon,
+                    ),
                     hint: widget.hintTxt,
                     label: widget.labelTxt,
                     error: widget.errorTxt,
