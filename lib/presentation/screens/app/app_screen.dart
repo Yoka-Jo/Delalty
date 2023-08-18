@@ -1,7 +1,6 @@
 import 'package:auto_route/annotations.dart';
+import 'package:delalty/presentation/screens/app/pages/chat/chat_page.dart';
 import 'package:flutter/material.dart';
-
-import 'pages/home/home_page.dart';
 
 @RoutePage()
 class AppScreen extends StatelessWidget {
@@ -10,7 +9,7 @@ class AppScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: HomePage(),
+      body: ChatPage(),
     );
   }
 }

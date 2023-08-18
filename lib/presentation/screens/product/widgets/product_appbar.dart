@@ -12,15 +12,8 @@ class ProductAppBar extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 18.w),
         child: Row(
           children: [
-            IconButton(
-              onPressed: () {
-                context.router.pop();
-              },
-              icon: Icon(
-                Icons.arrow_back_ios,
-                color: Colors.white,
-                size: 20.h,
-              ),
+            const BackIconWidget(
+              iconColor: Colors.black,
             ),
             Expanded(
               child: Center(

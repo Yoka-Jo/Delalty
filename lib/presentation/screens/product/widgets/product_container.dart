@@ -14,7 +14,7 @@ class ProductContainer extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 37.h, horizontal: 16.w),
         decoration: BoxDecoration(
-          color: AppColors.grey2,
+          color: AppColors.containerLightColor,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30.r),
             topLeft: Radius.circular(30.r),

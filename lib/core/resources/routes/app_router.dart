@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 import '../../../presentation/screens/app/app_screen.dart';
 import '../../../presentation/screens/choose_language/choose_language_screen.dart';
+import '../../../presentation/screens/conversation/conversation_screen.dart';
 import '../../../presentation/screens/login/login_screen.dart';
 import '../../../presentation/screens/notifications/notifications_screen.dart';
 import '../../../presentation/screens/onboarding/onboarding_screen.dart';
 import '../../../presentation/screens/product/product_screen.dart';
+import '../../../presentation/screens/profile/profile_screen.dart';
 import '../../../presentation/screens/search/search_screen.dart';
 import '../../../presentation/screens/signup/signup_screen.dart';
 import '../../../presentation/screens/splash/splash_screen.dart';
@@ -30,7 +32,9 @@ class AppRouter extends _$AppRouter {
         MaterialRoute(page: SignupRoute.page),
         MaterialRoute(page: LoginRoute.page),
         MaterialRoute(page: VerificationCodeRoute.page),
+        MaterialRoute(page: ProfileRoute.page),
         MaterialRoute(page: AppRoute.page),
+        MaterialRoute(page: ConversationRoute.page),
         MaterialRoute(page: SearchRoute.page),
         MaterialRoute(page: ProductRoute.page),
         CustomRoute(

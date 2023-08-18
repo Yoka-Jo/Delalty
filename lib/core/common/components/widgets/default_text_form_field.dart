@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../resources/colors_manager.dart';
 import '../../../resources/theme/app_theme.dart';
@@ -42,12 +41,14 @@ class DefaultTextFormField extends StatefulWidget {
   final TextInputAction textInputAction;
   final String? helperText;
   final EdgeInsets? padding;
+  final TextDirection? hintTextDirection;
 
   const DefaultTextFormField({
     Key? key,
     this.hintTxt,
     this.padding,
     this.errorTxt,
+    this.hintTextDirection,
     this.enableColor,
     this.onFieldSubmitted,
     required this.inputType,
@@ -137,11 +138,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
                           )
                         : widget.suffixIcon,
                     prefixWidget: widget.prefix,
-                    prefixIcon: SizedBox(
-                      height: 18.h,
-                      width: 18.h,
-                      child: widget.prefixIcon,
-                    ),
+                    prefixIcon: widget.prefixIcon,
                     hint: widget.hintTxt,
                     label: widget.labelTxt,
                     error: widget.errorTxt,
@@ -156,6 +153,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
                         widget.borderIsEnabled ? null : InputBorder.none,
                     focusedErrorBorder:
                         widget.borderIsEnabled ? null : InputBorder.none,
+                    hintTextDirection: widget.hintTextDirection,
                   ),
               keyboardType: widget.inputType,
               obscureText: widget.isPassword ? _obsecureText : false,

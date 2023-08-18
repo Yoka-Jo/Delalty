@@ -1,9 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:delalty/core/common/components/widgets/simple_text.dart';
+
+import 'back_icon_widget.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -23,15 +24,8 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         textStyle: TextStyleEnum.poppinsMedium,
         fontSize: 17.sp,
       ),
-      leading: IconButton(
-        onPressed: () {
-          context.router.pop();
-        },
-        icon: Icon(
-          Icons.arrow_back_ios,
-          color: Colors.black,
-          size: 20.h,
-        ),
+      leading: const BackIconWidget(
+        iconColor: Colors.black,
       ),
     );
   }

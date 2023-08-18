@@ -13,7 +13,9 @@ class AppStrings {
   static const String bearer = "Bearer ";
   static const String newMessage = "New Message ";
   static const String now = "Now";
+  static const String phoneNumber = "PHone Number";
   static const String modelName = "Model";
+  static const String dateOfAccession = "Date Of Accession";
   static const String changeThemeButton = "change_theme_button_text";
   static const String changeLanguageButton = "change_language_button_text";
   static const String pullDownToRefresh = "pull_to_refresh";
@@ -73,7 +75,7 @@ class AppStrings {
   static const String latestResearch = "Latest Research";
   static const String proposed = "proposed";
   static const String searchResult = "Search Result";
-  static const String listOfProducts = "list of products";
+  static const String listOfProducts = "List Of Products";
   static const String ratings = "Ratings";
   static const String details = "Details";
   static const String chat = "Chat";

@@ -46,23 +46,23 @@ class InputDecorationStyle extends InputDecoration {
   InputBorder get enabledBorder => OutlineInputBorder(
         borderSide:
             BorderSide(color: enableColor ?? AppColors.primaryColor, width: .7),
-        borderRadius: BorderRadius.circular(borderRaduis ?? 8),
+        borderRadius: BorderRadius.circular(borderRaduis ?? 10.r),
       );
 
   @override
   InputBorder get focusedBorder => OutlineInputBorder(
-      borderRadius: BorderRadius.circular(borderRaduis ?? 8),
+      borderRadius: BorderRadius.circular(borderRaduis ?? 10.r),
       borderSide:
           BorderSide(color: focusColor ?? AppColors.primaryColor, width: 1));
 
   @override
   InputBorder get errorBorder => OutlineInputBorder(
       borderSide: const BorderSide(color: Colors.red, width: .5),
-      borderRadius: BorderRadius.circular(borderRaduis ?? 8));
+      borderRadius: BorderRadius.circular(borderRaduis ?? 10.r));
 
   @override
   InputBorder get focusedErrorBorder => OutlineInputBorder(
-      borderRadius: BorderRadius.circular(borderRaduis ?? 8),
+      borderRadius: BorderRadius.circular(borderRaduis ?? 10.r),
       borderSide: const BorderSide(color: Colors.red, width: 2));
 
   @override

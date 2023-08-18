@@ -6,7 +6,8 @@ class ImageAssets {
   static const String empty = 'assets/images/empty.json';
   static const String filter = "assets/images/filter.svg";
   static const String all = "assets/images/all.svg";
-  static const String bag = "assets/images/bag.png";
+  static const String allOutlined = "assets/images/all_outlined.svg";
+  static const String bag = "assets/images/bag.svg";
   static const String bell = "assets/images/bell.png";
   static const String call = "assets/images/call.svg";
   static const String chart = "assets/images/chart.png";
@@ -15,12 +16,12 @@ class ImageAssets {
   static const String automatic = "assets/images/automatic.png";
   static const String fuel = "assets/images/fuel.png";
   static const String furniture = "assets/images/furniture.svg";
+  static const String more = "assets/images/more.svg";
   static const String gears = "assets/images/gears.png";
   static const String home = "assets/images/home.png";
   static const String verify = "assets/images/verify.png";
   static const String message = "assets/images/message.svg";
   static const String mobiles = "assets/images/mobiles.svg";
-  static const String more = "assets/images/more.png";
   static const String favourite = "assets/images/favourite.svg";
   static const String area = "assets/images/area.svg";
   static const String bathroom = "assets/images/bathroom.svg";
@@ -34,12 +35,16 @@ class ImageAssets {
   static const String onboarding_2 = "assets/images/onboarding_2.png";
   static const String onboarding_3 = "assets/images/onboarding_3.png";
 
+  static const String calendar = "assets/images/calendar.png";
   static const String pen = "assets/images/pen.png";
   static const String google = "assets/images/google.png";
   static const String apple = "assets/images/apple.png";
   static const String facebook = "assets/images/facebook.png";
   static const String profile = "assets/images/profile.png";
-  static const String shop = "assets/images/shop.png";
+  static const String shop = "assets/images/shop.svg";
+  static const String attachment = "assets/images/attachment.svg";
+  static const String camera = "assets/images/camera.svg";
+  static const String trash = "assets/images/trash.svg";
   static const String speed = "assets/images/speed.png";
   static const String mapPin = "assets/images/map_pin.svg";
   static const String mail = "assets/images/mail.svg";
@@ -51,5 +56,8 @@ class ImageAssets {
   static const String search = "assets/images/search.svg";
 
   static const String vehicles = "assets/images/vehicles.svg";
+  static const String noMessages = "assets/images/no-messages.png";
+  static const String userBlock = "assets/images/user-block.svg";
+  static const String userReport = "assets/images/user-report.svg";
   static const String verificationCode = "assets/images/verification_code.png";
 }
