@@ -44,9 +44,10 @@ class HomeProducts extends StatelessWidget {
                       color: AppColors.grey3,
                     ),
                     SizedBox(width: 2.w),
-                    SvgPicture.asset(
+                    Image.asset(
                       ImageAssets.automatic,
-                      fit: BoxFit.scaleDown,
+                      width: 15.r,
+                      height: 15.r,
                     ),
                     SizedBox(width: 10.w),
                     SimpleText(
@@ -56,9 +57,10 @@ class HomeProducts extends StatelessWidget {
                       color: AppColors.grey3,
                     ),
                     SizedBox(width: 2.w),
-                    SvgPicture.asset(
+                    Image.asset(
                       ImageAssets.engine,
-                      fit: BoxFit.scaleDown,
+                      width: 15.r,
+                      height: 15.r,
                     ),
                   ],
                 ),

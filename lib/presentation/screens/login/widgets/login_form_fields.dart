@@ -19,10 +19,7 @@ class LoginFormFields extends StatelessWidget {
               inputType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
               onChangedFunction: cubit.onEmailChanged,
-              prefixIcon: SvgPicture.asset(
-                ImageAssets.mail,
-                fit: BoxFit.scaleDown,
-              ),
+              prefixIcon: const MailIcon(),
               hintTxt: AppStrings.email,
               errorTxt: emailError,
             ),
@@ -30,10 +27,7 @@ class LoginFormFields extends StatelessWidget {
             DefaultTextFormField(
               inputType: TextInputType.text,
               textInputAction: TextInputAction.done,
-              prefixIcon: SvgPicture.asset(
-                ImageAssets.lock,
-                fit: BoxFit.scaleDown,
-              ),
+              prefixIcon: const LockIcon(),
               onChangedFunction: cubit.onPasswordChanged,
               hintTxt: AppStrings.password,
               errorTxt: passwordError,

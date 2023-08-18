@@ -44,7 +44,7 @@ class HomeVehicles extends StatelessWidget {
                       color: AppColors.grey3,
                     ),
                     SizedBox(width: 2.w),
-                    SvgPicture.asset(
+                    Image.asset(
                       ImageAssets.automatic,
                       fit: BoxFit.scaleDown,
                     ),
@@ -56,7 +56,7 @@ class HomeVehicles extends StatelessWidget {
                       color: AppColors.grey3,
                     ),
                     SizedBox(width: 2.w),
-                    SvgPicture.asset(
+                    Image.asset(
                       ImageAssets.engine,
                       fit: BoxFit.scaleDown,
                     ),

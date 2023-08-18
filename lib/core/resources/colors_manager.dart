@@ -6,6 +6,8 @@ class AppColors {
   static const Color hintColor = Color(0xffBABABA);
   static const Color lightBlack = Color(0x26111111);
   static const Color red = Color(0xFFFF0000);
+  static const Color searchFormFieldColor = Color(0xffFEF9F9);
+  static Color searchFormFieldBorderColor = Colors.black.withOpacity(0.25);
 
   ///0xffEDEDED
   static const Color grey = Color(0xffEDEDED);

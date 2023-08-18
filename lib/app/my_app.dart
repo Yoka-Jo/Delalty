@@ -61,9 +61,11 @@ class _MyAppState extends State<MyApp> {
                       supportedLocales: context.supportedLocales,
                       localizationsDelegates: context.localizationDelegates,
                       locale: context.locale,
-                      routerConfig: _appRouter.config(initialRoutes: [
-                        const ProductRoute(),
-                      ]),
+                      routerConfig: _appRouter.config(
+                        initialRoutes: [
+                          const SearchRoute(),
+                        ],
+                      ),
                     ),
                   );
                 },

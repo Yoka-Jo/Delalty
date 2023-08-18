@@ -9,9 +9,12 @@ class ProductLocation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgPicture.asset(
+        Image.asset(
           ImageAssets.locationPin,
+          height: 15.r,
+          width: 15.r,
         ),
+        SizedBox(width: 2.w),
         SimpleText(
           "${AppStrings.location}: ",
           textStyle: TextStyleEnum.poppinsMedium,

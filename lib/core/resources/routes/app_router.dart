@@ -8,6 +8,7 @@ import '../../../presentation/screens/login/login_screen.dart';
 import '../../../presentation/screens/notifications/notifications_screen.dart';
 import '../../../presentation/screens/onboarding/onboarding_screen.dart';
 import '../../../presentation/screens/product/product_screen.dart';
+import '../../../presentation/screens/search/search_screen.dart';
 import '../../../presentation/screens/signup/signup_screen.dart';
 import '../../../presentation/screens/splash/splash_screen.dart';
 import '../../../presentation/screens/verification_code/verification_code_screen.dart';
@@ -30,6 +31,7 @@ class AppRouter extends _$AppRouter {
         MaterialRoute(page: LoginRoute.page),
         MaterialRoute(page: VerificationCodeRoute.page),
         MaterialRoute(page: AppRoute.page),
+        MaterialRoute(page: SearchRoute.page),
         MaterialRoute(page: ProductRoute.page),
         CustomRoute(
           page: NotificationsRoute.page,

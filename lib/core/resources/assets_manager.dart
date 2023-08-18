@@ -26,6 +26,7 @@ class ImageAssets {
   static const String bathroom = "assets/images/bathroom.svg";
   static const String bed = "assets/images/bed.svg";
   static const String share = "assets/images/share.svg";
+  static const String microphone = "assets/images/microphone.svg";
   static const String report = "assets/images/report.svg";
   static const String notifications = "assets/images/notifications.png";
   static const String locationPin = "assets/images/location_pin.png";

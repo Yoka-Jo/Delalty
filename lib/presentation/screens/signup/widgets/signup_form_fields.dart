@@ -20,10 +20,7 @@ class SignupFormFields extends StatelessWidget {
             DefaultTextFormField(
               inputType: TextInputType.text,
               textInputAction: TextInputAction.next,
-              prefixIcon: SvgPicture.asset(
-                ImageAssets.person,
-                fit: BoxFit.scaleDown,
-              ),
+              prefixIcon: const UserIcon(),
               onChangedFunction: cubit.onUsernameChanged,
               hintTxt: AppStrings.fullName,
               errorTxt: nameError,
@@ -33,10 +30,7 @@ class SignupFormFields extends StatelessWidget {
               inputType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
               onChangedFunction: cubit.onEmailChanged,
-              prefixIcon: SvgPicture.asset(
-                ImageAssets.mail,
-                fit: BoxFit.scaleDown,
-              ),
+              prefixIcon: const MailIcon(),
               hintTxt: AppStrings.email,
               errorTxt: emailError,
             ),
@@ -44,10 +38,7 @@ class SignupFormFields extends StatelessWidget {
             DefaultTextFormField(
               inputType: TextInputType.phone,
               textInputAction: TextInputAction.next,
-              prefixIcon: SvgPicture.asset(
-                ImageAssets.phone,
-                fit: BoxFit.scaleDown,
-              ),
+              prefixIcon: const PhoneIcon(),
               onChangedFunction: cubit.onPhoneChanged,
               hintTxt: AppStrings.number,
               errorTxt: phoneError,
@@ -56,10 +47,7 @@ class SignupFormFields extends StatelessWidget {
             DefaultTextFormField(
               inputType: TextInputType.text,
               textInputAction: TextInputAction.done,
-              prefixIcon: SvgPicture.asset(
-                ImageAssets.lock,
-                fit: BoxFit.scaleDown,
-              ),
+              prefixIcon: const LockIcon(),
               onChangedFunction: cubit.onPasswordChanged,
               hintTxt: AppStrings.password,
               errorTxt: passwordError,

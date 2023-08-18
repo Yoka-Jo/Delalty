@@ -6,6 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/common/components/widgets/default_text_form_field.dart';
+import '../../../../core/common/components/widgets/form_fields_icons/lock_icon.dart';
+import '../../../../core/common/components/widgets/form_fields_icons/mail_icon.dart';
+import '../../../../core/common/components/widgets/form_fields_icons/phone_icon.dart';
+import '../../../../core/common/components/widgets/form_fields_icons/user_icon.dart';
 import '../../../../core/common/components/widgets/loading_button.dart';
 import '../../../../core/common/components/widgets/simple_text.dart';
 import '../../../../core/resources/assets_manager.dart';

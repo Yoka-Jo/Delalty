@@ -70,9 +70,9 @@ class AppStrings {
   static const String comments = "Comments";
   static const String such = "Such";
   static const String search = "Search";
-  static const String latestResearch = "latest research";
+  static const String latestResearch = "Latest Research";
   static const String proposed = "proposed";
-  static const String searchResult = "search result";
+  static const String searchResult = "Search Result";
   static const String listOfProducts = "list of products";
   static const String ratings = "Ratings";
   static const String details = "Details";

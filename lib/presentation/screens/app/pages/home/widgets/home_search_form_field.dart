@@ -13,10 +13,7 @@ class HomeFormField extends StatelessWidget {
       inputType: TextInputType.text,
       textInputAction: TextInputAction.done,
       hintTxt: AppStrings.search,
-      prefixIcon: SvgPicture.asset(
-        ImageAssets.search,
-        fit: BoxFit.scaleDown,
-      ),
+      prefixIcon: const SearchIcon(),
       suffixIcon: SvgPicture.asset(ImageAssets.filter, fit: BoxFit.scaleDown),
     );
   }
