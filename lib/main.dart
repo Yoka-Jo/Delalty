@@ -1,7 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'app/my_app.dart';
 import 'core/resources/localization/cubit/change_language_cubit.dart';
@@ -14,7 +16,6 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   // AppNotifications appNotifications = AppNotifications();
   // await appNotifications.setupNotification();
-
   configureDependencies();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(

@@ -39,6 +39,17 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LoginScreen(),
       );
     },
+    MapRoute.name: (routeData) {
+      final args = routeData.argsAs<MapRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: MapScreen(
+          key: args.key,
+          longitude: args.longitude,
+          latitude: args.latitude,
+        ),
+      );
+    },
     NotificationsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -63,6 +74,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProfileScreen(),
       );
     },
+    PropertyFilterRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PropertyFilterScreen(),
+      );
+    },
     SearchRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -85,6 +102,17 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const VerificationCodeScreen(),
+      );
+    },
+    ViewProductSectionRoute.name: (routeData) {
+      final args = routeData.argsAs<ViewProductSectionRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ViewProductSectionScreen(
+          key: args.key,
+          isRealEstate: args.isRealEstate,
+          title: args.title,
+        ),
       );
     },
   };
@@ -147,6 +175,48 @@ class LoginRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MapScreen]
+class MapRoute extends PageRouteInfo<MapRouteArgs> {
+  MapRoute({
+    Key? key,
+    required double longitude,
+    required double latitude,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MapRoute.name,
+          args: MapRouteArgs(
+            key: key,
+            longitude: longitude,
+            latitude: latitude,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MapRoute';
+
+  static const PageInfo<MapRouteArgs> page = PageInfo<MapRouteArgs>(name);
+}
+
+class MapRouteArgs {
+  const MapRouteArgs({
+    this.key,
+    required this.longitude,
+    required this.latitude,
+  });
+
+  final Key? key;
+
+  final double longitude;
+
+  final double latitude;
+
+  @override
+  String toString() {
+    return 'MapRouteArgs{key: $key, longitude: $longitude, latitude: $latitude}';
+  }
+}
+
+/// generated route for
 /// [NotificationsScreen]
 class NotificationsRoute extends PageRouteInfo<void> {
   const NotificationsRoute({List<PageRouteInfo>? children})
@@ -198,6 +268,20 @@ class ProfileRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PropertyFilterScreen]
+class PropertyFilterRoute extends PageRouteInfo<void> {
+  const PropertyFilterRoute({List<PageRouteInfo>? children})
+      : super(
+          PropertyFilterRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PropertyFilterRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -256,4 +340,48 @@ class VerificationCodeRoute extends PageRouteInfo<void> {
   static const String name = 'VerificationCodeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ViewProductSectionScreen]
+class ViewProductSectionRoute
+    extends PageRouteInfo<ViewProductSectionRouteArgs> {
+  ViewProductSectionRoute({
+    Key? key,
+    bool isRealEstate = false,
+    required String title,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ViewProductSectionRoute.name,
+          args: ViewProductSectionRouteArgs(
+            key: key,
+            isRealEstate: isRealEstate,
+            title: title,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ViewProductSectionRoute';
+
+  static const PageInfo<ViewProductSectionRouteArgs> page =
+      PageInfo<ViewProductSectionRouteArgs>(name);
+}
+
+class ViewProductSectionRouteArgs {
+  const ViewProductSectionRouteArgs({
+    this.key,
+    this.isRealEstate = false,
+    required this.title,
+  });
+
+  final Key? key;
+
+  final bool isRealEstate;
+
+  final String title;
+
+  @override
+  String toString() {
+    return 'ViewProductSectionRouteArgs{key: $key, isRealEstate: $isRealEstate, title: $title}';
+  }
 }

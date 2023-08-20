@@ -6,7 +6,9 @@ import 'package:delalty/presentation/screens/profile/widgets/widgets.dart';
 
 @RoutePage()
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

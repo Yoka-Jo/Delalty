@@ -8,8 +8,11 @@ class ProfileDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      padding: EdgeInsets.symmetric(
+        horizontal: 16.w,
+      ),
       child: SingleChildScrollView(
+        primary: false,
         physics: const NeverScrollableScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,6 +25,7 @@ class ProfileDetails extends StatelessWidget {
             const ProfileUserDateOfAccession(),
             SizedBox(height: 34.h),
             const ProfileUserPhoneNumber(),
+            SizedBox(height: 30.h),
           ],
         ),
       ),

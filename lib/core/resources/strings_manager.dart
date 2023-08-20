@@ -13,8 +13,11 @@ class AppStrings {
   static const String bearer = "Bearer ";
   static const String newMessage = "New Message ";
   static const String now = "Now";
+  static const String placesNearYou = "Places Near You";
+  static const String type = "Type";
   static const String phoneNumber = "PHone Number";
   static const String modelName = "Model";
+  static const String section = "Section";
   static const String dateOfAccession = "Date Of Accession";
   static const String changeThemeButton = "change_theme_button_text";
   static const String changeLanguageButton = "change_language_button_text";
@@ -40,6 +43,7 @@ class AppStrings {
   static const String fullName = "Full name";
   static const String email = "Email";
   static const String number = "Number";
+  static const String typeOfProperty = "Type Of Property";
   static const String password = "Password";
   static const String alreadyHaveAccount = "Already have an account!";
   static const String startBuyingAndSellingThings =
@@ -56,6 +60,7 @@ class AppStrings {
   static const String watchMore = "Watch More";
   static const String all = "All";
   static const String vehicles = "Vehicles";
+  static const String vehicle = "Vehicle";
   static const String mobiles = "Mobiles";
   static const String electronics = "Electronics";
   static const String furniture = "Furniture";
@@ -82,7 +87,7 @@ class AppStrings {
   static const String contact = "Contact";
   static const String situation = "Situation";
   static const String more = "More";
-  static const String addProduct = "Add a product";
+  static const String addProduct = "Add A Product";
   static const String myAccount = "My Account";
   static const String home = "Home";
   static const String buy = "Buy";
@@ -95,10 +100,11 @@ class AppStrings {
   static const String filter = "Filter";
   static const String propertySearch = "Property Search";
   static const String residentialArea = "Residential Area";
-  static const String appartment = "apartment";
+  static const String apartment = "Apartment";
+  static const String apartments = "Apartments";
   static const String villa = "Villa";
-  static const String forSale = "forSale";
-  static const String forRent = "forRent";
+  static const String forSale = "For Sale";
+  static const String forRent = "For Rent";
   static const String chalets = "Chalets";
   static const String furnishedApartments = "Furnished Apartments";
   static const String land = "Land";

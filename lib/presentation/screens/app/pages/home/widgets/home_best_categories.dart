@@ -24,9 +24,19 @@ class HomeBestCategories extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(), // Add this line
           children: bestCategories
               .map(
-                (category) => CategoryWidget(
-                  image: category.image,
-                  title: category.title,
+                (category) => InkWell(
+                  onTap: () {
+                    context.router.push(
+                      ViewProductSectionRoute(
+                        title: category.title,
+                        isRealEstate: category.title == AppStrings.realEstate,
+                      ),
+                    );
+                  },
+                  child: CategoryWidget(
+                    image: category.image,
+                    title: category.title,
+                  ),
                 ),
               )
               .toList(),

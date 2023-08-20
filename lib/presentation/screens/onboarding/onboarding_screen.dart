@@ -1,6 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:delalty/core/common/components/widgets/simple_text.dart';
+import 'package:delalty/core/resources/routes/app_router.dart';
+import 'package:delalty/data/datasources/local_datasource/local_datasource.dart';
+import 'package:delalty/di.dart';
 import 'package:delalty/presentation/screens/onboarding/cubit/onboarding_cubit.dart';
 import 'package:delalty/presentation/screens/onboarding/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +74,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           );
         }),
         bottomSheet: OnBoardingBottomSheet(
-          onTap: () {
+          onTap: () async {
+            if (_pageController.page == models.length - 1) {
+              await getIt<LocalDataSource>().saveIsOnBoardingScreenViewed();
+              if (context.mounted) {
+                context.router.replaceAll([const LoginRoute()]);
+              }
+              return;
+            }
             _pageController.nextPage(
               duration: const Duration(milliseconds: 700),
               curve: Curves.easeInOut,

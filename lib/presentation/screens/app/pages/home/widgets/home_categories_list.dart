@@ -13,28 +13,37 @@ class HomeCategoriesList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           final category = categories[index];
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                height: 52.h,
-                width: 56.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.r),
+          return InkWell(
+            onTap: () {
+              context.router.push(
+                ViewProductSectionRoute(
+                  title: category.title,
+                ),
+              );
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 52.h,
+                  width: 56.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.r),
+                    color: Colors.white,
+                  ),
+                  child: Image.asset(
+                    category.image,
+                  ),
+                ),
+                SimpleText(
+                  category.title,
+                  textStyle: TextStyleEnum.poppinsRegular,
+                  fontSize: 11.sp,
                   color: Colors.white,
                 ),
-                child: SvgPicture.asset(
-                  category.image,
-                ),
-              ),
-              SimpleText(
-                category.title,
-                textStyle: TextStyleEnum.poppinsRegular,
-                fontSize: 11.sp,
-                color: Colors.white,
-              ),
-            ],
+              ],
+            ),
           );
         },
         separatorBuilder: (context, index) => SizedBox(width: 25.w),

@@ -12,7 +12,11 @@ class ProfileUserLocation extends StatelessWidget {
       tilePadding: EdgeInsets.zero,
       title: Row(
         children: [
-          Image.asset(ImageAssets.locationPin),
+          Image.asset(
+            ImageAssets.locationPin,
+            width: 15.r,
+            height: 15.r,
+          ),
           SizedBox(width: 2.w),
           SimpleText(
             'Of Cairo',

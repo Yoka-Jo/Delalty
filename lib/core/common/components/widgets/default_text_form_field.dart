@@ -9,6 +9,7 @@ class DefaultTextFormField extends StatefulWidget {
   final String? initialValue;
   final String? hintTxt;
   final String? errorTxt;
+  final TextAlign? textAlign;
   final bool borderIsEnabled;
   final bool marginIsEnabled;
   final TextInputType inputType;
@@ -57,6 +58,7 @@ class DefaultTextFormField extends StatefulWidget {
     this.readOnly = false,
     this.validationFunction,
     this.onChangedFunction,
+    this.textAlign,
     this.initialValue,
     this.suffixIcon,
     this.radius,
@@ -95,6 +97,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
     final theme = AppTheme.of(context);
     return StatefulBuilder(
         builder: (context, setState) => TextFormField(
+              textAlign: widget.textAlign ?? TextAlign.start,
               onFieldSubmitted: widget.onFieldSubmitted,
               onEditingComplete: widget.onEditingComplete,
               onTap: widget.onTap,
@@ -103,6 +106,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
               autovalidateMode: widget.autovalidateMode,
               inputFormatters: widget.inputFormatters,
               expands: widget.expands,
+              cursorColor: AppColors.primaryColor,
               controller: widget.controller,
               enabled: widget.enabled,
               maxLines: widget.isPassword ? 1 : widget.maxLines,

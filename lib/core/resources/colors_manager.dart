@@ -7,6 +7,8 @@ class AppColors {
   static const Color ligthGreen = Color(0xff7FE47E);
   static const Color hintColor = Color(0xffBABABA);
   static const Color lightBlack = Color(0x26111111);
+  static const Color black = Color(0xff111111);
+
   static const Color red = Color(0xFFFF0000);
   static const Color searchFormFieldColor = Color(0xffFEF9F9);
   static const Color colorOfChatBubbleForOtherUser = Color(0xff006FFD);

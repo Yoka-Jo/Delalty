@@ -5,11 +5,16 @@ class LoginCreateAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SimpleText(
-      AppStrings.createAnAccount,
-      textStyle: TextStyleEnum.poppinsMedium,
-      fontSize: 18.sp,
-      color: AppColors.primaryColor,
+    return InkWell(
+      onTap: () {
+        context.router.replace(const SignupRoute());
+      },
+      child: SimpleText(
+        AppStrings.createAnAccount,
+        textStyle: TextStyleEnum.poppinsMedium,
+        fontSize: 18.sp,
+        color: AppColors.primaryColor,
+      ),
     );
   }
 }

@@ -62,7 +62,6 @@ class SignupFormFields extends StatelessWidget {
                       )
                     : const Icon(
                         Icons.visibility_off,
-                        color: AppColors.grey,
                         key: Key('visibility_off'),
                       ),
               ),

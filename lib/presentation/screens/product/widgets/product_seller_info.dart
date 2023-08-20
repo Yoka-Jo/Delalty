@@ -37,11 +37,16 @@ class ProductSellerInfo extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            const Align(
-              alignment: Alignment.topRight,
-              child: Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: AppColors.grey3,
+            InkWell(
+              onTap: () {
+                context.router.push(const ProfileRoute());
+              },
+              child: const Align(
+                alignment: Alignment.topRight,
+                child: Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: AppColors.grey3,
+                ),
               ),
             )
           ],

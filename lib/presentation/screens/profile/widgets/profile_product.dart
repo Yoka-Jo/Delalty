@@ -66,7 +66,7 @@ class ProfileProduct extends StatelessWidget {
                     SimpleText(
                       'Egypt . Cairo',
                       textStyle: TextStyleEnum.poppinsRegular,
-                      fontSize: 5.sp,
+                      fontSize: 6.sp,
                       color: AppColors.grey3,
                     ),
                   ],

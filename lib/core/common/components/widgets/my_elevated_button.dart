@@ -9,7 +9,7 @@ import '../../../resources/colors_manager.dart';
 
 class MyElevatedButton extends StatelessWidget {
   final String title;
-  final String icon;
+  final String? icon;
   final double? titleSize;
   final double? iconSize;
   final double? verticalPadding;
@@ -18,15 +18,17 @@ class MyElevatedButton extends StatelessWidget {
   final bool hasElevation;
   final bool spaceBetweenTextAndIcon;
   final VoidCallback onPressed;
+  final TextStyleEnum? textStyle;
   const MyElevatedButton({
     Key? key,
     required this.title,
-    required this.icon,
+    this.icon,
     this.titleSize,
     this.iconSize,
     this.verticalPadding,
     this.horizontalPadding,
     this.borderRadius,
+    this.textStyle,
     this.hasElevation = true,
     this.spaceBetweenTextAndIcon = true,
     required this.onPressed,
@@ -45,21 +47,22 @@ class MyElevatedButton extends StatelessWidget {
           horizontal: horizontalPadding ?? 0,
         ),
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SimpleText(
             title,
-            textStyle: TextStyleEnum.poppinsRegular,
+            textStyle: textStyle ?? TextStyleEnum.poppinsRegular,
             fontSize: titleSize ?? 14.sp,
             color: AppColors.grey2,
           ),
           if (spaceBetweenTextAndIcon) SizedBox(width: 5.w),
-          SvgPicture.asset(
-            icon,
-          )
+          if (icon != null)
+            SvgPicture.asset(
+              icon!,
+            )
         ],
       ),
     );

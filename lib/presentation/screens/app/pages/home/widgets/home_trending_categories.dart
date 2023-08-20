@@ -24,9 +24,19 @@ class HomeTrendingCategories extends StatelessWidget {
             reverse: true,
             itemBuilder: (context, index) {
               final category = trendingCategories[index];
-              return CategoryWidget(
-                image: category.image,
-                title: category.title,
+              return InkWell(
+                onTap: () {
+                  context.router.push(
+                    ViewProductSectionRoute(
+                      title: category.title,
+                      isRealEstate: category.title == AppStrings.realEstate,
+                    ),
+                  );
+                },
+                child: CategoryWidget(
+                  image: category.image,
+                  title: category.title,
+                ),
               );
             },
             separatorBuilder: (context, index) => SizedBox(width: 20.w),

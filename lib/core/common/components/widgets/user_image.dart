@@ -25,13 +25,14 @@ class UserImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final circleSize = this.circleSize ?? 95.w;
     return Stack(
       alignment: Alignment.bottomRight,
       children: [
         Container(
           padding: EdgeInsets.all(borderWidth ?? 3.r),
-          height: circleSize ?? 95.w,
-          width: circleSize ?? 95.w,
+          height: circleSize,
+          width: circleSize,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: borderColor ?? AppColors.primaryColor,
@@ -48,8 +49,8 @@ class UserImage extends StatelessWidget {
           iconWidget!
         else
           Positioned(
-            right: 6.r,
-            bottom: 6.r,
+            right: (circleSize) * 0.04,
+            bottom: (circleSize) * 0.04,
             child: Image.asset(
               icon ?? ImageAssets.verify,
               height: 18.w,

@@ -29,6 +29,7 @@ class _OnBoardingBottomSheetState extends State<OnBoardingBottomSheet> {
                 decorator: const DotsDecorator(
                   size: Size.square(9.0),
                   activeSize: Size(18.0, 9.0),
+                  activeColor: Colors.black,
                 ),
               );
             },

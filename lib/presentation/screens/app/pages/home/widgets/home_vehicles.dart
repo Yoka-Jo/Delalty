@@ -17,17 +17,23 @@ class HomeVehicles extends StatelessWidget {
               textStyle: TextStyleEnum.montserratMedium,
               fontSize: 16.sp,
             ),
-            SimpleText(
-              AppStrings.watchMore,
-              textStyle: TextStyleEnum.poppinsLight,
-              fontSize: 10.sp,
-              color: AppColors.primaryColor,
+            InkWell(
+              onTap: () {
+                context.router
+                    .push(ViewProductSectionRoute(title: AppStrings.vehicles));
+              },
+              child: SimpleText(
+                AppStrings.watchMore,
+                textStyle: TextStyleEnum.poppinsLight,
+                fontSize: 10.sp,
+                color: AppColors.primaryColor,
+              ),
             ),
           ],
         ),
         SizedBox(height: 18.h),
         SizedBox(
-          height: 200.h,
+          height: Constants.homeProductsHeight,
           child: ListView.separated(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
@@ -46,7 +52,8 @@ class HomeVehicles extends StatelessWidget {
                     SizedBox(width: 2.w),
                     Image.asset(
                       ImageAssets.automatic,
-                      fit: BoxFit.scaleDown,
+                      width: 15.r,
+                      height: 15.r,
                     ),
                     SizedBox(width: 10.w),
                     SimpleText(
@@ -58,7 +65,8 @@ class HomeVehicles extends StatelessWidget {
                     SizedBox(width: 2.w),
                     Image.asset(
                       ImageAssets.engine,
-                      fit: BoxFit.scaleDown,
+                      width: 15.r,
+                      height: 15.r,
                     ),
                   ],
                 ),

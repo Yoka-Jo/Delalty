@@ -27,15 +27,14 @@ class ProductSuchProducts extends StatelessWidget {
         ),
         SizedBox(height: 18.h),
         SizedBox(
-          height: 200.h,
+          height: Constants.homeProductsHeight,
           child: ListView.separated(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             reverse: true,
             itemBuilder: (context, index) {
-              return ProductCardWidget(
+              return const ProductCardWidget(
                 title: '"MERCEDSCLA 200 2022 Used"',
-                details: Container(),
               );
             },
             separatorBuilder: (context, index) => SizedBox(width: 15.w),

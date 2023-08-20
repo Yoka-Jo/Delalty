@@ -18,18 +18,18 @@ class ProfileRatings extends StatelessWidget {
             textStyle: TextStyleEnum.poppinsMedium,
             fontSize: 15.sp,
           ),
-          Expanded(
-            child: ListView.separated(
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return const CommentWidget(
-                  name: "Alawi Zakiya",
-                  comment: 'This text can be replaced in the same space.',
-                );
-              },
-              separatorBuilder: (context, index) => SizedBox(height: 30.h),
-              itemCount: 5,
-            ),
+          ListView.separated(
+            shrinkWrap: true,
+            primary: false,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              return const CommentWidget(
+                name: "Alawi Zakiya",
+                comment: 'This text can be replaced in the same space.',
+              );
+            },
+            separatorBuilder: (context, index) => SizedBox(height: 30.h),
+            itemCount: 5,
           ),
         ],
       ),

@@ -17,25 +17,30 @@ class HomeMobiles extends StatelessWidget {
               textStyle: TextStyleEnum.montserratMedium,
               fontSize: 16.sp,
             ),
-            SimpleText(
-              AppStrings.watchMore,
-              textStyle: TextStyleEnum.poppinsLight,
-              fontSize: 10.sp,
-              color: AppColors.primaryColor,
+            InkWell(
+              onTap: () {
+                context.router
+                    .push(ViewProductSectionRoute(title: AppStrings.mobiles));
+              },
+              child: SimpleText(
+                AppStrings.watchMore,
+                textStyle: TextStyleEnum.poppinsLight,
+                fontSize: 10.sp,
+                color: AppColors.primaryColor,
+              ),
             ),
           ],
         ),
         SizedBox(height: 18.h),
         SizedBox(
-          height: 200.h,
+          height: Constants.homeProductsHeight,
           child: ListView.separated(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             reverse: true,
             itemBuilder: (context, index) {
-              return ProductCardWidget(
+              return const ProductCardWidget(
                 title: 'New Apple iPhone 14 (128 GB) - Blue',
-                details: Container(),
                 image:
                     'https://m.media-amazon.com/images/I/61bK6PMOC3L.__AC_SX300_SY300_QL70_ML2_.jpg',
               );

@@ -1,9 +1,12 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:delalty/core/resources/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../app/constants.dart';
 import '../../../../core/common/components/widgets/back_icon_widget.dart';
+import '../../../../core/common/components/widgets/build_carousel.dart';
 import '../../../../core/common/components/widgets/comment_widget.dart';
 import '../../../../core/common/components/widgets/my_elevated_button.dart';
 import '../../../../core/common/components/widgets/product_card_widget.dart';

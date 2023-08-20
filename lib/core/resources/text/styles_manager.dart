@@ -6,7 +6,7 @@ import 'font_manager.dart';
 enum FontFamilies { montserrat, poppins, tajawal }
 
 TextStyle _getTextStyle(
-    double fontSize, FontWeight fontWeight, Color color, FontFamilies family) {
+    double fontSize, FontWeight fontWeight, Color? color, FontFamilies family) {
   //switch on family and return the appropriate TextStyle
   TextStyle textStyle =
       TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
@@ -38,7 +38,7 @@ TextStyle getRegularStyle(
 TextStyle getMediumStyle(
     {double fontSize = 12,
     FontFamilies family = FontFamilies.montserrat,
-    required Color color}) {
+     Color? color}) {
   return _getTextStyle(fontSize, FontWeightManager.medium, color, family);
 }
 
@@ -52,7 +52,7 @@ TextStyle getLightStyle(
 TextStyle getSemiBoldStyle(
     {double fontSize = 12,
     FontFamilies family = FontFamilies.montserrat,
-    required Color color}) {
+    Color? color}) {
   return _getTextStyle(fontSize, FontWeightManager.semiBold, color, family);
 }
 

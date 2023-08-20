@@ -1,9 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'widgets.dart';
 
 class ProfileData extends StatelessWidget {
   const ProfileData({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,9 @@ class ProfileData extends StatelessWidget {
         MyElevatedButton(
           title: AppStrings.chat,
           icon: ImageAssets.message,
-          onPressed: () {},
+          onPressed: () {
+            context.router.push(const ConversationRoute());
+          },
         )
       ],
     );

@@ -17,7 +17,7 @@ class HomeContainer extends StatelessWidget {
           left: 16.w,
         ),
         decoration: BoxDecoration(
-          color: AppColors.grey2,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30.r),
             topLeft: Radius.circular(30.r),

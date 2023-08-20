@@ -16,14 +16,34 @@ class SearchResult extends StatelessWidget {
           fontSize: 17.sp,
         ),
         SizedBox(height: 27.h),
-        GridView.count(
+        GridView.builder(
+          padding: EdgeInsets.symmetric(vertical: 30.h),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          crossAxisSpacing: 16.w,
-          mainAxisSpacing: 11.h,
-          childAspectRatio: 230.w / 170.h,
-          crossAxisCount: 2,
-          children: List.generate(5, (index) => const SearchProduct()),
-        )
+          primary: false,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 16.w,
+            mainAxisSpacing: 11.h,
+            childAspectRatio: 173.w / 160.h,
+          ),
+          itemBuilder: (context, index) => ProductCardWidget(
+            days: null,
+            height: 160.h,
+            width: 173.w,
+            title: 'BMD WDL 320i 2024',
+            titleSize: 7.sp,
+            titleColor: AppColors.black,
+            priceSize: 8.sp,
+            locationColor: AppColors.grey3,
+            image:
+                'https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+            showLocationPin: false,
+            showfavouriteButton: false,
+            padding: EdgeInsets.all(7.r),
+          ),
+          itemCount: 20,
+        ),
       ],
     );
   }
