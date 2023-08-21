@@ -14,7 +14,7 @@ class HomeAppBar extends StatelessWidget {
           onTap: () {
             context.router.push(const NotificationsRoute());
           },
-          child: Image.asset(
+          child: SvgPicture.asset(
             ImageAssets.bell,
             fit: BoxFit.cover,
           ),

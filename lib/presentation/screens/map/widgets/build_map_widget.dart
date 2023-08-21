@@ -35,6 +35,7 @@ class _BuildMapWidgetState extends State<BuildMapWidget> {
   BitmapDescriptor? customMarkerIcon;
   final Map<String, Marker> _markers = {};
   bool _isLoaded = false;
+  bool _isPoped = false;
 
   List<Map<String, dynamic>> data = [
     {
@@ -47,18 +48,18 @@ class _BuildMapWidgetState extends State<BuildMapWidget> {
     {
       'id': '2',
       'globalKey': GlobalKey(),
-      'position': const LatLng(31.42403952, 31.04145312),
+      'position': const LatLng(31.4240395, 31.0414531),
       'widget': const CustomMarkerIcon(title: 'Another Marker'),
     },
   ];
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) => _onBuildComple());
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _onBuildComplete());
   }
 
-  Future<void> _onBuildComple() async {
+  Future<void> _onBuildComplete() async {
     await Future.wait(data.map(
       (value) async {
         Marker marker = await _generateMarkersFromWidgets(value);
@@ -71,17 +72,20 @@ class _BuildMapWidgetState extends State<BuildMapWidget> {
   }
 
   Future<Marker> _generateMarkersFromWidgets(Map<String, dynamic> data) async {
-    RenderRepaintBoundary boundary = data['globalKey']
-        .currentContext
-        ?.findRenderObject() as RenderRepaintBoundary;
-    ui.Image image = await boundary.toImage(pixelRatio: 4);
+    return await Future.delayed(const Duration(milliseconds: 30), () async {
+      RenderRepaintBoundary boundary = data['globalKey']
+          .currentContext
+          ?.findRenderObject() as RenderRepaintBoundary;
+      ui.Image image = await boundary.toImage(pixelRatio: 4);
 
-    ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-    return Marker(
-      markerId: MarkerId(data['id']),
-      position: data['position'],
-      icon: BitmapDescriptor.fromBytes(byteData!.buffer.asUint8List()),
-    );
+      ByteData? byteData =
+          await image.toByteData(format: ui.ImageByteFormat.png);
+      return Marker(
+        markerId: MarkerId(data['id']),
+        position: data['position'],
+        icon: BitmapDescriptor.fromBytes(byteData!.buffer.asUint8List()),
+      );
+    });
   }
 
   @override
@@ -103,19 +107,30 @@ class _BuildMapWidgetState extends State<BuildMapWidget> {
         ],
       );
     }
-    return GoogleMap(
-      mapType: MapType.normal,
-      markers: _markers.values.toSet(),
-      myLocationEnabled: true,
-      zoomControlsEnabled: false,
-      myLocationButtonEnabled: false,
-      initialCameraPosition: widget.cameraPosition,
-      onMapCreated: (GoogleMapController controller) {
-        // if (Theme.of(context).brightness == Brightness.dark) {
-        //   controller.setMapStyle(Constants.googleMapDarkTheme);
-        // }
-        widget.mapController.complete(controller);
+    return WillPopScope(
+      onWillPop: () async {
+        setState(() {
+          _isPoped = true;
+        });
+        return true;
       },
+      child: Visibility(
+        visible: !_isPoped,
+        child: GoogleMap(
+          mapType: MapType.normal,
+          markers: _markers.values.toSet(),
+          myLocationEnabled: true,
+          zoomControlsEnabled: false,
+          myLocationButtonEnabled: false,
+          initialCameraPosition: widget.cameraPosition,
+          onMapCreated: (GoogleMapController controller) {
+            // if (Theme.of(context).brightness == Brightness.dark) {
+            //   controller.setMapStyle(Constants.googleMapDarkTheme);
+            // }
+            widget.mapController.complete(controller);
+          },
+        ),
+      ),
     );
   }
 

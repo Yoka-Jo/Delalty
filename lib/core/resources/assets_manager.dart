@@ -12,9 +12,10 @@ class ImageAssets {
   static const String all = "assets/images/all.png";
   static const String allOutlined = "assets/images/all_outlined.svg";
   static const String bag = "assets/images/bag.svg";
-  static const String bell = "assets/images/bell.png";
+  static const String bell = "assets/images/bell.svg";
   static const String call = "assets/images/call.svg";
-  static const String chart = "assets/images/chart.png";
+  static const String securityUser = "assets/images/security-user.svg";
+  // static const String chart = "assets/images/chart.png";
   static const String electronics = "assets/images/electronics.png";
   static const String engine = "assets/images/engine.png";
   static const String automatic = "assets/images/automatic.png";
@@ -23,7 +24,7 @@ class ImageAssets {
   static const String more = "assets/images/more.svg";
   static const String gears = "assets/images/gears.png";
   static const String home = "assets/images/home.png";
-  static const String verify = "assets/images/verify.png";
+  static const String verifyFull = "assets/images/verify.png";
   static const String message = "assets/images/message.svg";
   static const String mobiles = "assets/images/mobiles.png";
   static const String favourite = "assets/images/favourite.svg";
@@ -65,8 +66,22 @@ class ImageAssets {
   static const String search = "assets/images/search.svg";
 
   static const String vehicles = "assets/images/vehicles.png";
+  static const String radioSelected = "assets/images/radio-selected.png";
+  static const String radioUnSelected = "assets/images/radio-unselected.png";
   static const String noMessages = "assets/images/no-messages.png";
   static const String userBlock = "assets/images/user-block.svg";
-  static const String userReport = "assets/images/user-report.svg";
+  static const String noFavorite = "assets/images/no-favorite.png";
+  static const String favoriteFull = "assets/images/favorite-full.svg";
   static const String verificationCode = "assets/images/verification_code.png";
+  static const String userReport = "assets/images/user-report.svg";
+  static const String global = "assets/images/global.svg";
+  static const String favorite = "assets/images/favorite.svg";
+  static const String userEdit = "assets/images/user-edit.svg";
+  static const String advertising = "assets/images/advertising.png";
+  static const String verify = "assets/images/verify.svg";
+  static const String settings = "assets/images/settings.svg";
+  static const String privacy = "assets/images/privacy.svg";
+  static const String signout = "assets/images/signout.svg";
+  static const String warning = "assets/images/warning.svg";
+  static const String chart = "assets/images/chart.svg";
 }

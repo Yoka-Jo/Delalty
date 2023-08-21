@@ -21,6 +21,7 @@ class HomePage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: Column(
                     children: [
+                      SizedBox(height: 20.h),
                       const HomeAppBar(),
                       SizedBox(height: 20.h),
                       const HomeFormField(),

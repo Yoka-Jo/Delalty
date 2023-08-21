@@ -18,6 +18,8 @@ class MyElevatedButton extends StatelessWidget {
   final bool hasElevation;
   final bool spaceBetweenTextAndIcon;
   final VoidCallback onPressed;
+  final Color backgroundColor;
+  final bool reverseChild;
   final TextStyleEnum? textStyle;
   const MyElevatedButton({
     Key? key,
@@ -26,9 +28,11 @@ class MyElevatedButton extends StatelessWidget {
     this.titleSize,
     this.iconSize,
     this.verticalPadding,
+    this.reverseChild = false,
     this.horizontalPadding,
     this.borderRadius,
     this.textStyle,
+    this.backgroundColor = AppColors.primaryColor,
     this.hasElevation = true,
     this.spaceBetweenTextAndIcon = true,
     required this.onPressed,
@@ -36,9 +40,22 @@ class MyElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> rowChildren = [
+      SimpleText(
+        title,
+        textStyle: textStyle ?? TextStyleEnum.poppinsRegular,
+        fontSize: titleSize ?? 14.sp,
+        color: AppColors.grey2,
+      ),
+      if (spaceBetweenTextAndIcon) SizedBox(width: 5.w),
+      if (icon != null)
+        SvgPicture.asset(
+          icon!,
+        )
+    ];
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: backgroundColor,
         elevation: hasElevation ? null : 0.0,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 8.r)),
@@ -51,19 +68,7 @@ class MyElevatedButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SimpleText(
-            title,
-            textStyle: textStyle ?? TextStyleEnum.poppinsRegular,
-            fontSize: titleSize ?? 14.sp,
-            color: AppColors.grey2,
-          ),
-          if (spaceBetweenTextAndIcon) SizedBox(width: 5.w),
-          if (icon != null)
-            SvgPicture.asset(
-              icon!,
-            )
-        ],
+        children: reverseChild ? rowChildren.reversed.toList() : rowChildren,
       ),
     );
   }

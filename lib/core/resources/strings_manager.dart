@@ -13,7 +13,45 @@ class AppStrings {
   static const String bearer = "Bearer ";
   static const String newMessage = "New Message ";
   static const String now = "Now";
+  static const String seePhoneNumber = "See Phone Number";
+  static const String chatCheers = "Chat Cheers";
+  static const String statisticsAlerts = "Statistics Alerts";
+  static const String alertsAddToFavorites = "Alerts Add to favorites";
+  static const String messageAlerts = "Message Alerts";
+  static const String dataPrivacy = "Data Privacy";
+  static const String privacy = "Privacy";
+  static const String amendPersonalInformation = "Amend Personal Information";
+  static const String setNotifications = "Set Notifications";
+  static const String setAlerts = "Set Alerts";
+  static const String language = "Language";
+  static const String notificationsAboutYourAccount =
+      "Notifications About Your Account";
+  static const String browsingNow = "Browsing Now";
+  static const String youDontHaveAnyFavouriteAds =
+      "You Don't Have Any Favourite Ads";
+  static const String signout = "Sign Out";
+  static const String advertising = "Advertising";
+  static const String profileModification = "Profile Modification";
+  static const String adsYouHaveCreated = "Ads You Have Created";
+  static const String statistics = "Statistics";
+  static const String seeLatestStatistics =
+      "You can see your latest statistics";
+  static const String favorite = "Favorite";
+  static const String youCanAddYourProducts = "You Can Add Your Products";
+  static const String chooseTheLanguage = "Choose The Language";
   static const String placesNearYou = "Places Near You";
+  static const String accountSetup = "Account Setup";
+  static const String editProfile = "Edit Profile";
+  static const String accountVerification = "Account Verification";
+  static const String youCanDocumentYourAccount =
+      "You Can Document Your Account";
+  static const String prohibited = "Prohibited";
+  static const String blockAnnoyingPeople = "Block Annoying People";
+  static const String privacyPolicies = "Privacy Policies";
+  static const String readApplicationPolicyandPrivacy =
+      "Read Application Policy and Privacy";
+  static const String assistance = "Assistance";
+  static const String doYouWantToHelp = "Do You Want To Help";
   static const String type = "Type";
   static const String phoneNumber = "PHone Number";
   static const String modelName = "Model";

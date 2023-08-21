@@ -49,10 +49,10 @@ class UserImage extends StatelessWidget {
           iconWidget!
         else
           Positioned(
-            right: (circleSize) * 0.04,
-            bottom: (circleSize) * 0.04,
+            right: (circleSize) * 0.045,
+            bottom: (circleSize) * 0.045,
             child: Image.asset(
-              icon ?? ImageAssets.verify,
+              icon ?? ImageAssets.verifyFull,
               height: 18.w,
               width: 18.w,
             ),

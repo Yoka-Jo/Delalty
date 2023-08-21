@@ -77,7 +77,7 @@ class _ProfileTabsState extends State<ProfileTabs>
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                 child: Column(
                   children: [
-                    ProfileData(),
+                    const ProfileData(),
                     SizedBox(height: 35.h),
                     TabBar(
                       controller: tabController,

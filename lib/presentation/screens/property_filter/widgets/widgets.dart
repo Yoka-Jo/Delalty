@@ -1,8 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:delalty/core/common/components/widgets/simple_text.dart';
+import 'package:delalty/core/resources/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/common/components/widgets/default_text_form_field.dart';
 import '../../../../core/common/components/widgets/my_elevated_button.dart';

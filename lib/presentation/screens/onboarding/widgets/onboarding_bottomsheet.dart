@@ -57,7 +57,7 @@ class _OnBoardingBottomSheetState extends State<OnBoardingBottomSheet> {
               ),
             ),
           ),
-          SizedBox(height: 65.h),
+          SizedBox(height: 60.h),
         ],
       ),
     );

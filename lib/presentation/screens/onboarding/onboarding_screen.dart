@@ -36,7 +36,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       child: Scaffold(
         body: Builder(builder: (context) {
           return Padding(
-            padding: MediaQuery.of(context).viewInsets,
+            padding: EdgeInsets.only(bottom: 65.h),
             child: PageView.builder(
               controller: _pageController,
               itemCount: models.length,

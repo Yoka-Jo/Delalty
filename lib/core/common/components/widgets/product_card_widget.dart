@@ -19,6 +19,7 @@ class ProductCardWidget extends StatelessWidget {
   final Color? locationColor;
   final bool showLocationPin;
   final bool showfavouriteButton;
+  final bool isFavorite;
   final double? priceSize;
   final EdgeInsets? padding;
   final double? width;
@@ -34,6 +35,7 @@ class ProductCardWidget extends StatelessWidget {
     this.titleSize,
     this.titleColor,
     this.width,
+    this.isFavorite = false,
     this.height,
     this.locationColor,
     this.padding,
@@ -83,7 +85,9 @@ class ProductCardWidget extends StatelessWidget {
                     ),
                   ),
                   child: SvgPicture.asset(
-                    ImageAssets.favourite,
+                    isFavorite
+                        ? ImageAssets.favoriteFull
+                        : ImageAssets.favourite,
                   ),
                 ),
               ),

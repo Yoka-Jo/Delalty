@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AccountSetupRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AccountSetupScreen(),
+      );
+    },
     AppRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -31,6 +37,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ConversationScreen(),
+      );
+    },
+    FavoriteRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FavoriteScreen(),
       );
     },
     LoginRoute.name: (routeData) {
@@ -86,6 +98,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SearchScreen(),
       );
     },
+    SetAlertsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SetAlertsScreen(),
+      );
+    },
     SignupRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -96,6 +114,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SplashScreen(),
+      );
+    },
+    UserPrivacyRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const UserPrivacyScreen(),
       );
     },
     VerificationCodeRoute.name: (routeData) {
@@ -116,6 +140,20 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [AccountSetupScreen]
+class AccountSetupRoute extends PageRouteInfo<void> {
+  const AccountSetupRoute({List<PageRouteInfo>? children})
+      : super(
+          AccountSetupRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AccountSetupRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -156,6 +194,20 @@ class ConversationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ConversationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [FavoriteScreen]
+class FavoriteRoute extends PageRouteInfo<void> {
+  const FavoriteRoute({List<PageRouteInfo>? children})
+      : super(
+          FavoriteRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FavoriteRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -301,6 +353,20 @@ class SearchRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [SetAlertsScreen]
+class SetAlertsRoute extends PageRouteInfo<void> {
+  const SetAlertsRoute({List<PageRouteInfo>? children})
+      : super(
+          SetAlertsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SetAlertsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [SignupScreen]
 class SignupRoute extends PageRouteInfo<void> {
   const SignupRoute({List<PageRouteInfo>? children})
@@ -324,6 +390,20 @@ class SplashRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SplashRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [UserPrivacyScreen]
+class UserPrivacyRoute extends PageRouteInfo<void> {
+  const UserPrivacyRoute({List<PageRouteInfo>? children})
+      : super(
+          UserPrivacyRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserPrivacyRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

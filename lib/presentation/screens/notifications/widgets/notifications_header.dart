@@ -22,7 +22,7 @@ class NotificationHeader extends StatelessWidget {
           fontSize: 9.sp,
           color: Colors.white,
         ),
-        Image.asset(
+        SvgPicture.asset(
           ImageAssets.bell,
           color: Colors.white,
           width: 12.w,

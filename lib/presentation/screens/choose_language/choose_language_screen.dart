@@ -34,9 +34,9 @@ class ChooseLanguageScreen extends StatelessWidget {
             SizedBox(height: 58.h),
             MyOutlinedButton(
               onPressed: () {
-                ChangeLanguageCubit.get(context)
-                    .changeLanguage(context, isEnglish: false);
-                context.router.push(const LoginRoute());
+                // ChangeLanguageCubit.get(context)
+                //     .changeLanguage(context, isEnglish: false);
+                // context.router.push(const OnBoardingRoute());
               },
               title: AppStrings.arabic,
             ),
@@ -45,7 +45,7 @@ class ChooseLanguageScreen extends StatelessWidget {
               onPressed: () {
                 ChangeLanguageCubit.get(context)
                     .changeLanguage(context, isEnglish: true);
-                context.router.push(const LoginRoute());
+                context.router.push(const OnBoardingRoute());
               },
               title: AppStrings.english,
             )

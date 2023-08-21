@@ -10,7 +10,7 @@ class NotificationsDetails extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image.asset(
+        SvgPicture.asset(
           ImageAssets.message,
           color: Colors.white,
         ),

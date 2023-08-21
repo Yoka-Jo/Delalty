@@ -18,3 +18,7 @@ final class PropertyFilterChangeType extends PropertyFilterState {}
 final class PropertyFilterChangeMethodOfPayment extends PropertyFilterState {}
 
 final class PropertyFilterChangeFinishingType extends PropertyFilterState {}
+
+final class PropertyFilterChangeMinPrice extends PropertyFilterState {}
+
+final class PropertyFilterChangeMaxPrice extends PropertyFilterState {}

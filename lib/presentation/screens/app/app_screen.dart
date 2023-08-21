@@ -2,6 +2,8 @@
 import 'package:auto_route/annotations.dart';
 import 'package:delalty/presentation/screens/app/pages/chat/chat_page.dart';
 import 'package:delalty/presentation/screens/app/pages/home/home_page.dart';
+import 'package:delalty/presentation/screens/app/pages/more/more_page.dart';
+import 'package:delalty/presentation/screens/app/pages/personal_profile/personal_profile_page.dart';
 import 'package:delalty/presentation/screens/app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,10 +21,10 @@ class AppScreen extends StatefulWidget {
 class _AppScreenState extends State<AppScreen> {
   int index = 4;
   final List<Widget> screens = [
-    const Scaffold(),
+    const MorePage(),
     const ChatPage(),
     const Scaffold(),
-    Container(),
+    const PersonalProfilePage(),
     const HomePage(),
   ];
 

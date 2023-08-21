@@ -62,6 +62,7 @@ class PropertyFilterCubit extends Cubit<PropertyFilterState> {
   String methodOfPayment = AppStrings.all;
   String finishingType = AppStrings.all;
   String saleOption = AppStrings.forSale;
+  RangeValues currentRangeValues = const RangeValues(0, 0);
 
   void changeSaleOption(String saleOption) {
     emit(PropertyFilterInitial());
@@ -94,11 +95,21 @@ class PropertyFilterCubit extends Cubit<PropertyFilterState> {
   }
 
   void changeMinPrice(String min) {
+    emit(PropertyFilterInitial());
+
+    currentRangeValues = RangeValues(double.parse(min), currentRangeValues.end);
     minPriceController.text = min;
+    emit(PropertyFilterChangeMinPrice());
   }
 
   void changeMaxPrice(String max) {
+    emit(PropertyFilterInitial());
+
+    currentRangeValues =
+        RangeValues(currentRangeValues.start, double.parse(max));
+
     maxPriceController.text = max;
+    emit(PropertyFilterChangeMaxPrice());
   }
 
   @override

@@ -8,9 +8,11 @@ import 'back_icon_widget.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final Color iconColor;
   const AppBarWidget({
     Key? key,
     required this.title,
+    this.iconColor = Colors.black,
   }) : super(key: key);
 
   @override
@@ -24,8 +26,8 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         textStyle: TextStyleEnum.poppinsMedium,
         fontSize: 17.sp,
       ),
-      leading: const BackIconWidget(
-        iconColor: Colors.black,
+      leading: BackIconWidget(
+        iconColor: iconColor,
       ),
     );
   }

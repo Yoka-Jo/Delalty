@@ -11,8 +11,6 @@ class PropertyFilterPrice extends StatefulWidget {
 }
 
 class _PropertyFilterPriceState extends State<PropertyFilterPrice> {
-  RangeValues _currentRangeValues = const RangeValues(0, 0);
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PropertyFilterCubit, PropertyFilterState>(
@@ -44,11 +42,13 @@ class _PropertyFilterPriceState extends State<PropertyFilterPrice> {
             ),
             RangeSlider(
               activeColor: AppColors.primaryColor,
-              values: _currentRangeValues,
+              // ignore: prefer_const_constructors
+              values: cubit.currentRangeValues,
               max: 1000000,
+              divisions: 100,
               labels: RangeLabels(
-                _currentRangeValues.start.round().toString(),
-                _currentRangeValues.end.round().toString(),
+                cubit.currentRangeValues.start.round().toString(),
+                cubit.currentRangeValues.end.round().toString(),
               ),
               onChangeStart: (value) {
                 cubit.changeMinPrice(value.start.round().toString());
@@ -58,7 +58,7 @@ class _PropertyFilterPriceState extends State<PropertyFilterPrice> {
               },
               onChanged: (RangeValues values) {
                 setState(() {
-                  _currentRangeValues = values;
+                  cubit.currentRangeValues = values;
                 });
               },
             )

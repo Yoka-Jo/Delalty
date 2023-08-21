@@ -12,7 +12,14 @@ class PropertyFilterSearchButton extends StatelessWidget {
       titleSize: 15.sp,
       textStyle: TextStyleEnum.poppinsMedium,
       title: AppStrings.search,
-      onPressed: () {},
+      onPressed: () {
+        context.router.push(
+          MapRoute(
+            longitude: 31.0414531,
+            latitude: 31.4240395,
+          ),
+        );
+      },
     );
   }
 }
