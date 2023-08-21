@@ -15,7 +15,6 @@ class ImageAssets {
   static const String bell = "assets/images/bell.svg";
   static const String call = "assets/images/call.svg";
   static const String securityUser = "assets/images/security-user.svg";
-  // static const String chart = "assets/images/chart.png";
   static const String electronics = "assets/images/electronics.png";
   static const String engine = "assets/images/engine.png";
   static const String automatic = "assets/images/automatic.png";
@@ -49,7 +48,7 @@ class ImageAssets {
   static const String google = "assets/images/google.png";
   static const String apple = "assets/images/apple.png";
   static const String facebook = "assets/images/facebook.png";
-  static const String profile = "assets/images/profile.png";
+  static const String profile = "assets/images/profile.svg";
   static const String shop = "assets/images/shop.svg";
   static const String arrangement = "assets/images/arrangement.svg";
   static const String attachment = "assets/images/attachment.svg";

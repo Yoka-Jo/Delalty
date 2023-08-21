@@ -53,7 +53,7 @@ class AppStrings {
   static const String assistance = "Assistance";
   static const String doYouWantToHelp = "Do You Want To Help";
   static const String type = "Type";
-  static const String phoneNumber = "PHone Number";
+  static const String phoneNumber = "Phone Number";
   static const String modelName = "Model";
   static const String section = "Section";
   static const String dateOfAccession = "Date Of Accession";

@@ -28,6 +28,7 @@ class HomeCategoriesList extends StatelessWidget {
                 Container(
                   height: 52.h,
                   width: 56.h,
+                  padding: EdgeInsets.all(8.r),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.r),
                     color: Colors.white,

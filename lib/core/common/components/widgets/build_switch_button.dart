@@ -41,7 +41,10 @@ class BuildSwitchButton extends StatelessWidget {
               color: AppColors.primaryColor,
             ),
             child: Center(
-              child: SvgPicture.asset(icon),
+              child: SvgPicture.asset(
+                icon,
+                color: Colors.white,
+              ),
             ),
           ),
           SizedBox(width: 15.w),
@@ -55,7 +58,7 @@ class BuildSwitchButton extends StatelessWidget {
           FlutterSwitch(
             width: 55.w,
             valueFontSize: 25.0,
-            height: 32.h,
+            height: 30.h,
             borderRadius: 30.0,
             value: isSelected,
             activeColor: AppColors.primaryColor,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../resources/assets_manager.dart';
 import '../../../../resources/colors_manager.dart';
 import '../simple_text.dart';
 
@@ -23,10 +22,23 @@ class RadioButtonWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset(
-            isSelected
-                ? ImageAssets.radioSelected
-                : ImageAssets.radioUnSelected,
+          Container(
+            height: 21.r,
+            width: 21.r,
+            padding: EdgeInsets.all(2.r),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(
+                width: 2,
+                color: AppColors.switchButtonBorderColor,
+              ),
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            child: CircleAvatar(
+              radius: 13.r,
+              backgroundColor:
+                  isSelected ? AppColors.primaryColor : Colors.white,
+            ),
           ),
           SimpleText(
             title,

@@ -8,6 +8,7 @@ class AppColors {
   static const Color hintColor = Color(0xffBABABA);
   static const Color lightBlack = Color(0x26111111);
   static const Color black = Color(0xff111111);
+  static const Color switchButtonBorderColor = Color(0xffCCCCCC);
 
   static const Color red = Color(0xFFFF0000);
   static const Color searchFormFieldColor = Color(0xffFEF9F9);

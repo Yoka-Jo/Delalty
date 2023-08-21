@@ -33,8 +33,15 @@ class BuildButton extends StatelessWidget {
             ),
             child: Center(
                 child: icon.endsWith('.png')
-                    ? Image.asset(icon, color: Colors.white)
-                    : SvgPicture.asset(icon)),
+                    ? Image.asset(
+                        icon,
+                        color: Colors.white,
+                        width: 24.r,
+                        height: 24.r,
+                      )
+                    : SvgPicture.asset(
+                        icon,
+                      )),
           ),
           SizedBox(width: 20.w),
           Column(
