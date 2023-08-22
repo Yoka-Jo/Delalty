@@ -9,7 +9,7 @@ import '../../../../core/common/components/widgets/back_icon_widget.dart';
 import '../../../../core/common/components/widgets/build_carousel.dart';
 import '../../../../core/common/components/widgets/comment_widget.dart';
 import '../../../../core/common/components/widgets/my_elevated_button.dart';
-import '../../../../core/common/components/widgets/product_card_widget.dart';
+import '../../../../core/common/components/widgets/product_card/product_card_widget.dart';
 import '../../../../core/common/components/widgets/simple_text.dart';
 import '../../../../core/common/components/widgets/user_image.dart';
 import '../../../../core/common/components/widgets/user_rating.dart';

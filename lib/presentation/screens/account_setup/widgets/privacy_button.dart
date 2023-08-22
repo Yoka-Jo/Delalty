@@ -10,7 +10,7 @@ class PrivacyButton extends StatelessWidget {
       subTitle: AppStrings.dataPrivacy,
       icon: ImageAssets.securityUser,
       onTap: () {
-        context.router.push(UserPrivacyRoute());
+        context.router.push(const UserPrivacyRoute());
       },
     );
   }

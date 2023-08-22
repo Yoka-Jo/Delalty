@@ -1,6 +1,6 @@
 import 'package:delalty/core/common/components/widgets/form_fields_icons/filter_icon.dart';
 import 'package:delalty/core/common/components/widgets/form_fields_icons/microphone_icon.dart';
-import 'package:delalty/core/common/components/widgets/product_card_widget.dart';
+import 'package:delalty/core/common/components/widgets/product_card/product_card_widget.dart';
 import 'package:delalty/core/resources/colors_manager.dart';
 import 'package:delalty/core/resources/strings_manager.dart';
 import 'package:delalty/presentation/screens/app/models/category_model.dart';
