@@ -31,6 +31,7 @@ class _AppScreenState extends State<AppScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: screens[index],
       extendBody: true,
       bottomNavigationBar: BottomNavBarWidget(

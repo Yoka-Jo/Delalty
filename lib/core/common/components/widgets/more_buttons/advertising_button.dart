@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:delalty/core/resources/routes/app_router.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../resources/assets_manager.dart';
@@ -13,7 +15,9 @@ class AdvertisingButton extends StatelessWidget {
       title: AppStrings.advertising,
       subTitle: AppStrings.adsYouHaveCreated,
       icon: ImageAssets.advertising,
-      onTap: () {},
+      onTap: () {
+        context.router.push(const AdvertisingRoute());
+      },
     );
   }
 }

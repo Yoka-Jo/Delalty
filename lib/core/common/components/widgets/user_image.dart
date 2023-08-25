@@ -8,6 +8,8 @@ import '../../../resources/colors_manager.dart';
 
 class UserImage extends StatelessWidget {
   final String image;
+  final Widget? onImageWidget;
+  final bool showIconOnImage;
   final String? icon;
   final Color? borderColor;
   final Widget? iconWidget;
@@ -17,6 +19,8 @@ class UserImage extends StatelessWidget {
     Key? key,
     required this.image,
     this.icon,
+    this.showIconOnImage = true,
+    this.onImageWidget,
     this.iconWidget,
     this.circleSize,
     this.borderWidth,
@@ -45,18 +49,22 @@ class UserImage extends StatelessWidget {
             ),
           ),
         ),
-        if (iconWidget != null)
-          iconWidget!
-        else
-          Positioned(
-            right: (circleSize) * 0.045,
-            bottom: (circleSize) * 0.045,
-            child: Image.asset(
-              icon ?? ImageAssets.verifyFull,
-              height: 18.w,
-              width: 18.w,
+        if (showIconOnImage) ...[
+          if (iconWidget != null)
+            iconWidget!
+          else
+            Positioned(
+              right: (circleSize) * 0.045,
+              bottom: (circleSize) * 0.045,
+              child: onImageWidget == null
+                  ? Image.asset(
+                      icon ?? ImageAssets.verifyFull,
+                      height: 18.w,
+                      width: 18.w,
+                    )
+                  : onImageWidget!,
             ),
-          ),
+        ]
       ],
     );
   }

@@ -39,9 +39,13 @@ class FavoriteScreen extends StatelessWidget {
             Expanded(
               child: ListView.separated(
                 itemBuilder: (context, index) {
-                  return const ProductCardWidget(
-                    isFavorite: true,
-                    title: 'For sale villa with swimming pool in Sheikh Zayed',
+                  return const AspectRatio(
+                    aspectRatio: 1.7,
+                    child: ProductCardWidget(
+                      isFavorite: true,
+                      title:
+                          'For sale villa with swimming pool in Sheikh Zayed',
+                    ),
                   );
                 },
                 separatorBuilder: (context, index) => SizedBox(height: 15.h),

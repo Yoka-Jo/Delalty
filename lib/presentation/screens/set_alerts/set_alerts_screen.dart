@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/auto_route.dart';
+import 'package:delalty/app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -38,6 +39,7 @@ class SetAlertsScreen extends StatelessWidget {
             BuildSwitchButton(
               title: AppStrings.chatCheers,
               icon: ImageAssets.bell,
+              switchKey: Constants.chatCheersSwitchKey,
               isSelected: true,
               onToggle: (value) {},
             ),
@@ -45,12 +47,14 @@ class SetAlertsScreen extends StatelessWidget {
             BuildSwitchButton(
               title: AppStrings.statisticsAlerts,
               icon: ImageAssets.chart,
+              switchKey: Constants.statisticsAlertsSwitchKey,
               isSelected: true,
               onToggle: (value) {},
             ),
             SizedBox(height: 20.h),
             BuildSwitchButton(
               title: AppStrings.alertsAddToFavorites,
+              switchKey: Constants.alertsAddToFavoritesSwitchKey,
               icon: ImageAssets.favorite,
               isSelected: true,
               onToggle: (value) {},
@@ -59,6 +63,7 @@ class SetAlertsScreen extends StatelessWidget {
             BuildSwitchButton(
               title: AppStrings.messageAlerts,
               icon: ImageAssets.message,
+              switchKey: Constants.messageAlertsSwitchKey,
               isSelected: true,
               onToggle: (value) {},
             ),

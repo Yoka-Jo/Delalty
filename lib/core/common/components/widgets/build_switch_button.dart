@@ -2,23 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/common/components/widgets/simple_text.dart';
 import '../../../../core/resources/colors_manager.dart';
 
-class BuildSwitchButton extends StatelessWidget {
+class BuildSwitchButton extends StatefulWidget {
   final String title;
+  final String switchKey;
   final String icon;
   final bool isSelected;
   final void Function(bool value) onToggle;
   const BuildSwitchButton({
     Key? key,
     required this.title,
+    required this.switchKey,
     required this.icon,
     required this.isSelected,
     required this.onToggle,
   }) : super(key: key);
 
+  @override
+  State<BuildSwitchButton> createState() => _BuildSwitchButtonState();
+}
+
+class _BuildSwitchButtonState extends State<BuildSwitchButton> {
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((value) {
+      sharedPrefs = value;
+      setState(() {
+        isSelected = sharedPrefs.getBool(widget.switchKey) ?? false;
+      });
+    });
+  }
+
+  late SharedPreferences sharedPrefs;
+  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,14 +63,14 @@ class BuildSwitchButton extends StatelessWidget {
             ),
             child: Center(
               child: SvgPicture.asset(
-                icon,
+                widget.icon,
                 color: Colors.white,
               ),
             ),
           ),
           SizedBox(width: 15.w),
           SimpleText(
-            title,
+            widget.title,
             textStyle: TextStyleEnum.poppinsRegular,
             fontSize: 15.sp,
             color: AppColors.black,
@@ -62,7 +83,14 @@ class BuildSwitchButton extends StatelessWidget {
             borderRadius: 30.0,
             value: isSelected,
             activeColor: AppColors.primaryColor,
-            onToggle: onToggle,
+            onToggle: (value) async {
+              widget.onToggle(value);
+              setState(() {
+                isSelected = value;
+              });
+              final sharedPrefs = await SharedPreferences.getInstance();
+              await sharedPrefs.setBool(widget.switchKey, value);
+            },
           ),
         ],
       ),

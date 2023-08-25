@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'font_manager.dart';
 
 //put here font families
-enum FontFamilies { montserrat, poppins, tajawal }
+enum FontFamilies { montserrat, poppins, tajawal, alexandria }
 
 TextStyle _getTextStyle(
     double fontSize, FontWeight fontWeight, Color? color, FontFamilies family) {
@@ -14,6 +14,10 @@ TextStyle _getTextStyle(
     case FontFamilies.montserrat:
       {
         return textStyle.copyWith(fontFamily: 'Montserrat');
+      }
+    case FontFamilies.alexandria:
+      {
+        return textStyle.copyWith(fontFamily: 'Alexandria');
       }
     case FontFamilies.poppins:
       {
@@ -38,7 +42,7 @@ TextStyle getRegularStyle(
 TextStyle getMediumStyle(
     {double fontSize = 12,
     FontFamilies family = FontFamilies.montserrat,
-     Color? color}) {
+    Color? color}) {
   return _getTextStyle(fontSize, FontWeightManager.medium, color, family);
 }
 

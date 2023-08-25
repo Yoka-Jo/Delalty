@@ -50,7 +50,9 @@ class PersonalProfileInfo extends StatelessWidget {
                 child: MyElevatedButton(
                   title: AppStrings.profileModification,
                   icon: ImageAssets.userEdit,
-                  onPressed: () {},
+                  onPressed: () {
+                    context.router.push(const EditProfileRoute());
+                  },
                 ),
               ),
             ],

@@ -1,3 +1,4 @@
+import 'package:delalty/core/resources/text/styles_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,16 +45,16 @@ class InputDecorationStyle extends InputDecoration {
 
   @override
   InputBorder get enabledBorder => OutlineInputBorder(
-        borderSide:
-            BorderSide(color: enableColor ?? AppColors.primaryColor, width: .7),
+        borderSide: BorderSide(
+            color: enableColor ?? AppColors.fromFieldBorderColor, width: .7),
         borderRadius: BorderRadius.circular(borderRaduis ?? 10.r),
       );
 
   @override
   InputBorder get focusedBorder => OutlineInputBorder(
       borderRadius: BorderRadius.circular(borderRaduis ?? 10.r),
-      borderSide:
-          BorderSide(color: focusColor ?? AppColors.primaryColor, width: 1));
+      borderSide: BorderSide(
+          color: focusColor ?? AppColors.fromFieldBorderColor, width: 1));
 
   @override
   InputBorder get errorBorder => OutlineInputBorder(
@@ -87,10 +88,10 @@ class InputDecorationStyle extends InputDecoration {
       : GoogleFonts.cairo(fontSize: 14, color: hintColor ?? Colors.black54);
 
   @override
-  TextStyle? get hintStyle => lang != "ar"
-      ? GoogleFonts.roboto(fontSize: 16, color: hintColor ?? Colors.black54)
-      : GoogleFonts.cairo(
-          fontSize: hintSize ?? 14, color: hintColor ?? Colors.black54);
+  TextStyle get hintStyle => getLightStyle(
+      color: hintColor ?? Colors.black54,
+      family: FontFamilies.poppins,
+      fontSize: hintSize ?? 14);
 
   @override
   EdgeInsetsGeometry get contentPadding =>

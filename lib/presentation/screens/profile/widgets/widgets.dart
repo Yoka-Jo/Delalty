@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/common/components/widgets/back_icon_widget.dart';
+import '../../../../core/common/components/widgets/bottom_sheet_elemet_widget.dart';
 import '../../../../core/common/components/widgets/comment_widget.dart';
 import '../../../../core/common/components/widgets/my_elevated_button.dart';
 import '../../../../core/common/components/widgets/product_card/product_card_widget.dart';
@@ -15,7 +16,6 @@ import '../../../../core/common/components/widgets/user_rating.dart';
 import '../../../../core/resources/colors_manager.dart';
 import '../../../../core/resources/routes/app_router.dart';
 import '../../../../core/resources/strings_manager.dart';
-import '../models/bottom_sheet_element_model.dart';
 
 part 'profile_body.dart';
 part 'profile_data.dart';

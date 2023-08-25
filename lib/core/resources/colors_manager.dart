@@ -4,11 +4,20 @@ class AppColors {
   AppColors._();
 
   static const Color primaryColor = Color(0xff08BB6A);
+  static Color fromFieldBorderColor = primaryColor.withOpacity(0.5);
   static const Color ligthGreen = Color(0xff7FE47E);
   static const Color hintColor = Color(0xffBABABA);
   static const Color lightBlack = Color(0x26111111);
   static const Color black = Color(0xff111111);
+  static const Color checkBoxColor = Color(0xff006FFD);
+  static Color black25 = Colors.black.withOpacity(0.25);
+  static Color black5 = Colors.black.withOpacity(0.05);
+  static Color black10 = Colors.black.withOpacity(0.1);
+  static Color black15 = Colors.black.withOpacity(0.15);
   static const Color switchButtonBorderColor = Color(0xffCCCCCC);
+  static const Color chartHorizontalBar = Color(0xff363739);
+  static const Color chartCurveColor = Color(0xff80F988);
+  static const Color chartToolTipColor = Color(0xffDFE3E7);
 
   static const Color red = Color(0xFFFF0000);
   static const Color searchFormFieldColor = Color(0xffFEF9F9);
@@ -38,4 +47,5 @@ class AppColors {
   static const Color grey5 = Color(0xFFC6C6C6);
   static const Color grey6 = Color(0xff9F9F9F);
   static const Color grey7 = Color(0xffEFEFEF);
+  static const Color grey8 = Color(0xffD9D9D9);
 }

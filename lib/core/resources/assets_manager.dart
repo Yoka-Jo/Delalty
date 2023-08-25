@@ -9,20 +9,32 @@ class ImageAssets {
   static const String profileNav = "assets/images/profile-nav.svg";
   static const String chatNav = "assets/images/chat-nav.svg";
   static const String moreNav = "assets/images/more-nav.svg";
+  static const String phoneVerified = "assets/images/phone-verified.svg";
   static const String all = "assets/images/all.png";
   static const String allOutlined = "assets/images/all_outlined.svg";
   static const String bag = "assets/images/bag.svg";
   static const String bell = "assets/images/bell.svg";
+  static const String edit = "assets/images/edit.svg";
+  static const String stop = "assets/images/stop.svg";
+  static const String sold = "assets/images/sold.svg";
+  static const String calendar = "assets/images/calendar.svg";
   static const String call = "assets/images/call.svg";
+  static const String close = "assets/images/close.svg";
+  static const String gallery = "assets/images/gallery.svg";
   static const String securityUser = "assets/images/security-user.svg";
   static const String electronics = "assets/images/electronics.png";
+  static const String accountVerification =
+      "assets/images/account-verification.png";
   static const String engine = "assets/images/engine.png";
   static const String automatic = "assets/images/automatic.png";
   static const String fuel = "assets/images/fuel.png";
   static const String furniture = "assets/images/furniture.png";
   static const String more = "assets/images/more.svg";
+  static const String chat = "assets/images/chat.svg";
+  static const String eye = "assets/images/eye.svg";
   static const String gears = "assets/images/gears.png";
   static const String home = "assets/images/home.png";
+  static const String checkingDocument = "assets/images/checking-document.png";
   static const String verifyFull = "assets/images/verify.png";
   static const String message = "assets/images/message.svg";
   static const String mobiles = "assets/images/mobiles.png";
@@ -43,7 +55,7 @@ class ImageAssets {
   static const String onboarding_2 = "assets/images/onboarding_2.png";
   static const String onboarding_3 = "assets/images/onboarding_3.png";
 
-  static const String calendar = "assets/images/calendar.png";
+  // static const String calendar = "assets/images/calendar.png";
   static const String pen = "assets/images/pen.png";
   static const String google = "assets/images/google.png";
   static const String apple = "assets/images/apple.png";

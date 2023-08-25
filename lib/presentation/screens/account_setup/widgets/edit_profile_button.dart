@@ -9,7 +9,9 @@ class EditProfileButton extends StatelessWidget {
       title: AppStrings.editProfile,
       subTitle: AppStrings.amendPersonalInformation,
       icon: ImageAssets.profile,
-      onTap: () {},
+      onTap: () {
+        context.router.push(const EditProfileRoute());
+      },
     );
   }
 }

@@ -21,6 +21,30 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AccountSetupScreen(),
       );
     },
+    AccountVerificationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AccountVerificationScreen(),
+      );
+    },
+    AddYourProductRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddYourProductScreen(),
+      );
+    },
+    AdvertisingRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AdvertisingScreen(),
+      );
+    },
+    AllDepartmentsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AllDepartmentsScreen(),
+      );
+    },
     AppRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -33,10 +57,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ChooseLanguageScreen(),
       );
     },
+    ConfirmationOfSaleRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ConfirmationOfSaleScreen(),
+      );
+    },
     ConversationRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ConversationScreen(),
+      );
+    },
+    EditProfileRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EditProfileScreen(),
       );
     },
     FavoriteRoute.name: (routeData) {
@@ -80,10 +116,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProductScreen(),
       );
     },
+    ProductStatsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProductStatsScreen(),
+      );
+    },
     ProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ProfileScreen(),
+      );
+    },
+    ProhibitedPersonsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProhibitedPersonsScreen(),
       );
     },
     PropertyFilterRoute.name: (routeData) {
@@ -114,6 +162,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SplashScreen(),
+      );
+    },
+    StatisticsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const StatisticsScreen(),
       );
     },
     UserPrivacyRoute.name: (routeData) {
@@ -157,6 +211,62 @@ class AccountSetupRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [AccountVerificationScreen]
+class AccountVerificationRoute extends PageRouteInfo<void> {
+  const AccountVerificationRoute({List<PageRouteInfo>? children})
+      : super(
+          AccountVerificationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AccountVerificationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddYourProductScreen]
+class AddYourProductRoute extends PageRouteInfo<void> {
+  const AddYourProductRoute({List<PageRouteInfo>? children})
+      : super(
+          AddYourProductRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddYourProductRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AdvertisingScreen]
+class AdvertisingRoute extends PageRouteInfo<void> {
+  const AdvertisingRoute({List<PageRouteInfo>? children})
+      : super(
+          AdvertisingRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AdvertisingRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AllDepartmentsScreen]
+class AllDepartmentsRoute extends PageRouteInfo<void> {
+  const AllDepartmentsRoute({List<PageRouteInfo>? children})
+      : super(
+          AllDepartmentsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AllDepartmentsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [AppScreen]
 class AppRoute extends PageRouteInfo<void> {
   const AppRoute({List<PageRouteInfo>? children})
@@ -185,6 +295,20 @@ class ChooseLanguageRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ConfirmationOfSaleScreen]
+class ConfirmationOfSaleRoute extends PageRouteInfo<void> {
+  const ConfirmationOfSaleRoute({List<PageRouteInfo>? children})
+      : super(
+          ConfirmationOfSaleRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ConfirmationOfSaleRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ConversationScreen]
 class ConversationRoute extends PageRouteInfo<void> {
   const ConversationRoute({List<PageRouteInfo>? children})
@@ -194,6 +318,20 @@ class ConversationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ConversationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [EditProfileScreen]
+class EditProfileRoute extends PageRouteInfo<void> {
+  const EditProfileRoute({List<PageRouteInfo>? children})
+      : super(
+          EditProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EditProfileRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -311,6 +449,20 @@ class ProductRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProductStatsScreen]
+class ProductStatsRoute extends PageRouteInfo<void> {
+  const ProductStatsRoute({List<PageRouteInfo>? children})
+      : super(
+          ProductStatsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductStatsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ProfileScreen]
 class ProfileRoute extends PageRouteInfo<void> {
   const ProfileRoute({List<PageRouteInfo>? children})
@@ -320,6 +472,20 @@ class ProfileRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProhibitedPersonsScreen]
+class ProhibitedPersonsRoute extends PageRouteInfo<void> {
+  const ProhibitedPersonsRoute({List<PageRouteInfo>? children})
+      : super(
+          ProhibitedPersonsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProhibitedPersonsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -390,6 +556,20 @@ class SplashRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SplashRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [StatisticsScreen]
+class StatisticsRoute extends PageRouteInfo<void> {
+  const StatisticsRoute({List<PageRouteInfo>? children})
+      : super(
+          StatisticsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'StatisticsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

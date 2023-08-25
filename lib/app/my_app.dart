@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,11 +29,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void didChangeDependencies() {
-    Future.wait([
+    initApp();
+    super.didChangeDependencies();
+  }
+
+  void initApp() async {
+    await Future.wait([
       ChangeThemeCubit.get(context).initTheme(),
       ChangeLanguageCubit.get(context).initLanguage(context)
     ]);
-    super.didChangeDependencies();
   }
 
   @override
@@ -54,6 +59,8 @@ class _MyAppState extends State<MyApp> {
                     },
                     child: MaterialApp.router(
                       title: 'Delalty',
+                      useInheritedMediaQuery: true,
+                      builder: DevicePreview.appBuilder,
                       debugShowCheckedModeBanner: false,
                       theme: _lightTheme.materialThemeData,
                       darkTheme: _darkTheme.materialThemeData,
@@ -63,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                       locale: context.locale,
                       routerConfig: _appRouter.config(
                         initialRoutes: [
-                          const SplashRoute(),
+                          const AddYourProductRoute(),
                           // MapRoute(
                           //   longitude: 31.0414531,
                           //   latitude: 31.4240395,

@@ -120,44 +120,31 @@ class _ProfileTabsState extends State<ProfileTabs>
   Future buildBottomSheet(BuildContext context) {
     return showModalBottomSheet(
       context: context,
+      backgroundColor: AppColors.grey2,
       builder: (context) => Padding(
-        padding: EdgeInsets.all(30.r),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: List.generate(
-            3,
-            (index) {
-              final e = elements[index];
-              return Padding(
-                padding: EdgeInsets.only(top: index != 0 ? 30.h : 0.0),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 35.w,
-                      height: 35.w,
-                      padding: EdgeInsets.all(8.r),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.r),
-                        color: AppColors.primaryColor,
-                      ),
-                      child: SvgPicture.asset(
-                        e.image,
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(width: 10.w),
-                    SimpleText(
-                      e.title,
-                      textStyle: TextStyleEnum.poppinsMedium,
-                      fontSize: 15.sp,
-                    ),
-                  ],
-                ),
-              );
-            },
-          ).toList(),
-        ),
-      ),
+          padding: EdgeInsets.all(30.r),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              BottomSheetElementWidget(
+                title: AppStrings.sharingProfile,
+                icon: ImageAssets.share,
+                onTap: () {},
+              ),
+              SizedBox(height: 30.h),
+              BottomSheetElementWidget(
+                title: AppStrings.reportThisUser,
+                icon: ImageAssets.userReport,
+                onTap: () {},
+              ),
+              SizedBox(height: 30.h),
+              BottomSheetElementWidget(
+                title: AppStrings.blockUser,
+                icon: ImageAssets.userBlock,
+                onTap: () {},
+              ),
+            ],
+          )),
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(

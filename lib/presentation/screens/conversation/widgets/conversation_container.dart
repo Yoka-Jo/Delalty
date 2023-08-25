@@ -12,10 +12,7 @@ class ConversationContainer extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: Container(
             width: double.infinity,
-            padding: EdgeInsets.symmetric(
-              vertical: 25.h,
-              horizontal: 16.w,
-            ),
+            padding: EdgeInsets.symmetric(vertical: 25.h),
             decoration: BoxDecoration(
               color: AppColors.containerLightColor,
               borderRadius: BorderRadius.only(
@@ -25,15 +22,29 @@ class ConversationContainer extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const ConversationProductInfo(),
-                SizedBox(height: 15.h),
-                const ConversationDivider(),
-                SizedBox(height: 25.h),
-                const ConversationMessagesList(),
-                const ConversationFormField()
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    child: Column(
+                      children: [
+                        const ConversationProductInfo(),
+                        SizedBox(height: 15.h),
+                        const ConversationDivider(),
+                        SizedBox(height: 25.h),
+                        const ConversationMessagesList(),
+                      ],
+                    ),
+                  ),
+                ),
+                const ConversationRejectOrAcceptContact(),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  child: const ConversationFormField(),
+                )
               ],
             ),
           )),
     );
   }
 }
+

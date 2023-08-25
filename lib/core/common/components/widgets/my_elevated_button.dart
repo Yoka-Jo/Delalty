@@ -10,6 +10,9 @@ import '../../../resources/colors_manager.dart';
 class MyElevatedButton extends StatelessWidget {
   final String title;
   final String? icon;
+  final Color? iconColor;
+  final double? height;
+  final double? width;
   final double? titleSize;
   final double? iconSize;
   final double? verticalPadding;
@@ -25,7 +28,10 @@ class MyElevatedButton extends StatelessWidget {
     Key? key,
     required this.title,
     this.icon,
+    this.iconColor,
     this.titleSize,
+    this.height,
+    this.width,
     this.iconSize,
     this.verticalPadding,
     this.reverseChild = false,
@@ -51,24 +57,29 @@ class MyElevatedButton extends StatelessWidget {
       if (icon != null)
         SvgPicture.asset(
           icon!,
+          color: iconColor,
         )
     ];
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor,
-        elevation: hasElevation ? null : 0.0,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 8.r)),
-        padding: EdgeInsets.symmetric(
-          vertical: verticalPadding ?? 10.h,
-          horizontal: horizontalPadding ?? 0,
+    return SizedBox(
+      height: height,
+      width: width,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor,
+          elevation: hasElevation ? null : 0.0,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(borderRadius ?? 8.r)),
+          padding: EdgeInsets.symmetric(
+            vertical: verticalPadding ?? 10.h,
+            horizontal: horizontalPadding ?? 0,
+          ),
         ),
-      ),
-      onPressed: onPressed,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: reverseChild ? rowChildren.reversed.toList() : rowChildren,
+        onPressed: onPressed,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: reverseChild ? rowChildren.reversed.toList() : rowChildren,
+        ),
       ),
     );
   }

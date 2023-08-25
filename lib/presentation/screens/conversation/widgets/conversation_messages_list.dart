@@ -77,7 +77,7 @@ class ConversationMessagesList extends StatelessWidget {
         separatorBuilder: (context, index) => SizedBox(
           height: 20.h,
         ),
-        itemCount: 10,
+        itemCount: 3,
       ),
     );
   }

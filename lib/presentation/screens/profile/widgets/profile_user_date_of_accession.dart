@@ -10,7 +10,10 @@ class ProfileUserDateOfAccession extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(ImageAssets.calendar),
+        SvgPicture.asset(
+          ImageAssets.calendar,
+          color: AppColors.primaryColor,
+        ),
         SizedBox(width: 5.w),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,

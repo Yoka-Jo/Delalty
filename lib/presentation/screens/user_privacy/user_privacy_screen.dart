@@ -2,6 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../app/constants.dart';
 import '../../../core/common/components/widgets/appbar_widget.dart';
 import '../../../core/common/components/widgets/build_switch_button.dart';
 import '../../../core/resources/assets_manager.dart';
@@ -26,6 +27,7 @@ class UserPrivacyScreen extends StatelessWidget {
             BuildSwitchButton(
               title: AppStrings.seePhoneNumber,
               icon: ImageAssets.phone,
+              switchKey: Constants.seePhoneNumberSwitchKey,
               isSelected: true,
               onToggle: (value) {},
             ),

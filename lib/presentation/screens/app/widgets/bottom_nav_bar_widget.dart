@@ -80,12 +80,9 @@ class BottomNavBarWidget extends StatelessWidget {
                   padding: EdgeInsets.only(top: 42.h),
                   child: SimpleText(
                     AppStrings.addProduct,
-                    textStyle: index == 2
-                        ? TextStyleEnum.poppinsSemiBold
-                        : TextStyleEnum.poppinsMedium,
+                    textStyle: TextStyleEnum.poppinsMedium,
                     fontSize: index == 2 ? 10.sp : 8.sp,
-                    color:
-                        index == 2 ? AppColors.primaryColor : AppColors.grey3,
+                    color: AppColors.primaryColor,
                   ),
                 ),
               ],

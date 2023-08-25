@@ -5,6 +5,7 @@
 class AppStrings {
   AppStrings._();
 
+  static const String enterYourEmail = "Enter Your Email";
   static const String appName = "DELALTY";
   static const String chooseLanguage = "Choose Language";
   static const String arabic = "العربية";
@@ -13,6 +14,51 @@ class AppStrings {
   static const String bearer = "Bearer ";
   static const String newMessage = "New Message ";
   static const String now = "Now";
+  static const String uploadPhotosUpTo = "Upload Up To 15 Photos";
+  static const String selectionOfImages = "Selection Of Images";
+  static const String addClearImages =
+      "Add Clear Images To Speed Up The Sales Process";
+  static const String addArabicPhotos = "Add 15 Arabic Photos";
+  static const String communication = "Communication";
+  static const String photos = "Photos";
+  static const String addSomeInformation = "Add Some Information";
+  static const String theMainPage = "The Main Page";
+  static const String followUpOnRequests = "Follow Up On Requests";
+  static const String reviewUnderway =
+      "The Review Is Currently Underway And A Notification Of Approval Will Be sent";
+  static const String yourAdHasBeenSuccessfullyAdded =
+      "Your Ad Has Been Successfully Added";
+  static const String addYourProduct = "Add Your Product";
+  static const String allDepartments = "All Departments";
+  static const String productStats = "Product Stats";
+  static const String active = "Active";
+  static const String deleteTheAd = "Delete The Ad";
+  static const String stopAdvertising = "Stop Advertising";
+  static const String statisticsAdvertising = "Statistics Advertising";
+  static const String sold = "Sold";
+  static const String amendment = "Amendment";
+  static const String views = "Views";
+  static const String country = "Country";
+  static const String next = "Next";
+  static const String enterCountryName = "Enter Country Name";
+  static const String termsAndConditions = "Terms And Conditions";
+  static const String address = "Address";
+  static const String enterTheAddress = "Enter The Address";
+
+  static const String enterYourTripleName = "Enter Your Triple Name";
+  static const String providing = "Providing";
+  static const String dataWillBeChecked =
+      "Data Will Be Checked To Document The Account And You Will Be Notified";
+  static const String applicationDocumentationCalculation =
+      "Application Documentation Calculationw";
+  static const String unblock = "Unblock";
+  static const String prohibitedPersons = "Prohibited Persons";
+  static const String save = "Save";
+  static const String dateOfBirth = "Date Of Birth";
+  static const String accept = "Accept";
+  static const String reject = "Reject";
+  static const String wouldLikeToContact =
+      "Would Like To Contact You About Your Announcement";
   static const String seePhoneNumber = "See Phone Number";
   static const String chatCheers = "Chat Cheers";
   static const String statisticsAlerts = "Statistics Alerts";
@@ -81,6 +127,7 @@ class AppStrings {
   static const String fullName = "Full name";
   static const String email = "Email";
   static const String number = "Number";
+  static const String enterThePhone = "Enter The Phone";
   static const String typeOfProperty = "Type Of Property";
   static const String password = "Password";
   static const String alreadyHaveAccount = "Already have an account!";
@@ -121,6 +168,7 @@ class AppStrings {
   static const String listOfProducts = "List Of Products";
   static const String ratings = "Ratings";
   static const String details = "Details";
+  static const String theDetails = "The Details";
   static const String chat = "Chat";
   static const String contact = "Contact";
   static const String situation = "Situation";
