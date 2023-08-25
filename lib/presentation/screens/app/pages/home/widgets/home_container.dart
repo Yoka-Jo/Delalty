@@ -28,9 +28,9 @@ class HomeContainer extends StatelessWidget {
           child: Column(
             // mainAxisSize: MainAxisSize.min,
             children: [
-              const HomeBestCategories(),
+              const HomeBestCategories(isLoading: false),
               SizedBox(height: 40.h),
-              const HomeTrendingCategories(),
+              const HomeTrendingCategories(isLoading: false),
               SizedBox(height: 40.h),
               const HomeProducts(),
               SizedBox(height: 40.h),

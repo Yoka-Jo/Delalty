@@ -1,8 +1,10 @@
 part of 'widgets.dart';
 
 class HomeTrendingCategories extends StatelessWidget {
+  final bool isLoading;
   const HomeTrendingCategories({
     super.key,
+    required this.isLoading,
   });
 
   @override
@@ -23,6 +25,12 @@ class HomeTrendingCategories extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             reverse: true,
             itemBuilder: (context, index) {
+              if (isLoading) {
+                return BuildShimmerWidget(
+                  width: 172.w,
+                  height: 160.h,
+                );
+              }
               final category = trendingCategories[index];
               return InkWell(
                 onTap: () {

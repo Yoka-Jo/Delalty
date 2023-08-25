@@ -11,6 +11,7 @@ import '../../../../resources/colors_manager.dart';
 import '../../../../resources/routes/app_router.dart';
 import '../../../../resources/strings_manager.dart';
 import '../cashed_image_widget.dart';
+import 'product_card_shimmer.dart';
 
 class ProductCardWidget extends StatelessWidget {
   final String? image;
@@ -21,6 +22,7 @@ class ProductCardWidget extends StatelessWidget {
   final bool showLocationPin;
   final bool showfavouriteButton;
   final bool isFavorite;
+  final bool isLoading;
   final double? priceSize;
   final EdgeInsets? padding;
   final double? width;
@@ -34,6 +36,7 @@ class ProductCardWidget extends StatelessWidget {
     required this.title,
     this.days = 2,
     this.titleSize,
+    this.isLoading = false,
     this.titleColor,
     this.width,
     this.isFavorite = false,
@@ -48,6 +51,13 @@ class ProductCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (isLoading) {
+      return ProductCardShimmer(
+        width: width,
+        height: height,
+        padding: padding,
+      );
+    }
     return SizedBox(
       width: width ?? 230.w,
       height: height ?? 203.h,

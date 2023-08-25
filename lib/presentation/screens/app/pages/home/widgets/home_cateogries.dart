@@ -11,7 +11,7 @@ class HomeCategories extends StatelessWidget {
       children: [
         const HomeExploreCategoriesAndWatchMore(),
         SizedBox(height: 25.h),
-        const HomeCategoriesList(),
+        const HomeCategoriesList(isLoading: false),
       ],
     );
   }

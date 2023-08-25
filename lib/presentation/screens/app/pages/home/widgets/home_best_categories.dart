@@ -1,8 +1,10 @@
 part of 'widgets.dart';
 
 class HomeBestCategories extends StatelessWidget {
+  final bool isLoading;
   const HomeBestCategories({
     super.key,
+    required this.isLoading,
   });
 
   @override
@@ -22,25 +24,33 @@ class HomeBestCategories extends StatelessWidget {
           crossAxisCount: 2,
           shrinkWrap: true, // Add this line
           physics: const NeverScrollableScrollPhysics(), // Add this line
-          children: bestCategories
-              .map(
-                (category) => InkWell(
-                  onTap: () {
-                    context.router.push(
-                      ViewProductSectionRoute(
+          children: !isLoading
+              ? bestCategories
+                  .map(
+                    (category) => InkWell(
+                      onTap: () {
+                        context.router.push(
+                          ViewProductSectionRoute(
+                            title: category.title,
+                            isRealEstate:
+                                category.title == AppStrings.realEstate,
+                          ),
+                        );
+                      },
+                      child: CategoryWidget(
+                        image: category.image,
                         title: category.title,
-                        isRealEstate: category.title == AppStrings.realEstate,
                       ),
-                    );
-                  },
-                  child: CategoryWidget(
-                    image: category.image,
-                    title: category.title,
+                    ),
+                  )
+                  .toList()
+              : List.generate(
+                  4,
+                  (index) => BuildShimmerWidget(
+                    height: 100.h,
                   ),
                 ),
-              )
-              .toList(),
-        )
+        ),
       ],
     );
   }
