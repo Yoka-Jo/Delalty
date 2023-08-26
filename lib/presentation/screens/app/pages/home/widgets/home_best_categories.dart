@@ -22,8 +22,8 @@ class HomeBestCategories extends StatelessWidget {
           crossAxisSpacing: 16.w,
           mainAxisSpacing: 12.h,
           crossAxisCount: 2,
-          shrinkWrap: true, // Add this line
-          physics: const NeverScrollableScrollPhysics(), // Add this line
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           children: !isLoading
               ? bestCategories
                   .map(

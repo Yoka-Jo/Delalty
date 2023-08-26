@@ -56,11 +56,14 @@ Future<void> launchTwitter({
       isSocialMedia: true,
     );
 
-Future<File?> getImageFile(BuildContext context) async {
+Future<File?> getImageFile(
+  BuildContext context, {
+  bool allowMultiple = false,
+}) async {
   FocusScope.of(context).requestFocus(FocusNode());
   FilePickerResult? result = await FilePicker.platform.pickFiles(
     type: FileType.image,
-    allowMultiple: false,
+    allowMultiple: allowMultiple,
   );
   if (result != null) {
     File imageFile = File(result.files.single.path!);
