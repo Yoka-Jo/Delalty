@@ -9,9 +9,7 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return LoadingButton(
       title: AppStrings.signin,
-      onTap: () {
-        context.router.replaceAll([const AppRoute()]);
-      },
+      onTap: LoginCubit.get(context).login,
       btnKey: LoginCubit.get(context).btnKey,
     );
   }

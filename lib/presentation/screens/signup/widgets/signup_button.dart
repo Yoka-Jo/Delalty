@@ -9,9 +9,7 @@ class SignupButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return LoadingButton(
       title: AppStrings.signup,
-      onTap: () {
-        context.router.push(const VerificationCodeRoute());
-      },
+      onTap: SignupCubit.get(context).signup,
       btnKey: SignupCubit.get(context).btnKey,
     );
   }

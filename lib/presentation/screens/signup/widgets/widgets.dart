@@ -13,6 +13,7 @@ import '../../../../core/common/components/widgets/form_fields_icons/phone_icon.
 import '../../../../core/common/components/widgets/form_fields_icons/user_icon.dart';
 import '../../../../core/common/components/widgets/loading_button.dart';
 import '../../../../core/common/components/widgets/simple_text.dart';
+import '../../../../core/common/components/widgets/simple_toast.dart';
 import '../../../../core/resources/colors_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../cubit/signup_cubit.dart';

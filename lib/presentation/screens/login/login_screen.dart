@@ -9,15 +9,21 @@ import 'widgets/widgets.dart';
 
 @RoutePage()
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({super.key, this.email, this.password});
+  final String? email;
+  final String? password;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<LoginCubit>(),
-      child: const Scaffold(
+      create: (context) =>
+          getIt<LoginCubit>()..initializeEmailAndPassword(email, password),
+      child: Scaffold(
         backgroundColor: AppColors.primaryColor,
-        body: LoginBody(),
+        body: LoginBody(
+          email: email,
+          password: password,
+        ),
       ),
     );
   }

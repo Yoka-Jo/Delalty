@@ -9,7 +9,7 @@ class SignupAlreadyHaveAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.router.replace(const LoginRoute());
+        context.router.replace(LoginRoute());
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

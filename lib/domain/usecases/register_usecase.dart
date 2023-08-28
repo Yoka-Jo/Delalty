@@ -4,14 +4,14 @@ import '../repository/repository.dart';
 import '../../core/base_usecase.dart';
 import 'package:dartz/dartz.dart';
 import '../../data/network/failure.dart';
-import '../../domain/entities/user.dart';
+import '../../domain/entities/no_data.dart';
 
 @lazySingleton
-class LoginUseCase implements BaseUseCase<User, LoginRequest> {
+class RegisterUseCase implements BaseUseCase<NoData, RegisterRequest> {
   final Repository _repo;
-  LoginUseCase(this._repo);
+  RegisterUseCase(this._repo);
 
   @override
-  Future<Either<Failure, User>> call(LoginRequest params) async =>
-      _repo.login(params);
+  Future<Either<Failure, NoData>> call(RegisterRequest params) async =>
+      _repo.register(params);
 }

@@ -1,7 +1,9 @@
+import 'package:delalty/data/network/requests.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/common/components/utils/custom_button_animation.dart';
@@ -9,13 +11,16 @@ import '../../../../core/form_fields/email.dart';
 import '../../../../core/form_fields/password.dart';
 import '../../../../core/form_fields/phone.dart';
 import '../../../../core/form_fields/username.dart';
+import '../../../../domain/usecases/register_usecase.dart';
 
 part 'signup_state.dart';
 
 @injectable
 class SignupCubit extends Cubit<SignupState> {
-  SignupCubit() : super(const SignupState());
+  SignupCubit(this._useCase) : super(const SignupState());
   static SignupCubit get(BuildContext context) => BlocProvider.of(context);
+  final RegisterUseCase _useCase;
+
   final GlobalKey<CustomButtonState> btnKey = GlobalKey();
   String? emailError;
   String? usernameError;
@@ -74,5 +79,37 @@ class SignupCubit extends Cubit<SignupState> {
     emit(newState);
   }
 
-  Future<void> signup() async {}
+  Future<void> signup() async {
+    final name = Username.validated(state.username.value);
+    final email = Email.validated(state.email.value);
+    final phone = Phone.validated(state.phone.value);
+    final password = Password.validated(state.password.value);
+
+    final isValid = Formz.validate([
+      name,
+      email,
+      phone,
+      password,
+    ]);
+    btnKey.currentState!.animateForward();
+    if (isValid) {
+      final response = await _useCase(
+        RegisterRequest(
+          name: name.value,
+          email: email.value,
+          phone: phone.value,
+          password: password.value,
+          passwordConfirmation: password.value,
+        ),
+      );
+
+      response.fold((failure) {
+        emit(state.copyWith(error: failure.message));
+        btnKey.currentState!.animateReverse();
+      }, (_) {
+        emit(state.copyWith(isSuccess: true));
+      });
+    }
+    btnKey.currentState!.animateReverse();
+  }
 }

@@ -11,6 +11,7 @@ class AppStrings {
   static const String arabic = "العربية";
   static const String english = "English";
   static const String fillField = "fillField";
+  static const String phoneInvalid = "Phone number is invalid";
   static const String bearer = "Bearer ";
   static const String newMessage = "New Message ";
   static const String now = "Now";

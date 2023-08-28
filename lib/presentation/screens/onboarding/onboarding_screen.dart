@@ -78,7 +78,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             if (_pageController.page == models.length - 1) {
               await getIt<LocalDataSource>().saveIsOnBoardingScreenViewed();
               if (context.mounted) {
-                context.router.replaceAll([const LoginRoute()]);
+                context.router.replaceAll([LoginRoute()]);
               }
               return;
             }

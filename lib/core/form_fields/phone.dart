@@ -12,8 +12,7 @@ class Phone extends FormzInput<String, PhoneValidationError>
     String value = '',
   ]) : super.dirty(value);
 
-  static final _phoneRegex = RegExp(
-      r'(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)');
+  static final _phoneRegex = RegExp(r'(^01[0-2,5]{1}[0-9]{8}$)');
 
   @override
   PhoneValidationError? validator(String value) {
@@ -31,7 +30,7 @@ class Phone extends FormzInput<String, PhoneValidationError>
 
 enum PhoneValidationError {
   empty(AppStrings.fillField),
-  invalid('');
+  invalid(AppStrings.phoneInvalid);
 
   const PhoneValidationError(this.value);
   final String value;

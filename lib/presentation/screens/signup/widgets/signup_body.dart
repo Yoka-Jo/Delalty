@@ -7,13 +7,23 @@ class SignupBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.sizeOf(context).height,
+    return BlocListener<SignupCubit, SignupState>(
+      listener: (context, state) {
+        if (state.error != null) {
+          SimpleToast.showSimpleToast(
+              msg: state.error!, state: ToastStates.error);
+        }
+        if (state.isSuccess) {
+          context.router.replace(LoginRoute(
+              email: state.email.value, password: state.password.value));
+        }
+      },
+      child: SafeArea(
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              SizedBox(height: 30.h),
               const SignupTitle(),
               SizedBox(height: 28.h),
               Align(

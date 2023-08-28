@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
           } else if (!sharedPrefs.getIsOnBoardingScreenViewed()) {
             route = const OnBoardingRoute();
           } else {
-            route = const LoginRoute();
+            route = LoginRoute();
           }
         } else {
           route = const AppRoute();

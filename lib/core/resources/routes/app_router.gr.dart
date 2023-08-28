@@ -82,9 +82,15 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const LoginScreen(),
+        child: LoginScreen(
+          key: args.key,
+          email: args.email,
+          password: args.password,
+        ),
       );
     },
     MapRoute.name: (routeData) {
@@ -352,16 +358,44 @@ class FavoriteRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [LoginScreen]
-class LoginRoute extends PageRouteInfo<void> {
-  const LoginRoute({List<PageRouteInfo>? children})
-      : super(
+class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({
+    Key? key,
+    String? email,
+    String? password,
+    List<PageRouteInfo>? children,
+  }) : super(
           LoginRoute.name,
+          args: LoginRouteArgs(
+            key: key,
+            email: email,
+            password: password,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'LoginRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<LoginRouteArgs> page = PageInfo<LoginRouteArgs>(name);
+}
+
+class LoginRouteArgs {
+  const LoginRouteArgs({
+    this.key,
+    this.email,
+    this.password,
+  });
+
+  final Key? key;
+
+  final String? email;
+
+  final String? password;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{key: $key, email: $email, password: $password}';
+  }
 }
 
 /// generated route for

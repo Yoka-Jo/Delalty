@@ -9,6 +9,7 @@ class SignupState extends Equatable {
   final Password password;
   final String? error;
   final bool isPasswordShown;
+  final bool isSuccess;
   const SignupState({
     this.email = const Email.unvalidated(),
     this.username = const Username.unvalidated(),
@@ -16,15 +17,18 @@ class SignupState extends Equatable {
     this.password = const Password.unvalidated(),
     this.error,
     this.isPasswordShown = false,
+    this.isSuccess = false,
   });
 
-  SignupState copyWith(
-      {Email? email,
-      Username? username,
-      Phone? phone,
-      Password? password,
-      String? error,
-      bool? isPasswordShown}) {
+  SignupState copyWith({
+    Email? email,
+    Username? username,
+    Phone? phone,
+    Password? password,
+    String? error,
+    bool? isPasswordShown,
+    bool? isSuccess,
+  }) {
     return SignupState(
       email: email ?? this.email,
       username: username ?? this.username,
@@ -32,6 +36,7 @@ class SignupState extends Equatable {
       password: password ?? this.password,
       isPasswordShown: isPasswordShown ?? this.isPasswordShown,
       error: error,
+      isSuccess: isSuccess ?? false,
     );
   }
 
@@ -44,6 +49,7 @@ class SignupState extends Equatable {
       password,
       isPasswordShown,
       error,
+      isSuccess,
     ];
   }
 }

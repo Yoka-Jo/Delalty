@@ -12,11 +12,43 @@ class _AppServiceClient implements AppServiceClient {
   _AppServiceClient(
     this._dio, {
     this.baseUrl,
-  });
+  }) {
+    baseUrl ??= 'https://laravel.delalty.com/api/';
+  }
 
   final Dio _dio;
 
   String? baseUrl;
+
+  @override
+  Future<HttpResponse<NoDataResponse>> register(
+      RegisterRequest registerRequest) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(registerRequest.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<NoDataResponse>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'register',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = NoDataResponse.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
 
   @override
   Future<HttpResponse<UserResponse>> login(LoginRequest loginRequest) async {
@@ -33,7 +65,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              '',
+              'login',
               queryParameters: queryParameters,
               data: _data,
             )
