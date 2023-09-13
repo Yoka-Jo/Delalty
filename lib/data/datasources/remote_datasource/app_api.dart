@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -32,4 +33,25 @@ abstract class AppServiceClient {
   Future<HttpResponse<CategoryResponse>> getCategory(
     @Path() String id,
   );
+  @GET(Constants.getCategoriesPath)
+  Future<HttpResponse<List<CategoryResponse>>> getCategories();
+  @GET(Constants.getBestCategoriesPath)
+  Future<HttpResponse<List<CategoryResponse>>> getBestCategories();
+  @POST(Constants.createProductPath)
+  @MultiPart()
+  Future<HttpResponse<ProductResponse>> createProduct(
+    @Part() String title,
+    @Part() String description,
+    @Part() double price,
+    @Part() int categoryId,
+    @Part() int mainImageIndex,
+    @Part() File file,
+  );
+  @POST(Constants.addProductToFavoritesPath)
+  Future<HttpResponse<NoDataResponse>> addProductToFavorites(
+    @Body() AddProductToFavoritesRequest addProductToFavoritesRequest,
+    @Path() String product_id,
+  );
+  @GET(Constants.getFavoritesPath)
+  Future<HttpResponse<List<ProductResponse>>> getFavorites();
 }

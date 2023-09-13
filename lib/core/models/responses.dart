@@ -1,3 +1,10 @@
+import 'package:delalty/domain/entities/user_image.dart';
+
+import '../../domain/entities/user.dart';
+import '../../domain/entities/seller.dart';
+import '../../domain/entities/product_image.dart';
+import '../../domain/entities/value.dart';
+import '../../domain/entities/product.dart';
 import '../../domain/entities/validations.dart';
 import '../../domain/entities/input.dart';
 import '../../domain/entities/category.dart';
@@ -20,6 +27,17 @@ part '../../data/responses/category_response.dart';
 part '../../data/responses/input_response.dart';
 
 part '../../data/responses/validations_response.dart';
+
+part '../../data/responses/product_response.dart';
+
+part '../../data/responses/value_response.dart';
+
+part '../../data/responses/product_image_response.dart';
+
+part '../../data/responses/seller_response.dart';
+
+part '../../data/responses/user_response.dart';
+part '../../data/responses/user_image_response.dart';
 
 abstract class DataResponse<T> {
   T toDomain();

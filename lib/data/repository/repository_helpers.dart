@@ -4,9 +4,9 @@ import 'package:dartz/dartz.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../app/check_internet_connection.dart';
+import '../../core/models/responses.dart';
 import '../../core/network/error_handler.dart';
 import '../../core/network/failure.dart';
-import '../responses/responses.dart';
 
 class RepositoryHelpers {
   Future<Either<Failure, T>> callApi<T>(

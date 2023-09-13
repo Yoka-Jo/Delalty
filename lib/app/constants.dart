@@ -19,4 +19,9 @@ class Constants {
   static const String appleLoginPath = 'auth/apple/redirect';
   static const String verifyPhonePath = 'auth/verify-phone';
   static const String getCategoryPath = 'categories/{id}';
+  static const String getCategoriesPath = 'categories/';
+  static const String getBestCategoriesPath = 'categories/popular';
+  static const String createProductPath = 'products/';
+  static const String addProductToFavoritesPath = 'favorites/{product_id}';
+  static const String getFavoritesPath = 'favorites/';
 }

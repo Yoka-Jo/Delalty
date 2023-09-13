@@ -1,3 +1,6 @@
+import '../../domain/entities/no_data.dart';
+import 'dart:io';
+import '../../domain/entities/product.dart';
 import '../../domain/entities/category.dart';
 import '../../domain/entities/auth_data.dart';
 import '../../core/user_secure_storage.dart';
@@ -94,6 +97,60 @@ class RepositoryImpl implements Repository {
       () => _appServiceClient.getCategory(
         getCategoryRequest.id,
       ),
+      statusCode: 200,
+    );
+  }
+
+  @override
+  Future<Either<Failure, List<Category>>> getCategories() async {
+    return _repositoryHelpers.callApi<List<Category>>(
+      () => _appServiceClient.getCategories(),
+      statusCode: 200,
+    );
+  }
+
+  @override
+  Future<Either<Failure, List<Category>>> getBestCategories() async {
+    return _repositoryHelpers.callApi<List<Category>>(
+      () => _appServiceClient.getBestCategories(),
+      statusCode: 200,
+    );
+  }
+
+  @override
+  Future<Either<Failure, Product>> createProduct(
+    CreateProductRequest createProductRequest,
+  ) async {
+    return _repositoryHelpers.callApi<Product>(
+      () => _appServiceClient.createProduct(
+        createProductRequest.title,
+        createProductRequest.description,
+        createProductRequest.price,
+        createProductRequest.categoryId,
+        createProductRequest.mainImageIndex,
+        File(createProductRequest.file),
+      ),
+      statusCode: 200,
+    );
+  }
+
+  @override
+  Future<Either<Failure, NoData>> addProductToFavorites(
+    AddProductToFavoritesRequest addProductToFavoritesRequest,
+  ) async {
+    return _repositoryHelpers.callApi<NoData>(
+      () => _appServiceClient.addProductToFavorites(
+        addProductToFavoritesRequest,
+        addProductToFavoritesRequest.productId,
+      ),
+      statusCode: 200,
+    );
+  }
+
+  @override
+  Future<Either<Failure, List<Product>>> getFavorites() async {
+    return _repositoryHelpers.callApi<List<Product>>(
+      () => _appServiceClient.getFavorites(),
       statusCode: 200,
     );
   }
