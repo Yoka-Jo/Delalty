@@ -13,7 +13,10 @@ class ProductImageResponse extends Equatable
 
   @override
   ProductImage toDomain() {
-    return ProductImage(id: id.orEmpty(), url: url.orEmpty());
+    return ProductImage(
+      id: id.orEmpty(),
+      url: url != null ? "${Constants.productImagePath}url" : '',
+    );
   }
 
   @override

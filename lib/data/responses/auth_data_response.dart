@@ -2,7 +2,7 @@ part of '../../core/models/responses.dart';
 
 @JsonSerializable(createToJson: false)
 class AuthDataResponse extends Equatable implements DataResponse<AuthData> {
-  final int? userId;
+  final String userId;
   final String? accessToken;
   final bool? isRegister;
   final bool? hasPassword;
@@ -21,7 +21,7 @@ class AuthDataResponse extends Equatable implements DataResponse<AuthData> {
   @override
   AuthData toDomain() {
     return AuthData(
-        userId: userId.orZero(),
+        userId: userId,
         accessToken: accessToken.orEmpty(),
         isRegister: isRegister.orFalse(),
         hasPassword: hasPassword.orFalse(),

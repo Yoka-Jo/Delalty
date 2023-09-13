@@ -6,8 +6,6 @@ import 'package:delalty/domain/usecases/google_login_usecase.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'package:delalty/app/extensions.dart';
-
 import '../../di.dart';
 import '../../domain/usecases/facebook_login_usecase.dart';
 

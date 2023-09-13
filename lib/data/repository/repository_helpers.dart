@@ -18,7 +18,9 @@ class RepositoryHelpers {
     Future<void> Function(T data)? onData,
   }) async {
     assert(
-      T is List ? (convertToAppropriateList == null ? false : true) : true,
+      (T is List && !(listOfTypesAllowed.contains(T)))
+          ? (convertToAppropriateList == null ? false : true)
+          : true,
       'Please provide convertToAppropriateList if you are returning list.',
     );
 
@@ -30,11 +32,15 @@ class RepositoryHelpers {
       final result = await function();
 
       if (result.response.statusCode == statusCode) {
-        return _returnData(result, convertToAppropriateList, onData);
+        return _returnData(
+            result,
+            listOfTypesAllowed.contains(T) ? null : convertToAppropriateList,
+            onData);
       } else {
         return _returnFailureIfStatusCodeIsNotSuccess<T>(result);
       }
     } catch (e) {
+      // rethrow;
       log("||||||||||||||||||||ERROR FROM REPOSITORY CALLAPI||||||||||||||||||||");
       log(e.toString());
       return Left(ErrorHandler.handle(e).failure);
@@ -66,16 +72,25 @@ class RepositoryHelpers {
     late final dynamic domainValue;
     dynamic data = result.data;
     if (data is List) {
-      domainValue = convertToAppropriateList!(data.map((element) {
+      if (convertToAppropriateList == null) {
+        return Right(data as T);
+      }
+      domainValue = convertToAppropriateList(data.map((element) {
         return (element as DataResponse).toDomain();
       }).toList());
     } else {
       domainValue = data.toDomain();
     }
-    log("domainValue: $domainValue");
     if (onData != null) {
       await onData(domainValue);
     }
     return Right(domainValue);
   }
 }
+
+List<Type> listOfTypesAllowed = [
+  List<String>,
+  List<int>,
+  List<bool>,
+  List<double>
+];

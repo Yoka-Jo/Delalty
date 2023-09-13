@@ -1,24 +1,31 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of '../../core/models/responses.dart';
 
 @JsonSerializable(createToJson: false)
 class InputResponse extends Equatable implements DataResponse<Input> {
+  final String id;
   final String? name;
   final String? type;
-  final List<ValidationsResponse>? validations;
+  final Map<String, dynamic>? validations;
+  @JsonKey(name: 'required')
+  final bool isRequired;
 
   const InputResponse({
+    required this.id,
     required this.name,
     required this.type,
     required this.validations,
+    required this.isRequired,
   });
-
   @override
   Input toDomain() {
     return Input(
-        name: name.orEmpty(),
-        type: type.orEmpty(),
-        validations:
-            validations?.map((item) => item.toDomain()).toList() ?? []);
+      id: id,
+      name: name.orEmpty(),
+      type: type.orEmpty(),
+      validations: validations ?? {},
+      isRequired: isRequired.orFalse(),
+    );
   }
 
   @override

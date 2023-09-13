@@ -30,7 +30,13 @@ class ErrorHandler implements Exception {
         if (error.response != null &&
             error.response?.statusCode != null &&
             error.response?.statusMessage != null) {
-          final errorMap = error.response!.data['error'];
+          final errorMap = error.response!.data['message'];
+          return Failure(
+            code: error.response!.statusCode!,
+            message: (errorMap is List
+                ? errorMap.join('\n')
+                : errorMap ?? error.response!.statusMessage!),
+          );
           if (errorMap == null ||
               errorMap.runtimeType.toString() != "_Map<String, dynamic>") {
             return Failure(

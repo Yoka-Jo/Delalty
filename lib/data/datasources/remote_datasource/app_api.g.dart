@@ -13,7 +13,7 @@ class _AppServiceClient implements AppServiceClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://laravel.delalty.com/api/';
+    baseUrl ??= 'https://node.delalty.com/';
   }
 
   final Dio _dio;
@@ -236,7 +236,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              'categories/',
+              'categories',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -254,13 +254,13 @@ class _AppServiceClient implements AppServiceClient {
   }
 
   @override
-  Future<HttpResponse<List<CategoryResponse>>> getBestCategories() async {
+  Future<HttpResponse<List<String>>> getBestCategories() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<HttpResponse<List<CategoryResponse>>>(Options(
+        _setStreamType<HttpResponse<List<String>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -276,10 +276,7 @@ class _AppServiceClient implements AppServiceClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = _result.data!
-        .map(
-            (dynamic i) => CategoryResponse.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = _result.data!.cast<String>();
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }
@@ -350,7 +347,7 @@ class _AppServiceClient implements AppServiceClient {
   @override
   Future<HttpResponse<NoDataResponse>> addProductToFavorites(
     AddProductToFavoritesRequest addProductToFavoritesRequest,
-    String product_id,
+    String productId,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -365,7 +362,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              'favorites/${product_id}',
+              'favorites/{product_id}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -393,7 +390,66 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              'favorites/',
+              'favorites',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    var value = _result.data!
+        .map((dynamic i) => ProductResponse.fromJson(i as Map<String, dynamic>))
+        .toList();
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<UserResponse>> getUserData(String id) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<UserResponse>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'users/${id}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = UserResponse.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<List<ProductResponse>>> getProductForCategory(
+      String categoryId) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'category_id': categoryId};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<HttpResponse<List<ProductResponse>>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'search',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -1,4 +1,3 @@
-import 'package:delalty/app/extensions.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -86,11 +85,10 @@ class LoginCubit extends Cubit<LoginState> {
 
       response.fold(
         (failure) {
-          final errors = failure.getErrors();
-          emit(state.copyWith(error: errors));
+          emit(state.copyWith(error: failure.message));
           btnKey.currentState!.animateReverse();
         },
-        (user) {
+        (authData) {
           emit(state.copyWith(isSuccess: true));
         },
       );

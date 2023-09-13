@@ -24,6 +24,7 @@ class ProductCardWidget extends StatelessWidget {
   final bool isFavorite;
   final bool isLoading;
   final double? priceSize;
+  final double? price;
   final EdgeInsets? padding;
   final double? width;
   final double? height;
@@ -34,18 +35,19 @@ class ProductCardWidget extends StatelessWidget {
     Key? key,
     this.image,
     required this.title,
-    this.days = 2,
     this.titleSize,
-    this.isLoading = false,
     this.titleColor,
-    this.width,
-    this.isFavorite = false,
-    this.height,
     this.locationColor,
-    this.padding,
     this.showLocationPin = true,
     this.showfavouriteButton = true,
+    this.isFavorite = false,
+    this.isLoading = false,
     this.priceSize,
+    this.price,
+    this.padding,
+    this.width,
+    this.height,
+    this.days = 2,
     this.details = const SizedBox.shrink(),
   }) : super(key: key);
 
@@ -132,7 +134,7 @@ class ProductCardWidget extends StatelessWidget {
                       Row(
                         children: [
                           SimpleText(
-                            'EGP 1,000,000',
+                            'EGP $price',
                             textStyle: TextStyleEnum.poppinsSemiBold,
                             fontSize: priceSize ?? 10.sp,
                           ),

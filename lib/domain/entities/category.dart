@@ -1,10 +1,10 @@
 import 'input.dart';
 
 class Category {
-  final int id;
+  final String id;
   final String name;
   final String image;
-  final int parentId;
+  final String parentId;
   final List<Input> inputs;
 
   Category({

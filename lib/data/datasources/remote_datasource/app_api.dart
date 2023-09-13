@@ -36,7 +36,7 @@ abstract class AppServiceClient {
   @GET(Constants.getCategoriesPath)
   Future<HttpResponse<List<CategoryResponse>>> getCategories();
   @GET(Constants.getBestCategoriesPath)
-  Future<HttpResponse<List<CategoryResponse>>> getBestCategories();
+  Future<HttpResponse<List<String>>> getBestCategories();
   @POST(Constants.createProductPath)
   @MultiPart()
   Future<HttpResponse<ProductResponse>> createProduct(
@@ -50,8 +50,16 @@ abstract class AppServiceClient {
   @POST(Constants.addProductToFavoritesPath)
   Future<HttpResponse<NoDataResponse>> addProductToFavorites(
     @Body() AddProductToFavoritesRequest addProductToFavoritesRequest,
-    @Path() String product_id,
+    @Path() String productId,
   );
   @GET(Constants.getFavoritesPath)
   Future<HttpResponse<List<ProductResponse>>> getFavorites();
+  @GET(Constants.getUserDataPath)
+  Future<HttpResponse<UserResponse>> getUserData(
+    @Path() String id,
+  );
+  @GET(Constants.getProductForCategoryPath)
+  Future<HttpResponse<List<ProductResponse>>> getProductForCategory(
+    @Query('category_id') String categoryId,
+  );
 }

@@ -10,14 +10,14 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:delalty/core/app_prefs/app_prefs.dart' as _i16;
-import 'package:delalty/core/app_prefs/shared_prefs_injectable.dart' as _i32;
-import 'package:delalty/core/network/dio_factory.dart' as _i31;
+import 'package:delalty/core/app_prefs/shared_prefs_injectable.dart' as _i36;
+import 'package:delalty/core/network/dio_factory.dart' as _i35;
 import 'package:delalty/core/user_secure_storage.dart' as _i12;
 import 'package:delalty/data/datasources/local_datasource/local_datasource.dart'
-    as _i25;
+    as _i28;
 import 'package:delalty/data/datasources/remote_datasource/app_api.dart' as _i4;
 import 'package:delalty/data/datasources/remote_datasource/remote_modules.dart'
-    as _i30;
+    as _i34;
 import 'package:delalty/data/repository/repository.dart' as _i9;
 import 'package:delalty/domain/repository/repository.dart' as _i8;
 import 'package:delalty/domain/usecases/add_product_to_favorites_usecase.dart'
@@ -30,20 +30,26 @@ import 'package:delalty/domain/usecases/get_best_categories_usecase.dart'
 import 'package:delalty/domain/usecases/get_categories_usecase.dart' as _i21;
 import 'package:delalty/domain/usecases/get_category_usecase.dart' as _i22;
 import 'package:delalty/domain/usecases/get_favorites_usecase.dart' as _i23;
-import 'package:delalty/domain/usecases/google_login_usecase.dart' as _i24;
-import 'package:delalty/domain/usecases/login_usecase.dart' as _i26;
-import 'package:delalty/domain/usecases/register_usecase.dart' as _i27;
+import 'package:delalty/domain/usecases/get_product_for_category_usecase.dart'
+    as _i24;
+import 'package:delalty/domain/usecases/get_user_data_usecase.dart' as _i25;
+import 'package:delalty/domain/usecases/google_login_usecase.dart' as _i26;
+import 'package:delalty/domain/usecases/login_usecase.dart' as _i29;
+import 'package:delalty/domain/usecases/register_usecase.dart' as _i30;
 import 'package:delalty/domain/usecases/verify_phone_usecase.dart' as _i14;
 import 'package:delalty/presentation/screens/all_departments/cubit/all_departments_cubit.dart'
     as _i3;
+import 'package:delalty/presentation/screens/app/cubit/app_cubit.dart' as _i32;
+import 'package:delalty/presentation/screens/app/pages/home/cubit/home_cubit.dart'
+    as _i27;
 import 'package:delalty/presentation/screens/login/cubit/login_cubit.dart'
-    as _i29;
+    as _i33;
 import 'package:delalty/presentation/screens/property_filter/cubit/property_filter_cubit.dart'
     as _i7;
 import 'package:delalty/presentation/screens/search/cubit/search_cubit.dart'
     as _i10;
 import 'package:delalty/presentation/screens/signup/cubit/signup_cubit.dart'
-    as _i28;
+    as _i31;
 import 'package:delalty/presentation/screens/verification_code/cubit/verification_code_cubit.dart'
     as _i13;
 import 'package:dio/dio.dart' as _i5;
@@ -106,27 +112,39 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i22.GetCategoryUseCase(gh<_i8.Repository>()));
     gh.lazySingleton<_i23.GetFavoritesUseCase>(
         () => _i23.GetFavoritesUseCase(gh<_i8.Repository>()));
-    gh.lazySingleton<_i24.GoogleLoginUseCase>(
-        () => _i24.GoogleLoginUseCase(gh<_i8.Repository>()));
-    gh.factory<_i25.LocalDataSource>(
-        () => _i25.LocalDataSource(gh<_i11.SharedPreferences>()));
-    gh.lazySingleton<_i26.LoginUseCase>(
-        () => _i26.LoginUseCase(gh<_i8.Repository>()));
-    gh.lazySingleton<_i27.RegisterUseCase>(
-        () => _i27.RegisterUseCase(gh<_i8.Repository>()));
-    gh.factory<_i28.SignupCubit>(
-        () => _i28.SignupCubit(gh<_i27.RegisterUseCase>()));
-    gh.factory<_i29.LoginCubit>(() => _i29.LoginCubit(gh<_i26.LoginUseCase>()));
+    gh.lazySingleton<_i24.GetProductForCategoryUseCase>(
+        () => _i24.GetProductForCategoryUseCase(gh<_i8.Repository>()));
+    gh.lazySingleton<_i25.GetUserDataUseCase>(
+        () => _i25.GetUserDataUseCase(gh<_i8.Repository>()));
+    gh.lazySingleton<_i26.GoogleLoginUseCase>(
+        () => _i26.GoogleLoginUseCase(gh<_i8.Repository>()));
+    gh.factory<_i27.HomeCubit>(() => _i27.HomeCubit(
+          gh<_i21.GetCategoriesUseCase>(),
+          gh<_i20.GetBestCategoriesUseCase>(),
+          gh<_i24.GetProductForCategoryUseCase>(),
+          gh<_i22.GetCategoryUseCase>(),
+        ));
+    gh.factory<_i28.LocalDataSource>(
+        () => _i28.LocalDataSource(gh<_i11.SharedPreferences>()));
+    gh.lazySingleton<_i29.LoginUseCase>(
+        () => _i29.LoginUseCase(gh<_i8.Repository>()));
+    gh.lazySingleton<_i30.RegisterUseCase>(
+        () => _i30.RegisterUseCase(gh<_i8.Repository>()));
+    gh.factory<_i31.SignupCubit>(
+        () => _i31.SignupCubit(gh<_i30.RegisterUseCase>()));
+    gh.factory<_i32.AppCubit>(
+        () => _i32.AppCubit(gh<_i25.GetUserDataUseCase>()));
+    gh.factory<_i33.LoginCubit>(() => _i33.LoginCubit(gh<_i29.LoginUseCase>()));
     return this;
   }
 }
 
 class _$InjectableAppServiceClientModule
-    extends _i30.InjectableAppServiceClientModule {}
+    extends _i34.InjectableAppServiceClientModule {}
 
-class _$InjectableDioModule extends _i31.InjectableDioModule {}
+class _$InjectableDioModule extends _i35.InjectableDioModule {}
 
 class _$InjectableUserSecureStorageModule
     extends _i12.InjectableUserSecureStorageModule {}
 
-class _$SharedPrefsInjectableModule extends _i32.SharedPrefsInjectableModule {}
+class _$SharedPrefsInjectableModule extends _i36.SharedPrefsInjectableModule {}

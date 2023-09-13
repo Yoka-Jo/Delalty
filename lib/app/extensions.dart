@@ -43,10 +43,15 @@ extension NonNullBool on bool? {
 }
 
 extension GetErrorFromBadRequest on Failure {
-  String getErrors() =>
-      (json.decode(message)['error'] as Map<String, dynamic>).values.map(
+  String? getErrors() {
+    try {
+      return (json.decode(message)['error'] as Map<String, dynamic>).values.map(
         (e) {
           return (e as List).map((e) => e).join('\n');
         },
       ).join('\n');
+    } catch (e) {
+      return null;
+    }
+  }
 }

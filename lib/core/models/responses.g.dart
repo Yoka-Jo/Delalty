@@ -7,11 +7,11 @@ part of 'responses.dart';
 // **************************************************************************
 
 NoDataResponse _$NoDataResponseFromJson(Map<String, dynamic> json) =>
-    const NoDataResponse();
+    NoDataResponse();
 
 AuthDataResponse _$AuthDataResponseFromJson(Map<String, dynamic> json) =>
     AuthDataResponse(
-      userId: json['userId'] as int?,
+      userId: json['userId'] as String,
       accessToken: json['accessToken'] as String?,
       isRegister: json['isRegister'] as bool?,
       hasPassword: json['hasPassword'] as bool?,
@@ -21,10 +21,10 @@ AuthDataResponse _$AuthDataResponseFromJson(Map<String, dynamic> json) =>
 
 CategoryResponse _$CategoryResponseFromJson(Map<String, dynamic> json) =>
     CategoryResponse(
-      id: json['id'] as int?,
+      id: json['id'] as String,
       name: json['name'] as String?,
       image: json['image'] as String?,
-      parentId: json['parent_id'] as int?,
+      parentId: json['parent_id'] as String?,
       inputs: (json['inputs'] as List<dynamic>?)
           ?.map((e) => InputResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -32,17 +32,11 @@ CategoryResponse _$CategoryResponseFromJson(Map<String, dynamic> json) =>
 
 InputResponse _$InputResponseFromJson(Map<String, dynamic> json) =>
     InputResponse(
+      id: json['id'] as String,
       name: json['name'] as String?,
       type: json['type'] as String?,
-      validations: (json['validations'] as List<dynamic>?)
-          ?.map((e) => ValidationsResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-ValidationsResponse _$ValidationsResponseFromJson(Map<String, dynamic> json) =>
-    ValidationsResponse(
-      min: json['min'] as int?,
-      max: json['max'] as int?,
+      validations: json['validations'] as Map<String, dynamic>?,
+      isRequired: json['required'] as bool,
     );
 
 ProductResponse _$ProductResponseFromJson(Map<String, dynamic> json) =>
@@ -101,4 +95,10 @@ UserImageResponse _$UserImageResponseFromJson(Map<String, dynamic> json) =>
     UserImageResponse(
       id: json['id'] as String?,
       url: json['url'] as String?,
+    );
+
+BestCategoriesResponse _$BestCategoriesResponseFromJson(
+        Map<String, dynamic> json) =>
+    BestCategoriesResponse(
+      ids: (json['ids'] as List<dynamic>).map((e) => e as String).toList(),
     );

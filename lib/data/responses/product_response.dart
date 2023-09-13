@@ -32,16 +32,19 @@ class ProductResponse extends Equatable implements DataResponse<Product> {
   @override
   Product toDomain() {
     return Product(
-        id: id.orZero(),
-        title: title.orEmpty(),
-        description: description.orEmpty(),
-        price: price.orZero(),
-        categoryId: categoryId.orZero(),
-        values: values?.map((item) => item.toDomain()).toList() ?? [],
-        images: images?.map((item) => item.toDomain()).toList() ?? [],
-        seller: seller?.toDomain(),
-        visible: visible.orFalse(),
-        mainImageId: mainImageId.orEmpty());
+      id: id.orZero(),
+      title: title.orEmpty(),
+      description: description.orEmpty(),
+      price: price.orZero(),
+      categoryId: categoryId.orZero(),
+      values: values?.map((item) => item.toDomain()).toList() ?? [],
+      images: images?.map((item) => item.toDomain()).toList() ?? [],
+      seller: seller?.toDomain(),
+      visible: visible.orFalse(),
+      mainImageId: mainImageId != null
+          ? "${Constants.productImagePath}$mainImageId"
+          : '',
+    );
   }
 
   @override

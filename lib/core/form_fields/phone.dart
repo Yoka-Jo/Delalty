@@ -12,7 +12,7 @@ class Phone extends FormzInput<String, PhoneValidationError>
     String value = '',
   ]) : super.dirty(value);
 
-  static final _phoneRegex = RegExp(r'(^01[0-2,5]{1}[0-9]{8}$)');
+  static final _phoneRegex = RegExp(r'^(?:\+966|966|0)(5\d{8})$');
 
   @override
   PhoneValidationError? validator(String value) {

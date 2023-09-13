@@ -2,11 +2,11 @@ part of '../../core/models/responses.dart';
 
 @JsonSerializable(createToJson: false)
 class CategoryResponse extends Equatable implements DataResponse<Category> {
-  final int? id;
+  final String id;
   final String? name;
   final String? image;
   @JsonKey(name: 'parent_id')
-  final int? parentId;
+  final String? parentId;
   final List<InputResponse>? inputs;
 
   const CategoryResponse({
@@ -20,10 +20,10 @@ class CategoryResponse extends Equatable implements DataResponse<Category> {
   @override
   Category toDomain() {
     return Category(
-        id: id.orZero(),
+        id: id,
         name: name.orEmpty(),
-        image: image.orEmpty(),
-        parentId: parentId.orZero(),
+        image: image == null ? '' : "${Constants.categoryImagePath}$image",
+        parentId: parentId.orEmpty(),
         inputs: inputs?.map((item) => item.toDomain()).toList() ?? []);
   }
 

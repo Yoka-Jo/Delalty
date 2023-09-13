@@ -11,7 +11,9 @@ class Constants {
       'alertsAddToFavoritesSwitchKey';
   static const String messageAlertsSwitchKey = 'messageAlertsSwitchKey';
   static const String seePhoneNumberSwitchKey = 'seePhoneNumberSwitchKey';
-  static const String baseUrl = 'https://laravel.delalty.com/api/';
+  static const String categoryImagePath = '${baseUrl}cdn/categories/';
+  static const String productImagePath = '${baseUrl}cdn/products/';
+  static const String baseUrl = 'https://node.delalty.com/';
   static const String registerPath = 'auth/register';
   static const String loginPath = 'auth/login';
   static const String facebookLoginPath = 'auth/facebook/redirect';
@@ -19,9 +21,11 @@ class Constants {
   static const String appleLoginPath = 'auth/apple/redirect';
   static const String verifyPhonePath = 'auth/verify-phone';
   static const String getCategoryPath = 'categories/{id}';
-  static const String getCategoriesPath = 'categories/';
+  static const String getCategoriesPath = 'categories';
   static const String getBestCategoriesPath = 'categories/popular';
   static const String createProductPath = 'products/';
   static const String addProductToFavoritesPath = 'favorites/{product_id}';
-  static const String getFavoritesPath = 'favorites/';
+  static const String getFavoritesPath = 'favorites';
+  static const String getUserDataPath = 'users/{id}';
+  static const String getProductForCategoryPath = 'search';
 }

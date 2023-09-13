@@ -1,3 +1,4 @@
+import '../../domain/entities/user.dart';
 import '../../domain/entities/no_data.dart';
 import 'dart:io';
 import '../../domain/entities/product.dart';
@@ -25,8 +26,9 @@ class RepositoryImpl implements Repository {
   // Future<void> _storeUserData(User user) async {
   //   await getIt<UserSecureStorage>().upsertUserInfo(user);
   // }
-  Future<void> _storeUserToken(AuthData token) async {
-    await getIt<UserSecureStorage>().upsertUserToken(token.accessToken);
+  Future<void> _storeUserTokenAndId(AuthData authData) async {
+    await getIt<UserSecureStorage>()
+        .upsertUserTokenAndId(authData.accessToken, authData.userId);
   }
 
   @override
@@ -49,7 +51,8 @@ class RepositoryImpl implements Repository {
       () => _appServiceClient.login(
         loginRequest,
       ),
-      statusCode: 200,
+      statusCode: 201,
+      onData: _storeUserTokenAndId,
     );
   }
 
@@ -106,12 +109,13 @@ class RepositoryImpl implements Repository {
     return _repositoryHelpers.callApi<List<Category>>(
       () => _appServiceClient.getCategories(),
       statusCode: 200,
+      convertToAppropriateList: List<Category>.from,
     );
   }
 
   @override
-  Future<Either<Failure, List<Category>>> getBestCategories() async {
-    return _repositoryHelpers.callApi<List<Category>>(
+  Future<Either<Failure, List<String>>> getBestCategories() async {
+    return _repositoryHelpers.callApi<List<String>>(
       () => _appServiceClient.getBestCategories(),
       statusCode: 200,
     );
@@ -151,6 +155,30 @@ class RepositoryImpl implements Repository {
   Future<Either<Failure, List<Product>>> getFavorites() async {
     return _repositoryHelpers.callApi<List<Product>>(
       () => _appServiceClient.getFavorites(),
+      statusCode: 200,
+    );
+  }
+
+  @override
+  Future<Either<Failure, User>> getUserData(
+    GetUserDataRequest getUserDataRequest,
+  ) async {
+    return _repositoryHelpers.callApi<User>(
+      () => _appServiceClient.getUserData(
+        getUserDataRequest.id,
+      ),
+      statusCode: 200,
+    );
+  }
+
+  @override
+  Future<Either<Failure, List<Product>>> getProductForCategory(
+    GetProductsForCategoryRequest getProductForCategoryRequest,
+  ) async {
+    return _repositoryHelpers.callApi<List<Product>>(
+      () => _appServiceClient.getProductForCategory(
+        getProductForCategoryRequest.categoryId,
+      ),
       statusCode: 200,
     );
   }

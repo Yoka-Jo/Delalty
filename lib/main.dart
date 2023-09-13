@@ -11,6 +11,7 @@ import 'core/resources/localization/language_manager.dart';
 import 'core/resources/theme/cubit/change_theme_cubit.dart';
 import 'di.dart';
 import 'firebase_options.dart';
+import 'presentation/screens/app/cubit/app_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,9 @@ void main() async {
         ),
         BlocProvider(
           create: (_) => ChangeLanguageCubit(),
+        ),
+        BlocProvider(
+          create: (_) => getIt<AppCubit>(),
         ),
       ],
       child: EasyLocalization(

@@ -1,14 +1,13 @@
 part of 'widgets.dart';
 
 class HomeTrendingCategories extends StatelessWidget {
-  final bool isLoading;
   const HomeTrendingCategories({
     super.key,
-    required this.isLoading,
   });
 
   @override
   Widget build(BuildContext context) {
+    const isLoading = 2 > 3;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

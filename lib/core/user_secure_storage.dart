@@ -39,11 +39,17 @@ class UserSecureStorage {
         )
       ]);
 
-  Future<void> upsertUserToken(String token) async =>
-      await _secureStorage.write(
-        key: _tokenKey,
-        value: token,
-      );
+  Future<void> upsertUserTokenAndId(String token, String userId) async =>
+      await Future.wait([
+        _secureStorage.write(
+          key: _tokenKey,
+          value: token,
+        ),
+        _secureStorage.write(
+          key: _idKey,
+          value: userId,
+        ),
+      ]);
 
   Future<void> deleteUserInfo() => Future.wait([
         _secureStorage.delete(

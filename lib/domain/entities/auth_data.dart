@@ -1,5 +1,5 @@
 class AuthData {
-  final int userId;
+  final String userId;
   final String accessToken;
   final bool isRegister;
   final bool hasPassword;

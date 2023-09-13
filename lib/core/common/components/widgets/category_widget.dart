@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:delalty/core/common/components/widgets/simple_text.dart';
 
+import '../../../resources/colors_manager.dart';
 import '../../../resources/strings_manager.dart';
 
 class CategoryWidget extends StatelessWidget {
@@ -45,11 +46,14 @@ class CategoryWidget extends StatelessWidget {
         vertical: 12.h,
       ),
       decoration: BoxDecoration(
+        color: image.isEmpty ? AppColors.primaryColor.withOpacity(0.8) : null,
         borderRadius: BorderRadius.circular(8.r),
-        image: DecorationImage(
-          image: NetworkImage(image),
-          fit: BoxFit.cover,
-        ),
+        image: image.isEmpty
+            ? null
+            : DecorationImage(
+                image: NetworkImage(image),
+                fit: BoxFit.cover,
+              ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

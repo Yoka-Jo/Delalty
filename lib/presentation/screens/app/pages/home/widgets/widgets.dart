@@ -1,12 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:delalty/core/common/components/widgets/build_shimmer_widget.dart';
 import 'package:delalty/core/resources/routes/app_router.dart';
+import 'package:delalty/presentation/screens/app/pages/home/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../../app/constants.dart';
+import '../../../../../../core/common/components/widgets/cached_image.dart';
 import '../../../../../../core/common/components/widgets/category_widget.dart';
+import '../../../../../../core/common/components/widgets/centered_circular_progress_indicator.dart';
 import '../../../../../../core/common/components/widgets/default_text_form_field.dart';
 import '../../../../../../core/common/components/widgets/form_fields_icons/search_icon.dart';
 import '../../../../../../core/common/components/widgets/product_card/product_card_widget.dart';
