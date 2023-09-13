@@ -68,6 +68,7 @@ class ImageAssets {
   static const String trash = "assets/images/trash.svg";
   static const String speed = "assets/images/speed.png";
   static const String mapPin = "assets/images/map-pin.png";
+  static const String mapPinSvg = "assets/images/mapPin.svg";
   static const String mail = "assets/images/mail.svg";
   static const String phone = "assets/images/phone.svg";
   static const String star = "assets/images/star.svg";

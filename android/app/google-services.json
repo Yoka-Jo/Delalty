@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "892445248109",
+    "project_id": "delalty",
+    "storage_bucket": "delalty.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892445248109:android:2d3bc68f7d75aded2ccd64",
+        "android_client_info": {
+          "package_name": "com.example.delalty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892445248109-5bhk6nh8usv071mat86qpujfuuvgn6rv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQUoQy2R--Ol7M-kJYvLLRA0Y55fZKvUA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892445248109-5bhk6nh8usv071mat86qpujfuuvgn6rv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:delalty/data/network/interceptors/app_interceptors.dart';
+import 'package:delalty/core/network/interceptors/app_interceptors.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../../app/constants.dart';
 

@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:delalty/core/resources/assets_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,12 +20,12 @@ class CustomMarkerIcon extends StatelessWidget {
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
+          Image.asset(ImageAssets.mapPin),
           Align(
             alignment: Alignment.topCenter,
-            child: Icon(
-              Icons.location_pin,
-              color: AppColors.primaryColor,
-              size: 40.r,
+            child: Image.asset(
+              ImageAssets.mapPin,
+              fit: BoxFit.cover,
             ),
           ),
           Align(

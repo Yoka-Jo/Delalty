@@ -4,8 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../app/check_internet_connection.dart';
-import '../network/error_handler.dart';
-import '../network/failure.dart';
+import '../../core/network/error_handler.dart';
+import '../../core/network/failure.dart';
 import '../responses/responses.dart';
 
 class RepositoryHelpers {
@@ -30,7 +30,7 @@ class RepositoryHelpers {
       final result = await function();
 
       if (result.response.statusCode == statusCode) {
-        return _returnListOfItems(result, convertToAppropriateList, onData);
+        return _returnData(result, convertToAppropriateList, onData);
       } else {
         return _returnFailureIfStatusCodeIsNotSuccess<T>(result);
       }
@@ -58,7 +58,7 @@ class RepositoryHelpers {
     );
   }
 
-  Future<Right<Failure, T>> _returnListOfItems<T>(
+  Future<Right<Failure, T>> _returnData<T>(
     HttpResponse<dynamic> result,
     T Function(List list)? convertToAppropriateList,
     Future<void> Function(T data)? onData,

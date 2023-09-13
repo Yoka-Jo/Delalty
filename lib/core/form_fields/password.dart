@@ -14,7 +14,7 @@ class Password extends FormzInput<String, PasswordValidationError> {
   PasswordValidationError? validator(String value) {
     if (value.isEmpty) {
       return PasswordValidationError.empty;
-    } else if (value.length < 5 || value.length > 120) {
+    } else if (value.length < 6 || value.length > 120) {
       return PasswordValidationError.invalid;
     } else {
       return null;
@@ -24,7 +24,7 @@ class Password extends FormzInput<String, PasswordValidationError> {
 
 enum PasswordValidationError {
   empty(AppStrings.fillField),
-  invalid('');
+  invalid(AppStrings.passwordMustBeAtLeast6Chars);
 
   const PasswordValidationError(this.value);
   final String value;

@@ -9,29 +9,34 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:delalty/core/app_prefs/app_prefs.dart' as _i15;
+import 'package:delalty/core/app_prefs/shared_prefs_injectable.dart' as _i27;
+import 'package:delalty/core/network/dio_factory.dart' as _i26;
 import 'package:delalty/core/user_secure_storage.dart' as _i12;
 import 'package:delalty/data/datasources/local_datasource/local_datasource.dart'
-    as _i14;
-import 'package:delalty/data/datasources/local_datasource/local_modules.dart'
-    as _i21;
+    as _i20;
 import 'package:delalty/data/datasources/remote_datasource/app_api.dart' as _i4;
 import 'package:delalty/data/datasources/remote_datasource/remote_modules.dart'
-    as _i19;
-import 'package:delalty/data/network/dio_factory.dart' as _i20;
+    as _i25;
 import 'package:delalty/data/repository/repository.dart' as _i9;
 import 'package:delalty/domain/repository/repository.dart' as _i8;
-import 'package:delalty/domain/usecases/login_usecase.dart' as _i15;
-import 'package:delalty/domain/usecases/register_usecase.dart' as _i16;
+import 'package:delalty/domain/usecases/apple_login_usecase.dart' as _i16;
+import 'package:delalty/domain/usecases/facebook_login_usecase.dart' as _i17;
+import 'package:delalty/domain/usecases/get_category_usecase.dart' as _i18;
+import 'package:delalty/domain/usecases/google_login_usecase.dart' as _i19;
+import 'package:delalty/domain/usecases/login_usecase.dart' as _i21;
+import 'package:delalty/domain/usecases/register_usecase.dart' as _i22;
+import 'package:delalty/domain/usecases/verify_phone_usecase.dart' as _i14;
 import 'package:delalty/presentation/screens/all_departments/cubit/all_departments_cubit.dart'
     as _i3;
 import 'package:delalty/presentation/screens/login/cubit/login_cubit.dart'
-    as _i18;
+    as _i24;
 import 'package:delalty/presentation/screens/property_filter/cubit/property_filter_cubit.dart'
     as _i7;
 import 'package:delalty/presentation/screens/search/cubit/search_cubit.dart'
     as _i10;
 import 'package:delalty/presentation/screens/signup/cubit/signup_cubit.dart'
-    as _i17;
+    as _i23;
 import 'package:delalty/presentation/screens/verification_code/cubit/verification_code_cubit.dart'
     as _i13;
 import 'package:dio/dio.dart' as _i5;
@@ -74,25 +79,37 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i12.UserSecureStorage>(
         () => _i12.UserSecureStorage(gh<_i6.FlutterSecureStorage>()));
     gh.factory<_i13.VerificationCodeCubit>(() => _i13.VerificationCodeCubit());
-    gh.factory<_i14.LocalDataSource>(
-        () => _i14.LocalDataSource(gh<_i11.SharedPreferences>()));
-    gh.lazySingleton<_i15.LoginUseCase>(
-        () => _i15.LoginUseCase(gh<_i8.Repository>()));
-    gh.lazySingleton<_i16.RegisterUseCase>(
-        () => _i16.RegisterUseCase(gh<_i8.Repository>()));
-    gh.factory<_i17.SignupCubit>(
-        () => _i17.SignupCubit(gh<_i16.RegisterUseCase>()));
-    gh.factory<_i18.LoginCubit>(() => _i18.LoginCubit(gh<_i15.LoginUseCase>()));
+    gh.lazySingleton<_i14.VerifyPhoneUseCase>(
+        () => _i14.VerifyPhoneUseCase(gh<_i8.Repository>()));
+    gh.factory<_i15.AppPreferences>(
+        () => _i15.AppPreferences(gh<_i11.SharedPreferences>()));
+    gh.lazySingleton<_i16.AppleLoginUseCase>(
+        () => _i16.AppleLoginUseCase(gh<_i8.Repository>()));
+    gh.lazySingleton<_i17.FacebookLoginUseCase>(
+        () => _i17.FacebookLoginUseCase(gh<_i8.Repository>()));
+    gh.lazySingleton<_i18.GetCategoryUseCase>(
+        () => _i18.GetCategoryUseCase(gh<_i8.Repository>()));
+    gh.lazySingleton<_i19.GoogleLoginUseCase>(
+        () => _i19.GoogleLoginUseCase(gh<_i8.Repository>()));
+    gh.factory<_i20.LocalDataSource>(
+        () => _i20.LocalDataSource(gh<_i11.SharedPreferences>()));
+    gh.lazySingleton<_i21.LoginUseCase>(
+        () => _i21.LoginUseCase(gh<_i8.Repository>()));
+    gh.lazySingleton<_i22.RegisterUseCase>(
+        () => _i22.RegisterUseCase(gh<_i8.Repository>()));
+    gh.factory<_i23.SignupCubit>(
+        () => _i23.SignupCubit(gh<_i22.RegisterUseCase>()));
+    gh.factory<_i24.LoginCubit>(() => _i24.LoginCubit(gh<_i21.LoginUseCase>()));
     return this;
   }
 }
 
 class _$InjectableAppServiceClientModule
-    extends _i19.InjectableAppServiceClientModule {}
+    extends _i25.InjectableAppServiceClientModule {}
 
-class _$InjectableDioModule extends _i20.InjectableDioModule {}
+class _$InjectableDioModule extends _i26.InjectableDioModule {}
 
 class _$InjectableUserSecureStorageModule
     extends _i12.InjectableUserSecureStorageModule {}
 
-class _$SharedPrefsInjectableModule extends _i21.SharedPrefsInjectableModule {}
+class _$SharedPrefsInjectableModule extends _i27.SharedPrefsInjectableModule {}

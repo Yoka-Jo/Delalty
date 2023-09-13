@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:delalty/app/functions.dart';
 import 'package:delalty/core/common/components/widgets/simple_toast.dart';
 import 'package:delalty/core/resources/colors_manager.dart';
 import 'package:delalty/core/resources/routes/app_router.dart';

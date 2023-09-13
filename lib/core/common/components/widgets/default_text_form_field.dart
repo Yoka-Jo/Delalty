@@ -91,8 +91,6 @@ class DefaultTextFormField extends StatefulWidget {
 }
 
 class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
-  bool _obsecureText = true;
-
   Widget _buildTextFormField() {
     final theme = AppTheme.of(context);
     return StatefulBuilder(
@@ -125,22 +123,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
                     isFilled: widget.filled ? true : false,
                     fillColor: widget.filledColor,
                     suffixWidget: widget.suffix,
-                    suffixIcon: widget.isPassword
-                        ? InkWell(
-                            onTap: () {
-                              setState(() {
-                                _obsecureText = !_obsecureText;
-                              });
-                            },
-                            child: Icon(
-                              _obsecureText
-                                  ? Icons.remove_red_eye
-                                  : Icons.visibility_off,
-                              color: AppColors.primaryColor,
-                              size: 18,
-                            ),
-                          )
-                        : widget.suffixIcon,
+                    suffixIcon: widget.suffixIcon,
                     prefixWidget: widget.prefix,
                     prefixIcon: widget.prefixIcon,
                     hint: widget.hintTxt,
@@ -160,7 +143,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
                     hintTextDirection: widget.hintTextDirection,
                   ),
               keyboardType: widget.inputType,
-              obscureText: widget.isPassword ? _obsecureText : false,
+              obscureText: widget.isPassword,
               validator: widget.validationFunction,
               onChanged: widget.onChangedFunction,
             ));

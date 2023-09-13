@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:typed_data';
-import 'dart:ui' as ui;
 import 'package:auto_route/auto_route.dart';
 import 'package:delalty/core/common/components/widgets/my_outlined_button.dart';
 import 'package:delalty/core/common/components/widgets/real_estate_features.dart';
@@ -8,9 +6,9 @@ import 'package:delalty/core/resources/routes/app_router.dart';
 import 'package:delalty/core/resources/strings_manager.dart';
 import 'package:delalty/presentation/screens/map/widgets/custom_marker_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:custom_map_markers/custom_map_markers.dart';
 import '../../../../core/common/components/widgets/build_carousel.dart';
 import '../../../../core/common/components/widgets/simple_text.dart';
 import '../../../../core/common/components/widgets/user_image.dart';
@@ -32,10 +30,8 @@ class BuildMapWidget extends StatefulWidget {
 }
 
 class _BuildMapWidgetState extends State<BuildMapWidget> {
-  BitmapDescriptor? customMarkerIcon;
-  final Map<String, Marker> _markers = {};
-  bool _isLoaded = false;
   bool _isPoped = false;
+  bool isMapCompleted = false;
 
   List<Map<String, dynamic>> data = [
     {
@@ -54,59 +50,7 @@ class _BuildMapWidgetState extends State<BuildMapWidget> {
   ];
 
   @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _onBuildComplete());
-  }
-
-  Future<void> _onBuildComplete() async {
-    await Future.wait(data.map(
-      (value) async {
-        Marker marker = await _generateMarkersFromWidgets(value);
-        _markers[marker.markerId.value] = marker;
-      },
-    ));
-    setState(() {
-      _isLoaded = true;
-    });
-  }
-
-  Future<Marker> _generateMarkersFromWidgets(Map<String, dynamic> data) async {
-    return await Future.delayed(const Duration(milliseconds: 30), () async {
-      RenderRepaintBoundary boundary = data['globalKey']
-          .currentContext
-          ?.findRenderObject() as RenderRepaintBoundary;
-      ui.Image image = await boundary.toImage(pixelRatio: 4);
-
-      ByteData? byteData =
-          await image.toByteData(format: ui.ImageByteFormat.png);
-      return Marker(
-        markerId: MarkerId(data['id']),
-        position: data['position'],
-        icon: BitmapDescriptor.fromBytes(byteData!.buffer.asUint8List()),
-      );
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    if (!_isLoaded) {
-      return ListView(
-        children: [
-          for (int i = 0; i < data.length; i++)
-            Transform.translate(
-              offset: Offset(
-                -MediaQuery.sizeOf(context).width * 2,
-                -MediaQuery.sizeOf(context).height * 2,
-              ),
-              child: RepaintBoundary(
-                key: data[i]['globalKey'],
-                child: data[i]['widget'],
-              ),
-            ),
-        ],
-      );
-    }
     return WillPopScope(
       onWillPop: () async {
         setState(() {
@@ -116,20 +60,46 @@ class _BuildMapWidgetState extends State<BuildMapWidget> {
       },
       child: Visibility(
         visible: !_isPoped,
-        child: GoogleMap(
-          mapType: MapType.normal,
-          markers: _markers.values.toSet(),
-          myLocationEnabled: true,
-          zoomControlsEnabled: false,
-          myLocationButtonEnabled: false,
-          initialCameraPosition: widget.cameraPosition,
-          onMapCreated: (GoogleMapController controller) {
-            // if (Theme.of(context).brightness == Brightness.dark) {
-            //   controller.setMapStyle(Constants.googleMapDarkTheme);
-            // }
-            widget.mapController.complete(controller);
-          },
-        ),
+        child: CustomGoogleMapMarkerBuilder(
+            customMarkers: [
+              MarkerData(
+                marker: Marker(
+                    markerId: MarkerId(data[0]['id']),
+                    position: data[0]['position']),
+                child: data[0]['widget'],
+              ),
+              MarkerData(
+                marker: Marker(
+                    markerId: MarkerId(data[1]['id']),
+                    position: data[1]['position']),
+                child: data[1]['widget'],
+              ),
+            ],
+            builder: (BuildContext context, Set<Marker>? markers) {
+              if (markers == null) {
+                return const SizedBox.shrink();
+              }
+              return GoogleMap(
+                mapType: MapType.normal,
+                // markers: _markers.values.toSet(),
+                markers: markers,
+                myLocationEnabled: true,
+                zoomControlsEnabled: false,
+                myLocationButtonEnabled: false,
+                initialCameraPosition: widget.cameraPosition,
+                onMapCreated: (GoogleMapController controller) {
+                  // if (Theme.of(context).brightness == Brightness.dark) {
+                  //   controller.setMapStyle(Constants.googleMapDarkTheme);
+                  // }
+                  if (!isMapCompleted) {
+                    setState(() {
+                      isMapCompleted = true;
+                    });
+                    widget.mapController.complete(controller);
+                  }
+                },
+              );
+            }),
       ),
     );
   }

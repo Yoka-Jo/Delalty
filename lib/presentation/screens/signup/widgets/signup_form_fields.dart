@@ -51,7 +51,7 @@ class SignupFormFields extends StatelessWidget {
               onChangedFunction: cubit.onPasswordChanged,
               hintTxt: AppStrings.password,
               errorTxt: passwordError,
-              isPassword: state.isPasswordShown,
+              isPassword: !state.isPasswordShown,
               suffixIcon: InkWell(
                 onTap: cubit.togglePasswordShown,
                 child: state.isPasswordShown

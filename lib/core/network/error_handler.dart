@@ -1,6 +1,8 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../../core/resources/strings_manager.dart';
+import '../resources/strings_manager.dart';
 import 'failure.dart';
 
 class ErrorHandler implements Exception {
@@ -28,9 +30,18 @@ class ErrorHandler implements Exception {
         if (error.response != null &&
             error.response?.statusCode != null &&
             error.response?.statusMessage != null) {
+          final errorMap = error.response!.data['error'];
+          if (errorMap == null ||
+              errorMap.runtimeType.toString() != "_Map<String, dynamic>") {
+            return Failure(
+              code: error.response!.statusCode!,
+              message: error.response!.data['error'] ??
+                  error.response!.statusMessage!,
+            );
+          }
           return Failure(
             code: error.response!.statusCode!,
-            message: error.response!.statusMessage!,
+            message: json.encode({'error': errorMap}),
           );
         } else {
           return DataSource.defaultt.getFailure();

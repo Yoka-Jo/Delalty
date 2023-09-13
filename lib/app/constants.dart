@@ -12,6 +12,11 @@ class Constants {
   static const String messageAlertsSwitchKey = 'messageAlertsSwitchKey';
   static const String seePhoneNumberSwitchKey = 'seePhoneNumberSwitchKey';
   static const String baseUrl = 'https://laravel.delalty.com/api/';
-  static const String registerPath = 'register';
-  static const String loginPath = 'login';
+  static const String registerPath = 'auth/register';
+  static const String loginPath = 'auth/login';
+  static const String facebookLoginPath = 'auth/facebook/redirect';
+  static const String googleLoginPath = 'auth/google/redirect';
+  static const String appleLoginPath = 'auth/apple/redirect';
+  static const String verifyPhonePath = 'auth/verify-phone';
+  static const String getCategoryPath = 'categories/{id}';
 }

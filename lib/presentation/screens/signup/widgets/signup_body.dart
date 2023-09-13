@@ -14,8 +14,7 @@ class SignupBody extends StatelessWidget {
               msg: state.error!, state: ToastStates.error);
         }
         if (state.isSuccess) {
-          context.router.replace(LoginRoute(
-              email: state.email.value, password: state.password.value));
+          context.router.replace(const AppRoute());
         }
       },
       child: SafeArea(

@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import '../core/network/failure.dart';
+
 extension NonNullString on String? {
   String orEmpty() {
     if (this == null) {
@@ -36,4 +40,13 @@ extension NonNullBool on bool? {
       return this!;
     }
   }
+}
+
+extension GetErrorFromBadRequest on Failure {
+  String getErrors() =>
+      (json.decode(message)['error'] as Map<String, dynamic>).values.map(
+        (e) {
+          return (e as List).map((e) => e).join('\n');
+        },
+      ).join('\n');
 }

@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:delalty/core/user_secure_storage.dart';
 import 'package:delalty/di.dart';
 
-import '../../../core/resources/strings_manager.dart';
+import '../../resources/strings_manager.dart';
 
 class AppInterceptors extends Interceptor {
   final Dio client;

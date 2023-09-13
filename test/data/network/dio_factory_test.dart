@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:delalty/data/network/dio_factory.dart';
+import 'package:delalty/core/network/dio_factory.dart';
 
 void main() {
   late DioFactory dioFactory;

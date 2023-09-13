@@ -1,4 +1,5 @@
-import 'package:delalty/data/network/requests.dart';
+import 'package:delalty/app/extensions.dart';
+import 'package:delalty/data/requests/requests.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -91,6 +92,17 @@ class SignupCubit extends Cubit<SignupState> {
       phone,
       password,
     ]);
+    usernameError = name.error?.value.tr();
+    emailError = email.error?.value.tr();
+    phoneError = phone.error?.value.tr();
+    passwordError = password.error?.value.tr();
+
+    emit(state.copyWith(
+      username: name,
+      email: email,
+      phone: phone,
+      password: password,
+    ));
     btnKey.currentState!.animateForward();
     if (isValid) {
       final response = await _useCase(
@@ -99,12 +111,12 @@ class SignupCubit extends Cubit<SignupState> {
           email: email.value,
           phone: phone.value,
           password: password.value,
-          passwordConfirmation: password.value,
         ),
       );
 
       response.fold((failure) {
-        emit(state.copyWith(error: failure.message));
+        final error = failure.getErrors();
+        emit(state.copyWith(error: error));
         btnKey.currentState!.animateReverse();
       }, (_) {
         emit(state.copyWith(isSuccess: true));
