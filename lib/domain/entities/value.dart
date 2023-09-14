@@ -1,6 +1,6 @@
 class Value {
   final String inputId;
-  final String value;
+  final dynamic value;
 
   Value({
     required this.inputId,

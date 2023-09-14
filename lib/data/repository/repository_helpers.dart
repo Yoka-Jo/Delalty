@@ -7,6 +7,7 @@ import '../../app/check_internet_connection.dart';
 import '../../core/models/responses.dart';
 import '../../core/network/error_handler.dart';
 import '../../core/network/failure.dart';
+import '../../domain/entities/no_data.dart';
 
 class RepositoryHelpers {
   Future<Either<Failure, T>> callApi<T>(
@@ -40,7 +41,7 @@ class RepositoryHelpers {
         return _returnFailureIfStatusCodeIsNotSuccess<T>(result);
       }
     } catch (e) {
-      // rethrow;
+      rethrow;
       log("||||||||||||||||||||ERROR FROM REPOSITORY CALLAPI||||||||||||||||||||");
       log(e.toString());
       return Left(ErrorHandler.handle(e).failure);
@@ -71,6 +72,9 @@ class RepositoryHelpers {
   ) async {
     late final dynamic domainValue;
     dynamic data = result.data;
+    if (data == null) {
+      return Right(const NoData() as T);
+    }
     if (data is List) {
       if (convertToAppropriateList == null) {
         return Right(data as T);

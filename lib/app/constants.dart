@@ -28,4 +28,5 @@ class Constants {
   static const String getFavoritesPath = 'favorites';
   static const String getUserDataPath = 'users/{id}';
   static const String getProductForCategoryPath = 'search';
+  static const String removeProductFromFavoritesPath = 'favorites/{product_id}';
 }

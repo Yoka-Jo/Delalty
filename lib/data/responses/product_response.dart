@@ -2,12 +2,12 @@ part of '../../core/models/responses.dart';
 
 @JsonSerializable(createToJson: false)
 class ProductResponse extends Equatable implements DataResponse<Product> {
-  final int? id;
+  final String id;
   final String? title;
   final String? description;
-  final double? price;
+  final dynamic price;
   @JsonKey(name: 'category_id')
-  final int? categoryId;
+  final String? categoryId;
   final List<ValueResponse>? values;
   @JsonKey(name: 'images')
   final List<ProductImageResponse>? images;
@@ -32,11 +32,11 @@ class ProductResponse extends Equatable implements DataResponse<Product> {
   @override
   Product toDomain() {
     return Product(
-      id: id.orZero(),
+      id: id,
       title: title.orEmpty(),
       description: description.orEmpty(),
-      price: price.orZero(),
-      categoryId: categoryId.orZero(),
+      price: price,
+      categoryId: categoryId.orEmpty(),
       values: values?.map((item) => item.toDomain()).toList() ?? [],
       images: images?.map((item) => item.toDomain()).toList() ?? [],
       seller: seller?.toDomain(),

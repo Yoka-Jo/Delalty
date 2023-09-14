@@ -48,9 +48,9 @@ abstract class AppServiceClient {
     @Part() File file,
   );
   @POST(Constants.addProductToFavoritesPath)
-  Future<HttpResponse<NoDataResponse>> addProductToFavorites(
+  Future<HttpResponse<void>> addProductToFavorites(
     @Body() AddProductToFavoritesRequest addProductToFavoritesRequest,
-    @Path() String productId,
+    @Path('product_id') String productId,
   );
   @GET(Constants.getFavoritesPath)
   Future<HttpResponse<List<ProductResponse>>> getFavorites();
@@ -59,7 +59,11 @@ abstract class AppServiceClient {
     @Path() String id,
   );
   @GET(Constants.getProductForCategoryPath)
-  Future<HttpResponse<List<ProductResponse>>> getProductForCategory(
+  Future<HttpResponse<CategoryProductsResponse>> getProductForCategory(
     @Query('category_id') String categoryId,
+  );
+  @DELETE(Constants.removeProductFromFavoritesPath)
+  Future<HttpResponse<void>> removeProductFromFavorites(
+    @Path('product_id') String productId,
   );
 }

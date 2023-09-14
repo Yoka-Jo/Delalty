@@ -4,7 +4,7 @@ part of '../../core/models/responses.dart';
 class ValueResponse extends Equatable implements DataResponse<Value> {
   @JsonKey(name: 'input_id')
   final String? inputId;
-  final String? value;
+  final dynamic value;
 
   const ValueResponse({
     required this.inputId,
@@ -13,7 +13,7 @@ class ValueResponse extends Equatable implements DataResponse<Value> {
 
   @override
   Value toDomain() {
-    return Value(inputId: inputId.orEmpty(), value: value.orEmpty());
+    return Value(inputId: inputId.orEmpty(), value: value);
   }
 
   @override

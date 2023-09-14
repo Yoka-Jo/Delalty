@@ -1,11 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/annotations.dart';
+import 'package:delalty/presentation/screens/favorite/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:delalty/core/common/components/widgets/appbar_widget.dart';
+import 'package:delalty/core/common/components/widgets/centered_circular_progress_indicator.dart';
 import 'package:delalty/core/common/components/widgets/product_card/product_card_widget.dart';
+import 'package:delalty/core/common/components/widgets/simple_text.dart';
 import 'package:delalty/core/resources/strings_manager.dart';
+import 'package:delalty/presentation/screens/favorite/cubit/favorite_cubit.dart';
 
 import '../../../core/common/components/widgets/default_text_form_field.dart';
 import '../../../core/common/components/widgets/form_fields_icons/search_icon.dart';
@@ -17,44 +22,74 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const AppBarWidget(
-        title: AppStrings.favorite,
-        iconColor: AppColors.grey3,
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-        child: Column(
-          children: [
-            DefaultTextFormField(
-              inputType: TextInputType.text,
-              enableColor: AppColors.searchFormFieldBorderColor,
-              focusColor: AppColors.searchFormFieldBorderColor,
-              textInputAction: TextInputAction.done,
-              filledColor: AppColors.searchFormFieldColor,
-              hintTxt: AppStrings.search,
-              prefixIcon: const SearchIcon(),
-            ),
-            SizedBox(height: 17.h),
-            Expanded(
-              child: ListView.separated(
-                itemBuilder: (context, index) {
-                  return const AspectRatio(
-                    aspectRatio: 1.7,
-                    child: ProductCardWidget(
-                      isFavorite: true,
-                      title:
-                          'For sale villa with swimming pool in Sheikh Zayed',
+    return Builder(builder: (context) {
+      return Scaffold(
+        appBar: const AppBarWidget(
+          title: AppStrings.favorite,
+          iconColor: AppColors.grey3,
+        ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+          child: Column(
+            children: [
+              DefaultTextFormField(
+                inputType: TextInputType.text,
+                enableColor: AppColors.searchFormFieldBorderColor,
+                focusColor: AppColors.searchFormFieldBorderColor,
+                textInputAction: TextInputAction.done,
+                filledColor: AppColors.searchFormFieldColor,
+                hintTxt: AppStrings.search,
+                prefixIcon: const SearchIcon(),
+                onChangedFunction: FavoriteCubit.get(context).searchedFavorites,
+              ),
+              SizedBox(height: 17.h),
+              BlocBuilder<FavoriteCubit, FavoriteState>(
+                builder: (context, state) {
+                  if (state is GetFavoritesLoading) {
+                    return const Expanded(
+                        child: CenteredCircularProgressIndicaotr());
+                  }
+
+                  if (state is GetFavoritesFailure) {
+                    return Expanded(
+                      child: Center(
+                        child: SimpleText(state.message,
+                            textStyle: TextStyleEnum.montserratMedium,
+                            fontSize: 20.sp),
+                      ),
+                    );
+                  }
+                  final products = state is GetSearchedFavoritesSuccess
+                      ? FavoriteCubit.get(context).searchedProducts
+                      : FavoriteCubit.get(context).products;
+                  if (products.isEmpty &&
+                      state is! GetSearchedFavoritesSuccess) {
+                    return const NoFavoriteWidget();
+                  }
+                  return Expanded(
+                    child: ListView.separated(
+                      itemBuilder: (context, i) {
+                        return AspectRatio(
+                          aspectRatio: 1.7,
+                          child: ProductCardWidget(
+                            isFavorite: true,
+                            title: products[i].title,
+                            onFavoriteIconTap: () => FavoriteCubit.get(context)
+                                .toggleFavorite(products[i]),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) =>
+                          SizedBox(height: 15.h),
+                      itemCount: products.length,
                     ),
                   );
                 },
-                separatorBuilder: (context, index) => SizedBox(height: 15.h),
-                itemCount: 10,
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -1,11 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/auto_route.dart';
+import 'package:delalty/presentation/screens/favorite/cubit/favorite_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:delalty/core/common/components/widgets/simple_text.dart';
 
+import '../../../../../domain/entities/product.dart';
 import '../../../../resources/assets_manager.dart';
 import '../../../../resources/colors_manager.dart';
 import '../../../../resources/routes/app_router.dart';
@@ -14,6 +17,7 @@ import '../cashed_image_widget.dart';
 import 'product_card_shimmer.dart';
 
 class ProductCardWidget extends StatelessWidget {
+  final Product? product;
   final String? image;
   final String title;
   final double? titleSize;
@@ -30,9 +34,11 @@ class ProductCardWidget extends StatelessWidget {
   final double? height;
   final int? days;
   final Widget details;
+  final VoidCallback? onFavoriteIconTap;
 
   const ProductCardWidget({
     Key? key,
+    this.product,
     this.image,
     required this.title,
     this.titleSize,
@@ -49,6 +55,7 @@ class ProductCardWidget extends StatelessWidget {
     this.height,
     this.days = 2,
     this.details = const SizedBox.shrink(),
+    this.onFavoriteIconTap,
   }) : super(key: key);
 
   @override
@@ -85,23 +92,34 @@ class ProductCardWidget extends StatelessWidget {
             ),
           ),
           if (showfavouriteButton)
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                padding: EdgeInsets.all(7.r),
-                margin: EdgeInsets.all(5.h),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                  border: Border.all(
-                    width: 1,
-                    color: Colors.black.withOpacity(0.2),
+            BlocBuilder<FavoriteCubit, FavoriteState>(
+              builder: (context, state) {
+                return InkWell(
+                  onTap: () {
+                    FavoriteCubit.get(context).toggleFavorite(product!);
+                  },
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      padding: EdgeInsets.all(7.r),
+                      margin: EdgeInsets.all(5.h),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                        border: Border.all(
+                          width: 1,
+                          color: Colors.black.withOpacity(0.2),
+                        ),
+                      ),
+                      child: SvgPicture.asset(
+                        FavoriteCubit.get(context).isFavorite(product!)
+                            ? ImageAssets.favoriteFull
+                            : ImageAssets.favourite,
+                      ),
+                    ),
                   ),
-                ),
-                child: SvgPicture.asset(
-                  isFavorite ? ImageAssets.favoriteFull : ImageAssets.favourite,
-                ),
-              ),
+                );
+              },
             ),
           Positioned(
             bottom: 0,

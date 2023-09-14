@@ -10,14 +10,14 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:delalty/core/app_prefs/app_prefs.dart' as _i16;
-import 'package:delalty/core/app_prefs/shared_prefs_injectable.dart' as _i36;
-import 'package:delalty/core/network/dio_factory.dart' as _i35;
+import 'package:delalty/core/app_prefs/shared_prefs_injectable.dart' as _i38;
+import 'package:delalty/core/network/dio_factory.dart' as _i37;
 import 'package:delalty/core/user_secure_storage.dart' as _i12;
 import 'package:delalty/data/datasources/local_datasource/local_datasource.dart'
     as _i28;
 import 'package:delalty/data/datasources/remote_datasource/app_api.dart' as _i4;
 import 'package:delalty/data/datasources/remote_datasource/remote_modules.dart'
-    as _i34;
+    as _i36;
 import 'package:delalty/data/repository/repository.dart' as _i9;
 import 'package:delalty/domain/repository/repository.dart' as _i8;
 import 'package:delalty/domain/usecases/add_product_to_favorites_usecase.dart'
@@ -36,20 +36,24 @@ import 'package:delalty/domain/usecases/get_user_data_usecase.dart' as _i25;
 import 'package:delalty/domain/usecases/google_login_usecase.dart' as _i26;
 import 'package:delalty/domain/usecases/login_usecase.dart' as _i29;
 import 'package:delalty/domain/usecases/register_usecase.dart' as _i30;
+import 'package:delalty/domain/usecases/remove_product_from_favorites_usecase.dart'
+    as _i31;
 import 'package:delalty/domain/usecases/verify_phone_usecase.dart' as _i14;
 import 'package:delalty/presentation/screens/all_departments/cubit/all_departments_cubit.dart'
     as _i3;
-import 'package:delalty/presentation/screens/app/cubit/app_cubit.dart' as _i32;
+import 'package:delalty/presentation/screens/app/cubit/app_cubit.dart' as _i33;
 import 'package:delalty/presentation/screens/app/pages/home/cubit/home_cubit.dart'
     as _i27;
+import 'package:delalty/presentation/screens/favorite/cubit/favorite_cubit.dart'
+    as _i34;
 import 'package:delalty/presentation/screens/login/cubit/login_cubit.dart'
-    as _i33;
+    as _i35;
 import 'package:delalty/presentation/screens/property_filter/cubit/property_filter_cubit.dart'
     as _i7;
 import 'package:delalty/presentation/screens/search/cubit/search_cubit.dart'
     as _i10;
 import 'package:delalty/presentation/screens/signup/cubit/signup_cubit.dart'
-    as _i31;
+    as _i32;
 import 'package:delalty/presentation/screens/verification_code/cubit/verification_code_cubit.dart'
     as _i13;
 import 'package:dio/dio.dart' as _i5;
@@ -130,21 +134,28 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i29.LoginUseCase(gh<_i8.Repository>()));
     gh.lazySingleton<_i30.RegisterUseCase>(
         () => _i30.RegisterUseCase(gh<_i8.Repository>()));
-    gh.factory<_i31.SignupCubit>(
-        () => _i31.SignupCubit(gh<_i30.RegisterUseCase>()));
-    gh.factory<_i32.AppCubit>(
-        () => _i32.AppCubit(gh<_i25.GetUserDataUseCase>()));
-    gh.factory<_i33.LoginCubit>(() => _i33.LoginCubit(gh<_i29.LoginUseCase>()));
+    gh.lazySingleton<_i31.RemoveProductFromFavoritesUseCase>(
+        () => _i31.RemoveProductFromFavoritesUseCase(gh<_i8.Repository>()));
+    gh.factory<_i32.SignupCubit>(
+        () => _i32.SignupCubit(gh<_i30.RegisterUseCase>()));
+    gh.factory<_i33.AppCubit>(
+        () => _i33.AppCubit(gh<_i25.GetUserDataUseCase>()));
+    gh.factory<_i34.FavoriteCubit>(() => _i34.FavoriteCubit(
+          gh<_i23.GetFavoritesUseCase>(),
+          gh<_i15.AddProductToFavoritesUseCase>(),
+          gh<_i31.RemoveProductFromFavoritesUseCase>(),
+        ));
+    gh.factory<_i35.LoginCubit>(() => _i35.LoginCubit(gh<_i29.LoginUseCase>()));
     return this;
   }
 }
 
 class _$InjectableAppServiceClientModule
-    extends _i34.InjectableAppServiceClientModule {}
+    extends _i36.InjectableAppServiceClientModule {}
 
-class _$InjectableDioModule extends _i35.InjectableDioModule {}
+class _$InjectableDioModule extends _i37.InjectableDioModule {}
 
 class _$InjectableUserSecureStorageModule
     extends _i12.InjectableUserSecureStorageModule {}
 
-class _$SharedPrefsInjectableModule extends _i36.SharedPrefsInjectableModule {}
+class _$SharedPrefsInjectableModule extends _i38.SharedPrefsInjectableModule {}

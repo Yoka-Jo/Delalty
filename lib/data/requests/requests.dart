@@ -16,3 +16,5 @@ part 'add_product_to_favorites_request.dart';
 part 'get_user_data_request.dart';
 
 part 'get_products_for_category_request.dart';
+
+part 'remove_product_from_favorites_request.dart';

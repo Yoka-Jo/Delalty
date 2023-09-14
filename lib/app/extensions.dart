@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 import '../core/network/failure.dart';
 
 extension NonNullString on String? {
@@ -53,5 +55,26 @@ extension GetErrorFromBadRequest on Failure {
     } catch (e) {
       return null;
     }
+  }
+}
+
+extension ScrollControllerExtensions on ScrollController {
+  void onScrollEndsListener(
+    final void Function() callback, {
+    double offset = 0,
+  }) {
+    addListener(() {
+      if (position.atEdge) {
+        if (position.pixels != 0) {
+          callback();
+        }
+      }
+      // final maxScroll = position.maxScrollExtent;
+      // final currentScroll = position.pixels - offset;
+
+      // if (currentScroll == maxScroll) {
+      //   callback();
+      // }
+    });
   }
 }

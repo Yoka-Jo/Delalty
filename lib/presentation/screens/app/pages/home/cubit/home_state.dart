@@ -25,6 +25,16 @@ final class HomeGetBestCategoriesFailure extends HomeState {
   const HomeGetBestCategoriesFailure(this.message);
 }
 
+final class HomeGetProductsForCategoriesLoading extends HomeState {}
+
+final class HomeGetProductsForCategoriesSuccess extends HomeState {}
+
+final class HomeGetProductsForCategoriesFailure extends HomeState {
+  final String message;
+
+  const HomeGetProductsForCategoriesFailure(this.message);
+}
+
 final class HomeGetCategoryByIdFailure extends HomeState {
   final String message;
 

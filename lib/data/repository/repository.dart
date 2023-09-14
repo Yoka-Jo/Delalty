@@ -1,3 +1,4 @@
+import '../../domain/entities/category_products.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/no_data.dart';
 import 'dart:io';
@@ -147,7 +148,7 @@ class RepositoryImpl implements Repository {
         addProductToFavoritesRequest,
         addProductToFavoritesRequest.productId,
       ),
-      statusCode: 200,
+      statusCode: 201,
     );
   }
 
@@ -156,6 +157,7 @@ class RepositoryImpl implements Repository {
     return _repositoryHelpers.callApi<List<Product>>(
       () => _appServiceClient.getFavorites(),
       statusCode: 200,
+      convertToAppropriateList: List<Product>.from,
     );
   }
 
@@ -172,12 +174,24 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  Future<Either<Failure, List<Product>>> getProductForCategory(
+  Future<Either<Failure, CategoryProducts>> getProductForCategory(
     GetProductsForCategoryRequest getProductForCategoryRequest,
   ) async {
-    return _repositoryHelpers.callApi<List<Product>>(
+    return _repositoryHelpers.callApi<CategoryProducts>(
       () => _appServiceClient.getProductForCategory(
         getProductForCategoryRequest.categoryId,
+      ),
+      statusCode: 200,
+    );
+  }
+
+  @override
+  Future<Either<Failure, NoData>> removeProductFromFavorites(
+    RemoveProductFromFavoritesRequest removeProductFromFavoritesRequest,
+  ) async {
+    return _repositoryHelpers.callApi<NoData>(
+      () => _appServiceClient.removeProductFromFavorites(
+        removeProductFromFavoritesRequest.productId,
       ),
       statusCode: 200,
     );

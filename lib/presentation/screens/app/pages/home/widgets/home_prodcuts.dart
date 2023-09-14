@@ -9,18 +9,24 @@ class HomeProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        final categories = HomeCubit.get(context).categories;
-        if (HomeCubit.get(context).categories == null) {
+        final cubit = HomeCubit.get(context);
+        final categories = cubit.categories;
+        if (cubit.categories == null) {
           return const CenteredCircularProgressIndicaotr();
         }
+        final itemCount = cubit.isGettingCategoriesProducts
+            ? (cubit.numberOfCategoriesToRetrieve * cubit.page) + 1
+            : (cubit.numberOfCategoriesToRetrieve * cubit.page);
         return ListView.separated(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             primary: false,
-            itemCount: 10,
+            itemCount: itemCount,
             separatorBuilder: (context, i) => SizedBox(height: 40.h),
             itemBuilder: (context, i) {
               final category = categories![i];
+              if (cubit.isGettingCategoriesProducts && i == itemCount - 1)
+                return CenteredCircularProgressIndicaotr();
               return Column(
                 children: [
                   Row(
@@ -53,15 +59,13 @@ class HomeProducts extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       reverse: true,
                       itemBuilder: (context, index) {
-                        final product = HomeCubit.get(context)
-                            .productsMap[category.id]?[index];
-                        print("_________skflksdnflkdsnlkfsnfls");
-                        print(HomeCubit.get(context).productsMap[category.id]);
+                        final product = cubit.productsMap[category.id]?[index];
                         return ProductCardWidget(
-                          isLoading: true,
+                          isLoading: cubit.productsMap[category.id] == null,
                           title: product?.title ?? '',
                           image: product?.mainImageId ?? '',
-                          price: product?.price ?? 0.0,
+                          price: /*product?.price ??*/ 0.0,
+                          product: product,
                           details: Row(
                             children: [
                               SimpleText(
@@ -95,18 +99,11 @@ class HomeProducts extends StatelessWidget {
                       },
                       separatorBuilder: (context, index) =>
                           SizedBox(width: 15.w),
-                      itemCount:
-                          (HomeCubit.get(context).productsMap[category.id] ==
-                                      null ||
-                                  (HomeCubit.get(context)
-                                              .productsMap[category.id]
-                                              ?.length ??
-                                          10) >
-                                      5)
-                              ? 5
-                              : HomeCubit.get(context)
-                                  .productsMap[category.id]!
-                                  .length,
+                      itemCount: (cubit.productsMap[category.id] == null ||
+                              (cubit.productsMap[category.id]?.length ?? 10) >
+                                  5)
+                          ? 5
+                          : cubit.productsMap[category.id]!.length,
                     ),
                   ),
                 ],

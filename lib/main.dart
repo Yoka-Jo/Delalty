@@ -12,6 +12,7 @@ import 'core/resources/theme/cubit/change_theme_cubit.dart';
 import 'di.dart';
 import 'firebase_options.dart';
 import 'presentation/screens/app/cubit/app_cubit.dart';
+import 'presentation/screens/favorite/cubit/favorite_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +35,9 @@ void main() async {
         ),
         BlocProvider(
           create: (_) => getIt<AppCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => getIt<FavoriteCubit>()..getFavorites(),
         ),
       ],
       child: EasyLocalization(

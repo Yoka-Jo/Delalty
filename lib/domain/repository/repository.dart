@@ -1,3 +1,4 @@
+import '../entities/category_products.dart';
 import '../entities/user.dart';
 import '../entities/no_data.dart';
 import '../entities/product.dart';
@@ -36,7 +37,10 @@ abstract class Repository {
   Future<Either<Failure, User>> getUserData(
     GetUserDataRequest getUserDataRequest,
   );
-  Future<Either<Failure, List<Product>>> getProductForCategory(
+  Future<Either<Failure, CategoryProducts>> getProductForCategory(
     GetProductsForCategoryRequest getProductForCategoryRequest,
+  );
+  Future<Either<Failure, NoData>> removeProductFromFavorites(
+    RemoveProductFromFavoritesRequest removeProductFromFavoritesRequest,
   );
 }

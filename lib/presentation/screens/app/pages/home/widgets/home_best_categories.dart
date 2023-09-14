@@ -19,8 +19,6 @@ class HomeBestCategories extends StatelessWidget {
         BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             final bestCategories = HomeCubit.get(context).bestCategories;
-            print(bestCategories);
-
             return GridView.count(
               crossAxisSpacing: 16.w,
               mainAxisSpacing: 12.h,

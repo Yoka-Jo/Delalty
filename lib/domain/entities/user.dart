@@ -1,9 +1,9 @@
 import 'user_image.dart';
 
 class User {
-  final int id;
+  final String id;
   final String name;
-  final UserImage? image;
+  final String? image;
   final bool isAdmin;
   final bool isCompany;
 

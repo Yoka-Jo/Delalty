@@ -3,11 +3,11 @@ import 'value.dart';
 import 'seller.dart';
 
 class Product {
-  final int id;
+  final String id;
   final String title;
   final String description;
-  final double price;
-  final int categoryId;
+  final dynamic price;
+  final String categoryId;
   final List<Value> values;
   final List<ProductImage> images;
   final Seller? seller;

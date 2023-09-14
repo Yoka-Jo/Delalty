@@ -18,6 +18,7 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'no_data.dart';
+import 'package:delalty/domain/entities/category_products.dart';
 
 part 'responses.g.dart';
 
@@ -38,6 +39,7 @@ part '../../data/responses/seller_response.dart';
 part '../../data/responses/user_response.dart';
 part '../../data/responses/user_image_response.dart';
 part '../../data/responses/best_categories_response.dart';
+part '../../data/responses/category_products_response.dart';
 
 abstract class DataResponse<T> {
   T toDomain();
@@ -50,6 +52,6 @@ class NoDataResponse implements DataResponse<NoData> {
   @override
   NoData toDomain() => const NoData();
 
-  factory NoDataResponse.fromJson(Map<String, dynamic> json) =>
-      _$NoDataResponseFromJson(json);
+  factory NoDataResponse.fromJson() =>
+      _$NoDataResponseFromJson({});
 }

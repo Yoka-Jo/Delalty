@@ -33,6 +33,9 @@ class HomeCubit extends Cubit<HomeState> {
   List<Category>? bestCategories;
   Map<String, List<Product>?> productsMap = {};
 
+  int get numberOfCategoriesToRetrieve => 5;
+  int page = 1;
+
   Future<void> _getCategories() async {
     final response = await _getCategoriesUseCase(NoParams());
     response.fold((l) {
@@ -70,8 +73,18 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  Future<void> _getCategoriesProducts() async {
-    for (int i = 0; i < (categories!.isEmpty ? categories!.length : 1); i++) {
+  bool isGettingCategoriesProducts = false;
+
+  Future<void> getCategoriesProducts() async {
+    isGettingCategoriesProducts = true;
+    emit(HomeGetProductsForCategoriesLoading());
+    int retrievalLength = (numberOfCategoriesToRetrieve * page);
+    for (int i = numberOfCategoriesToRetrieve * (page - 1);
+        i <
+            (categories!.length < retrievalLength
+                ? categories!.length
+                : retrievalLength);
+        i++) {
       emit(HomeInitial());
       final response = await _getProductForCategoryUseCase(
         GetProductsForCategoryRequest(
@@ -79,12 +92,15 @@ class HomeCubit extends Cubit<HomeState> {
         ),
       );
       response.fold((l) {
-        emit(HomeGetBestCategoriesFailure(l.message));
-      }, (products) {
-        productsMap[categories![i].id] = products;
-        emit(HomeGetBestCategoriesSuccess());
+        emit(HomeGetProductsForCategoriesFailure(l.message));
+      }, (data) {
+        productsMap[categories![i].id] = data.products;
+        emit(HomeGetProductsForCategoriesSuccess());
       });
     }
+    isGettingCategoriesProducts = false;
+
+    page++;
   }
 
   Future<void> getHomeData() async {
@@ -95,7 +111,7 @@ class HomeCubit extends Cubit<HomeState> {
       ],
     );
     if (categories != null) {
-      await _getCategoriesProducts();
+      await getCategoriesProducts();
     }
   }
 }

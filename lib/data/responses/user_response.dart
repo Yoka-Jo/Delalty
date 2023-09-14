@@ -2,9 +2,9 @@ part of '../../core/models/responses.dart';
 
 @JsonSerializable(createToJson: false)
 class UserResponse extends Equatable implements DataResponse<User> {
-  final int? id;
+  final String id;
   final String? name;
-  final UserImageResponse? image;
+  final String? image;
   @JsonKey(name: 'is_admin')
   final bool? isAdmin;
   @JsonKey(name: 'is_company')
@@ -21,9 +21,9 @@ class UserResponse extends Equatable implements DataResponse<User> {
   @override
   User toDomain() {
     return User(
-        id: id.orZero(),
+        id: id,
         name: name.orEmpty(),
-        image: image?.toDomain(),
+        image: image.orEmpty(),
         isAdmin: isAdmin.orFalse(),
         isCompany: isCompany.orFalse());
   }

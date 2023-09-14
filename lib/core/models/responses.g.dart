@@ -41,11 +41,11 @@ InputResponse _$InputResponseFromJson(Map<String, dynamic> json) =>
 
 ProductResponse _$ProductResponseFromJson(Map<String, dynamic> json) =>
     ProductResponse(
-      id: json['id'] as int?,
+      id: json['id'] as String,
       title: json['title'] as String?,
       description: json['description'] as String?,
-      price: (json['price'] as num?)?.toDouble(),
-      categoryId: json['category_id'] as int?,
+      price: json['price'],
+      categoryId: json['category_id'] as String?,
       values: (json['values'] as List<dynamic>?)
           ?.map((e) => ValueResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -62,7 +62,7 @@ ProductResponse _$ProductResponseFromJson(Map<String, dynamic> json) =>
 ValueResponse _$ValueResponseFromJson(Map<String, dynamic> json) =>
     ValueResponse(
       inputId: json['input_id'] as String?,
-      value: json['value'] as String?,
+      value: json['value'],
     );
 
 ProductImageResponse _$ProductImageResponseFromJson(
@@ -82,11 +82,9 @@ SellerResponse _$SellerResponseFromJson(Map<String, dynamic> json) =>
     );
 
 UserResponse _$UserResponseFromJson(Map<String, dynamic> json) => UserResponse(
-      id: json['id'] as int?,
+      id: json['id'] as String,
       name: json['name'] as String?,
-      image: json['image'] == null
-          ? null
-          : UserImageResponse.fromJson(json['image'] as Map<String, dynamic>),
+      image: json['image'] as String?,
       isAdmin: json['is_admin'] as bool?,
       isCompany: json['is_company'] as bool?,
     );
@@ -101,4 +99,13 @@ BestCategoriesResponse _$BestCategoriesResponseFromJson(
         Map<String, dynamic> json) =>
     BestCategoriesResponse(
       ids: (json['ids'] as List<dynamic>).map((e) => e as String).toList(),
+    );
+
+CategoryProductsResponse _$CategoryProductsResponseFromJson(
+        Map<String, dynamic> json) =>
+    CategoryProductsResponse(
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => ProductResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      total: json['total'] as int?,
     );

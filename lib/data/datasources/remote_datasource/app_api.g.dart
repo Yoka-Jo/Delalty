@@ -345,7 +345,7 @@ class _AppServiceClient implements AppServiceClient {
   }
 
   @override
-  Future<HttpResponse<NoDataResponse>> addProductToFavorites(
+  Future<HttpResponse<void>> addProductToFavorites(
     AddProductToFavoritesRequest addProductToFavoritesRequest,
     String productId,
   ) async {
@@ -354,15 +354,15 @@ class _AppServiceClient implements AppServiceClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(addProductToFavoritesRequest.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<NoDataResponse>>(Options(
+    final _result =
+        await _dio.fetch<void>(_setStreamType<HttpResponse<void>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'favorites/{product_id}',
+              'favorites/${productId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -371,8 +371,7 @@ class _AppServiceClient implements AppServiceClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = NoDataResponse.fromJson(_result.data!);
-    final httpResponse = HttpResponse(value, _result);
+    final httpResponse = HttpResponse(null, _result);
     return httpResponse;
   }
 
@@ -435,14 +434,14 @@ class _AppServiceClient implements AppServiceClient {
   }
 
   @override
-  Future<HttpResponse<List<ProductResponse>>> getProductForCategory(
+  Future<HttpResponse<CategoryProductsResponse>> getProductForCategory(
       String categoryId) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'category_id': categoryId};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<HttpResponse<List<ProductResponse>>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<CategoryProductsResponse>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -458,10 +457,36 @@ class _AppServiceClient implements AppServiceClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = _result.data!
-        .map((dynamic i) => ProductResponse.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = CategoryProductsResponse.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<void>> removeProductFromFavorites(
+      String productId) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result =
+        await _dio.fetch<void>(_setStreamType<HttpResponse<void>>(Options(
+      method: 'DELETE',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'favorites/${productId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final httpResponse = HttpResponse(null, _result);
     return httpResponse;
   }
 
