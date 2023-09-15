@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -48,12 +49,12 @@ class BuildButton extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SimpleText(
-                title,
+                title.tr(),
                 textStyle: TextStyleEnum.poppinsRegular,
                 fontSize: 18.sp,
               ),
               SimpleText(
-                subTitle,
+                subTitle.tr(),
                 textStyle: TextStyleEnum.poppinsLight,
                 fontSize: 12.sp,
                 color: AppColors.grey3,

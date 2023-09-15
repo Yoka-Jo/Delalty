@@ -12,18 +12,18 @@ class OnBoardingModel {
   });
 }
 
-const List<OnBoardingModel> models = [
-  OnBoardingModel(
+List<OnBoardingModel> models = [
+  const OnBoardingModel(
     title: AppStrings.onboardingTitle_1,
     body: AppStrings.onboardingBody_1,
     image: ImageAssets.onboarding_1,
   ),
-  OnBoardingModel(
+  const OnBoardingModel(
     title: AppStrings.onboardingTitle_2,
     body: AppStrings.onboardingBody_2,
     image: ImageAssets.onboarding_2,
   ),
-  OnBoardingModel(
+  const OnBoardingModel(
     title: AppStrings.onboardingTitle_3,
     body: AppStrings.onboardingBody_3,
     image: ImageAssets.onboarding_3,

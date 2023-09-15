@@ -10,7 +10,7 @@ class LoginCreateAccount extends StatelessWidget {
         context.router.replace(const SignupRoute());
       },
       child: SimpleText(
-        AppStrings.createAnAccount,
+        AppStrings.createAnAccount.tr(),
         textStyle: TextStyleEnum.poppinsMedium,
         fontSize: 18.sp,
         color: AppColors.primaryColor,

@@ -13,28 +13,28 @@ class CategoryModel {
 
 const List<CategoryModel> categories = [
   CategoryModel(title: AppStrings.all, image: ImageAssets.all),
-  CategoryModel(title: AppStrings.vehicles, image: ImageAssets.vehicles),
-  CategoryModel(title: AppStrings.mobiles, image: ImageAssets.mobiles),
-  CategoryModel(title: AppStrings.electronics, image: ImageAssets.electronics),
-  CategoryModel(title: AppStrings.furniture, image: ImageAssets.furniture),
+  CategoryModel(title: 'Vehicles', image: ImageAssets.vehicles),
+  CategoryModel(title: 'Mobiles', image: ImageAssets.mobiles),
+  CategoryModel(title: 'Electronics', image: ImageAssets.electronics),
+  CategoryModel(title: 'Furniture', image: ImageAssets.furniture),
 ];
 
 const List<CategoryModel> bestCategories = [
   CategoryModel(
-    title: AppStrings.vehicles,
+    title: 'Vehicles',
     image:
         'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   ),
   CategoryModel(
-      title: AppStrings.electronics,
+      title: 'Electronics',
       image:
           'https://images.pexels.com/photos/5825422/pexels-photo-5825422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
   CategoryModel(
-      title: AppStrings.realEstate,
+      title: 'Real Estate',
       image:
           'https://images.pexels.com/photos/210538/pexels-photo-210538.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
   CategoryModel(
-      title: AppStrings.mobiles,
+      title: 'Mobiles',
       image:
           'https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
 ];

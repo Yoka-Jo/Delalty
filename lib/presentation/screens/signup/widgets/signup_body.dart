@@ -11,10 +11,12 @@ class SignupBody extends StatelessWidget {
       listener: (context, state) {
         if (state.error != null) {
           SimpleToast.showSimpleToast(
-              msg: state.error!, state: ToastStates.error);
+              msg: state.error!,
+              state: ToastStates.error,
+              toastLength: Toast.LENGTH_LONG);
         }
         if (state.isSuccess) {
-          context.router.replace(const AppRoute());
+          context.router.replace(const VerificationCodeRoute());
         }
       },
       child: SafeArea(

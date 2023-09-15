@@ -1,4 +1,5 @@
 import 'package:delalty/core/common/components/widgets/simple_text.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,7 +25,7 @@ class OrDividerWidget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 4.w),
             child: SimpleText(
-              AppStrings.or,
+              AppStrings.or.tr(),
               textStyle: TextStyleEnum.poppinsRegular,
               fontSize: 17.sp,
             ),

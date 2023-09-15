@@ -8,7 +8,7 @@ class ChatTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleText(
-      AppStrings.chat,
+      AppStrings.chat.tr(),
       textStyle: TextStyleEnum.poppinsMedium,
       fontSize: 17.sp,
       color: Colors.white,

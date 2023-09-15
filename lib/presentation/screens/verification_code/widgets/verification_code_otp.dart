@@ -38,7 +38,7 @@ class VerificationCodeOtp extends StatelessWidget {
           animationDuration: const Duration(milliseconds: 300),
           enableActiveFill: true,
           errorAnimationController: cubit.errorAnimationController,
-          onCompleted: (code) => cubit.onVerify(code),
+          onCompleted: (code) => cubit.onVerify(code, context),
           beforeTextPaste: (text) {
             return true;
           },

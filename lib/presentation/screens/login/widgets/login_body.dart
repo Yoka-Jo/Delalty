@@ -15,10 +15,19 @@ class LoginBody extends StatelessWidget {
       listener: (context, state) {
         if (state.error != null) {
           SimpleToast.showSimpleToast(
-              msg: state.error!, state: ToastStates.error);
+            msg: state.error!,
+            state: ToastStates.error,
+          );
         }
         if (state.isSuccess) {
-          context.router.replace(const AppRoute());
+          if (LoginCubit.get(context).authData.phoneStatus != 'VERIFIED') {
+            context.router.replace(const VerificationCodeRoute());
+          } else if (!LoginCubit.get(context).authData.verifiedEmail) {
+            SimpleToast.showSimpleToast(
+              msg: AppStrings.pleaseVerifyYourEmail.tr(),
+              state: ToastStates.error,
+            );
+          }
         }
       },
       child: SafeArea(

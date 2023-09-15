@@ -10,21 +10,21 @@ class LoginTitle extends StatelessWidget {
       children: [
         const SizedBox(width: double.infinity),
         SimpleText(
-          AppStrings.appName,
+          AppStrings.appName.tr(),
           textStyle: TextStyleEnum.montserratExtraBold,
           fontSize: 30.sp,
           color: Colors.white,
         ),
         SizedBox(height: 12.h),
         SimpleText(
-          AppStrings.login,
+          AppStrings.login.tr(),
           textStyle: TextStyleEnum.montserratExtraBold,
           fontSize: 25.sp,
           color: Colors.white,
         ),
         SizedBox(height: 12.h),
         SimpleText(
-          AppStrings.startBuyingAndSellingThings,
+          AppStrings.startBuyingAndSellingThings.tr(),
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 18.sp,
           color: Colors.white,

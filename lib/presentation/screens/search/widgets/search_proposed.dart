@@ -11,7 +11,7 @@ class SearchProposed extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SimpleText(
-          AppStrings.proposed,
+          AppStrings.proposed.tr(),
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 17.sp,
         ),

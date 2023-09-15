@@ -196,4 +196,16 @@ class RepositoryImpl implements Repository {
       statusCode: 200,
     );
   }
+
+  @override
+  Future<Either<Failure, Product>> getProduct(
+    GetProductRequest getProductRequest,
+  ) async {
+    return _repositoryHelpers.callApi<Product>(
+      () => _appServiceClient.getProduct(
+        getProductRequest.id,
+      ),
+      statusCode: 200,
+    );
+  }
 }

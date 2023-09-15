@@ -6,6 +6,7 @@ import 'package:delalty/data/datasources/local_datasource/local_datasource.dart'
 import 'package:delalty/di.dart';
 import 'package:delalty/presentation/screens/onboarding/cubit/onboarding_cubit.dart';
 import 'package:delalty/presentation/screens/onboarding/widgets/widgets.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,14 +53,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       children: [
                         Image.asset(model.image, fit: BoxFit.cover),
                         SimpleText(
-                          model.title,
+                          model.title.tr(),
                           textStyle: TextStyleEnum.poppinsSemiBold,
                           fontSize: 25.sp,
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 17.h),
                         SimpleText(
-                          model.body,
+                          model.body.tr(),
                           textStyle: TextStyleEnum.poppinsLight,
                           fontSize: 18.sp,
                           textAlign: TextAlign.center,

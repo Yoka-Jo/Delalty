@@ -64,17 +64,17 @@ extension ScrollControllerExtensions on ScrollController {
     double offset = 0,
   }) {
     addListener(() {
-      if (position.atEdge) {
-        if (position.pixels != 0) {
-          callback();
-        }
-      }
-      // final maxScroll = position.maxScrollExtent;
-      // final currentScroll = position.pixels - offset;
-
-      // if (currentScroll == maxScroll) {
-      //   callback();
+      // if (position.atEdge) {
+      //   if (position.pixels != 0) {
+      //     callback();
+      //   }
       // }
+      final maxScroll = position.maxScrollExtent;
+      final currentScroll = position.pixels - offset;
+
+      if (currentScroll == maxScroll) {
+        callback();
+      }
     });
   }
 }

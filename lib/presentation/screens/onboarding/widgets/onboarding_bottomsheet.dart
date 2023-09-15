@@ -35,11 +35,13 @@ class _OnBoardingBottomSheetState extends State<OnBoardingBottomSheet> {
             },
           ),
           Align(
-            alignment: Alignment.centerRight,
+            alignment: context.locale == arabicLocal
+                ? Alignment.centerLeft
+                : Alignment.centerRight,
             child: InkWell(
               onTap: widget.onTap,
               child: Container(
-                margin: EdgeInsets.only(right: 16.w, bottom: 30.h),
+                margin: EdgeInsets.only(right: 16.w, bottom: 30.h, left: 16.w),
                 height: 50.w,
                 width: 50.w,
                 decoration: BoxDecoration(

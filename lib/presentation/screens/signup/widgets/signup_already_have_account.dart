@@ -15,12 +15,12 @@ class SignupAlreadyHaveAccount extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SimpleText(
-            AppStrings.alreadyHaveAccount,
+            AppStrings.alreadyHaveAccount.tr(),
             textStyle: TextStyleEnum.poppinsMedium,
             fontSize: 16.sp,
           ),
           SimpleText(
-            " ${AppStrings.signin}",
+            " ${AppStrings.signin.tr()}",
             textStyle: TextStyleEnum.poppinsMedium,
             fontSize: 16.sp,
             color: AppColors.primaryColor,

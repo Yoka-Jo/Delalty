@@ -9,6 +9,7 @@ import 'package:delalty/core/resources/routes/app_router.dart';
 import 'package:delalty/core/resources/strings_manager.dart';
 import 'package:delalty/core/user_secure_storage.dart';
 import 'package:delalty/di.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:auto_route/auto_route.dart';
@@ -39,8 +40,8 @@ class MorePage extends StatelessWidget {
       child: Column(
         children: [
           AppBar(
-            title: const Text(
-              AppStrings.more,
+            title: Text(
+              AppStrings.more.tr(),
             ),
             centerTitle: true,
           ),

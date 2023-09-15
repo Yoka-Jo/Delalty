@@ -11,13 +11,13 @@ class HomeExploreCategoriesAndWatchMore extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SimpleText(
-          AppStrings.exploreCategories,
+          AppStrings.exploreCategories.tr(),
           textStyle: TextStyleEnum.montserratMedium,
           fontSize: 16.sp,
           color: Colors.white,
         ),
         SimpleText(
-          AppStrings.watchMore,
+          AppStrings.watchMore.tr(),
           textStyle: TextStyleEnum.montserratRegular,
           fontSize: 14.sp,
           color: Colors.white,

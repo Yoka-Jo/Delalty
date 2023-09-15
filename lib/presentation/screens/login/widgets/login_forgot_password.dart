@@ -8,7 +8,7 @@ class LoginForgotPassword extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: SimpleText(
-        AppStrings.forgotPassword,
+        AppStrings.forgotPassword.tr(),
         textStyle: TextStyleEnum.montserratRegular,
         fontSize: 15.sp,
         color: AppColors.primaryColor,

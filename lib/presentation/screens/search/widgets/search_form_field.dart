@@ -19,7 +19,7 @@ class SearchFormField extends StatelessWidget {
               focusColor: AppColors.searchFormFieldBorderColor,
               textInputAction: TextInputAction.done,
               filledColor: AppColors.searchFormFieldColor,
-              hintTxt: AppStrings.search,
+              hintTxt: AppStrings.search.tr(),
               onChangedFunction: cubit.onSearchChange,
               prefixIcon: const SearchIcon(),
               suffixIcon: cubit.isUserSearching

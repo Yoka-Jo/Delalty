@@ -12,7 +12,7 @@ class HomeTrendingCategories extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SimpleText(
-          AppStrings.trendingProducts,
+          AppStrings.trendingProducts.tr(),
           textStyle: TextStyleEnum.montserratMedium,
           fontSize: 16.sp,
         ),
@@ -36,7 +36,7 @@ class HomeTrendingCategories extends StatelessWidget {
                   context.router.push(
                     ViewProductSectionRoute(
                       title: category.title,
-                      isRealEstate: category.title == AppStrings.realEstate,
+                      isRealEstate: false,
                     ),
                   );
                 },

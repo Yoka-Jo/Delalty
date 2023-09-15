@@ -22,7 +22,7 @@ class HomeAppBar extends StatelessWidget {
         Column(
           children: [
             SimpleText(
-              AppStrings.location,
+              AppStrings.location.tr(),
               textStyle: TextStyleEnum.poppinsRegular,
               fontSize: 10.sp,
               color: Colors.white,

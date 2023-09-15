@@ -23,10 +23,11 @@ class SimpleToast {
     Color? color,
     Color? textColor,
     ToastStates state = ToastStates.error,
+    Toast toastLength = Toast.LENGTH_SHORT,
   }) {
     Fluttertoast.showToast(
       msg: msg,
-      toastLength: Toast.LENGTH_SHORT,
+      toastLength: toastLength,
       gravity: ToastGravity.BOTTOM,
       backgroundColor: color ?? state.color(),
       textColor: textColor ?? Colors.white,

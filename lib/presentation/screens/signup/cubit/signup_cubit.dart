@@ -11,6 +11,7 @@ import '../../../../core/form_fields/email.dart';
 import '../../../../core/form_fields/password.dart';
 import '../../../../core/form_fields/phone.dart';
 import '../../../../core/form_fields/username.dart';
+import '../../../../domain/entities/auth_data.dart';
 import '../../../../domain/usecases/register_usecase.dart';
 
 part 'signup_state.dart';
@@ -79,6 +80,8 @@ class SignupCubit extends Cubit<SignupState> {
     emit(newState);
   }
 
+  late AuthData authData;
+
   Future<void> signup() async {
     final name = Username.validated(state.username.value);
     final email = Email.validated(state.email.value);
@@ -114,9 +117,11 @@ class SignupCubit extends Cubit<SignupState> {
       );
 
       response.fold((failure) {
+        print(failure.message);
         emit(state.copyWith(error: failure.message));
         btnKey.currentState!.animateReverse();
-      }, (_) {
+      }, (authData) {
+        this.authData = authData;
         emit(state.copyWith(isSuccess: true));
       });
     }

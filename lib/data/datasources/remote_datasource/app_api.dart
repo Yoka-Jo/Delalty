@@ -66,4 +66,8 @@ abstract class AppServiceClient {
   Future<HttpResponse<void>> removeProductFromFavorites(
     @Path('product_id') String productId,
   );
+  @GET(Constants.getProductPath)
+  Future<HttpResponse<ProductResponse>> getProduct(
+    @Path() String id,
+  );
 }

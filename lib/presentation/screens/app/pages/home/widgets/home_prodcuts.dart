@@ -25,8 +25,9 @@ class HomeProducts extends StatelessWidget {
             separatorBuilder: (context, i) => SizedBox(height: 40.h),
             itemBuilder: (context, i) {
               final category = categories![i];
-              if (cubit.isGettingCategoriesProducts && i == itemCount - 1)
-                return CenteredCircularProgressIndicaotr();
+              if (cubit.isGettingCategoriesProducts && i == itemCount - 1) {
+                return const CenteredCircularProgressIndicaotr();
+              }
               return Column(
                 children: [
                   Row(
@@ -43,7 +44,7 @@ class HomeProducts extends StatelessWidget {
                               ViewProductSectionRoute(title: category.name));
                         },
                         child: SimpleText(
-                          AppStrings.watchMore,
+                          AppStrings.watchMore.tr(),
                           textStyle: TextStyleEnum.poppinsLight,
                           fontSize: 10.sp,
                           color: AppColors.primaryColor,

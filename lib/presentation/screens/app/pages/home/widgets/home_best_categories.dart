@@ -11,7 +11,7 @@ class HomeBestCategories extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SimpleText(
-          AppStrings.bestCategories,
+          AppStrings.bestCategories.tr(),
           textStyle: TextStyleEnum.montserratMedium,
           fontSize: 16.sp,
         ),
@@ -33,8 +33,7 @@ class HomeBestCategories extends StatelessWidget {
                             context.router.push(
                               ViewProductSectionRoute(
                                 title: category.name,
-                                isRealEstate:
-                                    category.name == AppStrings.realEstate,
+                                isRealEstate: false,
                               ),
                             );
                           },

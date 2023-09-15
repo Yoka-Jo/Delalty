@@ -43,7 +43,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChangeLanguageCubit, ChangeLanguageState>(
-      builder: (context, state) {
+      builder: (context, languageState) {
+        print("Language changed");
         return BlocBuilder<ChangeThemeCubit, ChangeThemeState>(
           builder: (context, state) {
             return AppTheme(

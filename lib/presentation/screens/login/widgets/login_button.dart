@@ -8,7 +8,7 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoadingButton(
-      title: AppStrings.signin,
+      title: AppStrings.signin.tr(),
       onTap: LoginCubit.get(context).login,
       btnKey: LoginCubit.get(context).btnKey,
     );

@@ -1,6 +1,7 @@
 import 'package:delalty/core/user_secure_storage.dart';
 import 'package:delalty/data/requests/requests.dart';
 import 'package:delalty/di.dart';
+import 'package:delalty/domain/entities/user.dart';
 import 'package:delalty/domain/usecases/get_user_data_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +17,7 @@ class AppCubit extends Cubit<AppState> {
 
   static AppCubit get(BuildContext context) => BlocProvider.of(context);
 
+  late User user;
   Future<void> getUserData() async {
     emit(AppGetUserDataSuccess());
     final userId = await getIt<UserSecureStorage>().getUserID() ?? "19";
@@ -25,6 +27,7 @@ class AppCubit extends Cubit<AppState> {
         emit(AppGetUserDataFailure(failure.message));
       },
       (user) {
+        this.user = user;
         emit(AppGetUserDataSuccess());
       },
     );

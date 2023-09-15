@@ -43,4 +43,7 @@ abstract class Repository {
   Future<Either<Failure, NoData>> removeProductFromFavorites(
     RemoveProductFromFavoritesRequest removeProductFromFavoritesRequest,
   );
+  Future<Either<Failure, Product>> getProduct(
+    GetProductRequest getProductRequest,
+  );
 }

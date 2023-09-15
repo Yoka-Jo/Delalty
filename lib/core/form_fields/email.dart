@@ -49,7 +49,7 @@ class Email extends FormzInput<String, EmailValidationError>
 
 enum EmailValidationError {
   empty(AppStrings.fillField),
-  invalid("Email provided is not valid."),
+  invalid(AppStrings.invalidEmail),
   alreadyRegistered("This email is already registered.");
 
   const EmailValidationError(this.value);

@@ -15,14 +15,14 @@ class SignupTitle extends StatelessWidget {
         ),
         SizedBox(height: 12.h),
         SimpleText(
-          AppStrings.signup,
+          AppStrings.signup.tr(),
           textStyle: TextStyleEnum.montserratExtraBold,
           fontSize: 25.sp,
           color: Colors.white,
         ),
         SizedBox(height: 12.h),
         SimpleText(
-          AppStrings.createAccountNow,
+          AppStrings.createAccountNow.tr(),
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 18.sp,
           color: Colors.white,

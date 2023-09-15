@@ -9,6 +9,7 @@ import '../../../../core/common/components/utils/custom_button_animation.dart';
 import '../../../../core/form_fields/email.dart';
 import '../../../../core/form_fields/password.dart';
 import '../../../../data/requests/requests.dart';
+import '../../../../domain/entities/auth_data.dart';
 import '../../../../domain/usecases/login_usecase.dart';
 
 part 'login_state.dart';
@@ -61,6 +62,8 @@ class LoginCubit extends Cubit<LoginState> {
     emit(newState);
   }
 
+  late AuthData authData;
+
   Future<void> login() async {
     final email = Email.validated(state.email.value);
     final password = Password.validated(state.password.value);
@@ -89,6 +92,7 @@ class LoginCubit extends Cubit<LoginState> {
           btnKey.currentState!.animateReverse();
         },
         (authData) {
+          this.authData = authData;
           emit(state.copyWith(isSuccess: true));
         },
       );

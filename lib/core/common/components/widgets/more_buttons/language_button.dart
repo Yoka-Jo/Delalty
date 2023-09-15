@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:delalty/core/resources/localization/cubit/change_language_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:delalty/core/resources/colors_manager.dart';
 import 'package:delalty/core/resources/localization/language_manager.dart';
@@ -45,13 +47,21 @@ class LanguageButton extends StatelessWidget {
                 RadioButtonWidget(
                   title: AppStrings.english,
                   isSelected: context.locale == englishLocal,
-                  onTap: () {},
+                  onTap: () {
+                    ChangeLanguageCubit.get(context)
+                        .changeLanguage(context, isEnglish: true);
+                    Navigator.pop(context);
+                  },
                 ),
                 SizedBox(height: 30.h),
                 RadioButtonWidget(
                   title: AppStrings.arabic,
                   isSelected: context.locale == arabicLocal,
-                  onTap: () {},
+                  onTap: () {
+                    ChangeLanguageCubit.get(context)
+                        .changeLanguage(context, isEnglish: false);
+                    Navigator.pop(context);
+                  },
                 ),
               ],
             ),

@@ -15,7 +15,7 @@ class PersonalProfilePage extends StatelessWidget {
           const PersonalProfileInfo(),
           SizedBox(height: 40.h),
           const PersonalProfileButtons(),
-          SizedBox(height: 40.h),
+          SizedBox(height: 150.h),
         ],
       ),
     );

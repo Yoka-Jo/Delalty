@@ -9,6 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/common/components/widgets/centered_circular_progress_indicator.dart';
+import '../../../core/common/components/widgets/simple_toast.dart';
+import '../../../core/resources/routes/app_router.dart';
+
 @RoutePage()
 class VerificationCodeScreen extends StatelessWidget {
   const VerificationCodeScreen({super.key});
@@ -17,35 +21,55 @@ class VerificationCodeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<VerificationCodeCubit>(),
-      child: Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 58.w),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    ImageAssets.verificationCode,
-                    fit: BoxFit.cover,
+      child: Builder(builder: (context) {
+        return Scaffold(
+          body: BlocConsumer<VerificationCodeCubit, VerificationCodeState>(
+            listener: (context, state) {
+              if (state is VerificationCodeFailure) {
+                SimpleToast.showSimpleToast(
+                  msg: state.message,
+                  state: ToastStates.error,
+                );
+              }
+              if (state is VerificationCodeSuccess) {
+                context.router.replace(LoginRoute());
+              }
+            },
+            builder: (context, state) {
+              return SafeArea(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 58.w),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          ImageAssets.verificationCode,
+                          fit: BoxFit.cover,
+                        ),
+                        SimpleText(
+                          AppStrings.verifciationCode,
+                          textStyle: TextStyleEnum.montserratBold,
+                          fontSize: 25.sp,
+                        ),
+                        SizedBox(height: 29.h),
+                        const VerificationCodeOtpSentToPhone(),
+                        SizedBox(height: 46.h),
+                        const VerificationCodeOtp(),
+                        SizedBox(height: 20.h),
+                        const VerificationCodeResendOtp(),
+                        SizedBox(height: 20.h),
+                        if (state is VerificationCodeLoading)
+                          const CenteredCircularProgressIndicaotr()
+                      ],
+                    ),
                   ),
-                  SimpleText(
-                    AppStrings.verifciationCode,
-                    textStyle: TextStyleEnum.montserratBold,
-                    fontSize: 25.sp,
-                  ),
-                  SizedBox(height: 29.h),
-                  const VerificationCodeOtpSentToPhone(),
-                  SizedBox(height: 46.h),
-                  const VerificationCodeOtp(),
-                  SizedBox(height: 20.h),
-                  const VerificationCodeResendOtp()
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }
