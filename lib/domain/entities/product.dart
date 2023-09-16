@@ -1,6 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 import 'product_image.dart';
-import 'value.dart';
 import 'seller.dart';
+import 'value.dart';
 
 class Product {
   final String id;
@@ -26,4 +29,30 @@ class Product {
     required this.visible,
     required this.mainImageId,
   });
+
+  Product copyWith({
+    String? id,
+    String? title,
+    String? description,
+    dynamic price,
+    String? categoryId,
+    List<Value>? values,
+    List<ProductImage>? images,
+    Seller? seller,
+    bool? visible,
+    String? mainImageId,
+  }) {
+    return Product(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      price: price ?? this.price,
+      categoryId: categoryId ?? this.categoryId,
+      values: values ?? this.values,
+      images: images ?? this.images,
+      seller: seller ?? this.seller,
+      visible: visible ?? this.visible,
+      mainImageId: mainImageId ?? this.mainImageId,
+    );
+  }
 }

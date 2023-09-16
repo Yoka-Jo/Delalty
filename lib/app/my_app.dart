@@ -44,7 +44,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return BlocBuilder<ChangeLanguageCubit, ChangeLanguageState>(
       builder: (context, languageState) {
-        print("Language changed");
         return BlocBuilder<ChangeThemeCubit, ChangeThemeState>(
           builder: (context, state) {
             return AppTheme(
@@ -72,6 +71,7 @@ class _MyAppState extends State<MyApp> {
                       routerConfig: _appRouter.config(
                         initialRoutes: [
                           const AppRoute(),
+                          // LoginRoute(),
                           // MapRoute(
                           //   longitude: 31.0414531,
                           //   latitude: 31.4240395,

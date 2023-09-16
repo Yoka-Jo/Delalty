@@ -1,6 +1,6 @@
 part of '../../core/models/responses.dart';
 
-@JsonSerializable(createToJson: false)
+@JsonSerializable()
 class SellerResponse extends Equatable implements DataResponse<Seller> {
   final String? id;
   final bool? verified;
@@ -23,4 +23,6 @@ class SellerResponse extends Equatable implements DataResponse<Seller> {
 
   factory SellerResponse.fromJson(Map<String, dynamic> json) =>
       _$SellerResponseFromJson(json);
+
+      Map<String, dynamic> toJson() => _$SellerResponseToJson(this);
 }

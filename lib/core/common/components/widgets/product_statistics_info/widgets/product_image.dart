@@ -15,8 +15,8 @@ class ProductImage extends StatelessWidget {
       width: 125.w,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(5.r),
-        child: CashedImageWidget(
-          image: image,
+        child: CachedImage(
+          url: image,
           fit: BoxFit.cover,
         ),
       ),

@@ -7,6 +7,7 @@ import '../../../../../resources/colors_manager.dart';
 import '../../../../../resources/strings_manager.dart';
 import '../../../../../resources/text/styles_manager.dart';
 import '../../bottom_sheet_elemet_widget.dart';
+import '../../cached_image.dart';
 import '../../cashed_image_widget.dart';
 import '../../simple_text.dart';
 

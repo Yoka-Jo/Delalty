@@ -15,7 +15,7 @@ class ProductStatsBody extends StatelessWidget {
           children: [
             const ProductInfo(),
             SizedBox(height: 25.h),
-            ProductStatsChart(),
+            const ProductStatsChart(),
             SizedBox(height: 25.h),
             const ProductStatsDetails(),
           ],

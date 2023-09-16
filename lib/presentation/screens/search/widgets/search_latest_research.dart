@@ -7,61 +7,67 @@ class SearchLatestResearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SimpleText(
-          AppStrings.latestResearch.tr(context: context),
-          textStyle: TextStyleEnum.poppinsMedium,
-          fontSize: 17.sp,
-        ),
-        SizedBox(height: 27.h),
-        SizedBox(
-          height: 300.h,
-          child: ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              return Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  SizedBox(
-                    width: 50.w,
-                    height: 48.w,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(5.r),
-                      child: Image.network(
-                        'https://images.pexels.com/photos/2036544/pexels-photo-2036544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                        fit: BoxFit.cover,
+    return BlocBuilder<SearchCubit, SearchState>(
+      builder: (context, state) {
+        final cubit = SearchCubit.get(context);
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SimpleText(
+              AppStrings.latestResearch.tr(context: context),
+              textStyle: TextStyleEnum.poppinsMedium,
+              fontSize: 17.sp,
+            ),
+            SizedBox(height: 27.h),
+            ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                final product = cubit.recentlySearchedProducts[index];
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      width: 50.w,
+                      height: 48.w,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5.r),
+                        child: CachedImage(
+                          url: product.mainImageId,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(width: 18.w),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SimpleText(
-                        'MGEHS2022',
-                        textStyle: TextStyleEnum.poppinsLight,
-                        fontSize: 13.sp,
-                        color: AppColors.grey3,
-                      ),
-                      SimpleText(
-                        'Vehicles',
-                        textStyle: TextStyleEnum.poppinsMedium,
-                        fontSize: 8.sp,
-                        color: AppColors.grey3,
-                      ),
-                    ],
-                  )
-                ],
-              );
-            },
-            separatorBuilder: (context, index) => SizedBox(height: 19.h),
-            itemCount: 4,
-          ),
-        ),
-      ],
+                    SizedBox(width: 18.w),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SimpleText(
+                          product.title,
+                          textStyle: TextStyleEnum.poppinsLight,
+                          fontSize: 13.sp,
+                          color: AppColors.grey3,
+                        ),
+                        SimpleText(
+                          product.categoryId,
+                          textStyle: TextStyleEnum.poppinsMedium,
+                          fontSize: 8.sp,
+                          color: AppColors.grey3,
+                        ),
+                      ],
+                    )
+                  ],
+                );
+              },
+              separatorBuilder: (context, index) => SizedBox(height: 19.h),
+              itemCount: cubit.recentlySearchedProducts.length > 5
+                  ? 5
+                  : cubit.recentlySearchedProducts.length,
+            ),
+          ],
+        );
+      },
     );
   }
 }

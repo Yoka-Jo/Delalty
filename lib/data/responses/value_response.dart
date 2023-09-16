@@ -1,6 +1,6 @@
 part of '../../core/models/responses.dart';
 
-@JsonSerializable(createToJson: false)
+@JsonSerializable()
 class ValueResponse extends Equatable implements DataResponse<Value> {
   @JsonKey(name: 'input_id')
   final String? inputId;
@@ -21,4 +21,6 @@ class ValueResponse extends Equatable implements DataResponse<Value> {
 
   factory ValueResponse.fromJson(Map<String, dynamic> json) =>
       _$ValueResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ValueResponseToJson(this);
 }

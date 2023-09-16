@@ -1,5 +1,12 @@
+import 'package:delalty/core/network/error_handler.dart';
+import 'package:delalty/data/datasources/local_datasource/local_datasource.dart';
+import 'package:delalty/data/requests/add_product_to_recently_searched_request.dart';
+import 'package:delalty/data/requests/get_recently_searched_products_request.dart';
+
+import '../../core/models/responses.dart';
 import '../../domain/entities/comment.dart';
 import '../../domain/entities/category_products.dart';
+import '../../domain/entities/searched_products.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/no_data.dart';
 import 'dart:io';
@@ -20,9 +27,10 @@ import '../../core/network/failure.dart';
 @Injectable(as: Repository)
 class RepositoryImpl implements Repository {
   final AppServiceClient _appServiceClient;
+  final LocalDataSource _localDataSource;
   final RepositoryHelpers _repositoryHelpers;
 
-  RepositoryImpl(this._appServiceClient)
+  RepositoryImpl(this._appServiceClient, this._localDataSource)
       : _repositoryHelpers = RepositoryHelpers();
 
   // Future<void> _storeUserData(User user) async {
@@ -235,5 +243,38 @@ class RepositoryImpl implements Repository {
       statusCode: 200,
       convertToAppropriateList: List<Comment>.from,
     );
+  }
+
+  @override
+  Future<Either<Failure, SearchedProducts>> searchForProducts(
+    SearchForProductsRequest searchForProductsRequest,
+  ) async {
+    return _repositoryHelpers.callApi<SearchedProducts>(
+      () => _appServiceClient.searchForProducts(
+        searchForProductsRequest.query,
+      ),
+      statusCode: 200,
+    );
+  }
+
+  @override
+  Future<Either<Failure, bool>> addProductToRecentlySearched(
+      AddProductToRecentlySearchedRequest
+          addProductToRecentlySearchedRequest) async {
+    final res = await _localDataSource.saveRecentlySearchedProduct(
+        addProductToRecentlySearchedRequest.product);
+    if (res == false) {
+      return Left(Failure(
+          code: ResponseCode.cacheError,
+          message: 'Something went wrong in caching.'));
+    } else {
+      return const Right(true);
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Product>>> getRecentlySearchedProducts() async {
+    final res = await _localDataSource.getRecentlySearchedProducts();
+    return Right(res);
   }
 }

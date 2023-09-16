@@ -63,9 +63,6 @@ class HomeProducts extends StatelessWidget {
                         final product = cubit.productsMap[category.id]?[index];
                         return ProductCardWidget(
                           isLoading: cubit.productsMap[category.id] == null,
-                          title: product?.title ?? '',
-                          image: product?.mainImageId ?? '',
-                          price: /*product?.price ??*/ 0.0,
                           product: product,
                           details: Row(
                             children: [

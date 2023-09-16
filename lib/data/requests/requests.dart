@@ -24,3 +24,5 @@ part 'get_product_request.dart';
 part 'get_product_single_comment_request.dart';
 
 part 'get_product_comments_request.dart';
+
+part 'search_for_products_request.dart';

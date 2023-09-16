@@ -1,5 +1,8 @@
+import '../../data/requests/add_product_to_recently_searched_request.dart';
+import '../../data/requests/get_recently_searched_products_request.dart';
 import '../entities/comment.dart';
 import '../entities/category_products.dart';
+import '../entities/searched_products.dart';
 import '../entities/user.dart';
 import '../entities/no_data.dart';
 import '../entities/product.dart';
@@ -53,4 +56,11 @@ abstract class Repository {
   Future<Either<Failure, List<Comment>>> getProductComments(
     GetProductCommentsRequest getProductCommentsRequest,
   );
+  Future<Either<Failure, SearchedProducts>> searchForProducts(
+    SearchForProductsRequest searchForProductsRequest,
+  );
+  Future<Either<Failure, bool>> addProductToRecentlySearched(
+    AddProductToRecentlySearchedRequest addProductToRecentlySearchedRequest,
+  );
+  Future<Either<Failure, List<Product>>> getRecentlySearchedProducts();
 }

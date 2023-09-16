@@ -5,6 +5,9 @@ const String kPrefsKeyIsOnBoardingScreenViewed =
     "PREFS_KEY_IS_ONBOARDING_SCREEN_VIEWED";
 const String kPrefsForgotPasswordData = "forgot_password_data";
 
+const String kPrefsSaveRecentlySearchedProduct =
+    "kPrefsSaveRecentlySearchedProduct";
+
 @injectable
 class AppPreferences {
   final SharedPreferences _sharedPreferences;
@@ -23,6 +26,15 @@ class AppPreferences {
     } else {
       return false;
     }
+  }
+
+  Future<bool> saveRecentlySearchedProduct(String data) async {
+    return await _sharedPreferences.setString(
+        kPrefsSaveRecentlySearchedProduct, data);
+  }
+
+  String? getRecentlySearchedProducts() {
+    return _sharedPreferences.getString(kPrefsSaveRecentlySearchedProduct);
   }
 
   Future<bool> removeData({

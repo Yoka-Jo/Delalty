@@ -520,7 +520,7 @@ class _AppServiceClient implements AppServiceClient {
 
   @override
   Future<HttpResponse<CommentResponse>> getProductSingleComment(
-    String product_id,
+    String productId,
     String id,
   ) async {
     const _extra = <String, dynamic>{};
@@ -535,7 +535,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              'products/${product_id}/comments/${id}',
+              'products/{product_id}/comments/${id}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -551,7 +551,7 @@ class _AppServiceClient implements AppServiceClient {
 
   @override
   Future<HttpResponse<List<CommentResponse>>> getProductComments(
-    String product_id,
+    String productId,
     Map<String, dynamic> query,
   ) async {
     const _extra = <String, dynamic>{};
@@ -567,7 +567,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              'products/${product_id}/comments',
+              'products/{product_id}/comments',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -579,6 +579,36 @@ class _AppServiceClient implements AppServiceClient {
     var value = _result.data!
         .map((dynamic i) => CommentResponse.fromJson(i as Map<String, dynamic>))
         .toList();
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<SearchedProductsResponse>> searchForProducts(
+      Map<String, dynamic> query) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(query);
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<SearchedProductsResponse>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'search',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = SearchedProductsResponse.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }

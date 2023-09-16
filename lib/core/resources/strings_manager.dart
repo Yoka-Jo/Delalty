@@ -18,6 +18,7 @@ class AppStrings {
   static const String phoneInvalid = "phone_number_is_invalid";
   static const String newMessage = "new_message";
   static const String now = "Now";
+  static const String noResults = "no_results";
   static const String uploadPhotosUpTo = "upload_up_to_15_photos";
   static const String selectionOfImages = "selection_of_images";
   static const String addClearImages =

@@ -18,6 +18,7 @@
   "no_internet_error": "Please check your internet connection",
   "bad_certificate_error": "An SSL certificate error occured",
   "ok": "ok",
+  "no_results": "No Results Found",
   "retryAgain": "Retry Again",
   "enter_your_email": "Enter Your Email",
   "choose_language": "Choose Language",

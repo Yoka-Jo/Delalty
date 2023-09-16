@@ -23,17 +23,15 @@ class ViewProductSectionListOfProucts extends StatelessWidget {
           // isRealEstate ? (361.w / 203.h) : (173.w / 160.h), //361.w / 203.h,
         ),
         itemBuilder: (context, index) => ProductCardWidget(
-          days: isRealEstate ? 2 : null,
+          isLoading: true,
+          product: null,
           width: double.infinity,
           height: 173.h,
-          title: 'BMD WDL 320i 2024',
           titleSize: isRealEstate ? 12.sp : 7.sp,
           titleColor: isRealEstate ? AppColors.grey3 : AppColors.black,
           priceSize: isRealEstate ? 12.sp : 8.sp,
           locationColor:
               isRealEstate ? AppColors.primaryColor : AppColors.grey3,
-          image:
-              'https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=996&q=80',
           showLocationPin: isRealEstate,
           padding: isRealEstate
               ? EdgeInsets.symmetric(horizontal: 20.w, vertical: 7.h)

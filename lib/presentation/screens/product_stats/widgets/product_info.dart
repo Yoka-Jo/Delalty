@@ -16,10 +16,10 @@ class ProductInfo extends StatelessWidget {
         children: [
           SizedBox(
             width: double.infinity,
-            child: CashedImageWidget(
-              image:
+            child: CachedImage(
+              url:
                   'https://images.pexels.com/photos/2036544/pexels-photo-2036544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-              borderRadius: 5.r,
+              borderRadius: BorderRadius.circular(5.r),
               height: 175.h,
               fit: BoxFit.cover,
             ),

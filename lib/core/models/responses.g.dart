@@ -59,18 +59,47 @@ ProductResponse _$ProductResponseFromJson(Map<String, dynamic> json) =>
       mainImageId: json['main_image_id'] as String?,
     );
 
+Map<String, dynamic> _$ProductResponseToJson(ProductResponse instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'description': instance.description,
+      'price': instance.price,
+      'category_id': instance.categoryId,
+      'values': instance.values,
+      'images': instance.images,
+      'seller': instance.seller,
+      'visible': instance.visible,
+      'main_image_id': instance.mainImageId,
+    };
+
 ValueResponse _$ValueResponseFromJson(Map<String, dynamic> json) =>
     ValueResponse(
       inputId: json['input_id'] as String?,
       value: json['value'],
     );
 
+Map<String, dynamic> _$ValueResponseToJson(ValueResponse instance) =>
+    <String, dynamic>{
+      'input_id': instance.inputId,
+      'value': instance.value,
+    };
+
 ProductImageResponse _$ProductImageResponseFromJson(
         Map<String, dynamic> json) =>
     ProductImageResponse(
       id: json['id'] as String?,
+      extension: json['extension'] as String?,
       url: json['url'] as String?,
     );
+
+Map<String, dynamic> _$ProductImageResponseToJson(
+        ProductImageResponse instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension,
+      'url': instance.url,
+    };
 
 SellerResponse _$SellerResponseFromJson(Map<String, dynamic> json) =>
     SellerResponse(
@@ -81,6 +110,13 @@ SellerResponse _$SellerResponseFromJson(Map<String, dynamic> json) =>
           : UserResponse.fromJson(json['user'] as Map<String, dynamic>),
     );
 
+Map<String, dynamic> _$SellerResponseToJson(SellerResponse instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'verified': instance.verified,
+      'user': instance.user,
+    };
+
 UserResponse _$UserResponseFromJson(Map<String, dynamic> json) => UserResponse(
       id: json['id'] as String,
       name: json['name'] as String?,
@@ -88,6 +124,15 @@ UserResponse _$UserResponseFromJson(Map<String, dynamic> json) => UserResponse(
       isAdmin: json['is_admin'] as bool?,
       isCompany: json['is_company'] as bool?,
     );
+
+Map<String, dynamic> _$UserResponseToJson(UserResponse instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'image': instance.image,
+      'is_admin': instance.isAdmin,
+      'is_company': instance.isCompany,
+    };
 
 UserImageResponse _$UserImageResponseFromJson(Map<String, dynamic> json) =>
     UserImageResponse(
@@ -122,4 +167,13 @@ CommentResponse _$CommentResponseFromJson(Map<String, dynamic> json) =>
       user: json['user'] == null
           ? null
           : UserResponse.fromJson(json['user'] as Map<String, dynamic>),
+    );
+
+SearchedProductsResponse _$SearchedProductsResponseFromJson(
+        Map<String, dynamic> json) =>
+    SearchedProductsResponse(
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => ProductResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      total: json['total'] as int?,
     );

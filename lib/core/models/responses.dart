@@ -3,6 +3,7 @@ import 'package:delalty/app/constants.dart';
 import 'package:delalty/domain/entities/user_image.dart';
 
 import '../../domain/entities/best_categories.dart';
+import '../../domain/entities/searched_products.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/seller.dart';
 import '../../domain/entities/product_image.dart';
@@ -43,6 +44,7 @@ part '../../data/responses/best_categories_response.dart';
 part '../../data/responses/category_products_response.dart';
 
 part '../../data/responses/comment_response.dart';
+part '../../data/responses/searched_products_response.dart';
 
 abstract class DataResponse<T> {
   T toDomain();

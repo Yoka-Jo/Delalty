@@ -34,7 +34,8 @@ class ProductSuchProducts extends StatelessWidget {
             reverse: true,
             itemBuilder: (context, index) {
               return const ProductCardWidget(
-                title: '"MERCEDSCLA 200 2022 Used"',
+                isLoading: true,
+                product: null,
               );
             },
             separatorBuilder: (context, index) => SizedBox(width: 15.w),

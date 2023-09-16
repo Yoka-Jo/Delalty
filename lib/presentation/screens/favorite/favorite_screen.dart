@@ -72,8 +72,8 @@ class FavoriteScreen extends StatelessWidget {
                         return AspectRatio(
                           aspectRatio: 1.7,
                           child: ProductCardWidget(
+                            product: products[i],
                             isFavorite: true,
-                            title: products[i].title,
                             onFavoriteIconTap: () => FavoriteCubit.get(context)
                                 .toggleFavorite(products[i]),
                           ),

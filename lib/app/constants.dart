@@ -33,4 +33,5 @@ class Constants {
   static const String getProductSingleCommentPath =
       'products/{product_id}/comments/{id}';
   static const String getProductCommentsPath = 'products/{product_id}/comments';
+  static const String searchForProductsPath = 'search';
 }

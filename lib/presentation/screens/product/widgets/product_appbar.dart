@@ -8,7 +8,8 @@ class ProductAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
+      child: Container(
+        color: AppColors.black15,
         padding: EdgeInsets.symmetric(horizontal: 18.w),
         child: Row(
           children: [

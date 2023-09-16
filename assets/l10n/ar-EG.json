@@ -18,6 +18,7 @@
   "no_internet_error": "يُرجى التحقق من اتصالك بالإنترنت",
   "bad_certificate_error": "حدثت مشكلة في SSL",
   "ok": "تم",
+  "no_results": "لا توجد نتائج",
   "retryAgain": "اعادة المحاولة",
   "enter_your_email": "ادحل البريد الاكتروني",
   "choose_language": "اختر اللغة",

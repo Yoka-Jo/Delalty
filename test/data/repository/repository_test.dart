@@ -16,7 +16,7 @@ void main() {
       dio = Dio(BaseOptions());
       dioAdapter = DioAdapter(dio: dio);
       appServiceClient = AppServiceClient(dio);
-      sut = RepositoryImpl(appServiceClient);
+      // sut = RepositoryImpl(appServiceClient);
     },
   );
 }

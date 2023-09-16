@@ -13,13 +13,12 @@ import '../../../../resources/assets_manager.dart';
 import '../../../../resources/colors_manager.dart';
 import '../../../../resources/routes/app_router.dart';
 import '../../../../resources/strings_manager.dart';
+import '../cached_image.dart';
 import '../cashed_image_widget.dart';
 import 'product_card_shimmer.dart';
 
 class ProductCardWidget extends StatelessWidget {
   final Product? product;
-  final String? image;
-  final String title;
   final double? titleSize;
   final Color? titleColor;
   final Color? locationColor;
@@ -28,19 +27,17 @@ class ProductCardWidget extends StatelessWidget {
   final bool isFavorite;
   final bool isLoading;
   final double? priceSize;
-  final double? price;
   final EdgeInsets? padding;
   final double? width;
   final double? height;
-  final int? days;
   final Widget details;
   final VoidCallback? onFavoriteIconTap;
+  final Future Function()? onTap;
 
   const ProductCardWidget({
     Key? key,
-    this.product,
-    this.image,
-    required this.title,
+    required this.product,
+    this.onTap,
     this.titleSize,
     this.titleColor,
     this.locationColor,
@@ -49,14 +46,21 @@ class ProductCardWidget extends StatelessWidget {
     this.isFavorite = false,
     this.isLoading = false,
     this.priceSize,
-    this.price,
     this.padding,
     this.width,
     this.height,
-    this.days = 2,
     this.details = const SizedBox.shrink(),
     this.onFavoriteIconTap,
   }) : super(key: key);
+
+  Future<void> onProductTap(BuildContext context) async {
+    if (onTap != null) {
+      await onTap!();
+    }
+    if (context.mounted) {
+      context.router.push(ProductRoute(productId: product!.id));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +71,7 @@ class ProductCardWidget extends StatelessWidget {
         padding: padding,
       );
     }
+    final product = this.product!;
     return SizedBox(
       width: width ?? 230.w,
       height: height ?? 203.h,
@@ -74,16 +79,13 @@ class ProductCardWidget extends StatelessWidget {
         alignment: Alignment.topCenter,
         children: [
           InkWell(
-            onTap: () {
-              context.router.push(ProductRoute(productId: product!.id));
-            },
+            onTap: () async => await onProductTap(context),
             child: SizedBox(
               height: double.infinity,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5.r),
-                child: CashedImageWidget(
-                  image: image ??
-                      'https://images.pexels.com/photos/2036544/pexels-photo-2036544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                child: CachedImage(
+                  url: product.mainImageId,
                   alignment: Alignment.topCenter,
                   height: double.infinity,
                   fit: BoxFit.cover,
@@ -91,14 +93,14 @@ class ProductCardWidget extends StatelessWidget {
               ),
             ),
           ),
-          if (showfavouriteButton && product != null)
+          if (showfavouriteButton)
             BlocBuilder<FavoriteCubit, FavoriteState>(
               builder: (context, state) {
                 return Align(
                   alignment: Alignment.topRight,
                   child: InkWell(
                     onTap: () {
-                      FavoriteCubit.get(context).toggleFavorite(product!);
+                      FavoriteCubit.get(context).toggleFavorite(product);
                     },
                     child: Container(
                       padding: EdgeInsets.all(7.r),
@@ -112,7 +114,7 @@ class ProductCardWidget extends StatelessWidget {
                         ),
                       ),
                       child: SvgPicture.asset(
-                        FavoriteCubit.get(context).isFavorite(product!)
+                        FavoriteCubit.get(context).isFavorite(product)
                             ? ImageAssets.favoriteFull
                             : ImageAssets.favourite,
                       ),
@@ -126,9 +128,7 @@ class ProductCardWidget extends StatelessWidget {
             left: 0,
             right: 0,
             child: InkWell(
-              onTap: () {
-                context.router.push(ProductRoute(productId: product!.id));
-              },
+              onTap: () async => await onProductTap(context),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5.r),
                 child: Container(
@@ -142,7 +142,7 @@ class ProductCardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SimpleText(
-                        title,
+                        product.title,
                         textStyle: TextStyleEnum.poppinsMedium,
                         fontSize: titleSize ?? 10.sp,
                         color: titleColor ?? AppColors.grey3,
@@ -152,7 +152,7 @@ class ProductCardWidget extends StatelessWidget {
                       Row(
                         children: [
                           SimpleText(
-                            'EGP $price',
+                            'EGP ${product.price}',
                             textStyle: TextStyleEnum.poppinsSemiBold,
                             fontSize: priceSize ?? 10.sp,
                           ),
@@ -177,10 +177,10 @@ class ProductCardWidget extends StatelessWidget {
                             fontSize: 8.sp,
                             color: locationColor ?? AppColors.primaryColor,
                           ),
-                          if (days != null) ...[
+                          if (false) ...[
                             const Spacer(),
                             SimpleText(
-                              "$days ${AppStrings.days}",
+                              "'days' ${AppStrings.days}",
                               textStyle: TextStyleEnum.poppinsMedium,
                               fontSize: 8.sp,
                               color: AppColors.grey3,

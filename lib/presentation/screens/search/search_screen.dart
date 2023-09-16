@@ -15,7 +15,7 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<SearchCubit>(),
+      create: (context) => getIt<SearchCubit>()..getRecentlySearchedProducts(),
       child: Scaffold(
         appBar: AppBarWidget(
           title: AppStrings.search.tr(context: context),

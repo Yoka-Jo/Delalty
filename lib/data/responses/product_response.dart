@@ -1,6 +1,6 @@
 part of '../../core/models/responses.dart';
 
-@JsonSerializable(createToJson: false)
+@JsonSerializable()
 class ProductResponse extends Equatable implements DataResponse<Product> {
   final String id;
   final String? title;
@@ -31,6 +31,17 @@ class ProductResponse extends Equatable implements DataResponse<Product> {
 
   @override
   Product toDomain() {
+    String mainImage = '';
+    if (mainImageId != null && images != null) {
+      if (mainImageId?.contains('http') == true) {
+        mainImage = mainImageId!;
+      } else {
+        final ProductImageResponse image =
+            images!.firstWhere((element) => element.id == mainImageId);
+        mainImage =
+            "${Constants.productImagePath}${image.id}.${image.extension}";
+      }
+    }
     return Product(
       id: id,
       title: title.orEmpty(),
@@ -41,9 +52,7 @@ class ProductResponse extends Equatable implements DataResponse<Product> {
       images: images?.map((item) => item.toDomain()).toList() ?? [],
       seller: seller?.toDomain(),
       visible: visible.orFalse(),
-      mainImageId: (mainImageId != null && images != null)
-          ? "${Constants.productImagePath}${images!.firstWhere((element) => element.id == mainImageId).url}"
-          : '',
+      mainImageId: mainImage,
     );
   }
 
@@ -63,4 +72,6 @@ class ProductResponse extends Equatable implements DataResponse<Product> {
 
   factory ProductResponse.fromJson(Map<String, dynamic> json) =>
       _$ProductResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProductResponseToJson(this);
 }

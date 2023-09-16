@@ -1,6 +1,6 @@
 part of '../../core/models/responses.dart';
 
-@JsonSerializable(createToJson: false)
+@JsonSerializable()
 class UserResponse extends Equatable implements DataResponse<User> {
   final String id;
   final String? name;
@@ -33,4 +33,6 @@ class UserResponse extends Equatable implements DataResponse<User> {
 
   factory UserResponse.fromJson(Map<String, dynamic> json) =>
       _$UserResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserResponseToJson(this);
 }

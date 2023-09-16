@@ -27,6 +27,8 @@ class LoginBody extends StatelessWidget {
               msg: AppStrings.pleaseVerifyYourEmail.tr(context: context),
               state: ToastStates.error,
             );
+          } else {
+            context.router.replace(const AppRoute());
           }
         }
       },
