@@ -70,4 +70,14 @@ abstract class AppServiceClient {
   Future<HttpResponse<ProductResponse>> getProduct(
     @Path() String id,
   );
+  @GET(Constants.getProductSingleCommentPath)
+  Future<HttpResponse<CommentResponse>> getProductSingleComment(
+    @Path() String product_id,
+    @Path() String id,
+  );
+  @GET(Constants.getProductCommentsPath)
+  Future<HttpResponse<List<CommentResponse>>> getProductComments(
+    @Path() String product_id,
+    @Queries() Map<String, dynamic> query,
+  );
 }

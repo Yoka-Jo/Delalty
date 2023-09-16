@@ -16,7 +16,7 @@ class ProductPrice extends StatelessWidget {
           color: AppColors.primaryColor,
         ),
         SimpleText(
-          '1,150,000',
+          '${ProductCubit.get(context).product.price}',
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 15.sp,
           color: AppColors.primaryColor,

@@ -11,7 +11,7 @@ class HomeBestCategories extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SimpleText(
-          AppStrings.bestCategories.tr(),
+          AppStrings.bestCategories.tr(context: context),
           textStyle: TextStyleEnum.montserratMedium,
           fontSize: 16.sp,
         ),

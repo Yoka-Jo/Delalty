@@ -8,7 +8,7 @@ class ProductTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleText(
-      'MGEHS2022 1.5 A.T Luxury Black interior',
+      ProductCubit.get(context).product.title,
       textStyle: TextStyleEnum.poppinsMedium,
       fontSize: 15.sp,
     );

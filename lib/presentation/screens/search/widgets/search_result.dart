@@ -11,7 +11,7 @@ class SearchResult extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SimpleText(
-          AppStrings.searchResult.tr(),
+          AppStrings.searchResult.tr(context: context),
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 17.sp,
         ),

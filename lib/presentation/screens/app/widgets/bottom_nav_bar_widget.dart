@@ -44,14 +44,14 @@ class BottomNavBarWidget extends StatelessWidget {
                         Row(
                           children: [
                             BottomNavIconWidget(
-                              title: AppStrings.more.tr(),
+                              title: AppStrings.more.tr(context: context),
                               icon: ImageAssets.moreNav,
                               onTap: () => onTap(0),
                               isSelected: index == 0,
                             ),
                             SizedBox(width: 40.w),
                             BottomNavIconWidget(
-                              title: AppStrings.chat.tr(),
+                              title: AppStrings.chat.tr(context: context),
                               icon: ImageAssets.chatNav,
                               onTap: () => onTap(1),
                               isSelected: index == 1,
@@ -61,14 +61,14 @@ class BottomNavBarWidget extends StatelessWidget {
                         Row(
                           children: [
                             BottomNavIconWidget(
-                              title: AppStrings.myAccount.tr(),
+                              title: AppStrings.myAccount.tr(context: context),
                               icon: ImageAssets.profileNav,
                               onTap: () => onTap(3),
                               isSelected: index == 3,
                             ),
                             SizedBox(width: 30.w),
                             BottomNavIconWidget(
-                              title: AppStrings.home.tr(),
+                              title: AppStrings.home.tr(context: context),
                               icon: ImageAssets.homeNav,
                               onTap: () => onTap(4),
                               isSelected: index == 4,
@@ -81,7 +81,7 @@ class BottomNavBarWidget extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 42.h),
                     child: SimpleText(
-                      AppStrings.addProduct.tr(),
+                      AppStrings.addProduct.tr(context: context),
                       textStyle: TextStyleEnum.poppinsMedium,
                       fontSize: index == 2 ? 10.sp : 8.sp,
                       color: AppColors.primaryColor,

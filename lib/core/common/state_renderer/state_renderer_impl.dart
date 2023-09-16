@@ -93,13 +93,14 @@ extension FlowStateExtension on FlowState {
         {
           if (getStateRendererType() == StateRendererType.popupLoadingState) {
             // show popup loading
-            showPopup(context, getStateRendererType(), getMessage().tr());
+            showPopup(context, getStateRendererType(),
+                getMessage().tr(context: context));
             // show content ui of the screen
             return contentScreenWidget;
           } else {
             // full screen loading state
             return StateRenderer(
-              message: getMessage().tr(),
+              message: getMessage().tr(context: context),
               stateRendererType: getStateRendererType(),
               retryActionFunction: retryActionFunction,
             );
@@ -139,7 +140,7 @@ extension FlowStateExtension on FlowState {
 
           // show popup
           showPopup(context, StateRendererType.popupSuccessState, getMessage(),
-              title: AppStrings.success.tr());
+              title: AppStrings.success.tr(context: context));
           // return content ui of the screen
           return contentScreenWidget;
         }

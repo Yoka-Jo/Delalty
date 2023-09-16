@@ -45,7 +45,7 @@ class GettingItemsError extends StatelessWidget {
                     ),
                     const SizedBox(height: 20.0),
                     MyText(
-                      title: AppStrings.pullDownToRefresh.tr(),
+                      title: AppStrings.pullDownToRefresh.tr(context: context),
                       color: Colors.black,
                       size: FontSize.large,
                     ),

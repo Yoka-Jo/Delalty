@@ -49,12 +49,12 @@ class BuildButton extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SimpleText(
-                title.tr(),
+                title.tr(context: context),
                 textStyle: TextStyleEnum.poppinsRegular,
                 fontSize: 18.sp,
               ),
               SimpleText(
-                subTitle.tr(),
+                subTitle.tr(context: context),
                 textStyle: TextStyleEnum.poppinsLight,
                 fontSize: 12.sp,
                 color: AppColors.grey3,

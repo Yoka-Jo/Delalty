@@ -8,6 +8,8 @@ class ProductImages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BuildCarousel(
+      images:
+          ProductCubit.get(context).product.images.map((e) => e.url).toList(),
       numberOfImagesMargin:
           EdgeInsets.symmetric(vertical: 70.h, horizontal: 20.w),
       showFavouriteButton: false,

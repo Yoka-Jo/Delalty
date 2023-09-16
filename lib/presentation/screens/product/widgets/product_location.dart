@@ -16,7 +16,7 @@ class ProductLocation extends StatelessWidget {
         ),
         SizedBox(width: 2.w),
         SimpleText(
-          "${AppStrings.location}: ",
+          "${AppStrings.location.tr(context: context)}: ",
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 15.sp,
         ),

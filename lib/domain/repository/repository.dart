@@ -1,3 +1,4 @@
+import '../entities/comment.dart';
 import '../entities/category_products.dart';
 import '../entities/user.dart';
 import '../entities/no_data.dart';
@@ -45,5 +46,11 @@ abstract class Repository {
   );
   Future<Either<Failure, Product>> getProduct(
     GetProductRequest getProductRequest,
+  );
+  Future<Either<Failure, Comment>> getProductSingleComment(
+    GetProductSingleCommentRequest getProductSingleCommentRequest,
+  );
+  Future<Either<Failure, List<Comment>>> getProductComments(
+    GetProductCommentsRequest getProductCommentsRequest,
   );
 }

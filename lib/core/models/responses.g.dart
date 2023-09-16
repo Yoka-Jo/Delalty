@@ -109,3 +109,17 @@ CategoryProductsResponse _$CategoryProductsResponseFromJson(
           .toList(),
       total: json['total'] as int?,
     );
+
+CommentResponse _$CommentResponseFromJson(Map<String, dynamic> json) =>
+    CommentResponse(
+      id: json['id'] as String?,
+      productId: json['product_id'] as String?,
+      userId: json['user_id'] as String?,
+      referenceId: json['reference_id'] as String?,
+      content: json['content'] as String?,
+      createdAt: json['created_at'] as String?,
+      repliesCount: json['replies_count'] as int?,
+      user: json['user'] == null
+          ? null
+          : UserResponse.fromJson(json['user'] as Map<String, dynamic>),
+    );

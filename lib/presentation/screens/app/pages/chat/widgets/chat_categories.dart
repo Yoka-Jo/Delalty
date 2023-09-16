@@ -11,17 +11,17 @@ class ChatCategories extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         ChatCategory(
-          title: AppStrings.all.tr(),
+          title: AppStrings.all.tr(context: context),
           image: ImageAssets.allOutlined,
           onTap: () {},
         ),
         ChatCategory(
-          title: AppStrings.buy.tr(),
+          title: AppStrings.buy.tr(context: context),
           image: ImageAssets.bag,
           onTap: () {},
         ),
         ChatCategory(
-          title: AppStrings.sale.tr(),
+          title: AppStrings.sale.tr(context: context),
           image: ImageAssets.shop,
           onTap: () {},
         ),

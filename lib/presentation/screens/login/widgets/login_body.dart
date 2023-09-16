@@ -24,7 +24,7 @@ class LoginBody extends StatelessWidget {
             context.router.replace(const VerificationCodeRoute());
           } else if (!LoginCubit.get(context).authData.verifiedEmail) {
             SimpleToast.showSimpleToast(
-              msg: AppStrings.pleaseVerifyYourEmail.tr(),
+              msg: AppStrings.pleaseVerifyYourEmail.tr(context: context),
               state: ToastStates.error,
             );
           }

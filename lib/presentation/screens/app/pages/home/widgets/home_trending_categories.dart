@@ -12,7 +12,7 @@ class HomeTrendingCategories extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SimpleText(
-          AppStrings.trendingProducts.tr(),
+          AppStrings.trendingProducts.tr(context: context),
           textStyle: TextStyleEnum.montserratMedium,
           fontSize: 16.sp,
         ),

@@ -20,3 +20,7 @@ part 'get_products_for_category_request.dart';
 part 'remove_product_from_favorites_request.dart';
 
 part 'get_product_request.dart';
+
+part 'get_product_single_comment_request.dart';
+
+part 'get_product_comments_request.dart';

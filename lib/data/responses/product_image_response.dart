@@ -15,7 +15,7 @@ class ProductImageResponse extends Equatable
   ProductImage toDomain() {
     return ProductImage(
       id: id.orEmpty(),
-      url: url != null ? "${Constants.productImagePath}url" : '',
+      url: url != null ? "${Constants.productImagePath}$url" : '',
     );
   }
 

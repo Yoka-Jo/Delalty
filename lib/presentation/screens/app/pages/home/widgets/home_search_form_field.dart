@@ -19,7 +19,7 @@ class HomeFormField extends StatelessWidget {
           filledColor: Colors.white,
           inputType: TextInputType.text,
           textInputAction: TextInputAction.done,
-          hintTxt: AppStrings.search.tr(),
+          hintTxt: AppStrings.search.tr(context: context),
           prefixIcon: const SearchIcon(),
           suffixIcon:
               SvgPicture.asset(ImageAssets.filter, fit: BoxFit.scaleDown),

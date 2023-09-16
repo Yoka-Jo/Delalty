@@ -7,11 +7,15 @@ class ProductSellerInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final seller = ProductCubit.get(context).product.seller;
+    print("------------");
+    print(seller?.user?.image);
+    print(seller?.user?.id);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SimpleText(
-          AppStrings.moreInformation,
+          AppStrings.moreInformation.tr(context: context),
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 15.sp,
         ),
@@ -19,14 +23,16 @@ class ProductSellerInfo extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ProductSellerImage(),
+            ProductSellerImage(
+              image: seller?.user?.image ?? '',
+            ),
             SizedBox(width: 23.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SimpleText(
-                  'Ahmed Mustafa',
+                  seller?.user?.name ?? "user",
                   textStyle: TextStyleEnum.poppinsMedium,
                   fontSize: 15.sp,
                 ),

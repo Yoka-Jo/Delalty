@@ -17,3 +17,12 @@ final class GetProductFailure extends ProductState {
   final String message;
   const GetProductFailure(this.message);
 }
+
+final class GetProductCommentsLoading extends ProductState {}
+
+final class GetProductCommentsSuccess extends ProductState {}
+
+final class GetProductCommentsFailure extends ProductState {
+  final String message;
+  const GetProductCommentsFailure(this.message);
+}

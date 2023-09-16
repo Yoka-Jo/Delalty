@@ -41,7 +41,7 @@ class MorePage extends StatelessWidget {
         children: [
           AppBar(
             title: Text(
-              AppStrings.more.tr(),
+              AppStrings.more.tr(context: context),
             ),
             centerTitle: true,
           ),

@@ -13,12 +13,12 @@ class ProductSuchProducts extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SimpleText(
-              AppStrings.such,
+              context.tr(AppStrings.such),
               textStyle: TextStyleEnum.poppinsMedium,
               fontSize: 15.sp,
             ),
             SimpleText(
-              AppStrings.watchMore,
+              context.tr(AppStrings.watchMore),
               textStyle: TextStyleEnum.poppinsLight,
               fontSize: 14.sp,
               color: AppColors.grey3,

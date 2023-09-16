@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:delalty/core/common/components/widgets/build_shimmer_widget.dart';
+import 'package:delalty/core/common/components/widgets/centered_circular_progress_indicator.dart';
 import 'package:delalty/core/resources/routes/app_router.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -16,6 +20,7 @@ import '../../../../core/common/components/widgets/user_rating.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/colors_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
+import '../cubit/product_cubit.dart';
 
 part 'product_appbar.dart';
 part 'product_body.dart';

@@ -25,7 +25,7 @@ class OrDividerWidget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 4.w),
             child: SimpleText(
-              AppStrings.or.tr(),
+              AppStrings.or.tr(context: context),
               textStyle: TextStyleEnum.poppinsRegular,
               fontSize: 17.sp,
             ),

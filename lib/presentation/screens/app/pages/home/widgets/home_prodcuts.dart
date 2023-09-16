@@ -44,7 +44,7 @@ class HomeProducts extends StatelessWidget {
                               ViewProductSectionRoute(title: category.name));
                         },
                         child: SimpleText(
-                          AppStrings.watchMore.tr(),
+                          AppStrings.watchMore.tr(context: context),
                           textStyle: TextStyleEnum.poppinsLight,
                           fontSize: 10.sp,
                           color: AppColors.primaryColor,

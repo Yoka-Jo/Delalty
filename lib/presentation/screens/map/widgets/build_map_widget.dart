@@ -134,6 +134,7 @@ class _BuildMapWidgetState extends State<BuildMapWidget> {
               ),
               SizedBox(height: 20.h),
               BuildCarousel(
+                images: const [],
                 numberOfImagesMargin:
                     EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
                 height: 156.h,

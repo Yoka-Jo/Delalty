@@ -30,4 +30,7 @@ class Constants {
   static const String getProductForCategoryPath = 'search';
   static const String removeProductFromFavoritesPath = 'favorites/{product_id}';
   static const String getProductPath = 'products/{id}';
+  static const String getProductSingleCommentPath =
+      'products/{product_id}/comments/{id}';
+  static const String getProductCommentsPath = 'products/{product_id}/comments';
 }

@@ -9,7 +9,7 @@ class ConversationProductInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.router.push(const ProductRoute());
+        // context.router.push(const ProductRoute());
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

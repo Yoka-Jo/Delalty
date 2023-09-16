@@ -12,7 +12,7 @@ class ProductReport extends StatelessWidget {
         SvgPicture.asset(ImageAssets.report),
         SizedBox(width: 5.w),
         SimpleText(
-          AppStrings.reportToTheSeller,
+          AppStrings.reportToTheSeller.tr(context: context),
           textStyle: TextStyleEnum.poppinsSemiBold,
           fontSize: 9.sp,
           color: AppColors.red,

@@ -13,9 +13,10 @@ class ProductSpecification extends StatelessWidget {
         childrenPadding: EdgeInsets.zero,
         tilePadding: EdgeInsets.zero,
         title: SimpleText(
-          AppStrings.specification,
+          AppStrings.specification.tr(context: context),
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 15.sp,
+          textAlign: TextAlign.start,
         ),
         children: [
           Wrap(

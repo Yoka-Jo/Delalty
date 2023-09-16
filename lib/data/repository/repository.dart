@@ -1,3 +1,4 @@
+import '../../domain/entities/comment.dart';
 import '../../domain/entities/category_products.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/no_data.dart';
@@ -206,6 +207,33 @@ class RepositoryImpl implements Repository {
         getProductRequest.id,
       ),
       statusCode: 200,
+    );
+  }
+
+  @override
+  Future<Either<Failure, Comment>> getProductSingleComment(
+    GetProductSingleCommentRequest getProductSingleCommentRequest,
+  ) async {
+    return _repositoryHelpers.callApi<Comment>(
+      () => _appServiceClient.getProductSingleComment(
+        getProductSingleCommentRequest.product_id,
+        getProductSingleCommentRequest.id,
+      ),
+      statusCode: 200,
+    );
+  }
+
+  @override
+  Future<Either<Failure, List<Comment>>> getProductComments(
+    GetProductCommentsRequest getProductCommentsRequest,
+  ) async {
+    return _repositoryHelpers.callApi<List<Comment>>(
+      () => _appServiceClient.getProductComments(
+        getProductCommentsRequest.product_id,
+        getProductCommentsRequest.query,
+      ),
+      statusCode: 200,
+      convertToAppropriateList: List<Comment>.from,
     );
   }
 }

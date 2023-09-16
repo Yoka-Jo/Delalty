@@ -1,15 +1,16 @@
 part of 'widgets.dart';
 
 class ProductSellerImage extends StatelessWidget {
+  final String image;
   const ProductSellerImage({
     super.key,
+    required this.image,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const UserImage(
-      image:
-          'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    return UserImage(
+      image: image,
     );
   }
 }

@@ -1,8 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:delalty/core/common/components/widgets/simple_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'package:delalty/core/common/components/widgets/simple_text.dart';
 
 import '../../../resources/assets_manager.dart';
 
@@ -10,11 +12,13 @@ class BuildCarousel extends StatefulWidget {
   final bool showFavouriteButton;
   final EdgeInsets numberOfImagesMargin;
   final double height;
+  final List<String> images;
   const BuildCarousel({
     Key? key,
     this.showFavouriteButton = true,
     required this.numberOfImagesMargin,
     required this.height,
+    required this.images,
   }) : super(key: key);
 
   @override
@@ -24,13 +28,7 @@ class BuildCarousel extends StatefulWidget {
 class _BuildCarouselState extends State<BuildCarousel> {
   int imageIndex = 0;
 
-  List<String> images = [
-    'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
-    'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
-    'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
-    'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
-    'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'
-  ];
+  List<String> get images => widget.images;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +42,7 @@ class _BuildCarouselState extends State<BuildCarousel> {
             CarouselSlider(
               options: CarouselOptions(
                 aspectRatio: 16 / 9,
+                enableInfiniteScroll: false,
                 onPageChanged: (index, reason) {
                   setState(() {
                     imageIndex = index;

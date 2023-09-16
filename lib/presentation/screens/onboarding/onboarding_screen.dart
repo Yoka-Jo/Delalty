@@ -53,14 +53,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       children: [
                         Image.asset(model.image, fit: BoxFit.cover),
                         SimpleText(
-                          model.title.tr(),
+                          model.title.tr(context: context),
                           textStyle: TextStyleEnum.poppinsSemiBold,
                           fontSize: 25.sp,
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 17.h),
                         SimpleText(
-                          model.body.tr(),
+                          model.body.tr(context: context),
                           textStyle: TextStyleEnum.poppinsLight,
                           fontSize: 18.sp,
                           textAlign: TextAlign.center,

@@ -47,7 +47,7 @@ class StateRenderer extends StatelessWidget {
         return _getPopUpDialog(context, [
           _getAnimatedImage(ImageAssets.error),
           _getMessage(message),
-          _getRetryButton(AppStrings.ok.tr(), context)
+          _getRetryButton(AppStrings.ok.tr(context: context), context)
         ]);
       case StateRendererType.fullScreenLoadingState:
         return _getItemsColumn(
@@ -60,7 +60,7 @@ class StateRenderer extends StatelessWidget {
         return _getItemsColumn([
           _getAnimatedImage(ImageAssets.error),
           _getMessage(message),
-          _getRetryButton(AppStrings.retryAgain.tr(), context)
+          _getRetryButton(AppStrings.retryAgain.tr(context: context), context)
         ]);
       case StateRendererType.fullScreenEmptyState:
         return _getItemsColumn(
@@ -76,7 +76,7 @@ class StateRenderer extends StatelessWidget {
           _getAnimatedImage(ImageAssets.success),
           _getMessage(title),
           _getMessage(message),
-          _getRetryButton(AppStrings.ok.tr(), context)
+          _getRetryButton(AppStrings.ok.tr(context: context), context)
         ]);
       default:
         return Container();

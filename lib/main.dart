@@ -15,7 +15,8 @@ import 'presentation/screens/app/cubit/app_cubit.dart';
 import 'presentation/screens/favorite/cubit/favorite_cubit.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  final engine = WidgetsFlutterBinding.ensureInitialized();
+  engine.performReassemble();
   await EasyLocalization.ensureInitialized();
   // AppNotifications appNotifications = AppNotifications();
   // await appNotifications.setupNotification();

@@ -11,7 +11,7 @@ class ProductModelWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SimpleText(
-          '${AppStrings.modelName} : 2022',
+          '${AppStrings.modelName.tr(context: context)} : 2022',
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 15.sp,
         ),

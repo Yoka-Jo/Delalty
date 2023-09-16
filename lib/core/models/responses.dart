@@ -1,3 +1,4 @@
+import '../../domain/entities/comment.dart';
 import 'package:delalty/app/constants.dart';
 import 'package:delalty/domain/entities/user_image.dart';
 
@@ -41,6 +42,8 @@ part '../../data/responses/user_image_response.dart';
 part '../../data/responses/best_categories_response.dart';
 part '../../data/responses/category_products_response.dart';
 
+part '../../data/responses/comment_response.dart';
+
 abstract class DataResponse<T> {
   T toDomain();
 }
@@ -52,6 +55,5 @@ class NoDataResponse implements DataResponse<NoData> {
   @override
   NoData toDomain() => const NoData();
 
-  factory NoDataResponse.fromJson() =>
-      _$NoDataResponseFromJson({});
+  factory NoDataResponse.fromJson() => _$NoDataResponseFromJson({});
 }

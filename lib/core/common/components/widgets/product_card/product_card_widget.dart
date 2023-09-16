@@ -75,7 +75,7 @@ class ProductCardWidget extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              context.router.push(const ProductRoute());
+              context.router.push(ProductRoute(productId: product!.id));
             },
             child: SizedBox(
               height: double.infinity,
@@ -91,21 +91,21 @@ class ProductCardWidget extends StatelessWidget {
               ),
             ),
           ),
-          if (showfavouriteButton)
+          if (showfavouriteButton && product != null)
             BlocBuilder<FavoriteCubit, FavoriteState>(
               builder: (context, state) {
-                return InkWell(
-                  onTap: () {
-                    FavoriteCubit.get(context).toggleFavorite(product!);
-                  },
-                  child: Align(
-                    alignment: Alignment.topRight,
+                return Align(
+                  alignment: Alignment.topRight,
+                  child: InkWell(
+                    onTap: () {
+                      FavoriteCubit.get(context).toggleFavorite(product!);
+                    },
                     child: Container(
                       padding: EdgeInsets.all(7.r),
                       margin: EdgeInsets.all(5.h),
                       decoration: BoxDecoration(
-                        shape: BoxShape.circle,
                         color: Colors.white,
+                        shape: BoxShape.circle,
                         border: Border.all(
                           width: 1,
                           color: Colors.black.withOpacity(0.2),
@@ -127,7 +127,7 @@ class ProductCardWidget extends StatelessWidget {
             right: 0,
             child: InkWell(
               onTap: () {
-                context.router.push(const ProductRoute());
+                context.router.push(ProductRoute(productId: product!.id));
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5.r),

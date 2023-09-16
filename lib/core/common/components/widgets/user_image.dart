@@ -43,10 +43,12 @@ class UserImage extends StatelessWidget {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(95.r),
-            child: Image.network(
-              image,
-              fit: BoxFit.cover,
-            ),
+            child: image.isNotEmpty
+                ? Image.network(
+                    image,
+                    fit: BoxFit.cover,
+                  )
+                : Container(color: AppColors.black),
           ),
         ),
         if (showIconOnImage) ...[
