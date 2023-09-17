@@ -123,6 +123,9 @@ UserResponse _$UserResponseFromJson(Map<String, dynamic> json) => UserResponse(
       image: json['image'] as String?,
       isAdmin: json['is_admin'] as bool?,
       isCompany: json['is_company'] as bool?,
+      seller: json['seller'] == null
+          ? null
+          : SellerResponse.fromJson(json['seller'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$UserResponseToJson(UserResponse instance) =>
@@ -132,6 +135,7 @@ Map<String, dynamic> _$UserResponseToJson(UserResponse instance) =>
       'image': instance.image,
       'is_admin': instance.isAdmin,
       'is_company': instance.isCompany,
+      'seller': instance.seller,
     };
 
 UserImageResponse _$UserImageResponseFromJson(Map<String, dynamic> json) =>

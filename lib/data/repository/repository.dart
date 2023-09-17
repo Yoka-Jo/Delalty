@@ -281,4 +281,17 @@ class RepositoryImpl implements Repository {
     log(res.length.toString());
     return Right(res);
   }
+
+  @override
+  Future<Either<Failure, List<Product>>> getSellerProducts(
+    GetSellerProductsRequest getSellerProductsRequest,
+  ) async {
+    return _repositoryHelpers.callApi<List<Product>>(
+      () => _appServiceClient.getSellerProducts(
+        getSellerProductsRequest.id,
+      ),
+      statusCode: 200,
+      convertToAppropriateList: List<Product>.from,
+    );
+  }
 }

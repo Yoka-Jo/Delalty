@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,11 +14,13 @@ class UserImage extends StatelessWidget {
   final Widget? iconWidget;
   final double? circleSize;
   final double? borderWidth;
+  final bool isVerified;
   const UserImage({
     Key? key,
     required this.image,
     this.icon,
     this.showIconOnImage = true,
+    this.isVerified = false,
     this.onImageWidget,
     this.iconWidget,
     this.circleSize,
@@ -40,7 +40,7 @@ class UserImage extends StatelessWidget {
           width: circleSize,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: borderColor ?? AppColors.primaryColor,
+            color: !isVerified ? null : borderColor ?? AppColors.primaryColor,
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(95.r),
@@ -49,16 +49,16 @@ class UserImage extends StatelessWidget {
                     url: image,
                     fit: BoxFit.cover,
                   )
-                : Container(color: AppColors.black),
+                : Container(color: AppColors.black10),
           ),
         ),
-        if (showIconOnImage) ...[
+        if (showIconOnImage && isVerified) ...[
           if (iconWidget != null)
             iconWidget!
           else
             Positioned(
-              right: (circleSize) * 0.045,
-              bottom: (circleSize) * 0.045,
+              right: (circleSize) * 0.05,
+              bottom: (circleSize) * 0.05,
               child: onImageWidget == null
                   ? Image.asset(
                       icon ?? ImageAssets.verifyFull,

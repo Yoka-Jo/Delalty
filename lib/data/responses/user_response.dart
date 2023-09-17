@@ -9,6 +9,7 @@ class UserResponse extends Equatable implements DataResponse<User> {
   final bool? isAdmin;
   @JsonKey(name: 'is_company')
   final bool? isCompany;
+  final SellerResponse? seller;
 
   const UserResponse({
     required this.id,
@@ -16,16 +17,19 @@ class UserResponse extends Equatable implements DataResponse<User> {
     required this.image,
     required this.isAdmin,
     required this.isCompany,
+    required this.seller,
   });
 
   @override
   User toDomain() {
     return User(
-        id: id,
-        name: name.orEmpty(),
-        image: image.orEmpty(),
-        isAdmin: isAdmin.orFalse(),
-        isCompany: isCompany.orFalse());
+      id: id,
+      name: name.orEmpty(),
+      image: image.orEmpty(),
+      isAdmin: isAdmin.orFalse(),
+      isCompany: isCompany.orFalse(),
+      seller: seller?.toDomain(),
+    );
   }
 
   @override

@@ -84,4 +84,8 @@ abstract class AppServiceClient {
   Future<HttpResponse<SearchedProductsResponse>> searchForProducts(
     @Queries() Map<String, dynamic> query,
   );
+  @GET(Constants.getSellerProductsPath)
+  Future<HttpResponse<List<ProductResponse>>> getSellerProducts(
+    @Path() String id,
+  );
 }

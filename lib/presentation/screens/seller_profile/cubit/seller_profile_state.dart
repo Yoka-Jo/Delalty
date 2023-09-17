@@ -18,3 +18,13 @@ final class GetSellerDataFailure extends SellerProfileState {
 
   const GetSellerDataFailure(this.message);
 }
+
+final class GetSellerProductsLoading extends SellerProfileState {}
+
+final class GetSellerProductsSuccess extends SellerProfileState {}
+
+final class GetSellerProductsFailure extends SellerProfileState {
+  final String message;
+
+  const GetSellerProductsFailure(this.message);
+}

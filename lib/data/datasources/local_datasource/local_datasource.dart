@@ -46,6 +46,11 @@ class LocalDataSource {
           image: product.seller?.user?.image,
           isAdmin: product.seller?.user?.isAdmin,
           isCompany: product.seller?.user?.isCompany,
+          seller: SellerResponse(
+            id: product.seller!.id,
+            verified: product.seller?.verified,
+            user: null,
+          ),
         ),
       ),
       visible: product.visible,

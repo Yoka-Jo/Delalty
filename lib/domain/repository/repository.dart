@@ -63,4 +63,7 @@ abstract class Repository {
     AddProductToRecentlySearchedRequest addProductToRecentlySearchedRequest,
   );
   Future<Either<Failure, List<Product>>> getRecentlySearchedProducts();
+  Future<Either<Failure, List<Product>>> getSellerProducts(
+    GetSellerProductsRequest getSellerProductsRequest,
+  );
 }
