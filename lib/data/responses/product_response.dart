@@ -36,10 +36,12 @@ class ProductResponse extends Equatable implements DataResponse<Product> {
       if (mainImageId?.contains('http') == true) {
         mainImage = mainImageId!;
       } else {
-        final ProductImageResponse image =
-            images!.firstWhere((element) => element.id == mainImageId);
-        mainImage =
-            "${Constants.productImagePath}${image.id}.${image.extension}";
+        final result = images!.where((element) => element.id == mainImageId);
+        if (result.isNotEmpty) {
+          final ProductImageResponse image = result.elementAt(0);
+          mainImage =
+              "${Constants.productImagePath}${image.id}.${image.extension}";
+        }
       }
     }
     return Product(

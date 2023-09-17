@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/common/components/widgets/back_icon_widget.dart';
+import '../../../../core/common/components/widgets/cached_image.dart';
 import '../../../../core/common/components/widgets/default_text_form_field.dart';
 import '../../../../core/common/components/widgets/form_fields_icons/attachment_icon.dart';
 import '../../../../core/common/components/widgets/form_fields_icons/camera_icon.dart';

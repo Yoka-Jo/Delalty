@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:delalty/core/network/error_handler.dart';
 import 'package:delalty/data/datasources/local_datasource/local_datasource.dart';
 import 'package:delalty/data/requests/add_product_to_recently_searched_request.dart';
@@ -275,6 +277,8 @@ class RepositoryImpl implements Repository {
   @override
   Future<Either<Failure, List<Product>>> getRecentlySearchedProducts() async {
     final res = await _localDataSource.getRecentlySearchedProducts();
+    log('22222-22-2-2-2-2-22-2-');
+    log(res.length.toString());
     return Right(res);
   }
 }

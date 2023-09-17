@@ -10,6 +10,9 @@ class SearchLatestResearch extends StatelessWidget {
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
         final cubit = SearchCubit.get(context);
+        if (cubit.recentlySearchedProducts.isEmpty) {
+          return const SizedBox.shrink();
+        }
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -24,40 +27,45 @@ class SearchLatestResearch extends StatelessWidget {
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 final product = cubit.recentlySearchedProducts[index];
-                return Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SizedBox(
-                      width: 50.w,
-                      height: 48.w,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(5.r),
-                        child: CachedImage(
-                          url: product.mainImageId,
-                          fit: BoxFit.cover,
+                return InkWell(
+                  onTap: () {
+                    context.router.push(ProductRoute(productId: product.id));
+                  },
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      SizedBox(
+                        width: 50.w,
+                        height: 48.w,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5.r),
+                          child: CachedImage(
+                            url: product.mainImageId,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(width: 18.w),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        SimpleText(
-                          product.title,
-                          textStyle: TextStyleEnum.poppinsLight,
-                          fontSize: 13.sp,
-                          color: AppColors.grey3,
-                        ),
-                        SimpleText(
-                          product.categoryId,
-                          textStyle: TextStyleEnum.poppinsMedium,
-                          fontSize: 8.sp,
-                          color: AppColors.grey3,
-                        ),
-                      ],
-                    )
-                  ],
+                      SizedBox(width: 18.w),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          SimpleText(
+                            product.title,
+                            textStyle: TextStyleEnum.poppinsLight,
+                            fontSize: 13.sp,
+                            color: AppColors.grey3,
+                          ),
+                          SimpleText(
+                            product.categoryId,
+                            textStyle: TextStyleEnum.poppinsMedium,
+                            fontSize: 8.sp,
+                            color: AppColors.grey3,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 );
               },
               separatorBuilder: (context, index) => SizedBox(height: 19.h),

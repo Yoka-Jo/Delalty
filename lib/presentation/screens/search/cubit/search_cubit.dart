@@ -1,5 +1,5 @@
-import 'package:delalty/core/app_prefs/app_prefs.dart';
-import 'package:delalty/data/requests/get_recently_searched_products_request.dart';
+import 'dart:developer';
+
 import 'package:delalty/data/requests/requests.dart';
 import 'package:delalty/domain/usecases/get_category_usecase.dart';
 import 'package:delalty/domain/usecases/get_recently_searched_products_usecase.dart';
@@ -12,7 +12,6 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/base_usecase.dart';
 import '../../../../core/services/debouncer.dart';
 import '../../../../data/requests/add_product_to_recently_searched_request.dart';
-import '../../../../di.dart';
 import '../../../../domain/entities/product.dart';
 import '../../../../domain/usecases/add_product_to_recently_searched_usecase.dart';
 
@@ -36,14 +35,28 @@ class SearchCubit extends Cubit<SearchState> {
 
   bool isUserSearching = false;
   String searchStr = "";
+  final TextEditingController searchController = TextEditingController();
 
   void manipulateUserIsSearching(bool isSearching) {
     emit(SearchInitial());
     if (!isSearching && searchStr.isNotEmpty) {
       return;
     }
+    if (searchStr.isEmpty) {
+      clearProducts();
+    }
     isUserSearching = isSearching;
     emit(UserIsSearching());
+  }
+
+  void clearProducts() => products.clear();
+  void clearController() => searchController.clear();
+  void clearForNavigation() {
+    emit(SearchInitial());
+    clearProducts();
+    clearController();
+    isUserSearching = false;
+    emit(SearchClearForNavigation());
   }
 
   List<Product> products = [];
@@ -52,6 +65,9 @@ class SearchCubit extends Cubit<SearchState> {
 
   Future<void> onSearchChange([String? text]) async {
     if (text != null) {
+      if (text.isEmpty) {
+        clearProducts();
+      }
       searchStr = text;
       products = [];
       page = 0;
@@ -75,21 +91,22 @@ class SearchCubit extends Cubit<SearchState> {
 
   Future<void> addProductToRecentlySearched(Product product) async {
     emit(AddProductToRecentlySearchedLoading());
-    final response = await _addProductToRecentlySearchedUseCase(
-      AddProductToRecentlySearchedRequest(product),
-    );
+
+    final response =
+        await _getCategoryUseCase(GetCategoryRequest(id: product.categoryId));
     response.fold(
-      (l) {
-        emit(AddProductToRecentlySearchedFailure(l.message));
-      },
-      (r) async {
-        final response = await _getCategoryUseCase(
-            GetCategoryRequest(id: product.categoryId));
+      (l) {},
+      (category) async {
+        product = product.copyWith(categoryId: category.name);
+        final response = await _addProductToRecentlySearchedUseCase(
+          AddProductToRecentlySearchedRequest(product),
+        );
         response.fold(
-          (l) {},
-          (category) {
-            recentlySearchedProducts
-                .add(product.copyWith(categoryId: category.name));
+          (l) {
+            emit(AddProductToRecentlySearchedFailure(l.message));
+          },
+          (r) async {
+            recentlySearchedProducts.add(product);
             emit(AddProductToRecentlySearchedSuccess());
           },
         );
@@ -101,11 +118,19 @@ class SearchCubit extends Cubit<SearchState> {
     emit(GetRecentlySearchedProductsLoading());
     final response = await _getRecentlySearchedProductsUseCase(NoParams());
     response.fold(
-      (l) {},
+      (l) {
+        log(l.message);
+      },
       (products) async {
         recentlySearchedProducts = products;
         emit(GetRecentlySearchedProductsSuccess());
       },
     );
+  }
+
+  @override
+  Future<void> close() {
+    searchController.dispose();
+    return super.close();
   }
 }

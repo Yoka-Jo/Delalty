@@ -7,6 +7,7 @@ class ProductAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = ProductCubit.get(context);
     return SafeArea(
       child: Container(
         color: AppColors.black15,
@@ -26,20 +27,32 @@ class ProductAppBar extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              height: 32.w,
-              width: 32.w,
-              padding: EdgeInsets.all(5.h),
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-              ),
-              child: FittedBox(
-                child: SvgPicture.asset(
-                  ImageAssets.favourite,
-                  fit: BoxFit.scaleDown,
-                ),
-              ),
+            BlocBuilder<FavoriteCubit, FavoriteState>(
+              builder: (context, state) {
+                return InkWell(
+                  onTap: () async {
+                    await FavoriteCubit.get(context)
+                        .toggleFavorite(cubit.product);
+                  },
+                  child: Container(
+                    height: 32.w,
+                    width: 32.w,
+                    padding: EdgeInsets.all(5.h),
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
+                    child: FittedBox(
+                      child: SvgPicture.asset(
+                        FavoriteCubit.get(context).isFavorite(cubit.product)
+                            ? ImageAssets.favoriteFull
+                            : ImageAssets.favourite,
+                        fit: BoxFit.scaleDown,
+                      ),
+                    ),
+                  ),
+                );
+              },
             ),
             SizedBox(width: 12.w),
             Container(

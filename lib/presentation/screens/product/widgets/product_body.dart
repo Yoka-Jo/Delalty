@@ -28,15 +28,17 @@ class _ProductBodyState extends State<ProductBody> {
             child: Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 18.w),
-              child: const Column(
+              child: Column(
                 children: [
                   Align(
-                    alignment: Alignment.centerRight,
-                    child: BackIconWidget(
+                    alignment: ChangeLanguageCubit.get(context).isEnglish
+                        ? Alignment.centerLeft
+                        : Alignment.centerRight,
+                    child: const BackIconWidget(
                       iconColor: Colors.black,
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     child: CenteredCircularProgressIndicaotr(),
                   ),
                 ],

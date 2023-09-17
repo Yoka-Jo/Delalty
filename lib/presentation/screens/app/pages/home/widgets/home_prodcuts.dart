@@ -15,8 +15,8 @@ class HomeProducts extends StatelessWidget {
           return const CenteredCircularProgressIndicaotr();
         }
         final itemCount = cubit.isGettingCategoriesProducts
-            ? (cubit.numberOfCategoriesToRetrieve * cubit.page) + 1
-            : (cubit.numberOfCategoriesToRetrieve * cubit.page);
+            ? cubit.productsMap.length + 1
+            : cubit.productsMap.length;
         return ListView.separated(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,

@@ -53,7 +53,7 @@ class MorePage extends StatelessWidget {
                   return Column(
                     children: [
                       MyElevatedButton(
-                        title: AppStrings.signout,
+                        title: context.tr(AppStrings.signout),
                         onPressed: () async {
                           await getIt<UserSecureStorage>().deleteUserInfo();
                           if (context.mounted) {

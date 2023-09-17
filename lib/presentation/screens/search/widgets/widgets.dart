@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:delalty/app/extensions.dart';
 import 'package:delalty/core/common/components/widgets/cached_image.dart';
 import 'package:delalty/core/common/components/widgets/centered_circular_progress_indicator.dart';
@@ -5,6 +6,7 @@ import 'package:delalty/core/common/components/widgets/form_fields_icons/filter_
 import 'package:delalty/core/common/components/widgets/form_fields_icons/microphone_icon.dart';
 import 'package:delalty/core/common/components/widgets/product_card/product_card_widget.dart';
 import 'package:delalty/core/resources/colors_manager.dart';
+import 'package:delalty/core/resources/routes/app_router.dart';
 import 'package:delalty/core/resources/strings_manager.dart';
 import 'package:delalty/presentation/screens/app/models/category_model.dart';
 import 'package:delalty/presentation/screens/search/cubit/search_cubit.dart';

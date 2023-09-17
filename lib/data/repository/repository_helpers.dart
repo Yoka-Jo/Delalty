@@ -41,7 +41,6 @@ class RepositoryHelpers {
         return _returnFailureIfStatusCodeIsNotSuccess<T>(result);
       }
     } catch (e) {
-      rethrow;
       log("||||||||||||||||||||ERROR FROM REPOSITORY CALLAPI||||||||||||||||||||");
       log(e.toString());
       return Left(ErrorHandler.handle(e).failure);

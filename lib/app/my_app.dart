@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                       locale: context.locale,
                       routerConfig: _appRouter.config(
                         initialRoutes: [
-                          const AppRoute(),
+                          const SplashRoute(),
                           // LoginRoute(),
                           // MapRoute(
                           //   longitude: 31.0414531,

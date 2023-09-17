@@ -53,7 +53,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   }
 
   Future<void> _addProductToFavorite(Product product) async {
-    emit(FavoriteInitial());
+    emit(const AddProductToFavoriteLoading());
     products.add(product);
     final response = await _addProductToFavoritesUseCase(
       AddProductToFavoritesRequest(
@@ -61,7 +61,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
       ),
     );
     response.fold((l) {
-      products.remove(product);
+      products.removeWhere((element) => element.id == product.id);
       emit(AddProductToFavoriteFailure(l.message));
     }, (_) {
       emit(const AddProductToFavoriteSuccess());
@@ -69,8 +69,8 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   }
 
   Future<void> _removeProductFromFavorites(Product product) async {
-    emit(FavoriteInitial());
-    products.remove(product);
+    emit(const RemoveProductFromFavoriteLoading());
+    products.removeWhere((element) => element.id == product.id);
     final response = await _removeProductFromFavoritesUseCase(
       RemoveProductFromFavoritesRequest(
         productId: product.id,
@@ -85,7 +85,11 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   }
 
   Future<void> toggleFavorite(Product product) async {
-    if (products.where((element) => element.id == product.id).isEmpty) {
+    if (state is AddProductToFavoriteLoading ||
+        state is RemoveProductFromFavoriteLoading) {
+      return;
+    }
+    if (!isFavorite(product)) {
       await _addProductToFavorite(product);
     } else {
       await _removeProductFromFavorites(product);

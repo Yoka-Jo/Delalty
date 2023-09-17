@@ -8,9 +8,6 @@ class ProductSellerInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final seller = ProductCubit.get(context).product.seller;
-    print("------------");
-    print(seller?.user?.image);
-    print(seller?.user?.id);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -45,7 +42,8 @@ class ProductSellerInfo extends StatelessWidget {
             const Spacer(),
             InkWell(
               onTap: () {
-                context.router.push(const ProfileRoute());
+                context.router
+                    .push(SellerProfileRoute(sellerId: seller!.user!.id));
               },
               child: const Align(
                 alignment: Alignment.topRight,

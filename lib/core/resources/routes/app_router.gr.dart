@@ -132,12 +132,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProductStatsScreen(),
       );
     },
-    ProfileRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const ProfileScreen(),
-      );
-    },
     ProhibitedPersonsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -154,6 +148,16 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SearchScreen(),
+      );
+    },
+    SellerProfileRoute.name: (routeData) {
+      final args = routeData.argsAs<SellerProfileRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: SellerProfileScreen(
+          key: args.key,
+          sellerId: args.sellerId,
+        ),
       );
     },
     SetAlertsRoute.name: (routeData) {
@@ -525,20 +529,6 @@ class ProductStatsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [ProfileScreen]
-class ProfileRoute extends PageRouteInfo<void> {
-  const ProfileRoute({List<PageRouteInfo>? children})
-      : super(
-          ProfileRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ProfileRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [ProhibitedPersonsScreen]
 class ProhibitedPersonsRoute extends PageRouteInfo<void> {
   const ProhibitedPersonsRoute({List<PageRouteInfo>? children})
@@ -578,6 +568,44 @@ class SearchRoute extends PageRouteInfo<void> {
   static const String name = 'SearchRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SellerProfileScreen]
+class SellerProfileRoute extends PageRouteInfo<SellerProfileRouteArgs> {
+  SellerProfileRoute({
+    Key? key,
+    required String sellerId,
+    List<PageRouteInfo>? children,
+  }) : super(
+          SellerProfileRoute.name,
+          args: SellerProfileRouteArgs(
+            key: key,
+            sellerId: sellerId,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'SellerProfileRoute';
+
+  static const PageInfo<SellerProfileRouteArgs> page =
+      PageInfo<SellerProfileRouteArgs>(name);
+}
+
+class SellerProfileRouteArgs {
+  const SellerProfileRouteArgs({
+    this.key,
+    required this.sellerId,
+  });
+
+  final Key? key;
+
+  final String sellerId;
+
+  @override
+  String toString() {
+    return 'SellerProfileRouteArgs{key: $key, sellerId: $sellerId}';
+  }
 }
 
 /// generated route for

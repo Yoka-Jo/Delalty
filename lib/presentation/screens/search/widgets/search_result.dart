@@ -74,8 +74,10 @@ class _SearchResultState extends State<SearchResult> {
                     final product = cubit.products[index];
                     return ProductCardWidget(
                       product: product,
-                      onTap: () async =>
-                          await cubit.addProductToRecentlySearched(product),
+                      onTap: () async {
+                        await cubit.addProductToRecentlySearched(product);
+                        cubit.clearForNavigation();
+                      },
                       height: 160.h,
                       width: 173.w,
                       titleSize: 7.sp,

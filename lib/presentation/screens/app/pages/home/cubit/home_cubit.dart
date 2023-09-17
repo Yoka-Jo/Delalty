@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:delalty/core/base_usecase.dart';
 import 'package:delalty/data/requests/requests.dart';
 import 'package:delalty/domain/usecases/get_category_usecase.dart';
@@ -76,6 +78,9 @@ class HomeCubit extends Cubit<HomeState> {
   bool isGettingCategoriesProducts = false;
 
   Future<void> getCategoriesProducts() async {
+    if (numberOfCategoriesToRetrieve * (page - 1) >= categories!.length) {
+      return;
+    }
     isGettingCategoriesProducts = true;
     emit(HomeGetProductsForCategoriesLoading());
     int retrievalLength = (numberOfCategoriesToRetrieve * page);
@@ -94,7 +99,10 @@ class HomeCubit extends Cubit<HomeState> {
       response.fold((l) {
         emit(HomeGetProductsForCategoriesFailure(l.message));
       }, (data) {
-        productsMap[categories![i].id] = data.products;
+        if (data.total != 0) {
+          log(data.products[0].title);
+          productsMap[categories![i].id] = data.products;
+        }
         emit(HomeGetProductsForCategoriesSuccess());
       });
     }

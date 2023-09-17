@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:delalty/core/common/components/widgets/my_outlined_button.dart';
 import 'package:delalty/core/resources/localization/cubit/change_language_cubit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,16 +28,16 @@ class ChooseLanguageScreen extends StatelessWidget {
             ),
             SizedBox(height: 15.h),
             SimpleText(
-              AppStrings.chooseLanguage,
+              AppStrings.chooseLanguage.tr(context: context),
               textStyle: TextStyleEnum.poppinsRegular,
               fontSize: 20.sp,
             ),
             SizedBox(height: 58.h),
             MyOutlinedButton(
               onPressed: () {
-                // ChangeLanguageCubit.get(context)
-                //     .changeLanguage(context, isEnglish: false);
-                // context.router.push(const OnBoardingRoute());
+                ChangeLanguageCubit.get(context)
+                    .changeLanguage(context, isEnglish: false);
+                context.router.push(const OnBoardingRoute());
               },
               title: AppStrings.arabic,
             ),

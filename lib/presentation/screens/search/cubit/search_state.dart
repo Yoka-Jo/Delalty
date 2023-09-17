@@ -9,6 +9,8 @@ sealed class SearchState extends Equatable {
 
 final class SearchInitial extends SearchState {}
 
+final class SearchClearForNavigation extends SearchState {}
+
 final class SearchChangeSearchString extends SearchState {}
 
 final class UserIsSearching extends SearchState {}

@@ -25,8 +25,9 @@ class ProfileProduct extends StatelessWidget {
                     topLeft: Radius.circular(5.r),
                     topRight: Radius.circular(5.r),
                   ),
-                  child: Image.network(
-                    'https://images.pexels.com/photos/2036544/pexels-photo-2036544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                  child: const CachedImage(
+                    url:
+                        'https://images.pexels.com/photos/2036544/pexels-photo-2036544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                     fit: BoxFit.fitWidth,
                     alignment: Alignment.topCenter,
                   ),

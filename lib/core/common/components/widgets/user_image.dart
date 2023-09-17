@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../resources/assets_manager.dart';
 import '../../../resources/colors_manager.dart';
+import 'cached_image.dart';
 
 class UserImage extends StatelessWidget {
   final String image;
@@ -44,8 +45,8 @@ class UserImage extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(95.r),
             child: image.isNotEmpty
-                ? Image.network(
-                    image,
+                ? CachedImage(
+                    url: image,
                     fit: BoxFit.cover,
                   )
                 : Container(color: AppColors.black),

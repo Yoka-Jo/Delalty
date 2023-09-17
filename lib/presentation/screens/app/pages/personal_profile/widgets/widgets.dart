@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../../../core/common/components/widgets/cached_image.dart';
 import '../../../../../../core/common/components/widgets/more_buttons/account_setup_button.dart';
 import '../../../../../../core/common/components/widgets/more_buttons/advertising_button.dart';
 import '../../../../../../core/common/components/widgets/more_buttons/favorite_button.dart';

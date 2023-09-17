@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:delalty/core/common/components/widgets/simple_text.dart';
 
 import '../../../resources/assets_manager.dart';
+import 'cached_image.dart';
 
 class BuildCarousel extends StatefulWidget {
   final bool showFavouriteButton;
@@ -57,8 +58,8 @@ class _BuildCarouselState extends State<BuildCarousel> {
                   .map(
                     (image) => ClipRRect(
                       borderRadius: BorderRadius.circular(8.r),
-                      child: Image.network(
-                        image,
+                      child: CachedImage(
+                        url: image,
                         fit: BoxFit.cover,
                         height: 156.h,
                         width: double.infinity,

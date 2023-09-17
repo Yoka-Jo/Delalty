@@ -15,6 +15,8 @@ class ChangeLanguageCubit extends Cubit<ChangeLanguageState> {
 
   bool _isEnglish = true;
 
+  bool get isEnglish => _isEnglish;
+
   Locale get getLocale => _isEnglish ? englishLocal : arabicLocal;
 
   Future<void> initLanguage(BuildContext context) async {

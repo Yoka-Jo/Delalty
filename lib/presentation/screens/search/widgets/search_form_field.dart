@@ -14,6 +14,7 @@ class SearchFormField extends StatelessWidget {
           child: Focus(
             onFocusChange: (value) => cubit.manipulateUserIsSearching(value),
             child: DefaultTextFormField(
+              controller: SearchCubit.get(context).searchController,
               inputType: TextInputType.text,
               enableColor: AppColors.searchFormFieldBorderColor,
               focusColor: AppColors.searchFormFieldBorderColor,

@@ -14,7 +14,6 @@ import '../../../../resources/colors_manager.dart';
 import '../../../../resources/routes/app_router.dart';
 import '../../../../resources/strings_manager.dart';
 import '../cached_image.dart';
-import '../cashed_image_widget.dart';
 import 'product_card_shimmer.dart';
 
 class ProductCardWidget extends StatelessWidget {
@@ -54,11 +53,9 @@ class ProductCardWidget extends StatelessWidget {
   }) : super(key: key);
 
   Future<void> onProductTap(BuildContext context) async {
+    context.router.push(ProductRoute(productId: product!.id));
     if (onTap != null) {
       await onTap!();
-    }
-    if (context.mounted) {
-      context.router.push(ProductRoute(productId: product!.id));
     }
   }
 

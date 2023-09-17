@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:delalty/core/models/responses.dart';
 import 'package:delalty/core/user_secure_storage.dart';
@@ -55,6 +56,7 @@ class LocalDataSource {
         _sharedPreferences.getString(kPrefsSaveRecentlySearchedProduct);
     late final List<ProductResponse> productsResponse;
     final userId = await getIt<UserSecureStorage>().getUserID();
+    log(userId.toString());
     if (productsJson == null) {
       productsResponse = [];
     } else {
@@ -66,16 +68,17 @@ class LocalDataSource {
     if (productsResponse.length == 5) {
       productsResponse.removeAt(0);
     }
+    log(productsResponse.length.toString());
     if (productsResponse
         .where((element) => element.id == productResponse.id)
         .isNotEmpty) {
-      return true;
+      return false;
     }
     productsResponse.add(productResponse);
 
     productsJson =
         json.encode({userId: productsResponse.map((e) => e.toJson()).toList()});
-    print("productsJson: $productsJson");
+    log("productsJson: $productsJson");
     return await _sharedPreferences.setString(
       kPrefsSaveRecentlySearchedProduct,
       productsJson,
@@ -83,8 +86,10 @@ class LocalDataSource {
   }
 
   Future<List<Product>> getRecentlySearchedProducts() async {
+    log("lsnfldnlfdnflkdnllksfmldkmnfd");
     final productsJson =
         _sharedPreferences.getString(kPrefsSaveRecentlySearchedProduct);
+    log("ProductsJson: $productsJson");
     if (productsJson == null) {
       return [];
     }
@@ -94,7 +99,7 @@ class LocalDataSource {
         ((json.decode(productsJson) as Map<String, dynamic>)[userId] as List)
             .map((e) => ProductResponse.fromJson(e))
             .toList();
-
+    log('productsResponse: $productsResponse');
     return productsResponse.map((e) => e.toDomain()).toList();
   }
 

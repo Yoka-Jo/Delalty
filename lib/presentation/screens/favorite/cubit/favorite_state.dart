@@ -27,6 +27,10 @@ final class GetSearchedFavoritesSuccess extends FavoriteState {
   const GetSearchedFavoritesSuccess();
 }
 
+final class AddProductToFavoriteLoading extends FavoriteState {
+  const AddProductToFavoriteLoading();
+}
+
 final class AddProductToFavoriteSuccess extends FavoriteState {
   const AddProductToFavoriteSuccess();
 }
@@ -35,6 +39,10 @@ final class AddProductToFavoriteFailure extends FavoriteState {
   final String message;
 
   const AddProductToFavoriteFailure(this.message);
+}
+
+final class RemoveProductFromFavoriteLoading extends FavoriteState {
+  const RemoveProductFromFavoriteLoading();
 }
 
 final class RemoveProductFromFavoriteSuccess extends FavoriteState {

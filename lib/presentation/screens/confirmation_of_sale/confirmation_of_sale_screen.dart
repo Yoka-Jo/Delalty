@@ -6,6 +6,7 @@ import 'package:delalty/core/resources/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/common/components/widgets/cached_image.dart';
 import '../../../core/resources/colors_manager.dart';
 
 @RoutePage()
@@ -21,8 +22,9 @@ class ConfirmationOfSaleScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Image.network(
-            'https://images.pexels.com/photos/2036544/pexels-photo-2036544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          CachedImage(
+            url:
+                'https://images.pexels.com/photos/2036544/pexels-photo-2036544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             fit: BoxFit.cover,
             height: 320.h,
           ),

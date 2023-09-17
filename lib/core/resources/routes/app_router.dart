@@ -19,10 +19,10 @@ import '../../../presentation/screens/notifications/notifications_screen.dart';
 import '../../../presentation/screens/onboarding/onboarding_screen.dart';
 import '../../../presentation/screens/product/product_screen.dart';
 import '../../../presentation/screens/product_stats/product_stats_screen.dart';
-import '../../../presentation/screens/profile/profile_screen.dart';
 import '../../../presentation/screens/prohibited_persons/prohibited_persons_screen.dart';
 import '../../../presentation/screens/property_filter/property_filter_screen.dart';
 import '../../../presentation/screens/search/search_screen.dart';
+import '../../../presentation/screens/seller_profile/seller_profile_screen.dart';
 import '../../../presentation/screens/set_alerts/set_alerts_screen.dart';
 import '../../../presentation/screens/signup/signup_screen.dart';
 import '../../../presentation/screens/splash/splash_screen.dart';
@@ -49,7 +49,7 @@ class AppRouter extends _$AppRouter {
         MaterialRoute(page: LoginRoute.page),
         MaterialRoute(page: FavoriteRoute.page),
         MaterialRoute(page: VerificationCodeRoute.page),
-        MaterialRoute(page: ProfileRoute.page),
+        MaterialRoute(page: SellerProfileRoute.page),
         MaterialRoute(page: AppRoute.page),
         MaterialRoute(page: PropertyFilterRoute.page),
         MaterialRoute(page: MapRoute.page),

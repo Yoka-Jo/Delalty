@@ -10,6 +10,7 @@ import 'package:delalty/core/resources/assets_manager.dart';
 import 'package:delalty/core/resources/colors_manager.dart';
 import 'package:delalty/core/resources/strings_manager.dart';
 
+import '../../../../core/common/components/widgets/cached_image.dart';
 import '../../../../core/common/components/widgets/form_fields_icons/calendar_icon.dart';
 import '../../../../core/common/components/widgets/form_fields_icons/phone_icon.dart';
 import '../../../../core/common/components/widgets/form_fields_icons/phone_verified_icon.dart';
