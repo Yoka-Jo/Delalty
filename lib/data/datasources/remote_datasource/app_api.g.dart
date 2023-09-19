@@ -650,7 +650,7 @@ class _AppServiceClient implements AppServiceClient {
   @override
   Future<HttpResponse<RelationShipResponse>> changeRelationshipType(
     ChangeRelationshipTypeRequest changeRelationshipTypeRequest,
-    String targetId,
+    int targetId,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -665,7 +665,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              'relationships/{target_id}',
+              'relationships/${targetId}',
               queryParameters: queryParameters,
               data: _data,
             )

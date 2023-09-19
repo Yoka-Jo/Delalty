@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void goToNextScreen() {
     PageRouteInfo<void> route;
     Timer(
-      const Duration(seconds: 3),
+      const Duration(milliseconds: 1500),
       () async {
         final token = await getIt<UserSecureStorage>().getUserToken();
         if (token == null) {

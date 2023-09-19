@@ -1,7 +1,7 @@
-import '../entities/relation_ship.dart';
 import '../../data/requests/add_product_to_recently_searched_request.dart';
 import '../entities/comment.dart';
 import '../entities/category_products.dart';
+import '../entities/relationship.dart';
 import '../entities/searched_products.dart';
 import '../entities/user.dart';
 import '../entities/no_data.dart';

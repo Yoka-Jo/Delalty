@@ -25,7 +25,7 @@ class UserResponse extends Equatable implements DataResponse<User> {
     return User(
       id: id,
       name: name.orEmpty(),
-      image: image.orEmpty(),
+      image: '${Constants.userImagePath}$image',
       isAdmin: isAdmin.orFalse(),
       isCompany: isCompany.orFalse(),
       seller: seller?.toDomain(),

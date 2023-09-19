@@ -1,10 +1,12 @@
 part of 'requests.dart';
 
+enum RelationShipType { BLOCK, UNBLOCK, ADD_FRIEND, REMOVE_FRIEND }
+
 @JsonSerializable(createFactory: false)
 class ChangeRelationshipTypeRequest {
   final String type;
 
-  final String target_id;
+  final int target_id;
 
   ChangeRelationshipTypeRequest({
     required this.type,

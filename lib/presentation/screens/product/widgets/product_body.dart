@@ -15,7 +15,6 @@ class _ProductBodyState extends State<ProductBody> {
   @override
   void initState() {
     super.initState();
-
     ProductCubit.get(context).getProduct(widget.productId);
   }
 

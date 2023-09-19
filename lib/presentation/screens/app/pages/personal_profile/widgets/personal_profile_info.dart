@@ -21,7 +21,7 @@ class PersonalProfileInfo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SimpleText(
-                    'Ahmed Mustafa',
+                    AppCubit.get(context).user.name,
                     textStyle: TextStyleEnum.poppinsMedium,
                     fontSize: 18.sp,
                     textAlign: TextAlign.right,

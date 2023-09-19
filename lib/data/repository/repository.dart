@@ -1,4 +1,3 @@
-import '../../domain/entities/relation_ship.dart';
 import 'dart:developer';
 
 import 'package:delalty/core/network/error_handler.dart';
@@ -6,6 +5,7 @@ import 'package:delalty/data/datasources/local_datasource/local_datasource.dart'
 import 'package:delalty/data/requests/add_product_to_recently_searched_request.dart';
 import '../../domain/entities/comment.dart';
 import '../../domain/entities/category_products.dart';
+import '../../domain/entities/relationship.dart';
 import '../../domain/entities/searched_products.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/no_data.dart';

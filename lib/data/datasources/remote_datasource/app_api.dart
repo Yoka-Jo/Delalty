@@ -92,6 +92,6 @@ abstract class AppServiceClient {
   @PATCH(Constants.changeRelationshipTypePath)
   Future<HttpResponse<RelationShipResponse>> changeRelationshipType(
     @Body() ChangeRelationshipTypeRequest changeRelationshipTypeRequest,
-    @Path() String targetId,
+    @Path('target_id') int targetId,
   );
 }

@@ -9,6 +9,7 @@ class ChatFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTextFormField(
       radius: 10.r,
+      padding: EdgeInsets.zero,
       filledColor: Colors.white,
       inputType: TextInputType.text,
       textInputAction: TextInputAction.done,

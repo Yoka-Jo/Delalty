@@ -13,6 +13,7 @@ class Constants {
   static const String seePhoneNumberSwitchKey = 'seePhoneNumberSwitchKey';
   static const String categoryImagePath = '${baseUrl}cdn/categories/';
   static const String productImagePath = '${baseUrl}cdn/products/';
+  static const String userImagePath = '${baseUrl}cdn/users/';
   static const String baseUrl = 'https://node.delalty.com/';
   static const String registerPath = 'auth/register';
   static const String loginPath = 'auth/login';

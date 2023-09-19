@@ -9,6 +9,7 @@ import '../../../../domain/entities/product.dart';
 import '../../../../domain/entities/user.dart';
 import '../../../../domain/usecases/change_relationship_type_usecase.dart';
 import '../../../../domain/usecases/get_seller_products_usecase.dart';
+import '../../../../main.dart';
 
 part 'seller_profile_state.dart';
 
@@ -59,14 +60,17 @@ class SellerProfileCubit extends Cubit<SellerProfileState> {
     emit(BlockSellerLoading());
     final response = await _changeRelationshipTypeUseCase(
       ChangeRelationshipTypeRequest(
-        type: 'type',
-        target_id: user!.id,
+        type: RelationShipType.BLOCK.name,
+        target_id: int.parse(user!.id),
       ),
     );
 
     response.fold(
       (l) => emit(BlockSellerFailure(l.message)),
-      (r) => emit(BlockSellerSuccess()),
+      (r) {
+        socket.sentData();
+        emit(BlockSellerSuccess());
+      },
     );
   }
 }

@@ -10,14 +10,14 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:delalty/core/app_prefs/app_prefs.dart' as _i11;
-import 'package:delalty/core/app_prefs/shared_prefs_injectable.dart' as _i50;
-import 'package:delalty/core/network/dio_factory.dart' as _i49;
+import 'package:delalty/core/app_prefs/shared_prefs_injectable.dart' as _i51;
+import 'package:delalty/core/network/dio_factory.dart' as _i50;
 import 'package:delalty/core/user_secure_storage.dart' as _i10;
 import 'package:delalty/data/datasources/local_datasource/local_datasource.dart'
     as _i12;
 import 'package:delalty/data/datasources/remote_datasource/app_api.dart' as _i5;
 import 'package:delalty/data/datasources/remote_datasource/remote_modules.dart'
-    as _i48;
+    as _i49;
 import 'package:delalty/data/repository/repository.dart' as _i14;
 import 'package:delalty/domain/repository/repository.dart' as _i13;
 import 'package:delalty/domain/usecases/add_product_to_favorites_usecase.dart'
@@ -48,9 +48,9 @@ import 'package:delalty/domain/usecases/get_seller_products_usecase.dart'
 import 'package:delalty/domain/usecases/get_user_data_usecase.dart' as _i33;
 import 'package:delalty/domain/usecases/google_login_usecase.dart' as _i34;
 import 'package:delalty/domain/usecases/login_usecase.dart' as _i36;
-import 'package:delalty/domain/usecases/register_usecase.dart' as _i38;
+import 'package:delalty/domain/usecases/register_usecase.dart' as _i39;
 import 'package:delalty/domain/usecases/remove_product_from_favorites_usecase.dart'
-    as _i39;
+    as _i40;
 import 'package:delalty/domain/usecases/search_for_products_usecase.dart'
     as _i15;
 import 'package:delalty/domain/usecases/verify_phone_usecase.dart' as _i16;
@@ -58,27 +58,29 @@ import 'package:delalty/presentation/screens/account_verification/cubit/account_
     as _i3;
 import 'package:delalty/presentation/screens/all_departments/cubit/all_departments_cubit.dart'
     as _i4;
-import 'package:delalty/presentation/screens/app/cubit/app_cubit.dart' as _i45;
+import 'package:delalty/presentation/screens/app/cubit/app_cubit.dart' as _i46;
 import 'package:delalty/presentation/screens/app/pages/home/cubit/home_cubit.dart'
     as _i35;
 import 'package:delalty/presentation/screens/favorite/cubit/favorite_cubit.dart'
-    as _i46;
-import 'package:delalty/presentation/screens/login/cubit/login_cubit.dart'
     as _i47;
+import 'package:delalty/presentation/screens/login/cubit/login_cubit.dart'
+    as _i48;
 import 'package:delalty/presentation/screens/product/cubit/product_cubit.dart'
     as _i37;
+import 'package:delalty/presentation/screens/prohibited_persons/cubit/prohibited_persons_cubit.dart'
+    as _i38;
 import 'package:delalty/presentation/screens/property_filter/cubit/property_filter_cubit.dart'
     as _i8;
 import 'package:delalty/presentation/screens/search/cubit/search_cubit.dart'
-    as _i40;
-import 'package:delalty/presentation/screens/seller_profile/cubit/seller_profile_cubit.dart'
     as _i41;
-import 'package:delalty/presentation/screens/signup/cubit/signup_cubit.dart'
+import 'package:delalty/presentation/screens/seller_profile/cubit/seller_profile_cubit.dart'
     as _i42;
-import 'package:delalty/presentation/screens/verification_code/cubit/verification_code_cubit.dart'
+import 'package:delalty/presentation/screens/signup/cubit/signup_cubit.dart'
     as _i43;
-import 'package:delalty/presentation/screens/view_product_section/cubit/view_product_section_cubit.dart'
+import 'package:delalty/presentation/screens/verification_code/cubit/verification_code_cubit.dart'
     as _i44;
+import 'package:delalty/presentation/screens/view_product_section/cubit/view_product_section_cubit.dart'
+    as _i45;
 import 'package:dio/dio.dart' as _i6;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i7;
 import 'package:get_it/get_it.dart' as _i1;
@@ -177,45 +179,47 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i30.GetProductUseCase>(),
           gh<_i27.GetProductCommentsUseCase>(),
         ));
-    gh.lazySingleton<_i38.RegisterUseCase>(
-        () => _i38.RegisterUseCase(gh<_i13.Repository>()));
-    gh.lazySingleton<_i39.RemoveProductFromFavoritesUseCase>(
-        () => _i39.RemoveProductFromFavoritesUseCase(gh<_i13.Repository>()));
-    gh.factory<_i40.SearchCubit>(() => _i40.SearchCubit(
+    gh.factory<_i38.ProhibitedPersonsCubit>(() =>
+        _i38.ProhibitedPersonsCubit(gh<_i20.ChangeRelationshipTypeUseCase>()));
+    gh.lazySingleton<_i39.RegisterUseCase>(
+        () => _i39.RegisterUseCase(gh<_i13.Repository>()));
+    gh.lazySingleton<_i40.RemoveProductFromFavoritesUseCase>(
+        () => _i40.RemoveProductFromFavoritesUseCase(gh<_i13.Repository>()));
+    gh.factory<_i41.SearchCubit>(() => _i41.SearchCubit(
           gh<_i15.SearchForProductsUseCase>(),
           gh<_i18.AddProductToRecentlySearchedUseCase>(),
           gh<_i31.GetRecentlySearchedProductsUseCase>(),
           gh<_i25.GetCategoryUseCase>(),
         ));
-    gh.factory<_i41.SellerProfileCubit>(() => _i41.SellerProfileCubit(
+    gh.factory<_i42.SellerProfileCubit>(() => _i42.SellerProfileCubit(
           gh<_i33.GetUserDataUseCase>(),
           gh<_i32.GetSellerProductsUseCase>(),
           gh<_i20.ChangeRelationshipTypeUseCase>(),
         ));
-    gh.factory<_i42.SignupCubit>(
-        () => _i42.SignupCubit(gh<_i38.RegisterUseCase>()));
-    gh.factory<_i43.VerificationCodeCubit>(
-        () => _i43.VerificationCodeCubit(gh<_i16.VerifyPhoneUseCase>()));
-    gh.factory<_i44.ViewProductSectionCubit>(() =>
-        _i44.ViewProductSectionCubit(gh<_i28.GetProductForCategoryUseCase>()));
-    gh.factory<_i45.AppCubit>(
-        () => _i45.AppCubit(gh<_i33.GetUserDataUseCase>()));
-    gh.factory<_i46.FavoriteCubit>(() => _i46.FavoriteCubit(
+    gh.factory<_i43.SignupCubit>(
+        () => _i43.SignupCubit(gh<_i39.RegisterUseCase>()));
+    gh.factory<_i44.VerificationCodeCubit>(
+        () => _i44.VerificationCodeCubit(gh<_i16.VerifyPhoneUseCase>()));
+    gh.factory<_i45.ViewProductSectionCubit>(() =>
+        _i45.ViewProductSectionCubit(gh<_i28.GetProductForCategoryUseCase>()));
+    gh.factory<_i46.AppCubit>(
+        () => _i46.AppCubit(gh<_i33.GetUserDataUseCase>()));
+    gh.factory<_i47.FavoriteCubit>(() => _i47.FavoriteCubit(
           gh<_i26.GetFavoritesUseCase>(),
           gh<_i17.AddProductToFavoritesUseCase>(),
-          gh<_i39.RemoveProductFromFavoritesUseCase>(),
+          gh<_i40.RemoveProductFromFavoritesUseCase>(),
         ));
-    gh.factory<_i47.LoginCubit>(() => _i47.LoginCubit(gh<_i36.LoginUseCase>()));
+    gh.factory<_i48.LoginCubit>(() => _i48.LoginCubit(gh<_i36.LoginUseCase>()));
     return this;
   }
 }
 
 class _$InjectableAppServiceClientModule
-    extends _i48.InjectableAppServiceClientModule {}
+    extends _i49.InjectableAppServiceClientModule {}
 
-class _$InjectableDioModule extends _i49.InjectableDioModule {}
+class _$InjectableDioModule extends _i50.InjectableDioModule {}
 
 class _$InjectableUserSecureStorageModule
     extends _i10.InjectableUserSecureStorageModule {}
 
-class _$SharedPrefsInjectableModule extends _i50.SharedPrefsInjectableModule {}
+class _$SharedPrefsInjectableModule extends _i51.SharedPrefsInjectableModule {}

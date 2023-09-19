@@ -8,6 +8,19 @@ class ProfileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ProfileTabs();
+    return BlocListener<SellerProfileCubit, SellerProfileState>(
+      listener: (context, state) {
+        if (state is BlockSellerSuccess) {
+          context.router.pop();
+        }
+        if (state is BlockSellerFailure) {
+          SimpleToast.showSimpleToast(
+            msg: state.message,
+            state: ToastStates.error,
+          );
+        }
+      },
+      child: const ProfileTabs(),
+    );
   }
 }

@@ -28,6 +28,7 @@ void main() async {
   );
   await configureDependencies();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   runApp(
     MultiBlocProvider(
       providers: [

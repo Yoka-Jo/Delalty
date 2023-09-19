@@ -182,8 +182,99 @@ SearchedProductsResponse _$SearchedProductsResponseFromJson(
       total: json['total'] as int?,
     );
 
+ChatResponse _$ChatResponseFromJson(Map<String, dynamic> json) => ChatResponse(
+      id: json['id'] as String,
+      productId: json['product_id'] as String,
+      type: json['type'] as String?,
+      lastMessage: json['last_message'] == null
+          ? null
+          : MessageResponse.fromJson(
+              json['last_message'] as Map<String, dynamic>),
+      participants: (json['participants'] as List<dynamic>?)
+          ?.map((e) => ParticipantResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+MessageResponse _$MessageResponseFromJson(Map<String, dynamic> json) =>
+    MessageResponse(
+      id: json['id'] as String,
+      chatId: json['chat_id'] as String,
+      content: json['content'] as String?,
+      nonce: json['nonce'] as String?,
+      createdAt: json['created_at'] as Map<String, dynamic>?,
+      updatedAt: json['updated_at'] as Map<String, dynamic>?,
+      embeds: (json['embeds'] as List<dynamic>?)
+          ?.map((e) => EmbedResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      attachments: (json['attachments'] as List<dynamic>?)
+          ?.map((e) => AttachmentResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+EmbedResponse _$EmbedResponseFromJson(Map<String, dynamic> json) =>
+    EmbedResponse(
+      id: json['id'] as String,
+      type: json['type'] as String?,
+      title: json['title'] as Map<String, dynamic>?,
+      description: json['description'] as Map<String, dynamic>?,
+      url: json['url'] as Map<String, dynamic>?,
+    );
+
+ParticipantResponse _$ParticipantResponseFromJson(Map<String, dynamic> json) =>
+    ParticipantResponse(
+      lastMessageReadId: json['last_message_read_id'] as String,
+      isChatOwner: json['is_chat_owner'] as bool?,
+      user: json['user'] == null
+          ? null
+          : UserResponse.fromJson(json['user'] as Map<String, dynamic>),
+    );
+
+AttachmentResponse _$AttachmentResponseFromJson(Map<String, dynamic> json) =>
+    AttachmentResponse(
+      id: json['id'] as String,
+      filename: json['filename'] as String?,
+      url: json['url'] as String?,
+    );
+
 RelationShipResponse _$RelationShipResponseFromJson(
         Map<String, dynamic> json) =>
     RelationShipResponse(
       type: json['type'] as String?,
+      verified: json['verified'] as bool?,
+      target: json['target'] == null
+          ? null
+          : RelationShipTargetResponse.fromJson(
+              json['target'] as Map<String, dynamic>),
     );
+
+Map<String, dynamic> _$RelationShipResponseToJson(
+        RelationShipResponse instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'verified': instance.verified,
+      'target': instance.target,
+    };
+
+RelationShipTargetResponse _$RelationShipTargetResponseFromJson(
+        Map<String, dynamic> json) =>
+    RelationShipTargetResponse(
+      id: json['id'] as String,
+      name: json['name'] as String?,
+      isAdmin: json['is_admin'] as bool?,
+      isCompany: json['is_company'] as bool?,
+      image: json['image'] as String?,
+      seller: json['seller'] == null
+          ? null
+          : SellerResponse.fromJson(json['seller'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$RelationShipTargetResponseToJson(
+        RelationShipTargetResponse instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'is_admin': instance.isAdmin,
+      'is_company': instance.isCompany,
+      'image': instance.image,
+      'seller': instance.seller,
+    };
