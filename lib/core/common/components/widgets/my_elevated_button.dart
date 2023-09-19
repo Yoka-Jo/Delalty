@@ -52,6 +52,7 @@ class MyElevatedButton extends StatelessWidget {
         textStyle: textStyle ?? TextStyleEnum.poppinsRegular,
         fontSize: titleSize ?? 14.sp,
         color: AppColors.grey2,
+        textAlign: TextAlign.center,
       ),
       if (spaceBetweenTextAndIcon) SizedBox(width: 5.w),
       if (icon != null)

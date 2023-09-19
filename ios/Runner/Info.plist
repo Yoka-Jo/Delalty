@@ -49,6 +49,12 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<!-- Permission options for the `microphone` group -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Using microphone in search</string>
+    <!-- Permission options for the `speech` group -->
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>Needs to use speech so we can search</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

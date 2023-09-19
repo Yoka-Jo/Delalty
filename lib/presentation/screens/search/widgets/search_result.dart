@@ -33,7 +33,11 @@ class _SearchResultState extends State<SearchResult> {
       builder: (context, state) {
         final cubit = SearchCubit.get(context);
         if (state is SearchForProductsLoading) {
-          return const CenteredCircularProgressIndicaotr();
+          return Padding(
+            padding:
+                EdgeInsets.only(top: MediaQuery.sizeOf(context).height / 4),
+            child: const CenteredCircularProgressIndicaotr(),
+          );
         }
 
         return SizedBox(

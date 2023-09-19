@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:delalty/app/extensions.dart';
 import 'package:delalty/core/common/components/widgets/cached_image.dart';
 import 'package:delalty/core/common/components/widgets/centered_circular_progress_indicator.dart';

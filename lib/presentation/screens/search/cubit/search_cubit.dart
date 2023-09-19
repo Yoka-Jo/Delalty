@@ -8,6 +8,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 import '../../../../core/base_usecase.dart';
 import '../../../../core/services/debouncer.dart';
@@ -36,6 +37,35 @@ class SearchCubit extends Cubit<SearchState> {
   bool isUserSearching = false;
   String searchStr = "";
   final TextEditingController searchController = TextEditingController();
+  final SpeechToText speechToText = SpeechToText();
+
+  bool isListening = false;
+
+  Future<void> listeningForSpeech() async {
+    emit(SearchInitial());
+    if (!isListening) {
+      var available = await speechToText.initialize();
+      if (available) {
+        isListening = true;
+        emit(SearchChangeIsListeningForSpeech());
+        speechToText.listen(
+          onResult: (result) async {
+            searchController.text = result.recognizedWords;
+            emit(SearchSpeechChanges());
+          },
+        );
+      }
+    }
+  }
+
+  Future<void> finishListeningForSpeech() async {
+    emit(SearchInitial());
+    isListening = false;
+    speechToText.stop();
+    emit(SearchChangeIsListeningForSpeech());
+    manipulateUserIsSearching(true);
+    await onSearchChange(searchController.text);
+  }
 
   void manipulateUserIsSearching(bool isSearching) {
     emit(SearchInitial());
@@ -67,7 +97,11 @@ class SearchCubit extends Cubit<SearchState> {
     if (text != null) {
       if (text.isEmpty) {
         clearProducts();
+        manipulateUserIsSearching(false);
+      } else {
+        manipulateUserIsSearching(true);
       }
+
       searchStr = text;
       products = [];
       page = 0;

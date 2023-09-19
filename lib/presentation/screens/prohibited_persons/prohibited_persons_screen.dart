@@ -4,6 +4,7 @@ import 'package:delalty/core/common/components/widgets/my_elevated_button.dart';
 import 'package:delalty/core/common/components/widgets/user_image.dart';
 import 'package:delalty/core/resources/colors_manager.dart';
 import 'package:delalty/core/resources/strings_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,8 +17,8 @@ class ProhibitedPersonsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(
-        title: AppStrings.prohibitedPersons,
+      appBar: AppBarWidget(
+        title: AppStrings.prohibitedPersons.tr(context: context),
         iconColor: AppColors.grey3,
       ),
       body: ListView.separated(

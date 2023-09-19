@@ -30,9 +30,10 @@ class FavoriteScreen extends StatelessWidget {
           iconColor: AppColors.grey3,
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Column(
             children: [
+              SizedBox(height: 10.h),
               DefaultTextFormField(
                 inputType: TextInputType.text,
                 enableColor: AppColors.searchFormFieldBorderColor,

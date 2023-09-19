@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:delalty/core/resources/text/styles_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +19,7 @@ class ProductStatsChart extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SimpleText(
-          AppStrings.statistics,
+          AppStrings.statistics.tr(context: context),
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 18.sp,
         ),

@@ -11,26 +11,26 @@ class ProductStatsDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SimpleText(
-          AppStrings.theDetails,
+          AppStrings.theDetails.tr(context: context),
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 18.sp,
         ),
         SizedBox(height: 30.h),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             ProductStatsDetailsColumn(
-              title: AppStrings.views,
+              title: AppStrings.views.tr(context: context),
               icon: ImageAssets.eye,
               number: 1000,
             ),
             ProductStatsDetailsColumn(
-              title: AppStrings.favorite,
+              title: AppStrings.favorite.tr(context: context),
               icon: ImageAssets.favorite,
               number: 50,
             ),
             ProductStatsDetailsColumn(
-              title: AppStrings.chat,
+              title: AppStrings.chat.tr(context: context),
               icon: ImageAssets.chat,
               number: 100,
             ),

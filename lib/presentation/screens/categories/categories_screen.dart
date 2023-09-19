@@ -8,6 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/common/components/widgets/appbar_widget.dart';
 import '../../../core/common/components/widgets/category_widget.dart';
 import '../../../core/common/components/widgets/centered_circular_progress_indicator.dart';
+import '../../../core/common/components/widgets/default_text_form_field.dart';
+import '../../../core/common/components/widgets/form_fields_icons/search_icon.dart';
 import '../../../core/resources/colors_manager.dart';
 import '../../../core/resources/routes/app_router.dart';
 import '../../../core/resources/strings_manager.dart';
@@ -29,21 +31,22 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen> {
   late final ScrollController controller;
   int page = 1;
-  int itemsNumber = 6;
+  int itemsNumber = 10;
   bool isLoading = false;
 
   @override
   void initState() {
     super.initState();
+    searchedCategories = widget.categories;
     controller = ScrollController();
     controller.onScrollEndsListener(() {
       setState(() {
         isLoading = true;
       });
-      Future.delayed(const Duration(milliseconds: 500), () {
+      Future.delayed(const Duration(milliseconds: 1000), () {
         setState(() {
           isLoading = false;
-          page = 2;
+          page++;
         });
       });
     });
@@ -55,53 +58,81 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     super.dispose();
   }
 
+  late List<Category> searchedCategories;
+
+  void searchForCategory(String name) {
+    if (name.isEmpty) {
+      searchedCategories = widget.categories;
+    }
+    setState(() {
+      searchedCategories = widget.categories
+          .where((element) =>
+              element.name.toLowerCase().contains(name.trim().toLowerCase()))
+          .toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(
-        title: AppStrings.favorite.tr(context: context),
+        title: AppStrings.exploreCategories.tr(context: context),
         iconColor: AppColors.grey3,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: GridView.count(
-              controller: controller,
-              crossAxisSpacing: 16.w,
-              mainAxisSpacing: 12.h,
-              crossAxisCount: 2,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              children: List.generate(
-                (page * itemsNumber > widget.categories.length
-                    ? widget.categories.length
-                    : page * itemsNumber),
-                (index) {
-                  final category = widget.categories[index];
-                  return InkWell(
-                    onTap: () {
-                      context.router.push(
-                        ViewProductSectionRoute(
-                          category: category,
-                          isRealEstate: false,
-                        ),
-                      );
-                    },
-                    child: CategoryWidget(
-                      image: category.image,
-                      title: category.name,
-                    ),
-                  );
-                },
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        child: Column(
+          children: [
+            SizedBox(height: 10.h),
+            DefaultTextFormField(
+              inputType: TextInputType.text,
+              enableColor: AppColors.searchFormFieldBorderColor,
+              focusColor: AppColors.searchFormFieldBorderColor,
+              textInputAction: TextInputAction.done,
+              filledColor: AppColors.searchFormFieldColor,
+              hintTxt: AppStrings.search.tr(context: context),
+              prefixIcon: const SearchIcon(),
+              onChangedFunction: searchForCategory,
+            ),
+            SizedBox(height: 17.h),
+            Expanded(
+              child: GridView.count(
+                controller: controller,
+                crossAxisSpacing: 16.w,
+                mainAxisSpacing: 12.h,
+                crossAxisCount: 2,
+                shrinkWrap: true,
+                children: List.generate(
+                  (page * itemsNumber > searchedCategories.length
+                      ? searchedCategories.length
+                      : page * itemsNumber),
+                  (index) {
+                    final category = searchedCategories[index];
+                    return InkWell(
+                      onTap: () {
+                        context.router.push(
+                          ViewProductSectionRoute(
+                            category: category,
+                            isRealEstate: false,
+                          ),
+                        );
+                      },
+                      child: CategoryWidget(
+                        image: category.image,
+                        title: category.name,
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 30.h),
-          if (isLoading) ...[
-            const CenteredCircularProgressIndicaotr(),
-            SizedBox(height: 30.h),
-          ]
-        ],
+            if (isLoading) ...[
+              SizedBox(height: 30.h),
+              const CenteredCircularProgressIndicaotr(),
+              SizedBox(height: 30.h),
+            ]
+          ],
+        ),
       ),
     );
   }
