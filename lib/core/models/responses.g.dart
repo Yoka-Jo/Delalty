@@ -181,3 +181,9 @@ SearchedProductsResponse _$SearchedProductsResponseFromJson(
           .toList(),
       total: json['total'] as int?,
     );
+
+RelationShipResponse _$RelationShipResponseFromJson(
+        Map<String, dynamic> json) =>
+    RelationShipResponse(
+      type: json['type'] as String?,
+    );

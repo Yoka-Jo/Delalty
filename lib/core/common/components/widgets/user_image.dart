@@ -15,12 +15,14 @@ class UserImage extends StatelessWidget {
   final double? circleSize;
   final double? borderWidth;
   final bool isVerified;
+  final bool isEdit;
   const UserImage({
     Key? key,
     required this.image,
     this.icon,
     this.showIconOnImage = true,
     this.isVerified = false,
+    this.isEdit = false,
     this.onImageWidget,
     this.iconWidget,
     this.circleSize,
@@ -49,10 +51,10 @@ class UserImage extends StatelessWidget {
                     url: image,
                     fit: BoxFit.cover,
                   )
-                : Container(color: AppColors.black10),
+                : Container(color: AppColors.grey7),
           ),
         ),
-        if (showIconOnImage && isVerified) ...[
+        if ((showIconOnImage && isVerified) || isEdit) ...[
           if (iconWidget != null)
             iconWidget!
           else

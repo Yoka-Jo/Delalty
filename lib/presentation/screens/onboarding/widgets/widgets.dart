@@ -1,4 +1,3 @@
-import 'package:delalty/core/resources/localization/cubit/change_language_cubit.dart';
 import 'package:delalty/core/resources/localization/language_manager.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:easy_localization/easy_localization.dart';

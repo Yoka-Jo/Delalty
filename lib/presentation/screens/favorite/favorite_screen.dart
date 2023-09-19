@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/annotations.dart';
 import 'package:delalty/presentation/screens/favorite/widgets/widgets.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,8 +25,8 @@ class FavoriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
       return Scaffold(
-        appBar: const AppBarWidget(
-          title: AppStrings.favorite,
+        appBar: AppBarWidget(
+          title: AppStrings.favorite.tr(context: context),
           iconColor: AppColors.grey3,
         ),
         body: Padding(
@@ -38,7 +39,7 @@ class FavoriteScreen extends StatelessWidget {
                 focusColor: AppColors.searchFormFieldBorderColor,
                 textInputAction: TextInputAction.done,
                 filledColor: AppColors.searchFormFieldColor,
-                hintTxt: AppStrings.search,
+                hintTxt: AppStrings.search.tr(context: context),
                 prefixIcon: const SearchIcon(),
                 onChangedFunction: FavoriteCubit.get(context).searchedFavorites,
               ),

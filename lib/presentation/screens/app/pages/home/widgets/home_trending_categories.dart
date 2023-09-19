@@ -33,12 +33,12 @@ class HomeTrendingCategories extends StatelessWidget {
               final category = trendingCategories[index];
               return InkWell(
                 onTap: () {
-                  context.router.push(
-                    ViewProductSectionRoute(
-                      title: category.title,
-                      isRealEstate: false,
-                    ),
-                  );
+                  // context.router.push(
+                  //   ViewProductSectionRoute(
+                  //     category: category,
+                  //     isRealEstate: false,
+                  //   ),
+                  // );
                 },
                 child: CategoryWidget(
                   image: category.image,

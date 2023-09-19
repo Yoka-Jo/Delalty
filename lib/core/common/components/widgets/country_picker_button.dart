@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:country_picker/country_picker.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,7 +34,7 @@ class _CountryPickerButtonState extends State<CountryPickerButton> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SimpleText(
-          AppStrings.country,
+          AppStrings.country.tr(context: context),
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 15.sp,
         ),
@@ -57,7 +58,7 @@ class _CountryPickerButtonState extends State<CountryPickerButton> {
                 //Optional. Styles the search field.
                 inputDecoration: theme.inputDecoration(
                   context,
-                  hint: AppStrings.enterCountryName,
+                  hint: AppStrings.enterCountryName.tr(context: context),
                   hintSize: 12.sp,
                   hintColor: AppColors.grey3,
                 ),

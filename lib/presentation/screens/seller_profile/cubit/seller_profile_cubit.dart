@@ -7,6 +7,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../domain/entities/product.dart';
 import '../../../../domain/entities/user.dart';
+import '../../../../domain/usecases/change_relationship_type_usecase.dart';
 import '../../../../domain/usecases/get_seller_products_usecase.dart';
 
 part 'seller_profile_state.dart';
@@ -16,10 +17,12 @@ class SellerProfileCubit extends Cubit<SellerProfileState> {
   SellerProfileCubit(
     this._getUserDataUseCase,
     this._getSellerProductsUseCase,
+    this._changeRelationshipTypeUseCase,
   ) : super(SellerProfileInitial());
 
   final GetUserDataUseCase _getUserDataUseCase;
   final GetSellerProductsUseCase _getSellerProductsUseCase;
+  final ChangeRelationshipTypeUseCase _changeRelationshipTypeUseCase;
 
   static SellerProfileCubit get(BuildContext context) =>
       BlocProvider.of(context);
@@ -49,6 +52,21 @@ class SellerProfileCubit extends Cubit<SellerProfileState> {
         this.products = products;
         emit(GetSellerProductsSuccess());
       },
+    );
+  }
+
+  Future<void> blockSeller() async {
+    emit(BlockSellerLoading());
+    final response = await _changeRelationshipTypeUseCase(
+      ChangeRelationshipTypeRequest(
+        type: 'type',
+        target_id: user!.id,
+      ),
+    );
+
+    response.fold(
+      (l) => emit(BlockSellerFailure(l.message)),
+      (r) => emit(BlockSellerSuccess()),
     );
   }
 }

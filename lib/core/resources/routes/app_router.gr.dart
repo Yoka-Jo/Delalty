@@ -51,6 +51,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AppScreen(),
       );
     },
+    CategoriesRoute.name: (routeData) {
+      final args = routeData.argsAs<CategoriesRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CategoriesScreen(
+          key: args.key,
+          categories: args.categories,
+        ),
+      );
+    },
     ChooseLanguageRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -203,7 +213,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: ViewProductSectionScreen(
           key: args.key,
           isRealEstate: args.isRealEstate,
-          title: args.title,
+          category: args.category,
         ),
       );
     },
@@ -292,6 +302,44 @@ class AppRoute extends PageRouteInfo<void> {
   static const String name = 'AppRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CategoriesScreen]
+class CategoriesRoute extends PageRouteInfo<CategoriesRouteArgs> {
+  CategoriesRoute({
+    Key? key,
+    required List<Category> categories,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CategoriesRoute.name,
+          args: CategoriesRouteArgs(
+            key: key,
+            categories: categories,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CategoriesRoute';
+
+  static const PageInfo<CategoriesRouteArgs> page =
+      PageInfo<CategoriesRouteArgs>(name);
+}
+
+class CategoriesRouteArgs {
+  const CategoriesRouteArgs({
+    this.key,
+    required this.categories,
+  });
+
+  final Key? key;
+
+  final List<Category> categories;
+
+  @override
+  String toString() {
+    return 'CategoriesRouteArgs{key: $key, categories: $categories}';
+  }
 }
 
 /// generated route for
@@ -699,14 +747,14 @@ class ViewProductSectionRoute
   ViewProductSectionRoute({
     Key? key,
     bool isRealEstate = false,
-    required String title,
+    required Category category,
     List<PageRouteInfo>? children,
   }) : super(
           ViewProductSectionRoute.name,
           args: ViewProductSectionRouteArgs(
             key: key,
             isRealEstate: isRealEstate,
-            title: title,
+            category: category,
           ),
           initialChildren: children,
         );
@@ -721,17 +769,17 @@ class ViewProductSectionRouteArgs {
   const ViewProductSectionRouteArgs({
     this.key,
     this.isRealEstate = false,
-    required this.title,
+    required this.category,
   });
 
   final Key? key;
 
   final bool isRealEstate;
 
-  final String title;
+  final Category category;
 
   @override
   String toString() {
-    return 'ViewProductSectionRouteArgs{key: $key, isRealEstate: $isRealEstate, title: $title}';
+    return 'ViewProductSectionRouteArgs{key: $key, isRealEstate: $isRealEstate, category: $category}';
   }
 }

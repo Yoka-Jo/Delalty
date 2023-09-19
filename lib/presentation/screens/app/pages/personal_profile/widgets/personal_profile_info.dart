@@ -10,23 +10,34 @@ class PersonalProfileInfo extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 22.w),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(width: double.infinity),
-          SizedBox(height: 25.h),
-          SimpleText(
-            'Ahmed Mustafa',
-            textStyle: TextStyleEnum.poppinsMedium,
-            fontSize: 18.sp,
+          SizedBox(height: 10.h),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Directionality(
+              textDirection: TextDirection.ltr,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SimpleText(
+                    'Ahmed Mustafa',
+                    textStyle: TextStyleEnum.poppinsMedium,
+                    fontSize: 18.sp,
+                    textAlign: TextAlign.right,
+                  ),
+                  SimpleText(
+                    'Member since 2020',
+                    textStyle: TextStyleEnum.poppinsRegular,
+                    fontSize: 13.sp,
+                    color: AppColors.grey3,
+                    textAlign: TextAlign.right,
+                  ),
+                ],
+              ),
+            ),
           ),
-          SizedBox(height: 8.h),
-          SimpleText(
-            'Member since 2020',
-            textStyle: TextStyleEnum.poppinsRegular,
-            fontSize: 13.sp,
-            color: AppColors.grey3,
-          ),
-          SizedBox(height: 40.h),
+          SizedBox(height: 30.h),
           Row(
             children: [
               Container(

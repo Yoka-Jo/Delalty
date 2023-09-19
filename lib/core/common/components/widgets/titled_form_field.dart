@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,15 +9,21 @@ class TitledFormField extends StatelessWidget {
   final String title;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final String? initialValue;
   final String hint;
+  final String? error;
   final double? hintSize;
+  final dynamic Function(String) onChanged;
   const TitledFormField({
     Key? key,
     required this.title,
     this.prefixIcon,
     this.suffixIcon,
+    this.initialValue,
     this.hintSize,
+    this.error,
     required this.hint,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -31,6 +38,7 @@ class TitledFormField extends StatelessWidget {
         ),
         SizedBox(height: 10.h),
         DefaultTextFormField(
+          initialValue: initialValue,
           inputType: TextInputType.text,
           radius: 8.r,
           textInputAction: TextInputAction.next,
@@ -38,6 +46,8 @@ class TitledFormField extends StatelessWidget {
           suffixIcon: suffixIcon,
           hintTxt: hint,
           hintSize: hintSize,
+          errorTxt: error?.tr(context: context),
+          onChangedFunction: onChanged,
         ),
       ],
     );

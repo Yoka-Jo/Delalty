@@ -16,6 +16,8 @@ class ViewProductSectionFormField extends StatelessWidget {
         focusColor: AppColors.searchFormFieldBorderColor,
         filledColor: AppColors.searchFormFieldColor,
         prefixIcon: const SearchIcon(),
+        onChangedFunction:
+            ViewProductSectionCubit.get(context).searchForProducts,
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:delalty/app/functions.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import '../resources/strings_manager.dart';
@@ -12,13 +13,11 @@ class Phone extends FormzInput<String, PhoneValidationError>
     String value = '',
   ]) : super.dirty(value);
 
-  static final _phoneRegex = RegExp(r'^(?:\+966|966|0)(5\d{8})$');
-
   @override
   PhoneValidationError? validator(String value) {
     if (value.isEmpty) {
       return PhoneValidationError.empty;
-    } else if (!_phoneRegex.hasMatch(value)) {
+    } else if (!isPhoneNumber(value)) {
       return PhoneValidationError.invalid;
     }
     return null;

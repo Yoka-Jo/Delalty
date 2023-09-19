@@ -3,6 +3,7 @@ import 'package:delalty/core/common/components/widgets/build_shimmer_widget.dart
 import 'package:delalty/core/common/components/widgets/centered_circular_progress_indicator.dart';
 import 'package:delalty/core/resources/localization/cubit/change_language_cubit.dart';
 import 'package:delalty/core/resources/routes/app_router.dart';
+import 'package:delalty/domain/entities/seller.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../app/constants.dart';
+import '../../../../app/functions.dart';
 import '../../../../core/common/components/widgets/back_icon_widget.dart';
 import '../../../../core/common/components/widgets/build_carousel.dart';
 import '../../../../core/common/components/widgets/comment_widget.dart';

@@ -21,9 +21,8 @@ class PersonalProfileImages extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(left: 35.w),
             alignment: Alignment.bottomLeft,
-            child: const UserImage(
-              image:
-                  'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            child: UserImage(
+              image: AppCubit.get(context).user.image,
             ),
           )
         ],

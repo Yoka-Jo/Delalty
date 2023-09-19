@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:delalty/core/resources/localization/cubit/change_language_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:delalty/core/resources/colors_manager.dart';
@@ -18,7 +17,9 @@ class LanguageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BuildButton(
-      title: AppStrings.english,
+      title: ChangeLanguageCubit.get(context).isEnglish
+          ? AppStrings.english
+          : AppStrings.arabic,
       subTitle: AppStrings.chooseTheLanguage,
       icon: ImageAssets.global,
       onTap: () => showAlertDialog(context),

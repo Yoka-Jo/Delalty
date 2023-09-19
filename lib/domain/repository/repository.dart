@@ -1,5 +1,5 @@
+import '../entities/relation_ship.dart';
 import '../../data/requests/add_product_to_recently_searched_request.dart';
-import '../../data/requests/get_recently_searched_products_request.dart';
 import '../entities/comment.dart';
 import '../entities/category_products.dart';
 import '../entities/searched_products.dart';
@@ -65,5 +65,8 @@ abstract class Repository {
   Future<Either<Failure, List<Product>>> getRecentlySearchedProducts();
   Future<Either<Failure, List<Product>>> getSellerProducts(
     GetSellerProductsRequest getSellerProductsRequest,
+  );
+  Future<Either<Failure, RelationShip>> changeRelationshipType(
+    ChangeRelationshipTypeRequest changeRelationshipTypeRequest,
   );
 }

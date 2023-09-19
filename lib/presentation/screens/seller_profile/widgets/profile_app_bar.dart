@@ -11,11 +11,18 @@ class ProfileAppBar extends StatelessWidget {
           SizedBox(width: 10.w),
           const BackIconWidget(),
           const Spacer(),
-          IconButton(
-            padding: EdgeInsets.zero,
-            alignment: Alignment.centerRight,
-            onPressed: () async => await buildBottomSheet(context),
-            icon: SvgPicture.asset(ImageAssets.more),
+          BlocBuilder<SellerProfileCubit, SellerProfileState>(
+            builder: (context, state) {
+              final isLoading = SellerProfileCubit.get(context).user == null;
+              return IconButton(
+                padding: EdgeInsets.zero,
+                alignment: Alignment.centerRight,
+                onPressed: isLoading
+                    ? null
+                    : () async => await buildBottomSheet(context),
+                icon: SvgPicture.asset(ImageAssets.more),
+              );
+            },
           ),
           if (ChangeLanguageCubit.get(context).isEnglish) SizedBox(width: 15.w),
         ],

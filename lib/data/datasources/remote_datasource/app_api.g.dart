@@ -435,9 +435,12 @@ class _AppServiceClient implements AppServiceClient {
 
   @override
   Future<HttpResponse<CategoryProductsResponse>> getProductForCategory(
-      String categoryId) async {
+    String categoryId,
+    Map<String, dynamic> query,
+  ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'category_id': categoryId};
+    queryParameters.addAll(query);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -535,7 +538,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              'products/{product_id}/comments/${id}',
+              'products/${productId}/comments/${id}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -551,7 +554,7 @@ class _AppServiceClient implements AppServiceClient {
 
   @override
   Future<HttpResponse<List<CommentResponse>>> getProductComments(
-    String productId,
+    int productId,
     Map<String, dynamic> query,
   ) async {
     const _extra = <String, dynamic>{};
@@ -567,7 +570,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              'products/{product_id}/comments',
+              'products/${productId}/comments',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -640,6 +643,38 @@ class _AppServiceClient implements AppServiceClient {
     var value = _result.data!
         .map((dynamic i) => ProductResponse.fromJson(i as Map<String, dynamic>))
         .toList();
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<RelationShipResponse>> changeRelationshipType(
+    ChangeRelationshipTypeRequest changeRelationshipTypeRequest,
+    String targetId,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(changeRelationshipTypeRequest.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<RelationShipResponse>>(Options(
+      method: 'PATCH',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'relationships/{target_id}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = RelationShipResponse.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }

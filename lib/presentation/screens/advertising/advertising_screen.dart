@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:delalty/core/common/components/widgets/appbar_widget.dart';
 import 'package:delalty/core/resources/colors_manager.dart';
 import 'package:delalty/core/resources/strings_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,8 +17,8 @@ class AdvertisingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(
-        title: AppStrings.advertising,
+      appBar: AppBarWidget(
+        title: AppStrings.advertising.tr(context: context),
         iconColor: AppColors.grey3,
       ),
       body: Padding(
@@ -31,7 +32,7 @@ class AdvertisingScreen extends StatelessWidget {
               focusColor: AppColors.searchFormFieldBorderColor,
               textInputAction: TextInputAction.done,
               filledColor: AppColors.searchFormFieldColor,
-              hintTxt: AppStrings.search,
+              hintTxt: AppStrings.search.tr(context: context),
               prefixIcon: const SearchIcon(),
             ),
             SizedBox(height: 23.h),

@@ -14,6 +14,7 @@ class EditProfileUserImage extends StatelessWidget {
         image:
             'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         borderWidth: 0.0,
+        isEdit: true,
         onImageWidget: Container(
           padding: EdgeInsets.all(3.r),
           decoration: BoxDecoration(

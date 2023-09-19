@@ -26,7 +26,12 @@ class HomeProducts extends StatelessWidget {
             itemBuilder: (context, i) {
               final category = categories![i];
               if (cubit.isGettingCategoriesProducts && i == itemCount - 1) {
-                return const CenteredCircularProgressIndicaotr();
+                return Column(
+                  children: [
+                    const CenteredCircularProgressIndicaotr(),
+                    SizedBox(height: 30.h),
+                  ],
+                );
               }
               return Column(
                 children: [
@@ -41,7 +46,7 @@ class HomeProducts extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           context.router.push(
-                              ViewProductSectionRoute(title: category.name));
+                              ViewProductSectionRoute(category: category));
                         },
                         child: SimpleText(
                           AppStrings.watchMore.tr(context: context),

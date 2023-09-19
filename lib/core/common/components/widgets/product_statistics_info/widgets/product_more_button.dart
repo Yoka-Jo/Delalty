@@ -31,31 +31,31 @@ class ProductMoreButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               BottomSheetElementWidget(
-                title: AppStrings.amendment,
+                title: AppStrings.amendment.tr(context: context),
                 icon: ImageAssets.edit,
                 onTap: () {},
               ),
               SizedBox(height: 30.h),
               BottomSheetElementWidget(
-                title: AppStrings.sold,
+                title: AppStrings.sold.tr(context: context),
                 icon: ImageAssets.sold,
                 onTap: () {},
               ),
               SizedBox(height: 30.h),
               BottomSheetElementWidget(
-                title: AppStrings.statisticsAdvertising,
+                title: AppStrings.statisticsAdvertising.tr(context: context),
                 icon: ImageAssets.chart,
                 onTap: () {},
               ),
               SizedBox(height: 30.h),
               BottomSheetElementWidget(
-                title: AppStrings.stopAdvertising,
+                title: AppStrings.stopAdvertising.tr(context: context),
                 icon: ImageAssets.stop,
                 onTap: () {},
               ),
               SizedBox(height: 30.h),
               BottomSheetElementWidget(
-                title: AppStrings.deleteTheAd,
+                title: AppStrings.deleteTheAd.tr(context: context),
                 titleColor: AppColors.red,
                 backgroundColor: AppColors.red,
                 icon: ImageAssets.trash,

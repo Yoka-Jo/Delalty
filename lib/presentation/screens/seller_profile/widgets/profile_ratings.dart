@@ -26,6 +26,7 @@ class ProfileRatings extends StatelessWidget {
               return const CommentWidget(
                 name: "Alawi Zakiya",
                 comment: 'This text can be replaced in the same space.',
+                image: '',
               );
             },
             separatorBuilder: (context, index) => SizedBox(height: 30.h),

@@ -7,6 +7,9 @@ class ProductDescripe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isArabic = RegExp(
+            r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]')
+        .hasMatch(ProductCubit.get(context).product.description);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -20,7 +23,7 @@ class ProductDescripe extends StatelessWidget {
           ProductCubit.get(context).product.description,
           textStyle: TextStyleEnum.poppinsRegular,
           fontSize: 12.sp,
-          textAlign: TextAlign.center,
+          textAlign: isArabic ? TextAlign.right : TextAlign.left,
           color: AppColors.grey3,
         ),
       ],

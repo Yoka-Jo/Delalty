@@ -2,12 +2,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../../../presentation/screens/account-verification/account_verification_screen.dart';
+import '../../../domain/entities/category.dart';
+import '../../../presentation/screens/account_verification/account_verification_screen.dart';
 import '../../../presentation/screens/account_setup/account_setup_screen.dart';
 import '../../../presentation/screens/add_your_product/add_your_product_screen.dart';
 import '../../../presentation/screens/advertising/advertising_screen.dart';
 import '../../../presentation/screens/all_departments/all_departments_screen.dart';
 import '../../../presentation/screens/app/app_screen.dart';
+import '../../../presentation/screens/categories/categories_screen.dart';
 import '../../../presentation/screens/choose_language/choose_language_screen.dart';
 import '../../../presentation/screens/confirmation_of_sale/confirmation_of_sale_screen.dart';
 import '../../../presentation/screens/conversation/conversation_screen.dart';
@@ -69,6 +71,7 @@ class AppRouter extends _$AppRouter {
         MaterialRoute(page: UserPrivacyRoute.page),
         MaterialRoute(page: AccountSetupRoute.page),
         MaterialRoute(page: ProductRoute.page),
+        MaterialRoute(page: CategoriesRoute.page),
         CustomRoute(
           page: NotificationsRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,

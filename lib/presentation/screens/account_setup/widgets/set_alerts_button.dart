@@ -6,7 +6,7 @@ class SetAlertsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BuildButton(
-      title: AppStrings.setAlerts,
+      title: AppStrings.setAlerts.tr(context: context),
       subTitle: AppStrings.setNotifications,
       icon: ImageAssets.bell,
       onTap: () {

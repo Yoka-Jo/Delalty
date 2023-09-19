@@ -35,7 +35,7 @@ class ProductCubit extends Cubit<ProductState> {
   Future<void> getComments() async {
     emit(GetProductCommentsLoading());
     final response = await _getProductCommentsUseCase(
-        GetProductCommentsRequest(product_id: product.id));
+        GetProductCommentsRequest(product_id: int.parse(product.id)));
     response.fold((l) => emit(GetProductCommentsFailure(l.message)),
         (comments) {
       this.comments = comments;

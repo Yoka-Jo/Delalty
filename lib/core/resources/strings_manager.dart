@@ -18,6 +18,11 @@ class AppStrings {
   static const String phoneInvalid = "phone_number_is_invalid";
   static const String newMessage = "new_message";
   static const String now = "Now";
+  static const String checkNow = "check_now";
+  static const String addFrontImage = "add_front_image";
+  static const String addBackImage = "add_back_image";
+  static const String sessionExpired = "session_expired";
+  static const String pleaseLoginAgain = "please_login_again";
   static const String noResults = "no_results";
   static const String uploadPhotosUpTo = "upload_up_to_15_photos";
   static const String selectionOfImages = "selection_of_images";
@@ -54,7 +59,7 @@ class AppStrings {
   static const String dataWillBeChecked =
       "data_will_be_checked_to_document_the_account_and_you_will_be_notified";
   static const String applicationDocumentationCalculation =
-      "application_documentation_calculationw";
+      "application_documentation_calculation";
   static const String unblock = "Unblock";
   static const String prohibitedPersons = "prohibited_persons";
   static const String save = "Save";

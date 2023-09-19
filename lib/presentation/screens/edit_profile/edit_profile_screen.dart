@@ -2,6 +2,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:delalty/core/common/components/widgets/my_elevated_button.dart';
 import 'package:delalty/core/common/components/widgets/simple_text.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,8 +19,8 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(
-        title: AppStrings.editProfile,
+      appBar: AppBarWidget(
+        title: AppStrings.editProfile.tr(context: context),
         iconColor: AppColors.grey3,
       ),
       body: SingleChildScrollView(
@@ -41,7 +42,7 @@ class EditProfileScreen extends StatelessWidget {
                   const EditProfileFormFields(),
                   SizedBox(height: 20.h),
                   MyElevatedButton(
-                    title: AppStrings.save,
+                    title: AppStrings.save.tr(context: context),
                     onPressed: () {},
                     textStyle: TextStyleEnum.poppinsSemiBold,
                     height: 50.h,

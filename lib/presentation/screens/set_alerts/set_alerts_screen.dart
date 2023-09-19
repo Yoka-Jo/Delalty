@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/auto_route.dart';
 import 'package:delalty/app/constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,8 +20,8 @@ class SetAlertsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(
-        title: AppStrings.setAlerts,
+      appBar: AppBarWidget(
+        title: AppStrings.setAlerts.tr(context: context),
         iconColor: AppColors.grey3,
       ),
       body: Padding(
@@ -30,14 +31,14 @@ class SetAlertsScreen extends StatelessWidget {
           children: [
             SizedBox(height: 20.h),
             SimpleText(
-              AppStrings.notificationsAboutYourAccount,
+              AppStrings.notificationsAboutYourAccount.tr(context: context),
               textStyle: TextStyleEnum.poppinsRegular,
               fontSize: 15.sp,
               color: AppColors.grey3,
             ),
             SizedBox(height: 20.h),
             BuildSwitchButton(
-              title: AppStrings.chatCheers,
+              title: AppStrings.chatCheers.tr(context: context),
               icon: ImageAssets.bell,
               switchKey: Constants.chatCheersSwitchKey,
               isSelected: true,
@@ -45,7 +46,7 @@ class SetAlertsScreen extends StatelessWidget {
             ),
             SizedBox(height: 20.h),
             BuildSwitchButton(
-              title: AppStrings.statisticsAlerts,
+              title: AppStrings.statisticsAlerts.tr(context: context),
               icon: ImageAssets.chart,
               switchKey: Constants.statisticsAlertsSwitchKey,
               isSelected: true,
@@ -53,7 +54,7 @@ class SetAlertsScreen extends StatelessWidget {
             ),
             SizedBox(height: 20.h),
             BuildSwitchButton(
-              title: AppStrings.alertsAddToFavorites,
+              title: AppStrings.alertsAddToFavorites.tr(context: context),
               switchKey: Constants.alertsAddToFavoritesSwitchKey,
               icon: ImageAssets.favorite,
               isSelected: true,
@@ -61,7 +62,7 @@ class SetAlertsScreen extends StatelessWidget {
             ),
             SizedBox(height: 20.h),
             BuildSwitchButton(
-              title: AppStrings.messageAlerts,
+              title: AppStrings.messageAlerts.tr(context: context),
               icon: ImageAssets.message,
               switchKey: Constants.messageAlertsSwitchKey,
               isSelected: true,

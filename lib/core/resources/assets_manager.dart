@@ -37,6 +37,11 @@ class ImageAssets {
   static const String checkingDocument = "assets/images/checking-document.png";
   static const String verifyFull = "assets/images/verify.png";
   static const String message = "assets/images/message.svg";
+  static const String topLeftCorner = "assets/images/top_left_corner.svg";
+  static const String topRightCorner = "assets/images/top_right_corner.svg";
+  static const String bottomRightCorner =
+      "assets/images/bottom_right_corner.svg";
+  static const String bottomLeftCorner = "assets/images/bottom_left_corner.svg";
   static const String mobiles = "assets/images/mobiles.png";
   static const String favourite = "assets/images/favourite.svg";
   static const String homeProperty = "assets/images/home_property.png";

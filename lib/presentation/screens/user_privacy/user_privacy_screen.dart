@@ -1,4 +1,5 @@
 import 'package:auto_route/annotations.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,8 +17,8 @@ class UserPrivacyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(
-        title: AppStrings.privacy,
+      appBar: AppBarWidget(
+        title: AppStrings.privacy.tr(context: context),
         iconColor: AppColors.grey3,
       ),
       body: Padding(
@@ -25,7 +26,7 @@ class UserPrivacyScreen extends StatelessWidget {
         child: Column(
           children: [
             BuildSwitchButton(
-              title: AppStrings.seePhoneNumber,
+              title: AppStrings.seePhoneNumber.tr(context: context),
               icon: ImageAssets.phone,
               switchKey: Constants.seePhoneNumberSwitchKey,
               isSelected: true,

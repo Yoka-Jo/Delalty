@@ -16,11 +16,20 @@ class HomeExploreCategoriesAndWatchMore extends StatelessWidget {
           fontSize: 16.sp,
           color: Colors.white,
         ),
-        SimpleText(
-          AppStrings.watchMore.tr(context: context),
-          textStyle: TextStyleEnum.montserratRegular,
-          fontSize: 14.sp,
-          color: Colors.white,
+        InkWell(
+          onTap: () {
+            if (HomeCubit.get(context).categories != null) {
+              context.router.push(
+                CategoriesRoute(categories: HomeCubit.get(context).categories!),
+              );
+            }
+          },
+          child: SimpleText(
+            AppStrings.watchMore.tr(context: context),
+            textStyle: TextStyleEnum.montserratRegular,
+            fontSize: 14.sp,
+            color: Colors.white,
+          ),
         ),
       ],
     );

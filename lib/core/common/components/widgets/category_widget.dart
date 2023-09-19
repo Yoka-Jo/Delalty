@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -72,7 +73,7 @@ class CategoryWidget extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 SimpleText(
-                  AppStrings.findOut,
+                  AppStrings.findOut.tr(context: context),
                   textStyle: subTitleStyle ?? TextStyleEnum.poppinsLight,
                   fontSize: 10.sp,
                   color: Colors.white,

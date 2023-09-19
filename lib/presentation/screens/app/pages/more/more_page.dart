@@ -71,7 +71,7 @@ class MorePage extends StatelessWidget {
                 }
                 return buttons[index];
               },
-              separatorBuilder: (context, index) => SizedBox(height: 35.h),
+              separatorBuilder: (context, index) => SizedBox(height: 25.h),
               itemCount: buttons.length + 1,
             ),
           ),

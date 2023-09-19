@@ -4,14 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:delalty/core/common/components/widgets/simple_text.dart';
 
-import '../../../resources/assets_manager.dart';
+import 'cached_image.dart';
 
 class CommentWidget extends StatelessWidget {
   final String name;
   final String comment;
+  final String image;
   const CommentWidget({
     Key? key,
     required this.name,
+    required this.image,
     required this.comment,
   }) : super(key: key);
 
@@ -19,12 +21,11 @@ class CommentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CircleAvatar(
-          radius: 40.r,
-          backgroundColor: Colors.transparent,
-          backgroundImage: const AssetImage(
-            ImageAssets.notifications,
-          ),
+        CachedImage(
+          url: image,
+          height: 70.r,
+          width: 70.r,
+          borderRadius: BorderRadius.circular(70.r),
         ),
         SizedBox(width: 25.h),
         Column(

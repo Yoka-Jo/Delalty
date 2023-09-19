@@ -42,3 +42,10 @@ Map<String, dynamic> _$AddProductToFavoritesRequestToJson(
     <String, dynamic>{
       'product_id': instance.productId,
     };
+
+Map<String, dynamic> _$ChangeRelationshipTypeRequestToJson(
+        ChangeRelationshipTypeRequest instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'target_id': instance.target_id,
+    };

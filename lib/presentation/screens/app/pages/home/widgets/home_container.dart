@@ -33,17 +33,7 @@ class HomeContainer extends StatelessWidget {
               const HomeTrendingCategories(),
               SizedBox(height: 40.h),
               const HomeProducts(),
-
               SizedBox(height: 20.h),
-
-              // const HomeVehicles(),
-              // SizedBox(height: 40.h),
-              // const HomeMobiles(),
-              // SizedBox(height: 40.h),
-              // const HomeRealEstate(),
-              // SizedBox(height: 40.h),
-              // const HomeAnimals(),
-              // SizedBox(height: 45.h),
             ],
           ),
         ),

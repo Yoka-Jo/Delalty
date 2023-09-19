@@ -13,7 +13,7 @@ class ProductSellerChatButton extends StatelessWidget {
         borderRadius: 4.r,
         verticalPadding: 4.h,
         horizontalPadding: 10.w,
-        title: AppStrings.chat,
+        title: AppStrings.chat.tr(context: context),
         titleSize: 10.sp,
         hasElevation: false,
         spaceBetweenTextAndIcon: false,

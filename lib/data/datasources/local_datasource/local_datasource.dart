@@ -4,7 +4,6 @@ import 'dart:developer';
 import 'package:delalty/core/models/responses.dart';
 import 'package:delalty/core/user_secure_storage.dart';
 import 'package:delalty/di.dart';
-import 'package:delalty/domain/entities/product_image.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -53,9 +53,13 @@ class ProductSellerComments extends StatelessWidget {
                       ))
               : List.generate(
                   cubit.comments!.length,
-                  (index) => CommentWidget(
-                    name: cubit.comments![index].user!.name,
-                    comment: cubit.comments![index].content,
+                  (index) => Padding(
+                    padding: EdgeInsets.only(bottom: 20.h),
+                    child: CommentWidget(
+                      name: cubit.comments![index].user!.name,
+                      comment: cubit.comments![index].content,
+                      image: cubit.comments![index].user?.image ?? '',
+                    ),
                   ),
                 ),
         ),

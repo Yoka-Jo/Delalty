@@ -1,3 +1,4 @@
+import '../../domain/entities/relation_ship.dart';
 import '../../domain/entities/comment.dart';
 import 'package:delalty/app/constants.dart';
 import 'package:delalty/domain/entities/user_image.dart';
@@ -45,6 +46,8 @@ part '../../data/responses/category_products_response.dart';
 
 part '../../data/responses/comment_response.dart';
 part '../../data/responses/searched_products_response.dart';
+
+part '../../data/responses/relation_ship_response.dart';
 
 abstract class DataResponse<T> {
   T toDomain();

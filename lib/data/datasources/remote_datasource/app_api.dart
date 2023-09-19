@@ -61,6 +61,7 @@ abstract class AppServiceClient {
   @GET(Constants.getProductForCategoryPath)
   Future<HttpResponse<CategoryProductsResponse>> getProductForCategory(
     @Query('category_id') String categoryId,
+    @Queries() Map<String, dynamic> query,
   );
   @DELETE(Constants.removeProductFromFavoritesPath)
   Future<HttpResponse<void>> removeProductFromFavorites(
@@ -72,12 +73,12 @@ abstract class AppServiceClient {
   );
   @GET(Constants.getProductSingleCommentPath)
   Future<HttpResponse<CommentResponse>> getProductSingleComment(
-    @Path() String productId,
+    @Path('product_id') String productId,
     @Path() String id,
   );
   @GET(Constants.getProductCommentsPath)
   Future<HttpResponse<List<CommentResponse>>> getProductComments(
-    @Path() String productId,
+    @Path('product_id') int productId,
     @Queries() Map<String, dynamic> query,
   );
   @GET(Constants.searchForProductsPath)
@@ -87,5 +88,10 @@ abstract class AppServiceClient {
   @GET(Constants.getSellerProductsPath)
   Future<HttpResponse<List<ProductResponse>>> getSellerProducts(
     @Path() String id,
+  );
+  @PATCH(Constants.changeRelationshipTypePath)
+  Future<HttpResponse<RelationShipResponse>> changeRelationshipType(
+    @Body() ChangeRelationshipTypeRequest changeRelationshipTypeRequest,
+    @Path() String targetId,
   );
 }

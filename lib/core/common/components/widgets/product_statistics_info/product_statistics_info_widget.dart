@@ -49,7 +49,10 @@ class ProductStatisticsInfo extends StatelessWidget {
           Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(right: 15.w),
+                padding: EdgeInsets.only(
+                  right: 15.w,
+                  top: showStatusButton ? 10.h : 0,
+                ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

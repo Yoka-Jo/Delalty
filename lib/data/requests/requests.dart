@@ -28,3 +28,5 @@ part 'get_product_comments_request.dart';
 part 'search_for_products_request.dart';
 
 part 'get_seller_products_request.dart';
+
+part 'change_relationship_type_request.dart';

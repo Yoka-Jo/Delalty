@@ -32,7 +32,7 @@ class HomeBestCategories extends StatelessWidget {
                           onTap: () {
                             context.router.push(
                               ViewProductSectionRoute(
-                                title: category.name,
+                                category: category,
                                 isRealEstate: false,
                               ),
                             );

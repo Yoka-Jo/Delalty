@@ -1,11 +1,9 @@
+import '../../domain/entities/relation_ship.dart';
 import 'dart:developer';
 
 import 'package:delalty/core/network/error_handler.dart';
 import 'package:delalty/data/datasources/local_datasource/local_datasource.dart';
 import 'package:delalty/data/requests/add_product_to_recently_searched_request.dart';
-import 'package:delalty/data/requests/get_recently_searched_products_request.dart';
-
-import '../../core/models/responses.dart';
 import '../../domain/entities/comment.dart';
 import '../../domain/entities/category_products.dart';
 import '../../domain/entities/searched_products.dart';
@@ -191,6 +189,7 @@ class RepositoryImpl implements Repository {
     return _repositoryHelpers.callApi<CategoryProducts>(
       () => _appServiceClient.getProductForCategory(
         getProductForCategoryRequest.categoryId,
+        getProductForCategoryRequest.query,
       ),
       statusCode: 200,
     );
@@ -292,6 +291,19 @@ class RepositoryImpl implements Repository {
       ),
       statusCode: 200,
       convertToAppropriateList: List<Product>.from,
+    );
+  }
+
+  @override
+  Future<Either<Failure, RelationShip>> changeRelationshipType(
+    ChangeRelationshipTypeRequest changeRelationshipTypeRequest,
+  ) async {
+    return _repositoryHelpers.callApi<RelationShip>(
+      () => _appServiceClient.changeRelationshipType(
+        changeRelationshipTypeRequest,
+        changeRelationshipTypeRequest.target_id,
+      ),
+      statusCode: 200,
     );
   }
 }

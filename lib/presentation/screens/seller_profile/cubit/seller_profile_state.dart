@@ -28,3 +28,13 @@ final class GetSellerProductsFailure extends SellerProfileState {
 
   const GetSellerProductsFailure(this.message);
 }
+
+final class BlockSellerLoading extends SellerProfileState {}
+
+final class BlockSellerSuccess extends SellerProfileState {}
+
+final class BlockSellerFailure extends SellerProfileState {
+  final String message;
+
+  const BlockSellerFailure(this.message);
+}
