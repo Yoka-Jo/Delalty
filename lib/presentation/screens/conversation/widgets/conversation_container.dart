@@ -27,9 +27,12 @@ class ConversationContainer extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
                     child: Column(
                       children: [
-                        const ConversationProductInfo(),
-                        SizedBox(height: 15.h),
-                        const ConversationDivider(),
+                        if (ConversationCubit.get(context).chat.product !=
+                            null) ...[
+                          const ConversationProductInfo(),
+                          SizedBox(height: 15.h),
+                          const ConversationDivider(),
+                        ],
                         SizedBox(height: 25.h),
                         const ConversationMessagesList(),
                       ],
@@ -47,4 +50,3 @@ class ConversationContainer extends StatelessWidget {
     );
   }
 }
-

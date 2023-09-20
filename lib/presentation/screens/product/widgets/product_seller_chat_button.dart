@@ -18,8 +18,8 @@ class ProductSellerChatButton extends StatelessWidget {
         hasElevation: false,
         spaceBetweenTextAndIcon: false,
         icon: ImageAssets.message,
-        onPressed: () {
-          context.router.push(const ConversationRoute());
+        onPressed: () async {
+          await ProductCubit.get(context).createChat(CreateChatTypes.DIRECT);
         },
       ),
     );

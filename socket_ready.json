@@ -1,0 +1,133 @@
+{
+  "op": 0,
+  "t": "READY",
+  "d": {
+    "chats": [
+      {
+        "id": "11",
+        "type": "PRODUCT",
+        "product_id": "23",
+        "product": {
+          "id": "23",
+          "title": "testtesttset",
+          "description": "test test test testtest testtest testtest testtest testtest test1623893 test testtest testtest testtest test@#@#@test testtest testtest testtest test-=98876546/?????||||\"\"\"\"\"\"<<<MBVCXZASDFGHJKL:\"|",
+          "price": "1234",
+          "category_id": "1",
+          "visible": true,
+          "main_image_id": "d7e2c843-fd8a-451a-9f11-6de2ced5dad1",
+          "values": [],
+          "images": [
+            {
+              "id": "d7e2c843-fd8a-451a-9f11-6de2ced5dad1",
+              "extension": "jpeg",
+              "url": "WhatsApp Image 2023-05-25 at 4.19.19 PM.jpeg"
+            }
+          ],
+          "seller": {
+            "id": "1",
+            "verified": false,
+            "user": {
+              "id": "1",
+              "name": "Abdennour Mez 2",
+              "is_admin": true,
+              "image": "8b6a95dc-98d4-4e2f-b3a4-290d7f15bdff.png",
+              "is_company": false
+            }
+          }
+        },
+        "last_message": null,
+        "participants": [
+          {
+            "last_message_read_id": null,
+            "is_chat_owner": true,
+            "user": {
+              "id": "9",
+              "name": "Yousef",
+              "is_admin": false,
+              "image": null,
+              "is_company": false,
+              "seller": null
+            }
+          },
+          {
+            "last_message_read_id": null,
+            "is_chat_owner": false,
+            "user": {
+              "id": "1",
+              "name": "Abdennour Mez 2",
+              "is_admin": true,
+              "image": "8b6a95dc-98d4-4e2f-b3a4-290d7f15bdff.png",
+              "is_company": false,
+              "seller": { "id": "1", "verified": false }
+            }
+          }
+        ]
+      },
+      {
+        "id": "12",
+        "type": "PRODUCT",
+        "product_id": "19",
+        "product": {
+          "id": "19",
+          "title": "adadadadadadada",
+          "description": "adadadadad adadadadad adadadadad adadadadad adadadadad ",
+          "price": "1",
+          "category_id": "1",
+          "visible": true,
+          "main_image_id": "a8f47137-718e-455d-926e-f66c79dc8df0",
+          "values": [],
+          "images": [
+            {
+              "id": "a8f47137-718e-455d-926e-f66c79dc8df0",
+              "extension": "png",
+              "url": "animate.png"
+            },
+            {
+              "id": "9dbb1e25-906e-47e7-8dbd-b2310670cb7e",
+              "extension": "png",
+              "url": "Desktop - 9.png"
+            }
+          ],
+          "seller": {
+            "id": "8",
+            "verified": false,
+            "user": {
+              "id": "8",
+              "name": "Youssef Khalil",
+              "is_admin": true,
+              "image": "users/8BOSV088TGrBgFHz1iyLYHcVenmIembdQgdCidgk.png",
+              "is_company": false
+            }
+          }
+        },
+        "last_message": null,
+        "participants": [
+          {
+            "last_message_read_id": null,
+            "is_chat_owner": true,
+            "user": {
+              "id": "9",
+              "name": "Yousef",
+              "is_admin": false,
+              "image": null,
+              "is_company": false,
+              "seller": null
+            }
+          },
+          {
+            "last_message_read_id": null,
+            "is_chat_owner": false,
+            "user": {
+              "id": "8",
+              "name": "Youssef Khalil",
+              "is_admin": true,
+              "image": "users/8BOSV088TGrBgFHz1iyLYHcVenmIembdQgdCidgk.png",
+              "is_company": false,
+              "seller": { "id": "8", "verified": false }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

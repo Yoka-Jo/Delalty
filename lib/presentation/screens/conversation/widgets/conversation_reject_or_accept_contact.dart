@@ -51,7 +51,7 @@ class ConversationRejectOrAcceptContact extends StatelessWidget {
                   children: [
                     TextSpan(
                       text:
-                          '${AppStrings.wouldLikeToContact} MGEHS2022 1.5 A.T Luxury Black Interior',
+                          '${AppStrings.wouldLikeToContact.tr(context: context)} MGEHS2022 1.5 A.T Luxury Black Interior',
                       style: getRegularStyle(
                         color: AppColors.grey3,
                         family: FontFamilies.alexandria,
@@ -68,7 +68,7 @@ class ConversationRejectOrAcceptContact extends StatelessWidget {
                 Expanded(
                   child: MyElevatedButton(
                     height: 35.h,
-                    title: AppStrings.reject,
+                    title: AppStrings.reject.tr(context: context),
                     textStyle: TextStyleEnum.alexandriaRegular,
                     onPressed: () {},
                   ),
@@ -77,7 +77,7 @@ class ConversationRejectOrAcceptContact extends StatelessWidget {
                 Expanded(
                   child: MyElevatedButton(
                     height: 35.h,
-                    title: AppStrings.accept,
+                    title: AppStrings.accept.tr(context: context),
                     textStyle: TextStyleEnum.alexandriaRegular,
                     onPressed: () {},
                   ),

@@ -18,6 +18,11 @@ class AppStrings {
   static const String phoneInvalid = "phone_number_is_invalid";
   static const String newMessage = "new_message";
   static const String now = "Now";
+  static const String yes = "yes";
+  static const String no = "no";
+  static const String sendFriedRequest = "send_friend_request";
+  static const String doYouWantToAddThisUserAsFriend =
+      "do_you_want_to_add_user_as_friend";
   static const String checkNow = "check_now";
   static const String addFrontImage = "add_front_image";
   static const String addBackImage = "add_back_image";
@@ -173,6 +178,7 @@ class AppStrings {
   static const String details = "Details";
   static const String theDetails = "the_details";
   static const String chat = "Chat";
+  static const String sentAddFriendRequest = "sent_add_friend_request";
   static const String contact = "Contact";
   static const String situation = "Situation";
   static const String more = "More";

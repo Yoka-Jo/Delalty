@@ -32,7 +32,7 @@ class ChatContainer extends StatelessWidget {
           //         ImageAssets.noMessages,
           //       ),
           //       SimpleText(
-          //         AppStrings.noMessages,
+          //         AppStrings.noMessages.tr(context: context),
           //         textStyle: TextStyleEnum.poppinsRegular,
           //         fontSize: 15.sp,
           //         color: AppColors.grey3,
@@ -40,27 +40,35 @@ class ChatContainer extends StatelessWidget {
           //     ],
           //   ),
           // ),
-          child: ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) => InkWell(
-              onTap: () {
-                context.router.push(const ConversationRoute());
-              },
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const ChatImage(),
-                  SizedBox(width: 18.w),
-                  const ChatUserNameAndMessage(),
-                  const Spacer(),
-                  const ChatTimeAndStatus()
-                ],
-              ),
-            ),
-            separatorBuilder: (context, index) => SizedBox(
-              height: 20.h,
-            ),
-            itemCount: 10,
+          child: BlocBuilder<SocketCubit, SocketState>(
+            builder: (context, state) {
+              final chats = SocketCubit.get(context).chats;
+              return ListView.separated(
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  final chat = chats[index];
+                  return InkWell(
+                    onTap: () {
+                      context.router.push(ConversationRoute(chatId: chat.id));
+                    },
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ChatImage(chat: chat),
+                        SizedBox(width: 18.w),
+                        ChatUserNameAndMessage(chat: chat),
+                        const Spacer(),
+                        ChatTimeAndStatus(chat: chat)
+                      ],
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) => SizedBox(
+                  height: 20.h,
+                ),
+                itemCount: chats.length,
+              );
+            },
           ),
         ),
       ),

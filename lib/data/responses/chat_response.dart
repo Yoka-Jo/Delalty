@@ -8,6 +8,7 @@ class ChatResponse extends Equatable implements DataResponse<Chat> {
   final String? type;
   @JsonKey(name: 'product_id')
   final String productId;
+  final ProductResponse? product;
   @JsonKey(name: 'last_message')
   final MessageResponse? lastMessage;
   final List<ParticipantResponse>? participants;
@@ -16,6 +17,7 @@ class ChatResponse extends Equatable implements DataResponse<Chat> {
     required this.id,
     required this.productId,
     this.type,
+    this.product,
     this.lastMessage,
     this.participants,
   });
@@ -26,6 +28,7 @@ class ChatResponse extends Equatable implements DataResponse<Chat> {
       id: id,
       type: type.orEmpty(),
       productId: productId,
+      product: product?.toDomain(),
       lastMessage: lastMessage?.toDomain(),
       participants: participants?.map((e) => e.toDomain()).toList() ?? [],
     );
@@ -39,6 +42,7 @@ class ChatResponse extends Equatable implements DataResponse<Chat> {
     return [
       id,
       type,
+      product,
       productId,
       lastMessage,
       participants,

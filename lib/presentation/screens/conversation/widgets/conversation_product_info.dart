@@ -7,21 +7,20 @@ class ConversationProductInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final product = ConversationCubit.get(context).chat.product;
     return InkWell(
       onTap: () {
-        // context.router.push(const ProductRoute());
+        context.router.push(ProductRoute(productId: product!.id));
       },
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             width: 75.w,
             height: 75.w,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5.r),
-              child: const CachedImage(
-                url:
-                    'https://images.pexels.com/photos/2036544/pexels-photo-2036544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+              child: CachedImage(
+                url: product?.mainImageId ?? '',
                 fit: BoxFit.cover,
               ),
             ),
@@ -33,13 +32,13 @@ class ConversationProductInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SimpleText(
-                  'MGEHS2022 1.5 A.T Luxury Black interior',
+                  product?.title ?? '',
                   textStyle: TextStyleEnum.poppinsRegular,
                   fontSize: 13.sp,
                   color: AppColors.grey3,
                 ),
                 SimpleText(
-                  'EGP 1,150,000',
+                  'EGP ${product?.price}',
                   textStyle: TextStyleEnum.poppinsRegular,
                   fontSize: 12.sp,
                   color: AppColors.grey3,

@@ -6,7 +6,7 @@ part of '../../core/models/responses.dart';
 class ParticipantResponse extends Equatable
     implements DataResponse<Participant> {
   @JsonKey(name: 'last_message_read_id')
-  final String lastMessageReadId;
+  final String? lastMessageReadId;
   @JsonKey(name: 'is_chat_owner')
   final bool? isChatOwner;
   final UserResponse? user;
@@ -20,7 +20,7 @@ class ParticipantResponse extends Equatable
   @override
   Participant toDomain() {
     return Participant(
-      lastMessageReadId: lastMessageReadId,
+      lastMessageReadId: lastMessageReadId.orEmpty(),
       isChatOwner: isChatOwner.orFalse(),
       user: user?.toDomain(),
     );

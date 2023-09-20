@@ -1,9 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'widgets.dart';
 
 class ChatTimeAndStatus extends StatelessWidget {
   const ChatTimeAndStatus({
-    super.key,
-  });
+    Key? key,
+    required this.chat,
+  }) : super(key: key);
+
+  final Chat chat;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +15,7 @@ class ChatTimeAndStatus extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SimpleText(
-          '10:00 PM',
+          chat.lastMessage?.content ?? '10:00 PM',
           textStyle: TextStyleEnum.poppinsRegular,
           fontSize: 12.sp,
           color: AppColors.grey3,

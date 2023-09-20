@@ -74,9 +74,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ConversationRoute.name: (routeData) {
+      final args = routeData.argsAs<ConversationRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ConversationScreen(),
+        child: ConversationScreen(
+          key: args.key,
+          chatId: args.chatId,
+        ),
       );
     },
     EditProfileRoute.name: (routeData) {
@@ -372,16 +376,40 @@ class ConfirmationOfSaleRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ConversationScreen]
-class ConversationRoute extends PageRouteInfo<void> {
-  const ConversationRoute({List<PageRouteInfo>? children})
-      : super(
+class ConversationRoute extends PageRouteInfo<ConversationRouteArgs> {
+  ConversationRoute({
+    Key? key,
+    required String chatId,
+    List<PageRouteInfo>? children,
+  }) : super(
           ConversationRoute.name,
+          args: ConversationRouteArgs(
+            key: key,
+            chatId: chatId,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ConversationRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ConversationRouteArgs> page =
+      PageInfo<ConversationRouteArgs>(name);
+}
+
+class ConversationRouteArgs {
+  const ConversationRouteArgs({
+    this.key,
+    required this.chatId,
+  });
+
+  final Key? key;
+
+  final String chatId;
+
+  @override
+  String toString() {
+    return 'ConversationRouteArgs{key: $key, chatId: $chatId}';
+  }
 }
 
 /// generated route for

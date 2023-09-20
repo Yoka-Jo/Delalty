@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/annotations.dart';
-import 'package:delalty/core/services/socket.dart';
+import 'package:delalty/core/services/socket/socket_cubit.dart';
 import 'package:delalty/presentation/screens/app/pages/chat/chat_page.dart';
 import 'package:delalty/presentation/screens/app/pages/home/home_page.dart';
 import 'package:delalty/presentation/screens/app/pages/more/more_page.dart';
@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/resources/colors_manager.dart';
-import '../../../main.dart';
 
 @RoutePage()
 class AppScreen extends StatefulWidget {
@@ -24,7 +23,7 @@ class _AppScreenState extends State<AppScreen> {
   @override
   void initState() {
     super.initState();
-    socket = Socket();
+    SocketCubit.get(context).initialzeSocket();
   }
 
   int index = 4;
@@ -83,6 +82,6 @@ class _AppScreenState extends State<AppScreen> {
   @override
   void dispose() {
     super.dispose();
-    socket.dispose();
+    SocketCubit.get(context).close();
   }
 }

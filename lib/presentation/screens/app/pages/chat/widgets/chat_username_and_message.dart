@@ -1,9 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'widgets.dart';
 
 class ChatUserNameAndMessage extends StatelessWidget {
   const ChatUserNameAndMessage({
-    super.key,
-  });
+    Key? key,
+    required this.chat,
+  }) : super(key: key);
+
+  final Chat chat;
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +16,13 @@ class ChatUserNameAndMessage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         SimpleText(
-          'Sabri Al-Mouldi',
+          chat.participants[1].user?.name ?? '',
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 12.sp,
         ),
         SizedBox(height: 5.h),
         SimpleText(
-          'Hello Cam Car Price',
+          chat.lastMessage?.content ?? '',
           textStyle: TextStyleEnum.poppinsMedium,
           fontSize: 12.sp,
           color: AppColors.grey3,

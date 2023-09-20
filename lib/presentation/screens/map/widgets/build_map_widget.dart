@@ -208,7 +208,7 @@ class _BuildMapWidgetState extends State<BuildMapWidget> {
                     height: 28.h,
                     child: MyOutlinedButton(
                       onPressed: () {
-                        context.router.push(const ConversationRoute());
+                        context.router.push(ConversationRoute(chatId: ''));
                       },
                       title: AppStrings.chat,
                       titleColor: AppColors.primaryColor,

@@ -37,4 +37,5 @@ class Constants {
   static const String searchForProductsPath = 'search';
   static const String getSellerProductsPath = 'sellers/{id}/products';
   static const String changeRelationshipTypePath = 'relationships/{target_id}';
+  static const String createChatPath = '/chats';
 }

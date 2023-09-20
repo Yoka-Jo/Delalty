@@ -9,7 +9,6 @@ import '../../../../domain/entities/product.dart';
 import '../../../../domain/entities/user.dart';
 import '../../../../domain/usecases/change_relationship_type_usecase.dart';
 import '../../../../domain/usecases/get_seller_products_usecase.dart';
-import '../../../../main.dart';
 
 part 'seller_profile_state.dart';
 
@@ -68,7 +67,6 @@ class SellerProfileCubit extends Cubit<SellerProfileState> {
     response.fold(
       (l) => emit(BlockSellerFailure(l.message)),
       (r) {
-        socket.sentData();
         emit(BlockSellerSuccess());
       },
     );

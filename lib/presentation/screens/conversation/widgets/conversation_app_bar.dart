@@ -16,8 +16,12 @@ class ConversationAppBar extends StatelessWidget {
             iconColor: Colors.white,
           ),
           UserImage(
-            image:
-                'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            image: ConversationCubit.get(context)
+                    .chat
+                    .participants[1]
+                    .user
+                    ?.image ??
+                '',
             borderColor: Colors.white,
             circleSize: 65.w,
             borderWidth: 1.5.r,
@@ -40,7 +44,12 @@ class ConversationAppBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SimpleText(
-                'Ahmed Mustafa',
+                ConversationCubit.get(context)
+                        .chat
+                        .participants[1]
+                        .user
+                        ?.name ??
+                    '',
                 textStyle: TextStyleEnum.poppinsMedium,
                 fontSize: 18.sp,
                 color: Colors.white,

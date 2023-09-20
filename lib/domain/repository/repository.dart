@@ -1,3 +1,4 @@
+import '../entities/chat.dart';
 import '../../data/requests/add_product_to_recently_searched_request.dart';
 import '../entities/comment.dart';
 import '../entities/category_products.dart';
@@ -68,5 +69,8 @@ abstract class Repository {
   );
   Future<Either<Failure, RelationShip>> changeRelationshipType(
     ChangeRelationshipTypeRequest changeRelationshipTypeRequest,
+  );
+  Future<Either<Failure, Chat>> createChat(
+    CreateChatRequest createChatRequest,
   );
 }

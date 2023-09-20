@@ -6,9 +6,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:delalty/core/common/components/widgets/simple_text.dart';
 
 import '../../../resources/colors_manager.dart';
+import 'centered_circular_progress_indicator.dart';
 
 class MyElevatedButton extends StatelessWidget {
   final String title;
+  final bool isLoading;
   final String? icon;
   final Color? iconColor;
   final double? height;
@@ -28,6 +30,7 @@ class MyElevatedButton extends StatelessWidget {
     Key? key,
     required this.title,
     this.icon,
+    this.isLoading = false,
     this.iconColor,
     this.titleSize,
     this.height,

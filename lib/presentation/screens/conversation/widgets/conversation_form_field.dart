@@ -18,7 +18,7 @@ class ConversationFormField extends StatelessWidget {
             focusColor: AppColors.searchFormFieldBorderColor,
             textInputAction: TextInputAction.done,
             filledColor: const Color(0xffEEEEEE),
-            hintTxt: AppStrings.messaging,
+            hintTxt: AppStrings.messaging.tr(context: context),
             prefixIcon: Container(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Row(
@@ -37,7 +37,7 @@ class ConversationFormField extends StatelessWidget {
           radius: 26.r,
           backgroundColor: AppColors.ligthGreen,
           child: SvgPicture.asset(
-            ImageAssets.microphone,
+            ImageAssets.send,
             color: Colors.white,
           ),
         )

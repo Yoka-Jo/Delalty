@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:delalty/core/services/socket/socket_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -12,6 +14,7 @@ import '../../../../../../core/resources/assets_manager.dart';
 import '../../../../../../core/resources/colors_manager.dart';
 import '../../../../../../core/resources/routes/app_router.dart';
 import '../../../../../../core/resources/strings_manager.dart';
+import '../../../../../../domain/entities/chat.dart';
 
 part 'chat_categories.dart';
 part 'chat_category.dart';

@@ -31,7 +31,7 @@ class ConversationMoreButton extends StatelessWidget {
                 ),
                 SizedBox(width: 10.w),
                 SimpleText(
-                  AppStrings.blockUser,
+                  AppStrings.blockUser.tr(context: context),
                   textStyle: TextStyleEnum.poppinsMedium,
                   fontSize: 15.sp,
                 ),
@@ -47,7 +47,7 @@ class ConversationMoreButton extends StatelessWidget {
                 ),
                 SizedBox(width: 10.w),
                 SimpleText(
-                  AppStrings.deleteChat,
+                  AppStrings.deleteChat.tr(context: context),
                   textStyle: TextStyleEnum.poppinsMedium,
                   fontSize: 15.sp,
                 ),

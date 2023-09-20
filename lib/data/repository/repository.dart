@@ -1,3 +1,4 @@
+import '../../domain/entities/chat.dart';
 import 'dart:developer';
 
 import 'package:delalty/core/network/error_handler.dart';
@@ -304,6 +305,18 @@ class RepositoryImpl implements Repository {
         changeRelationshipTypeRequest.target_id,
       ),
       statusCode: 200,
+    );
+  }
+
+  @override
+  Future<Either<Failure, Chat>> createChat(
+    CreateChatRequest createChatRequest,
+  ) async {
+    return _repositoryHelpers.callApi<Chat>(
+      () => _appServiceClient.createChat(
+        createChatRequest,
+      ),
+      statusCode: 201,
     );
   }
 }

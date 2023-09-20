@@ -35,7 +35,7 @@ class ProfileData extends StatelessWidget {
           title: AppStrings.chat.tr(context: context),
           icon: ImageAssets.message,
           onPressed: () {
-            context.router.push(const ConversationRoute());
+            context.router.push(ConversationRoute(chatId: ''));
           },
         )
       ],

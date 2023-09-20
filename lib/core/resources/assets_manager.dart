@@ -17,6 +17,7 @@ class ImageAssets {
   static const String edit = "assets/images/edit.svg";
   static const String stop = "assets/images/stop.svg";
   static const String sold = "assets/images/sold.svg";
+  static const String send = "assets/images/send.svg";
   static const String calendar = "assets/images/calendar.svg";
   static const String call = "assets/images/call.svg";
   static const String close = "assets/images/close.svg";

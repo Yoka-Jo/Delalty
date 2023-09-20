@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:delalty/core/services/socket.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -10,12 +9,11 @@ import 'app/my_app.dart';
 import 'core/resources/localization/cubit/change_language_cubit.dart';
 import 'core/resources/localization/language_manager.dart';
 import 'core/resources/theme/cubit/change_theme_cubit.dart';
+import 'core/services/socket/socket_cubit.dart';
 import 'di.dart';
 import 'firebase_options.dart';
 import 'presentation/screens/app/cubit/app_cubit.dart';
 import 'presentation/screens/favorite/cubit/favorite_cubit.dart';
-
-late Socket socket;
 
 void main() async {
   final engine = WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +38,9 @@ void main() async {
         ),
         BlocProvider(
           create: (_) => getIt<AppCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => SocketCubit(),
         ),
         BlocProvider(
           create: (_) => getIt<FavoriteCubit>()..getFavorites(),

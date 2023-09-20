@@ -186,6 +186,9 @@ ChatResponse _$ChatResponseFromJson(Map<String, dynamic> json) => ChatResponse(
       id: json['id'] as String,
       productId: json['product_id'] as String,
       type: json['type'] as String?,
+      product: json['product'] == null
+          ? null
+          : ProductResponse.fromJson(json['product'] as Map<String, dynamic>),
       lastMessage: json['last_message'] == null
           ? null
           : MessageResponse.fromJson(
@@ -222,7 +225,7 @@ EmbedResponse _$EmbedResponseFromJson(Map<String, dynamic> json) =>
 
 ParticipantResponse _$ParticipantResponseFromJson(Map<String, dynamic> json) =>
     ParticipantResponse(
-      lastMessageReadId: json['last_message_read_id'] as String,
+      lastMessageReadId: json['last_message_read_id'] as String?,
       isChatOwner: json['is_chat_owner'] as bool?,
       user: json['user'] == null
           ? null

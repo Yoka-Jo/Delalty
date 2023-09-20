@@ -94,4 +94,8 @@ abstract class AppServiceClient {
     @Body() ChangeRelationshipTypeRequest changeRelationshipTypeRequest,
     @Path('target_id') int targetId,
   );
+  @POST(Constants.createChatPath)
+  Future<HttpResponse<ChatResponse>> createChat(
+    @Body() CreateChatRequest createChatRequest,
+  );
 }

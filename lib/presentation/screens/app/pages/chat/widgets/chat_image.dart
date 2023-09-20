@@ -1,9 +1,12 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'widgets.dart';
 
 class ChatImage extends StatelessWidget {
   const ChatImage({
-    super.key,
-  });
+    Key? key,
+    required this.chat,
+  }) : super(key: key);
+  final Chat chat;
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +37,8 @@ class ChatImage extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(30.r),
-                child: const CachedImage(
-                  url:
-                      'https://images.pexels.com/photos/1103832/pexels-photo-1103832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                child: CachedImage(
+                  url: chat.participants[1].user?.image ?? '',
                   fit: BoxFit.cover,
                 ),
               ),

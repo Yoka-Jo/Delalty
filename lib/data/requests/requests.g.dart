@@ -49,3 +49,10 @@ Map<String, dynamic> _$ChangeRelationshipTypeRequestToJson(
       'type': instance.type,
       'target_id': instance.target_id,
     };
+
+Map<String, dynamic> _$CreateChatRequestToJson(CreateChatRequest instance) =>
+    <String, dynamic>{
+      'recipient_id': instance.recipientId,
+      'type': instance.type,
+      'product_id': instance.productId,
+    };

@@ -26,7 +26,8 @@ class _ProhibitedPersonsScreenState extends State<ProhibitedPersonsScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<ProhibitedPersonsCubit>()..getBlockedUsers(),
+      create: (context) =>
+          getIt<ProhibitedPersonsCubit>()..getBlockedUsers(context),
       child: Builder(builder: (context) {
         return BlocBuilder<ProhibitedPersonsCubit, ProhibitedPersonsState>(
           builder: (context, state) {
@@ -75,7 +76,7 @@ class _ProhibitedPersonsScreenState extends State<ProhibitedPersonsScreen> {
                           backgroundColor: AppColors.grey3,
                           onPressed: () {
                             if (blockedUser.user != null) {
-                              cubit.unBlockUser(blockedUser.user!.id);
+                              cubit.unBlockUser(blockedUser.user!.id, context);
                             }
                           },
                         ),

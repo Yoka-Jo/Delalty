@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../../../core/services/socket.dart';
+import '../../../../core/services/socket/socket_cubit.dart';
 import '../../../../data/requests/requests.dart';
 import '../../../../domain/entities/relationship.dart';
 import '../../../../domain/usecases/change_relationship_type_usecase.dart';
-import '../../../../main.dart';
 
 part 'prohibited_persons_state.dart';
 
@@ -22,13 +20,14 @@ class ProhibitedPersonsCubit extends Cubit<ProhibitedPersonsState> {
 
   List<RelationShip> blockedUsers = [];
 
-  void getBlockedUsers() {
-    blockedUsers = Socket.relationships
+  void getBlockedUsers(BuildContext context) {
+    blockedUsers = SocketCubit.get(context)
+        .relationships
         .where((element) => element.type == 'BLOCKED')
         .toList();
   }
 
-  Future<void> unBlockUser(String id) async {
+  Future<void> unBlockUser(String id, BuildContext context) async {
     emit(UnBlockUserLoading());
     final response = await _changeRelationshipTypeUseCase(
       ChangeRelationshipTypeRequest(
@@ -40,8 +39,7 @@ class ProhibitedPersonsCubit extends Cubit<ProhibitedPersonsState> {
     response.fold(
       (l) => emit(UnBlockUserFailure(l.message)),
       (r) {
-        socket.sentData();
-        getBlockedUsers();
+        getBlockedUsers(context);
         emit(UnBlockUserSuccess());
       },
     );
