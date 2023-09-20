@@ -204,8 +204,9 @@ MessageResponse _$MessageResponseFromJson(Map<String, dynamic> json) =>
       chatId: json['chat_id'] as String,
       content: json['content'] as String?,
       nonce: json['nonce'] as String?,
-      createdAt: json['created_at'] as Map<String, dynamic>?,
-      updatedAt: json['updated_at'] as Map<String, dynamic>?,
+      authorId: json['author_id'] as String,
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
       embeds: (json['embeds'] as List<dynamic>?)
           ?.map((e) => EmbedResponse.fromJson(e as Map<String, dynamic>))
           .toList(),

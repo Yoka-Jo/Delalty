@@ -18,7 +18,7 @@ class ProductContactOptions extends StatelessWidget {
                 title: AppStrings.chat.tr(context: context),
                 icon: ImageAssets.message,
                 onPressed: () async =>
-                    cubit.createChat(CreateChatTypes.PRODUCT),
+                    cubit.createChat(CreateChatTypes.PRODUCT, context),
               ),
             ),
             SizedBox(width: 10.w),

@@ -43,7 +43,8 @@ class AppInterceptors extends Interceptor {
       DioException err, ErrorInterceptorHandler handler) async {
     debugPrint(
         'ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}');
-    if (err.response?.statusCode == 401) {
+    if (err.response?.statusCode == 401 &&
+        !err.requestOptions.path.contains('auth')) {
       await showDialogForLoginAgain();
     }
     super.onError(err, handler);

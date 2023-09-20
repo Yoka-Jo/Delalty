@@ -38,6 +38,15 @@ class HomeCubit extends Cubit<HomeState> {
   int get numberOfCategoriesToRetrieve => 5;
   int page = 1;
 
+  void reInitializeFields() {
+    emit(HomeInitial());
+    categories;
+    bestCategories;
+    productsMap = {};
+    page = 1;
+    emit(HomeReInitializeFields());
+  }
+
   Future<void> _getCategories() async {
     final response = await _getCategoriesUseCase(NoParams());
     response.fold((l) {

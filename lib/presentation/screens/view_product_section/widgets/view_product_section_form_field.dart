@@ -11,7 +11,7 @@ class ViewProductSectionFormField extends StatelessWidget {
       child: DefaultTextFormField(
         inputType: TextInputType.text,
         textInputAction: TextInputAction.go,
-        hintTxt: AppStrings.search,
+        hintTxt: AppStrings.search.tr(context: context),
         enableColor: AppColors.searchFormFieldBorderColor,
         focusColor: AppColors.searchFormFieldBorderColor,
         filledColor: AppColors.searchFormFieldColor,

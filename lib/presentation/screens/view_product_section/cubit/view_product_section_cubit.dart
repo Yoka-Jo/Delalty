@@ -25,7 +25,7 @@ class ViewProductSectionCubit extends Cubit<ViewProductSectionState> {
   String _categoryId = '';
 
   Future<void> getProducts({String? categoryId, bool next = false}) async {
-    if (!hasNext() && categoryId == null) return;
+    // if (!hasNext() && categoryId == null) return;
     emit(ViewProductSectionGetProductsLoading());
     categoryId ??= _categoryId;
     _categoryId = categoryId;
@@ -60,6 +60,22 @@ class ViewProductSectionCubit extends Cubit<ViewProductSectionState> {
           .toList();
     }
     emit(ViewProductSectionSearchForProductsSuccess());
+  }
+
+  void arrangeProducts(bool byHigher) {
+    emit(ViewProductSectionInitial());
+    if (byHigher) {
+      (_searchedProducts ?? _products).sort(
+        (a, b) => b.price - a.price,
+      );
+    } else {
+      (_searchedProducts ?? _products).sort(
+        (a, b) => a.price - b.price,
+      );
+    }
+    print(_searchedProducts);
+
+    emit(ViewProductSectionReArrangeProducts());
   }
 
   bool hasNext() => _products.length < total;

@@ -14,6 +14,7 @@ class Constants {
   static const String categoryImagePath = '${baseUrl}cdn/categories/';
   static const String productImagePath = '${baseUrl}cdn/products/';
   static const String userImagePath = '${baseUrl}cdn/users/';
+  static const String messageImagePath = '${baseUrl}cdn/messages/';
   static const String baseUrl = 'https://node.delalty.com/';
   static const String registerPath = 'auth/register';
   static const String loginPath = 'auth/login';
@@ -38,4 +39,6 @@ class Constants {
   static const String getSellerProductsPath = 'sellers/{id}/products';
   static const String changeRelationshipTypePath = 'relationships/{target_id}';
   static const String createChatPath = '/chats';
+  static const String createMessagePath = 'messages';
+  static const String getMessagesPath = 'messages';
 }

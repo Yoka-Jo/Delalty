@@ -7,7 +7,28 @@ class ConversationBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ConversationCubit, ConversationState>(
+    return BlocConsumer<ConversationCubit, ConversationState>(
+      listener: (context, state) {
+        if (state is ConversationPickeImagesMoreThanAllowedError) {
+          SimpleToast.showSimpleToast(
+            msg: AppStrings.pickAtMaxFiveImages.tr(context: context),
+            state: ToastStates.error,
+          );
+        }
+        if (state is ConversationGetChatFailure) {
+          context.router.pop();
+          SimpleToast.showSimpleToast(
+            msg: state.message,
+            state: ToastStates.error,
+          );
+        }
+        if (state is ConversationGetMessagesFailure) {
+          SimpleToast.showSimpleToast(
+            msg: state.message,
+            state: ToastStates.error,
+          );
+        }
+      },
       builder: (context, state) {
         if (state is ConversationGetChatLoading) {
           return const CenteredCircularProgressIndicaotr();

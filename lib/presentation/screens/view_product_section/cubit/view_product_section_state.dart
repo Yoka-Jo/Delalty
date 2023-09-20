@@ -9,6 +9,9 @@ sealed class ViewProductSectionState extends Equatable {
 
 final class ViewProductSectionInitial extends ViewProductSectionState {}
 
+final class ViewProductSectionReArrangeProducts
+    extends ViewProductSectionState {}
+
 final class ViewProductSectionGetProductsLoading
     extends ViewProductSectionState {}
 

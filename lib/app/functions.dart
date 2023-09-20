@@ -59,7 +59,7 @@ Future<void> launchTwitter({
 Future<void> launchContact({required String phoneNumber}) async =>
     await launchUrl(Uri.parse("tel://$phoneNumber"));
 
-Future<File?> getImageFile(
+Future<List<File>?> getImageFile(
   BuildContext context, {
   bool allowMultiple = false,
 }) async {
@@ -69,8 +69,12 @@ Future<File?> getImageFile(
     allowMultiple: allowMultiple,
   );
   if (result != null) {
-    File imageFile = File(result.files.single.path!);
-    return imageFile;
+    if (!allowMultiple) {
+      File imageFile = File(result.files.single.path!);
+      return [imageFile];
+    } else {
+      return result.files.map((e) => File(e.path!)).toList();
+    }
   }
   return null;
 }

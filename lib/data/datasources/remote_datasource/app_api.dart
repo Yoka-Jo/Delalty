@@ -98,4 +98,15 @@ abstract class AppServiceClient {
   Future<HttpResponse<ChatResponse>> createChat(
     @Body() CreateChatRequest createChatRequest,
   );
+  @POST(Constants.createMessagePath)
+  @MultiPart()
+  Future<HttpResponse<MessageResponse>> createMessage(
+    @Part(name: 'chat_id') String chatId,
+    @Part() String content,
+    @Part(name: 'attachments') List<MultipartFile> files,
+  );
+  @GET(Constants.getMessagesPath)
+  Future<HttpResponse<List<MessageResponse>>> getMessages(
+    @Queries() Map<String, dynamic> query,
+  );
 }

@@ -1,3 +1,4 @@
+import '../entities/message.dart';
 import '../entities/chat.dart';
 import '../../data/requests/add_product_to_recently_searched_request.dart';
 import '../entities/comment.dart';
@@ -72,5 +73,11 @@ abstract class Repository {
   );
   Future<Either<Failure, Chat>> createChat(
     CreateChatRequest createChatRequest,
+  );
+  Future<Either<Failure, Message>> createMessage(
+    CreateMessageRequest createMessageRequest,
+  );
+  Future<Either<Failure, List<Message>>> getMessages(
+    GetMessagesRequest getMessagesRequest,
   );
 }

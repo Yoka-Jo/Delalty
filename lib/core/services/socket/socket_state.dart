@@ -9,6 +9,12 @@ sealed class SocketState extends Equatable {
 
 final class SocketInitial extends SocketState {}
 
+final class SocketMessageCreated extends SocketState {
+  final Message message;
+
+  const SocketMessageCreated(this.message);
+}
+
 final class SocketChatCreatedSuccess extends SocketState {}
 
 final class SocketGetReadyDataSuccess extends SocketState {}

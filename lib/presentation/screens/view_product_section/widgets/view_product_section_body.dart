@@ -12,7 +12,6 @@ class ViewProductSectionBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ViewProductSectionCubit, ViewProductSectionState>(
       builder: (context, state) {
-        final isLoading = state is ViewProductSectionGetProductsLoading;
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Column(

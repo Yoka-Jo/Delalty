@@ -1,3 +1,4 @@
+import 'package:delalty/domain/entities/message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -31,12 +32,8 @@ class SocketCubit extends Cubit<SocketState> {
   List<Chat> chats = [];
   List<RelationShip> relationships = [];
 
-  void send(String key, String data) {
-    _socket.sink.add(data);
-  }
-
-  void sentData() {
-    _socket.sink.add('changed');
+  Chat? getChatByProductId(String id) {
+    return chats.where((element) => element.productId == id).singleOrNull;
   }
 
   void _listen() {
@@ -56,12 +53,22 @@ class SocketCubit extends Cubit<SocketState> {
             break;
           }
         case SocketEvents.messageCreated:
+          {
+            emit(SocketInitial());
+            emit(SocketMessageCreated(
+                MessageResponse.fromJson(data['d']).toDomain()));
+          }
         case SocketEvents.chatUpdated:
         case SocketEvents.chatDeleted:
         case SocketEvents.hello:
           break;
         default:
       }
+    }, onDone: () {
+      initialzeSocket();
+      log("Socket is Done");
+    }, onError: (e) {
+      log("Socket Error: $e");
     });
   }
 
@@ -105,6 +112,7 @@ class SocketCubit extends Cubit<SocketState> {
   @override
   Future<void> close() {
     _socket.sink.close();
+    log("Socket connection closed");
     return super.close();
   }
 }

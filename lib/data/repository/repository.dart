@@ -1,3 +1,8 @@
+import 'dart:io';
+import 'package:dio/dio.dart';
+import 'package:http_parser/http_parser.dart';
+
+import '../../domain/entities/message.dart';
 import '../../domain/entities/chat.dart';
 import 'dart:developer';
 
@@ -10,7 +15,6 @@ import '../../domain/entities/relationship.dart';
 import '../../domain/entities/searched_products.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/no_data.dart';
-import 'dart:io';
 import '../../domain/entities/product.dart';
 import '../../domain/entities/category.dart';
 import '../../domain/entities/auth_data.dart';
@@ -317,6 +321,46 @@ class RepositoryImpl implements Repository {
         createChatRequest,
       ),
       statusCode: 201,
+    );
+  }
+
+  @override
+  Future<Either<Failure, Message>> createMessage(
+    CreateMessageRequest createMessageRequest,
+  ) async {
+    final multipartFiles = <MultipartFile>[];
+
+    for (final file in createMessageRequest.files) {
+      final fileBytes = await file.readAsBytes();
+      final filename = file.path.split('/').last;
+      final multipartFile = MultipartFile.fromBytes(
+        fileBytes,
+        filename: filename,
+        contentType:
+            MediaType('application', 'image/${filename.split('.')[1]}'),
+      );
+      multipartFiles.add(multipartFile);
+    }
+    return _repositoryHelpers.callApi<Message>(
+      () => _appServiceClient.createMessage(
+        createMessageRequest.chatId,
+        createMessageRequest.content,
+        multipartFiles,
+      ),
+      statusCode: 201,
+    );
+  }
+
+  @override
+  Future<Either<Failure, List<Message>>> getMessages(
+    GetMessagesRequest getMessagesRequest,
+  ) async {
+    return _repositoryHelpers.callApi<List<Message>>(
+      () => _appServiceClient.getMessages(
+        getMessagesRequest.query,
+      ),
+      statusCode: 200,
+      convertToAppropriateList: List<Message>.from,
     );
   }
 }

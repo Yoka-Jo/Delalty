@@ -11,15 +11,19 @@ import 'cached_image.dart';
 
 class BuildCarousel extends StatefulWidget {
   final bool showFavouriteButton;
+  final bool showIfOnlyOneImage;
   final EdgeInsets numberOfImagesMargin;
   final double height;
-  final List<String> images;
+  final List<dynamic> images;
+  final void Function(int)? onSwipe;
   const BuildCarousel({
     Key? key,
     this.showFavouriteButton = true,
+    this.showIfOnlyOneImage = true,
     required this.numberOfImagesMargin,
     required this.height,
     required this.images,
+    this.onSwipe,
   }) : super(key: key);
 
   @override
@@ -29,7 +33,7 @@ class BuildCarousel extends StatefulWidget {
 class _BuildCarouselState extends State<BuildCarousel> {
   int imageIndex = 0;
 
-  List<String> get images => widget.images;
+  List<dynamic> get images => widget.images;
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +52,9 @@ class _BuildCarouselState extends State<BuildCarousel> {
                   setState(() {
                     imageIndex = index;
                   });
+                  if (widget.onSwipe != null) {
+                    widget.onSwipe!(index);
+                  }
                 },
                 height: widget.height,
                 initialPage: 0,
@@ -58,12 +65,19 @@ class _BuildCarouselState extends State<BuildCarousel> {
                   .map(
                     (image) => ClipRRect(
                       borderRadius: BorderRadius.circular(8.r),
-                      child: CachedImage(
-                        url: image,
-                        fit: BoxFit.cover,
-                        height: 156.h,
-                        width: double.infinity,
-                      ),
+                      child: images[0] is String
+                          ? CachedImage(
+                              url: image,
+                              fit: BoxFit.cover,
+                              height: 156.h,
+                              width: double.infinity,
+                            )
+                          : Image.file(
+                              image,
+                              fit: BoxFit.cover,
+                              height: 156.h,
+                              width: double.infinity,
+                            ),
                     ),
                   )
                   .toList(),
@@ -87,25 +101,26 @@ class _BuildCarouselState extends State<BuildCarousel> {
                   ),
                 ),
               ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Container(
-                  height: 20.h,
-                  width: 32.w,
-                  padding: const EdgeInsets.all(1),
-                  margin: widget.numberOfImagesMargin,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25.r),
-                    color: Colors.white.withOpacity(0.26),
-                  ),
-                  child: Center(
-                    child: SimpleText(
-                      '${imageIndex + 1}/${images.length}',
-                      textStyle: TextStyleEnum.poppinsRegular,
-                      fontSize: 10.sp,
+            if (widget.showIfOnlyOneImage)
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Container(
+                    height: 20.h,
+                    width: 32.w,
+                    padding: const EdgeInsets.all(1),
+                    margin: widget.numberOfImagesMargin,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25.r),
+                      color: Colors.white.withOpacity(0.26),
                     ),
-                  )),
-            ),
+                    child: Center(
+                      child: SimpleText(
+                        '${imageIndex + 1}/${images.length}',
+                        textStyle: TextStyleEnum.poppinsRegular,
+                        fontSize: 10.sp,
+                      ),
+                    )),
+              ),
           ],
         ),
       ),

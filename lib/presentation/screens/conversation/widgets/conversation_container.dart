@@ -39,7 +39,8 @@ class ConversationContainer extends StatelessWidget {
                     ),
                   ),
                 ),
-                const ConversationRejectOrAcceptContact(),
+                SizedBox(height: 20.h),
+                // const ConversationRejectOrAcceptContact(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: const ConversationFormField(),

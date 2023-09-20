@@ -7,23 +7,33 @@ class ChatCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = ChatCubit.get(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         ChatCategory(
           title: AppStrings.all.tr(context: context),
           image: ImageAssets.allOutlined,
-          onTap: () {},
+          type: ChatsType.all,
+          onTap: () {
+            cubit.filterForAll(context);
+          },
         ),
         ChatCategory(
           title: AppStrings.buy.tr(context: context),
           image: ImageAssets.bag,
-          onTap: () {},
+          type: ChatsType.buy,
+          onTap: () {
+            cubit.filterForBuy(context);
+          },
         ),
         ChatCategory(
           title: AppStrings.sale.tr(context: context),
           image: ImageAssets.shop,
-          onTap: () {},
+          type: ChatsType.sale,
+          onTap: () {
+            cubit.filterForSale(context);
+          },
         ),
       ],
     );

@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/services/socket/socket_cubit.dart';
 import '../../../../domain/entities/comment.dart';
 import '../../../../domain/entities/product.dart';
 import '../../../../domain/usecases/change_relationship_type_usecase.dart';
@@ -53,12 +54,15 @@ class ProductCubit extends Cubit<ProductState> {
     });
   }
 
-  Future<void> createChat(CreateChatTypes createChatTypes) async {
+  Future<void> createChat(
+      CreateChatTypes createChatTypes, BuildContext context) async {
     emit(CreateChatLoading());
-    // Future.delayed(const Duration(seconds: 2), () {
-    //   emit(const CreateChatSuccess('11'));
-    // });
-    // return;
+    final chat = SocketCubit.get(context).getChatByProductId(product.id);
+    if (chat != null) {
+      emit(CreateChatSuccess(chat.id));
+      return;
+    }
+
     final response = await _createChatUseCase(
       CreateChatRequest(
         recipientId: int.parse(product.seller!.id),

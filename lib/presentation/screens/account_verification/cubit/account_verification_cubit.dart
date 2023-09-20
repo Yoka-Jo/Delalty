@@ -137,12 +137,12 @@ class AccountVerificationCubit extends Cubit<AccountVerificationState> {
   Future<void> addIdCardImage(BuildContext context) async {
     emit(AccountVerificationInitial());
     if (frontIdCardImage == null) {
-      frontIdCardImage = await getImageFile(context);
+      frontIdCardImage = (await getImageFile(context))?[0];
       emit(AccountVerificationAddIdCardImage());
       return;
     }
     if (backIdCardImage == null) {
-      backIdCardImage = await getImageFile(context);
+      backIdCardImage = (await getImageFile(context))?[0];
       emit(AccountVerificationAddIdCardImage());
 
       return;

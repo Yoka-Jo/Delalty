@@ -40,9 +40,25 @@ class ChatContainer extends StatelessWidget {
           //     ],
           //   ),
           // ),
-          child: BlocBuilder<SocketCubit, SocketState>(
+          child: BlocBuilder<ChatCubit, ChatState>(
             builder: (context, state) {
-              final chats = SocketCubit.get(context).chats;
+              final chats = ChatCubit.get(context).chats;
+              if (chats.isEmpty) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      ImageAssets.noMessages,
+                    ),
+                    SimpleText(
+                      AppStrings.noMessages.tr(context: context),
+                      textStyle: TextStyleEnum.poppinsRegular,
+                      fontSize: 15.sp,
+                      color: AppColors.grey3,
+                    )
+                  ],
+                );
+              }
               return ListView.separated(
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {

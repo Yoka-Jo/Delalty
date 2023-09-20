@@ -9,10 +9,12 @@ class MessageResponse extends Equatable implements DataResponse<Message> {
   final String chatId;
   final String? content;
   final String? nonce;
+  @JsonKey(name: 'author_id')
+  final String authorId;
   @JsonKey(name: 'created_at')
-  final Map<String, dynamic>? createdAt;
+  final String? createdAt;
   @JsonKey(name: 'updated_at')
-  final Map<String, dynamic>? updatedAt;
+  final String? updatedAt;
   final List<EmbedResponse>? embeds;
   final List<AttachmentResponse>? attachments;
 
@@ -21,6 +23,7 @@ class MessageResponse extends Equatable implements DataResponse<Message> {
     required this.chatId,
     this.content,
     this.nonce,
+    required this.authorId,
     this.createdAt,
     this.updatedAt,
     this.embeds,
@@ -32,10 +35,11 @@ class MessageResponse extends Equatable implements DataResponse<Message> {
     return Message(
       id: id,
       chatId: chatId,
+      authorId: authorId,
       content: content.orEmpty(),
       nonce: nonce.orEmpty(),
-      createdAt: createdAt ?? {},
-      updatedAt: updatedAt ?? {},
+      createdAt: createdAt.orEmpty(),
+      updatedAt: updatedAt.orEmpty(),
       embeds: embeds?.map((e) => e.toDomain()).toList() ?? [],
       attachments: attachments?.map((e) => e.toDomain()).toList() ?? [],
     );

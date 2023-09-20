@@ -18,6 +18,7 @@ class AppStrings {
   static const String phoneInvalid = "phone_number_is_invalid";
   static const String newMessage = "new_message";
   static const String now = "Now";
+  static const String pickAtMaxFiveImages = "pick_at_max_five_images";
   static const String yes = "yes";
   static const String no = "no";
   static const String sendFriedRequest = "send_friend_request";

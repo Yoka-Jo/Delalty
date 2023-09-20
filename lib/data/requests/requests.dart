@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:json_annotation/json_annotation.dart';
 part 'requests.g.dart';
 
@@ -32,3 +34,7 @@ part 'get_seller_products_request.dart';
 part 'change_relationship_type_request.dart';
 
 part 'create_chat_request.dart';
+
+part 'create_message_request.dart';
+
+part 'get_messages_request.dart';

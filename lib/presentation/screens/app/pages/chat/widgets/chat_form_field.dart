@@ -9,6 +9,8 @@ class ChatFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTextFormField(
       radius: 10.r,
+      onChangedFunction: (value) =>
+          ChatCubit.get(context).search(value, context),
       padding: EdgeInsets.zero,
       filledColor: Colors.white,
       inputType: TextInputType.text,

@@ -8,6 +8,7 @@ sealed class HomeState extends Equatable {
 }
 
 final class HomeInitial extends HomeState {}
+final class HomeReInitializeFields extends HomeState {}
 
 final class HomeGetCategoriesSuccess extends HomeState {}
 
