@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-import 'package:delalty/data/requests/requests.dart';
-import 'package:delalty/domain/usecases/create_message_usecase.dart';
-import 'package:delalty/domain/usecases/get_messages_usecase.dart';
+import '../../../../data/requests/requests.dart';
+import '../../../../domain/usecases/create_message_usecase.dart';
+import '../../../../domain/usecases/get_messages_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';

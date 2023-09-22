@@ -4,8 +4,8 @@ import '../../domain/entities/embed.dart';
 import '../../domain/entities/message.dart';
 import '../../domain/entities/participant.dart';
 import '../../domain/entities/comment.dart';
-import 'package:delalty/app/constants.dart';
-import 'package:delalty/domain/entities/user_image.dart';
+import '../../app/constants.dart';
+import '../../domain/entities/user_image.dart';
 
 import '../../domain/entities/best_categories.dart';
 import '../../domain/entities/relationship.dart';

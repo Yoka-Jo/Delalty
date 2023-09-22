@@ -6,9 +6,9 @@ import '../../domain/entities/message.dart';
 import '../../domain/entities/chat.dart';
 import 'dart:developer';
 
-import 'package:delalty/core/network/error_handler.dart';
-import 'package:delalty/data/datasources/local_datasource/local_datasource.dart';
-import 'package:delalty/data/requests/add_product_to_recently_searched_request.dart';
+import '../../core/network/error_handler.dart';
+import '../datasources/local_datasource/local_datasource.dart';
+import '../requests/add_product_to_recently_searched_request.dart';
 import '../../domain/entities/comment.dart';
 import '../../domain/entities/category_products.dart';
 import '../../domain/entities/relationship.dart';
@@ -22,7 +22,7 @@ import '../../core/user_secure_storage.dart';
 import '../../di.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:delalty/data/repository/repository_helpers.dart';
+import 'repository_helpers.dart';
 
 import '../../data/datasources/remote_datasource/app_api.dart';
 import '../requests/requests.dart';
@@ -373,6 +373,15 @@ class RepositoryImpl implements Repository {
         removeRelationshipRequest.target_id,
       ),
       statusCode: 201,
+    );
+  }
+
+  @override
+  Future<Either<Failure, List<Product>>> getTrendingProducts() async {
+    return _repositoryHelpers.callApi<List<Product>>(
+      () => _appServiceClient.getTrendingProducts(),
+      statusCode: 200,
+      convertToAppropriateList: List<Product>.from,
     );
   }
 }

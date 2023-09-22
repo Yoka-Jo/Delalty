@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/core/common/components/widgets/my_outlined_button.dart';
-import 'package:delalty/core/common/components/widgets/real_estate_features.dart';
-import 'package:delalty/core/resources/routes/app_router.dart';
-import 'package:delalty/core/resources/strings_manager.dart';
-import 'package:delalty/presentation/screens/map/widgets/custom_marker_icon.dart';
+import '../../../../core/common/components/widgets/my_outlined_button.dart';
+import '../../../../core/common/components/widgets/real_estate_features.dart';
+import '../../../../core/resources/routes/app_router.dart';
+import '../../../../core/resources/strings_manager.dart';
+import 'custom_marker_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

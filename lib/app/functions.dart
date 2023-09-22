@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../core/common/components/widgets/simple_toast.dart';
@@ -123,3 +124,5 @@ bool isPhoneNumber(String input) =>
 String getFormattedTime(String date) {
   return DateFormat('kk:mm a').format(DateTime.parse(date));
 }
+
+void shareLink(String path) => Share.share(path);

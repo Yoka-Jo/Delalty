@@ -1,18 +1,19 @@
 import 'dart:developer';
 
-import 'package:delalty/core/base_usecase.dart';
-import 'package:delalty/data/requests/requests.dart';
-import 'package:delalty/domain/usecases/get_category_usecase.dart';
-import 'package:delalty/domain/usecases/get_product_for_category_usecase.dart';
+import '../../../../../../core/base_usecase.dart';
+import '../../../../../../data/requests/requests.dart';
+import '../../../../../../domain/usecases/get_category_usecase.dart';
+import '../../../../../../domain/usecases/get_product_for_category_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:delalty/domain/usecases/get_best_categories_usecase.dart';
-import 'package:delalty/domain/usecases/get_categories_usecase.dart';
+import '../../../../../../domain/usecases/get_best_categories_usecase.dart';
+import '../../../../../../domain/usecases/get_categories_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../../domain/entities/category.dart';
 import '../../../../../../domain/entities/product.dart';
+import '../../../../../../domain/usecases/get_trending_products_usecase.dart';
 
 part 'home_state.dart';
 
@@ -23,16 +24,19 @@ class HomeCubit extends Cubit<HomeState> {
     this._getBestCategoriesUseCase,
     this._getProductForCategoryUseCase,
     this._getCategoryUseCase,
+    this._getTrendingProductsUseCase,
   ) : super(HomeInitial());
   final GetCategoriesUseCase _getCategoriesUseCase;
   final GetCategoryUseCase _getCategoryUseCase;
   final GetBestCategoriesUseCase _getBestCategoriesUseCase;
   final GetProductForCategoryUseCase _getProductForCategoryUseCase;
+  final GetTrendingProductsUseCase _getTrendingProductsUseCase;
 
   static HomeCubit get(BuildContext context) => BlocProvider.of(context);
 
   List<Category>? categories;
   List<Category>? bestCategories;
+  List<Product>? trendingProducts;
   Map<String, List<Product>?> productsMap = {};
 
   int get numberOfCategoriesToRetrieve => 5;
@@ -72,22 +76,37 @@ class HomeCubit extends Cubit<HomeState> {
     response.fold((l) {
       emit(HomeGetBestCategoriesFailure(l.message));
     }, (bestCategories) async {
-      this.bestCategories ??= [];
-      await Future.wait(bestCategories.map((id) async {
-        final category = await _getCategoryById(id);
+      final List<Category> result = [];
+      for (var categoryId in bestCategories) {
+        final category = await _getCategoryById(categoryId);
         if (category != null) {
-          this.bestCategories!.add(category);
+          result.add(category);
         }
-      }));
+      }
+
+      this.bestCategories = result;
+      // await Future.wait(bestCategories.map((id) async {}));
 
       emit(HomeGetBestCategoriesSuccess());
+    });
+  }
+
+  Future<void> _getTrendingProducts() async {
+    final response = await _getTrendingProductsUseCase(NoParams());
+    response.fold((l) {
+      emit(HomeGetTrendingProductsFailure(l.message));
+    }, (trendingProducts) async {
+      this.trendingProducts = trendingProducts;
+      emit(HomeGetTrendingProductsSuccess());
     });
   }
 
   bool isGettingCategoriesProducts = false;
 
   Future<void> getCategoriesProducts() async {
-    if (numberOfCategoriesToRetrieve * (page - 1) >= categories!.length) {
+    if (categories == null ||
+        isGettingCategoriesProducts ||
+        numberOfCategoriesToRetrieve * (page - 1) >= categories!.length) {
       return;
     }
     isGettingCategoriesProducts = true;
@@ -130,10 +149,9 @@ class HomeCubit extends Cubit<HomeState> {
       [
         _getCategories(),
         _getBestCategories(),
+        _getTrendingProducts(),
+        getCategoriesProducts(),
       ],
     );
-    if (categories != null) {
-      await getCategoriesProducts();
-    }
   }
 }

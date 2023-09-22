@@ -1,6 +1,8 @@
 import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
 import '../../../resources/localization/language_manager.dart';
 import '../../../resources/theme/app_theme.dart';
 import '../widgets/my_text.dart';

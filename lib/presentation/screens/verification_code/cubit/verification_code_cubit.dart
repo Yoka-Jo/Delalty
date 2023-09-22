@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:delalty/data/requests/requests.dart';
-import 'package:delalty/domain/usecases/verify_phone_usecase.dart';
+import '../../../../data/requests/requests.dart';
+import '../../../../domain/usecases/verify_phone_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

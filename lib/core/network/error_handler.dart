@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
+
 import '../resources/strings_manager.dart';
 import 'failure.dart';
 

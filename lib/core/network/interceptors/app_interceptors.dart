@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/core/resources/app_context.dart';
+import '../../resources/app_context.dart';
 import 'package:dio/dio.dart';
-import 'package:delalty/core/user_secure_storage.dart';
-import 'package:delalty/di.dart';
+import '../../user_secure_storage.dart';
+import '../../../di.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

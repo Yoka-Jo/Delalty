@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/core/common/components/widgets/back_icon_widget.dart';
-import 'package:delalty/core/common/components/widgets/simple_text.dart';
-import 'package:delalty/core/resources/strings_manager.dart';
+import '../../../../core/common/components/widgets/back_icon_widget.dart';
+import '../../../../core/common/components/widgets/simple_text.dart';
+import '../../../../core/resources/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

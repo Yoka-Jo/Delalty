@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:delalty/core/models/responses.dart';
-import 'package:delalty/core/user_secure_storage.dart';
-import 'package:delalty/di.dart';
+import '../../../core/models/responses.dart';
+import '../../../core/user_secure_storage.dart';
+import '../../../di.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/core/common/components/widgets/build_option_button.dart';
-import 'package:delalty/core/common/components/widgets/simple_text.dart';
-import 'package:delalty/core/resources/routes/app_router.dart';
+import '../../../../core/common/components/widgets/build_option_button.dart';
+import '../../../../core/common/components/widgets/simple_text.dart';
+import '../../../../core/resources/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

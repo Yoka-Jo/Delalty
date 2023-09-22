@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/core/resources/strings_manager.dart';
+import '../../../core/resources/strings_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/common/components/widgets/appbar_widget.dart';

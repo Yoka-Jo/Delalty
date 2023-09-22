@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/core/common/components/widgets/login_social_media.dart';
-import 'package:delalty/core/common/components/widgets/or_divider_widget.dart';
-import 'package:delalty/core/resources/routes/app_router.dart';
+import '../../../../core/common/components/widgets/login_social_media.dart';
+import '../../../../core/common/components/widgets/or_divider_widget.dart';
+import '../../../../core/resources/routes/app_router.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

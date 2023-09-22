@@ -11,7 +11,7 @@ import '../../bottom_sheet_elemet_widget.dart';
 import '../../cached_image.dart';
 import '../../simple_text.dart';
 
-part 'product_statistics.dart';
-part 'product_more_button.dart';
-part 'product_info.dart';
 part 'product_image.dart';
+part 'product_info.dart';
+part 'product_more_button.dart';
+part 'product_statistics.dart';

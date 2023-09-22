@@ -42,4 +42,5 @@ class Constants {
   static const String createMessagePath = 'messages';
   static const String getMessagesPath = 'messages';
   static const String removeRelationshipPath = 'relationships/{target_id}';
+  static const String getTrendingProductsPath = 'products/popular';
 }

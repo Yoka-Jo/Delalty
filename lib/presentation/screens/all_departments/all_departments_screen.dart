@@ -1,21 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:delalty/app/extensions.dart';
+import 'package:delalty/core/common/components/widgets/centered_circular_progress_indicator.dart';
+import 'package:delalty/core/common/components/widgets/simple_text.dart';
+import 'package:delalty/core/resources/colors_manager.dart';
 import 'package:delalty/core/resources/routes/app_router.dart';
-import 'package:delalty/presentation/screens/app/models/category_model.dart';
+import 'package:delalty/core/resources/strings_manager.dart';
+import 'package:delalty/di.dart';
+import 'package:delalty/presentation/screens/all_departments/cubit/all_departments_cubit.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:delalty/app/extensions.dart';
-import 'package:delalty/core/common/components/widgets/centered_circular_progress_indicator.dart';
-import 'package:delalty/core/common/components/widgets/simple_text.dart';
-import 'package:delalty/core/resources/colors_manager.dart';
-import 'package:delalty/core/resources/strings_manager.dart';
-import 'package:delalty/di.dart';
-import 'package:delalty/presentation/screens/all_departments/cubit/all_departments_cubit.dart';
 
 import '../../../core/common/components/widgets/appbar_widget.dart';
 import '../../../core/common/components/widgets/cached_image.dart';

@@ -1,16 +1,18 @@
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/core/common/components/widgets/build_shimmer_widget.dart';
-import 'package:delalty/core/common/components/widgets/centered_circular_progress_indicator.dart';
-import 'package:delalty/core/resources/localization/cubit/change_language_cubit.dart';
-import 'package:delalty/core/resources/routes/app_router.dart';
+import '../../../../core/common/components/widgets/build_shimmer_widget.dart';
+import '../../../../core/common/components/widgets/centered_circular_progress_indicator.dart';
+import '../../../../core/resources/localization/cubit/change_language_cubit.dart';
+import '../../../../core/resources/routes/app_router.dart';
+import '../../../../core/services/dynamic_link_service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../../../app/constants.dart';
 import '../../../../app/functions.dart';

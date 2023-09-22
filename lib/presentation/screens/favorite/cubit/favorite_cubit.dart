@@ -1,10 +1,10 @@
-import 'package:delalty/data/requests/requests.dart';
-import 'package:delalty/domain/usecases/add_product_to_favorites_usecase.dart';
-import 'package:delalty/domain/usecases/remove_product_from_favorites_usecase.dart';
+import '../../../../data/requests/requests.dart';
+import '../../../../domain/usecases/add_product_to_favorites_usecase.dart';
+import '../../../../domain/usecases/remove_product_from_favorites_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:delalty/core/base_usecase.dart';
-import 'package:delalty/domain/usecases/get_favorites_usecase.dart';
+import '../../../../core/base_usecase.dart';
+import '../../../../domain/usecases/get_favorites_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 

@@ -1,4 +1,4 @@
-import 'package:delalty/core/resources/text/styles_manager.dart';
+import '../../../resources/text/styles_manager.dart';
 import 'package:flutter/material.dart';
 
 enum TextStyleEnum {

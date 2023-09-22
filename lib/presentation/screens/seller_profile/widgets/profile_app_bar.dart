@@ -52,7 +52,16 @@ class ProfileAppBar extends StatelessWidget {
                 BottomSheetElementWidget(
                   title: context.tr(AppStrings.sharingProfile),
                   icon: ImageAssets.share,
-                  onTap: () {},
+                  onTap: () async {
+                    final dynamicLinkService = DynamicLinkService();
+                    final path =
+                        await dynamicLinkService.generateDynamicLinkUrl(
+                      path:
+                          '/profile/${SellerProfileCubit.get(context).user!.id}',
+                    );
+                    log(path);
+                    shareLink(path);
+                  },
                 ),
                 SizedBox(height: 30.h),
                 BottomSheetElementWidget(

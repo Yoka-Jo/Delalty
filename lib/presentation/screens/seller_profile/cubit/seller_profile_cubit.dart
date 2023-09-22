@@ -1,17 +1,12 @@
-import 'dart:developer';
-
-import 'package:delalty/data/requests/requests.dart';
-import 'package:delalty/domain/usecases/get_user_data_usecase.dart';
+import '../../../../data/requests/requests.dart';
+import '../../../../domain/usecases/get_user_data_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../../../core/services/socket/socket_cubit.dart';
 import '../../../../domain/entities/product.dart';
 import '../../../../domain/entities/user.dart';
 import '../../../../domain/usecases/change_relationship_type_usecase.dart';
-import '../../../../domain/usecases/create_chat_usecase.dart';
 import '../../../../domain/usecases/get_seller_products_usecase.dart';
 
 part 'seller_profile_state.dart';

@@ -7,7 +7,6 @@ class HomeTrendingCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const isLoading = 2 > 3;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -18,38 +17,26 @@ class HomeTrendingCategories extends StatelessWidget {
         ),
         SizedBox(height: 18.h),
         SizedBox(
-          height: 160.h,
-          child: ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            reverse: true,
-            itemBuilder: (context, index) {
-              if (isLoading) {
-                return BuildShimmerWidget(
-                  width: 172.w,
-                  height: 160.h,
+            height: 160.h,
+            child: BlocBuilder<HomeCubit, HomeState>(
+              builder: (context, state) {
+                final cubit = HomeCubit.get(context);
+                return ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  reverse: true,
+                  itemBuilder: (context, index) {
+                    final product = cubit.trendingProducts?[index];
+                    return ProductCardWidget(
+                      isLoading: cubit.trendingProducts == null,
+                      product: product,
+                    );
+                  },
+                  separatorBuilder: (context, index) => SizedBox(width: 15.w),
+                  itemCount: cubit.trendingProducts?.length ?? 5,
                 );
-              }
-              final category = trendingCategories[index];
-              return InkWell(
-                onTap: () {
-                  // context.router.push(
-                  //   ViewProductSectionRoute(
-                  //     category: category,
-                  //     isRealEstate: false,
-                  //   ),
-                  // );
-                },
-                child: CategoryWidget(
-                  image: category.image,
-                  title: category.title,
-                ),
-              );
-            },
-            separatorBuilder: (context, index) => SizedBox(width: 20.w),
-            itemCount: trendingCategories.length,
-          ),
-        ),
+              },
+            )),
       ],
     );
   }

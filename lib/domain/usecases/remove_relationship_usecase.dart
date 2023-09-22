@@ -1,10 +1,11 @@
-import 'package:injectable/injectable.dart';
-import '../../data/requests/requests.dart';
-import '../repository/repository.dart';
-import '../../core/base_usecase.dart';
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
+
+import '../../core/base_usecase.dart';
 import '../../core/network/failure.dart';
+import '../../data/requests/requests.dart';
 import '../../domain/entities/no_data.dart';
+import '../repository/repository.dart';
 
 @lazySingleton
 class RemoveRelationshipUseCase

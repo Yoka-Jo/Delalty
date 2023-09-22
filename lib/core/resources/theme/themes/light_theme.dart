@@ -6,7 +6,7 @@ class LightThemeData extends AppThemeData {
       scaffoldBackgroundColor: Colors.white,
       brightness: Brightness.light,
       bottomSheetTheme:
-          BottomSheetThemeData(backgroundColor: Colors.transparent),
+          const BottomSheetThemeData(backgroundColor: Colors.transparent),
       primarySwatch: Colors.black.toMaterialColor(),
       dividerTheme: _dividerThemeData,
       appBarTheme: AppBarTheme(

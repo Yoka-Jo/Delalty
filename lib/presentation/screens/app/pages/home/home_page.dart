@@ -1,5 +1,5 @@
-import 'package:delalty/app/extensions.dart';
-import 'package:delalty/presentation/screens/app/pages/home/cubit/home_cubit.dart';
+import '../../../../../app/extensions.dart';
+import 'cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/core/resources/routes/app_router.dart';
+import '../../../../resources/routes/app_router.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../resources/assets_manager.dart';

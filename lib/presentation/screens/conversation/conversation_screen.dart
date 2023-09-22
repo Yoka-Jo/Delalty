@@ -1,6 +1,6 @@
 import 'package:auto_route/annotations.dart';
-import 'package:delalty/core/resources/colors_manager.dart';
-import 'package:delalty/presentation/screens/conversation/cubit/conversation_cubit.dart';
+import '../../../core/resources/colors_manager.dart';
+import 'cubit/conversation_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

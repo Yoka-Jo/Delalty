@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/core/common/components/widgets/my_outlined_button.dart';
-import 'package:delalty/core/resources/localization/cubit/change_language_cubit.dart';
+import '../../../core/common/components/widgets/my_outlined_button.dart';
+import '../../../core/resources/localization/cubit/change_language_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,7 +27,7 @@ class ChooseLanguageScreen extends StatelessWidget {
             ),
             SizedBox(height: 15.h),
             SimpleText(
-              AppStrings.chooseLanguage,
+              'Choose Language',
               textStyle: TextStyleEnum.poppinsRegular,
               fontSize: 20.sp,
             ),

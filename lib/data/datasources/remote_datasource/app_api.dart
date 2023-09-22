@@ -113,4 +113,6 @@ abstract class AppServiceClient {
   Future<HttpResponse<void>> removeRelationship(
     @Path() String target_id,
   );
+  @GET(Constants.getTrendingProductsPath)
+  Future<HttpResponse<List<ProductResponse>>> getTrendingProducts();
 }

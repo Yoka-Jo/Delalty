@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/presentation/screens/login/cubit/login_cubit.dart';
+import 'cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

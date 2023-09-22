@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import 'package:delalty/data/requests/requests.dart';
-import 'package:delalty/domain/usecases/get_category_usecase.dart';
-import 'package:delalty/domain/usecases/get_recently_searched_products_usecase.dart';
-import 'package:delalty/domain/usecases/search_for_products_usecase.dart';
+import '../../../../data/requests/requests.dart';
+import '../../../../domain/usecases/get_category_usecase.dart';
+import '../../../../domain/usecases/get_recently_searched_products_usecase.dart';
+import '../../../../domain/usecases/search_for_products_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

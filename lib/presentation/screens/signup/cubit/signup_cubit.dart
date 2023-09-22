@@ -1,4 +1,4 @@
-import 'package:delalty/data/requests/requests.dart';
+import '../../../../data/requests/requests.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';

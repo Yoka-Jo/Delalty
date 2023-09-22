@@ -55,18 +55,28 @@ class ProductAppBar extends StatelessWidget {
               },
             ),
             SizedBox(width: 12.w),
-            Container(
-              height: 32.w,
-              width: 32.w,
-              padding: EdgeInsets.all(5.h),
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-              ),
-              child: FittedBox(
-                child: SvgPicture.asset(
-                  ImageAssets.share,
-                  fit: BoxFit.scaleDown,
+            InkWell(
+              onTap: () async {
+                final dynamicLinkService = DynamicLinkService();
+                final path = await dynamicLinkService.generateDynamicLinkUrl(
+                  path: '/product/${ProductCubit.get(context).product.id}',
+                );
+                log(path);
+                shareLink(path);
+              },
+              child: Container(
+                height: 32.w,
+                width: 32.w,
+                padding: EdgeInsets.all(5.h),
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                ),
+                child: FittedBox(
+                  child: SvgPicture.asset(
+                    ImageAssets.share,
+                    fit: BoxFit.scaleDown,
+                  ),
                 ),
               ),
             ),

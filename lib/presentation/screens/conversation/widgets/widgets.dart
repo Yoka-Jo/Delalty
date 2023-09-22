@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'dart:math' hide log;
 
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/core/common/components/widgets/build_carousel.dart';
+import '../../../../core/common/components/widgets/build_carousel.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,10 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:country_picker/country_picker.dart';
+import 'package:delalty/core/common/components/widgets/simple_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:delalty/core/common/components/widgets/simple_text.dart';
 
 import '../../../resources/colors_manager.dart';
 import '../../../resources/strings_manager.dart';

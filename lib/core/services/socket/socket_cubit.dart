@@ -1,12 +1,12 @@
-import 'package:delalty/domain/entities/message.dart';
+import '../../../domain/entities/message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import 'dart:convert';
 import 'dart:developer';
-import 'package:delalty/core/models/responses.dart';
-import 'package:delalty/domain/entities/relationship.dart';
+import '../../models/responses.dart';
+import '../../../domain/entities/relationship.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import '../../../di.dart';
 import '../../../domain/entities/chat.dart';

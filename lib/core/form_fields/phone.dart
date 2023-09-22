@@ -1,4 +1,4 @@
-import 'package:delalty/app/functions.dart';
+import '../../app/functions.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import '../resources/strings_manager.dart';

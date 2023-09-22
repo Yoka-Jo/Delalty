@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:delalty/app/functions.dart';
-import 'package:delalty/core/resources/strings_manager.dart';
-import 'package:delalty/presentation/screens/account_verification/widgets/widgets.dart';
+import '../../../../app/functions.dart';
+import '../../../../core/resources/strings_manager.dart';
+import '../widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';

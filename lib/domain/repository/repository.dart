@@ -83,4 +83,5 @@ abstract class Repository {
   Future<Either<Failure, NoData>> removeRelationship(
     RemoveRelationshipRequest removeRelationshipRequest,
   );
+  Future<Either<Failure, List<Product>>> getTrendingProducts();
 }

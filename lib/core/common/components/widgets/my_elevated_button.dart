@@ -1,12 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:delalty/core/common/components/widgets/simple_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'package:delalty/core/common/components/widgets/simple_text.dart';
-
 import '../../../resources/colors_manager.dart';
-import 'centered_circular_progress_indicator.dart';
 
 class MyElevatedButton extends StatelessWidget {
   final String title;

@@ -8,6 +8,7 @@ sealed class HomeState extends Equatable {
 }
 
 final class HomeInitial extends HomeState {}
+
 final class HomeReInitializeFields extends HomeState {}
 
 final class HomeGetCategoriesSuccess extends HomeState {}
@@ -24,6 +25,14 @@ final class HomeGetBestCategoriesFailure extends HomeState {
   final String message;
 
   const HomeGetBestCategoriesFailure(this.message);
+}
+
+final class HomeGetTrendingProductsSuccess extends HomeState {}
+
+final class HomeGetTrendingProductsFailure extends HomeState {
+  final String message;
+
+  const HomeGetTrendingProductsFailure(this.message);
 }
 
 final class HomeGetProductsForCategoriesLoading extends HomeState {}

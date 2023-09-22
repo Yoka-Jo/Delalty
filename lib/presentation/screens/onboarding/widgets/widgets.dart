@@ -1,4 +1,4 @@
-import 'package:delalty/core/resources/localization/language_manager.dart';
+import '../../../../core/resources/localization/language_manager.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

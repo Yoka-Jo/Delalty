@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+import 'package:auto_route/auto_route.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +13,7 @@ import '../core/resources/routes/app_router.dart';
 import '../core/resources/theme/app_theme.dart';
 import '../core/resources/theme/cubit/change_theme_cubit.dart';
 import '../core/resources/theme/themes/app_theme_data.dart';
+import '../core/services/dynamic_link_service.dart';
 
 class MyApp extends StatefulWidget {
   static MyApp instance = const MyApp._internal();
@@ -27,6 +31,29 @@ class _MyAppState extends State<MyApp> {
 
   final _darkTheme = DarkThemeData();
 
+  final _dynamicLinkService = DynamicLinkService();
+
+  late StreamSubscription _incomingDynamicLinksSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    _openInitialDynamicLinkIfAny();
+
+    _incomingDynamicLinksSubscription =
+        _dynamicLinkService.onNewDynamicLinkPath().listen(
+      (event) {
+        if (event.contains('product')) {
+          context.router.push(ProductRoute(productId: event.split('/').last));
+        }
+        if (event.contains('profile')) {
+          context.router
+              .push(SellerProfileRoute(sellerId: event.split('/').last));
+        }
+      },
+    );
+  }
+
   @override
   void didChangeDependencies() {
     initApp();
@@ -38,6 +65,14 @@ class _MyAppState extends State<MyApp> {
       ChangeThemeCubit.get(context).initTheme(),
       ChangeLanguageCubit.get(context).initLanguage(context)
     ]);
+  }
+
+  Future<void> _openInitialDynamicLinkIfAny() async {
+    final path = await _dynamicLinkService.getInitialDynamicLinkPath();
+    if (path != null) {
+      // context.router.push(path);
+      log(path);
+    }
   }
 
   @override
@@ -87,5 +122,11 @@ class _MyAppState extends State<MyApp> {
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _incomingDynamicLinksSubscription.cancel();
+    super.dispose();
   }
 }

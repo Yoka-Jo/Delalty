@@ -17,10 +17,10 @@ class HomeProducts extends StatelessWidget {
         final itemCount = cubit.isGettingCategoriesProducts
             ? cubit.productsMap.length + 1
             : cubit.productsMap.length;
+
         return ListView.separated(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            primary: false,
             itemCount: itemCount,
             separatorBuilder: (context, i) => SizedBox(height: 40.h),
             itemBuilder: (context, i) {
@@ -33,6 +33,10 @@ class HomeProducts extends StatelessWidget {
                   ],
                 );
               }
+              final productsLength = (cubit.productsMap[category.id] == null ||
+                      (cubit.productsMap[category.id]?.length ?? 10) > 5)
+                  ? 5
+                  : cubit.productsMap[category.id]!.length;
               return Column(
                 children: [
                   Row(
@@ -102,11 +106,7 @@ class HomeProducts extends StatelessWidget {
                       },
                       separatorBuilder: (context, index) =>
                           SizedBox(width: 15.w),
-                      itemCount: (cubit.productsMap[category.id] == null ||
-                              (cubit.productsMap[category.id]?.length ?? 10) >
-                                  5)
-                          ? 5
-                          : cubit.productsMap[category.id]!.length,
+                      itemCount: productsLength,
                     ),
                   ),
                 ],

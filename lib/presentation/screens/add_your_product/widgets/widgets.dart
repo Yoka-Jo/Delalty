@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/core/common/components/widgets/default_text_form_field.dart';
-import 'package:delalty/core/common/components/widgets/my_elevated_button.dart';
-import 'package:delalty/domain/entities/input.dart';
+import '../../../../core/common/components/widgets/default_text_form_field.dart';
+import '../../../../core/common/components/widgets/my_elevated_button.dart';
+import '../../../../domain/entities/input.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

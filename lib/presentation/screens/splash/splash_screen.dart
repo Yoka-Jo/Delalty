@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:delalty/core/common/components/widgets/simple_text.dart';
-import 'package:delalty/core/resources/routes/app_router.dart';
-import 'package:delalty/core/resources/strings_manager.dart';
-import 'package:delalty/core/user_secure_storage.dart';
-import 'package:delalty/data/datasources/local_datasource/local_datasource.dart';
-import 'package:delalty/di.dart';
+import '../../../core/common/components/widgets/simple_text.dart';
+import '../../../core/resources/routes/app_router.dart';
+import '../../../core/resources/strings_manager.dart';
+import '../../../core/user_secure_storage.dart';
+import '../../../data/datasources/local_datasource/local_datasource.dart';
+import '../../../di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:async';

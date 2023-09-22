@@ -1,8 +1,8 @@
-import 'package:delalty/core/user_secure_storage.dart';
-import 'package:delalty/data/requests/requests.dart';
-import 'package:delalty/di.dart';
-import 'package:delalty/domain/entities/user.dart';
-import 'package:delalty/domain/usecases/get_user_data_usecase.dart';
+import '../../../../core/user_secure_storage.dart';
+import '../../../../data/requests/requests.dart';
+import '../../../../di.dart';
+import '../../../../domain/entities/user.dart';
+import '../../../../domain/usecases/get_user_data_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';

@@ -1,7 +1,7 @@
 import 'package:auto_route/annotations.dart';
-import 'package:delalty/core/resources/colors_manager.dart';
-import 'package:delalty/di.dart';
-import 'package:delalty/presentation/screens/signup/cubit/signup_cubit.dart';
+import '../../../core/resources/colors_manager.dart';
+import '../../../di.dart';
+import 'cubit/signup_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
