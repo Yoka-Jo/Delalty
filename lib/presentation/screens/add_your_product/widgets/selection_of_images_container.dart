@@ -28,7 +28,7 @@ class SelectionOfImagesContainer extends StatelessWidget {
           MyElevatedButton(
             height: 45.h,
             width: 173.w,
-            title: AppStrings.selectionOfImages,
+            title: AppStrings.selectionOfImages.tr(context: context),
             titleSize: 12.sp,
             textStyle: TextStyleEnum.poppinsLight,
             icon: ImageAssets.camera,
@@ -37,7 +37,7 @@ class SelectionOfImagesContainer extends StatelessWidget {
           ),
           SizedBox(height: 10.h),
           SimpleText(
-            AppStrings.uploadPhotosUpTo,
+            AppStrings.uploadPhotosUpTo.tr(context: context),
             textStyle: TextStyleEnum.poppinsRegular,
             fontSize: 12.sp,
             color: AppColors.grey3,

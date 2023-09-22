@@ -21,6 +21,7 @@ class AppStrings {
   static const String pickAtMaxFiveImages = "pick_at_max_five_images";
   static const String yes = "yes";
   static const String no = "no";
+  static const String removeFriendRequest = "remove_friend_request";
   static const String sendFriedRequest = "send_friend_request";
   static const String doYouWantToAddThisUserAsFriend =
       "do_you_want_to_add_user_as_friend";

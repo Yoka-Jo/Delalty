@@ -38,3 +38,5 @@ part 'create_chat_request.dart';
 part 'create_message_request.dart';
 
 part 'get_messages_request.dart';
+
+part 'remove_relationship_request.dart';

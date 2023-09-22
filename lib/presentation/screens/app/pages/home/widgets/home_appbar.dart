@@ -29,7 +29,7 @@ class HomeAppBar extends StatelessWidget {
             ),
             Row(
               children: [
-                Image.asset(
+                SvgPicture.asset(
                   ImageAssets.locationPin,
                   fit: BoxFit.cover,
                   color: Colors.white,

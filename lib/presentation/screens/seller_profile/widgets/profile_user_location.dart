@@ -12,7 +12,7 @@ class ProfileUserLocation extends StatelessWidget {
       tilePadding: EdgeInsets.zero,
       title: Row(
         children: [
-          Image.asset(
+          SvgPicture.asset(
             ImageAssets.locationPin,
             width: 15.r,
             height: 15.r,

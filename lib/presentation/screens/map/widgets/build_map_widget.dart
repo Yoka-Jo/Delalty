@@ -7,6 +7,7 @@ import 'package:delalty/core/resources/strings_manager.dart';
 import 'package:delalty/presentation/screens/map/widgets/custom_marker_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:custom_map_markers/custom_map_markers.dart';
 import '../../../../core/common/components/widgets/build_carousel.dart';
@@ -164,7 +165,7 @@ class _BuildMapWidgetState extends State<BuildMapWidget> {
               SizedBox(height: 7.h),
               Row(
                 children: [
-                  Image.asset(
+                  SvgPicture.asset(
                     ImageAssets.locationPin,
                     height: 10.r,
                     width: 10.r,

@@ -23,7 +23,7 @@ class PropertyFilterFormField extends StatelessWidget {
           enableColor: AppColors.searchFormFieldBorderColor,
           focusColor: AppColors.searchFormFieldBorderColor,
           filledColor: AppColors.searchFormFieldColor,
-          prefixIcon: Image.asset(
+          prefixIcon: SvgPicture.asset(
             ImageAssets.locationPin,
             width: 16.r,
             height: 16.r,

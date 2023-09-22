@@ -12,6 +12,8 @@ import 'core/resources/theme/cubit/change_theme_cubit.dart';
 import 'core/services/socket/socket_cubit.dart';
 import 'di.dart';
 import 'firebase_options.dart';
+import 'presentation/cubits/create_chat_cubit/create_chat_cubit.dart';
+import 'presentation/cubits/relationship_cubit/relationship_cubit.dart';
 import 'presentation/screens/app/cubit/app_cubit.dart';
 import 'presentation/screens/favorite/cubit/favorite_cubit.dart';
 
@@ -41,6 +43,12 @@ void main() async {
         ),
         BlocProvider(
           create: (_) => SocketCubit(),
+        ),
+        BlocProvider(
+          create: (_) => getIt<CreateChatCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => getIt<RelationshipCubit>(),
         ),
         BlocProvider(
           create: (_) => getIt<FavoriteCubit>()..getFavorites(),

@@ -5,6 +5,7 @@ import 'package:delalty/core/resources/strings_manager.dart';
 import 'package:delalty/di.dart';
 import 'package:delalty/presentation/screens/verification_code/cubit/verification_code_cubit.dart';
 import 'package:delalty/presentation/screens/verification_code/widgets/widgets.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,7 +49,7 @@ class VerificationCodeScreen extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                         SimpleText(
-                          AppStrings.verifciationCode,
+                          AppStrings.verifciationCode.tr(context: context),
                           textStyle: TextStyleEnum.montserratBold,
                           fontSize: 25.sp,
                         ),

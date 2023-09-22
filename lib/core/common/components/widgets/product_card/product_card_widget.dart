@@ -12,7 +12,6 @@ import '../../../../../domain/entities/product.dart';
 import '../../../../resources/assets_manager.dart';
 import '../../../../resources/colors_manager.dart';
 import '../../../../resources/routes/app_router.dart';
-import '../../../../resources/strings_manager.dart';
 import '../cached_image.dart';
 import 'product_card_shimmer.dart';
 
@@ -120,72 +119,75 @@ class ProductCardWidget extends StatelessWidget {
                 );
               },
             ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: InkWell(
-              onTap: () async => await onProductTap(context),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(5.r),
-                child: Container(
-                  padding: padding ?? EdgeInsets.all(10.r),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.r),
-                      color: Colors.white,
-                      border: Border.all(width: 1, color: AppColors.grey4)),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SimpleText(
-                        product.title,
-                        textStyle: TextStyleEnum.poppinsMedium,
-                        fontSize: titleSize ?? 10.sp,
-                        color: titleColor ?? AppColors.grey3,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SizedBox(height: 1.h),
-                      Row(
-                        children: [
-                          SimpleText(
-                            'EGP ${product.price}',
-                            textStyle: TextStyleEnum.poppinsSemiBold,
-                            fontSize: priceSize ?? 10.sp,
-                          ),
-                          const Spacer(),
-                          details,
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          if (showLocationPin) ...[
-                            Image.asset(
-                              ImageAssets.locationPin,
-                              color: AppColors.primaryColor,
-                              width: 12.w,
-                              height: 12.h,
-                            ),
-                            SizedBox(width: 5.w),
-                          ],
-                          SimpleText(
-                            'Egypt . Cairo',
-                            textStyle: TextStyleEnum.poppinsMedium,
-                            fontSize: 8.sp,
-                            color: locationColor ?? AppColors.primaryColor,
-                          ),
-                          if (false) ...[
-                            const Spacer(),
+          Directionality(
+            textDirection: TextDirection.ltr,
+            child: Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: InkWell(
+                onTap: () async => await onProductTap(context),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5.r),
+                  child: Container(
+                    padding: padding ?? EdgeInsets.all(10.r),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.r),
+                        color: Colors.white,
+                        border: Border.all(width: 1, color: AppColors.grey4)),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SimpleText(
+                          product.title,
+                          textStyle: TextStyleEnum.poppinsMedium,
+                          fontSize: titleSize ?? 10.sp,
+                          color: titleColor ?? AppColors.grey3,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(height: 1.h),
+                        Row(
+                          children: [
                             SimpleText(
-                              "'days' ${AppStrings.days}",
+                              'EGP ${product.price}',
+                              textStyle: TextStyleEnum.poppinsSemiBold,
+                              fontSize: priceSize ?? 10.sp,
+                            ),
+                            const Spacer(),
+                            details,
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            if (showLocationPin) ...[
+                              SvgPicture.asset(
+                                ImageAssets.locationPin,
+                                color: AppColors.primaryColor,
+                                width: 12.w,
+                                height: 12.h,
+                              ),
+                              SizedBox(width: 5.w),
+                            ],
+                            SimpleText(
+                              'Egypt . Cairo',
                               textStyle: TextStyleEnum.poppinsMedium,
                               fontSize: 8.sp,
-                              color: AppColors.grey3,
+                              color: locationColor ?? AppColors.primaryColor,
                             ),
-                          ]
-                        ],
-                      ),
-                    ],
+                            // if (false) ...[
+                            //   const Spacer(),
+                            //   SimpleText(
+                            //     "'days' ${AppStrings.days}",
+                            //     textStyle: TextStyleEnum.poppinsMedium,
+                            //     fontSize: 8.sp,
+                            //     color: AppColors.grey3,
+                            //   ),
+                            // ]
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

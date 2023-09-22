@@ -2,6 +2,7 @@ import 'package:delalty/core/resources/assets_manager.dart';
 import 'package:delalty/core/services/social_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginSocailMedia extends StatelessWidget {
   const LoginSocailMedia({
@@ -29,7 +30,7 @@ class LoginSocailMedia extends StatelessWidget {
                   Border.all(color: Colors.black.withOpacity(0.18), width: 0.5),
             ),
             child: Center(
-              child: Image.asset(ImageAssets.google),
+              child: SvgPicture.asset(ImageAssets.google),
             ),
           ),
         ),
@@ -49,7 +50,7 @@ class LoginSocailMedia extends StatelessWidget {
                   Border.all(color: Colors.black.withOpacity(0.18), width: 0.5),
             ),
             child: Center(
-              child: Image.asset(ImageAssets.facebook),
+              child: SvgPicture.asset(ImageAssets.facebook),
             ),
           ),
         ),
@@ -66,7 +67,7 @@ class LoginSocailMedia extends StatelessWidget {
                   Border.all(color: Colors.black.withOpacity(0.18), width: 0.5),
             ),
             child: Center(
-              child: Image.asset(ImageAssets.apple),
+              child: SvgPicture.asset(ImageAssets.apple),
             ),
           ),
         )

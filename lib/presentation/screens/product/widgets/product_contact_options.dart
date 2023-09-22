@@ -9,16 +9,20 @@ class ProductContactOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductCubit, ProductState>(
       builder: (context, state) {
-        final cubit = ProductCubit.get(context);
-        final seller = cubit.product.seller;
+        final createChatCubit = CreateChatCubit.get(context);
+        final productCubit = ProductCubit.get(context);
         return Row(
           children: [
             Expanded(
               child: MyElevatedButton(
                 title: AppStrings.chat.tr(context: context),
                 icon: ImageAssets.message,
-                onPressed: () async =>
-                    cubit.createChat(CreateChatTypes.PRODUCT, context),
+                onPressed: () async => createChatCubit.createChat(
+                  CreateChatTypes.PRODUCT,
+                  context,
+                  participantId: productCubit.product.seller!.id,
+                  productId: productCubit.product.id,
+                ),
               ),
             ),
             SizedBox(width: 10.w),

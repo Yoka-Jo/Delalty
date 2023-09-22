@@ -21,10 +21,7 @@ class ProhibitedPersonsCubit extends Cubit<ProhibitedPersonsState> {
   List<RelationShip> blockedUsers = [];
 
   void getBlockedUsers(BuildContext context) {
-    blockedUsers = SocketCubit.get(context)
-        .relationships
-        .where((element) => element.type == 'BLOCKED')
-        .toList();
+    blockedUsers = SocketCubit.get(context).getBlockedUsers();
   }
 
   Future<void> unBlockUser(String id, BuildContext context) async {
@@ -39,6 +36,7 @@ class ProhibitedPersonsCubit extends Cubit<ProhibitedPersonsState> {
     response.fold(
       (l) => emit(UnBlockUserFailure(l.message)),
       (r) {
+        SocketCubit.get(context).unBlockUser(id);
         getBlockedUsers(context);
         emit(UnBlockUserSuccess());
       },

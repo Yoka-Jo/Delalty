@@ -45,7 +45,7 @@ class ConversationProductInfo extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Image.asset(
+                    SvgPicture.asset(
                       ImageAssets.locationPin,
                       color: AppColors.grey3,
                       height: 10.r,

@@ -8,7 +8,7 @@ class CreateChatRequest {
   final int recipientId;
   final String type;
   @JsonKey(name: 'product_id')
-  final int productId;
+  final int? productId;
 
   CreateChatRequest({
     required this.recipientId,

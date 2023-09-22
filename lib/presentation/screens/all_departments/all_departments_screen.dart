@@ -1,4 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:delalty/core/resources/routes/app_router.dart';
+import 'package:delalty/presentation/screens/app/models/category_model.dart';
+import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:delalty/app/extensions.dart';
 import 'package:delalty/core/common/components/widgets/centered_circular_progress_indicator.dart';
 import 'package:delalty/core/common/components/widgets/simple_text.dart';
@@ -6,10 +16,6 @@ import 'package:delalty/core/resources/colors_manager.dart';
 import 'package:delalty/core/resources/strings_manager.dart';
 import 'package:delalty/di.dart';
 import 'package:delalty/presentation/screens/all_departments/cubit/all_departments_cubit.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/common/components/widgets/appbar_widget.dart';
 import '../../../core/common/components/widgets/cached_image.dart';
@@ -20,7 +26,11 @@ import '../app/pages/home/cubit/home_cubit.dart';
 
 @RoutePage()
 class AllDepartmentsScreen extends StatefulWidget {
-  const AllDepartmentsScreen({super.key});
+  const AllDepartmentsScreen({
+    Key? key,
+    required this.homeCubit,
+  }) : super(key: key);
+  final HomeCubit homeCubit;
 
   @override
   State<AllDepartmentsScreen> createState() => _AllDepartmentsScreenState();
@@ -65,8 +75,13 @@ class _AllDepartmentsScreenState extends State<AllDepartmentsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<AllDepartmentsCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<AllDepartmentsCubit>(),
+        ),
+        BlocProvider.value(value: widget.homeCubit)
+      ],
       child: Scaffold(
         appBar: AppBarWidget(
           title: AppStrings.allDepartments.tr(context: context),
@@ -99,31 +114,40 @@ class _AllDepartmentsScreenState extends State<AllDepartmentsScreen> {
                     );
                   }
                   searchedCategories ??= HomeCubit.get(context).categories;
-                  return BlocBuilder<AllDepartmentsCubit, AllDepartmentsState>(
+                  return BlocConsumer<AllDepartmentsCubit, AllDepartmentsState>(
+                    listener: (context, state) {
+                      if (state is ConfirmChoosenCategory) {
+                        context.router.push(
+                          AddYourProductRoute(
+                            category: searchedCategories!.firstWhere(
+                                (element) =>
+                                    element.id ==
+                                    AllDepartmentsCubit.get(context)
+                                        .selectedDepartment),
+                          ),
+                        );
+                      }
+                    },
                     builder: (context, state) {
                       final cubit = AllDepartmentsCubit.get(context);
                       return Expanded(
-                        child: GridView.builder(
-                          controller: controller,
-                          itemCount:
-                              (page * itemsNumber > searchedCategories!.length
-                                  ? searchedCategories!.length
-                                  : page * itemsNumber),
+                        child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 16.w),
-                          gridDelegate:
-                              SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 56.w,
-                            crossAxisSpacing: 80.w,
-                            mainAxisSpacing: 36.h,
-                          ),
-                          itemBuilder: (context, index) {
-                            final category = searchedCategories![index];
-                            return InkWell(
-                              onTap: () {
-                                cubit.changeSelectedDepartment(category.id);
-                              },
-                              child: SizedBox(
-                                width: 56.w,
+                          child: DynamicHeightGridView(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 70.w,
+                            mainAxisSpacing: 30.h,
+                            controller: controller,
+                            itemCount:
+                                (page * itemsNumber > searchedCategories!.length
+                                    ? searchedCategories!.length
+                                    : page * itemsNumber),
+                            builder: (context, index) {
+                              final category = searchedCategories![index];
+                              return InkWell(
+                                onTap: () {
+                                  cubit.changeSelectedDepartment(category.id);
+                                },
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -150,6 +174,7 @@ class _AllDepartmentsScreenState extends State<AllDepartmentsScreen> {
                                       category.name,
                                       textStyle: TextStyleEnum.poppinsRegular,
                                       fontSize: 12.sp,
+                                      textAlign: TextAlign.center,
                                       color: cubit.selectedDepartment ==
                                               category.id
                                           ? AppColors.primaryColor
@@ -157,9 +182,9 @@ class _AllDepartmentsScreenState extends State<AllDepartmentsScreen> {
                                     ),
                                   ],
                                 ),
-                              ),
-                            );
-                          },
+                              );
+                            },
+                          ),
                         ),
                       );
                     },

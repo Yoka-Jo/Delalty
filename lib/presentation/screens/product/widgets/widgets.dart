@@ -5,7 +5,6 @@ import 'package:delalty/core/common/components/widgets/build_shimmer_widget.dart
 import 'package:delalty/core/common/components/widgets/centered_circular_progress_indicator.dart';
 import 'package:delalty/core/resources/localization/cubit/change_language_cubit.dart';
 import 'package:delalty/core/resources/routes/app_router.dart';
-import 'package:delalty/domain/entities/seller.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +19,7 @@ import '../../../../core/common/components/widgets/build_carousel.dart';
 import '../../../../core/common/components/widgets/comment_widget.dart';
 import '../../../../core/common/components/widgets/my_elevated_button.dart';
 import '../../../../core/common/components/widgets/product_card/product_card_widget.dart';
+import '../../../../core/common/components/widgets/show_dialog_to_add_friend.dart';
 import '../../../../core/common/components/widgets/simple_text.dart';
 import '../../../../core/common/components/widgets/simple_toast.dart';
 import '../../../../core/common/components/widgets/user_image.dart';
@@ -28,6 +28,8 @@ import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/colors_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../data/requests/requests.dart';
+import '../../../cubits/create_chat_cubit/create_chat_cubit.dart';
+import '../../../cubits/relationship_cubit/relationship_cubit.dart';
 import '../../favorite/cubit/favorite_cubit.dart';
 import '../cubit/product_cubit.dart';
 

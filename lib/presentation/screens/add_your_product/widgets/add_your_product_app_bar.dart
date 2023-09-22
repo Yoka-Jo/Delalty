@@ -15,13 +15,13 @@ class AddYourProductAppBar extends StatelessWidget {
         Column(
           children: [
             SimpleText(
-              AppStrings.addYourProduct,
+              AppStrings.addYourProduct.tr(context: context),
               textStyle: TextStyleEnum.poppinsMedium,
               fontSize: 18.sp,
             ),
             SizedBox(height: 7.h),
             SimpleText(
-              AppStrings.addSomeInformation,
+              AppStrings.addSomeInformation.tr(context: context),
               textStyle: TextStyleEnum.poppinsLight,
               fontSize: 12.sp,
               color: AppColors.grey3,
@@ -32,8 +32,12 @@ class AddYourProductAppBar extends StatelessWidget {
           onTap: () {
             context.router.pop();
           },
-          child: SvgPicture.asset(
-            ImageAssets.close,
+          child: Padding(
+            padding: EdgeInsets.all(8.r),
+            child: SvgPicture.asset(
+              ImageAssets.close,
+              fit: BoxFit.scaleDown,
+            ),
           ),
         ),
       ],

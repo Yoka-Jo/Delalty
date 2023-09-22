@@ -9,6 +9,7 @@ import '../../../presentation/screens/add_your_product/add_your_product_screen.d
 import '../../../presentation/screens/advertising/advertising_screen.dart';
 import '../../../presentation/screens/all_departments/all_departments_screen.dart';
 import '../../../presentation/screens/app/app_screen.dart';
+import '../../../presentation/screens/app/pages/home/cubit/home_cubit.dart';
 import '../../../presentation/screens/categories/categories_screen.dart';
 import '../../../presentation/screens/choose_language/choose_language_screen.dart';
 import '../../../presentation/screens/confirmation_of_sale/confirmation_of_sale_screen.dart';

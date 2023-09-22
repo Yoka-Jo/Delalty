@@ -11,7 +11,7 @@ class VerificationCodeOtpSentToPhone extends StatelessWidget {
         SizedBox(
           width: 240.w,
           child: SimpleText(
-            "${AppStrings.enterOtpSentToPhoneNumber} 012345666655",
+            "${AppStrings.enterOtpSentToPhoneNumber.tr(context: context)} 012345666655",
             textStyle: TextStyleEnum.montserratRegular,
             fontSize: 15.sp,
             color: AppColors.grey3,

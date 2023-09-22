@@ -5,6 +5,7 @@ import 'package:delalty/core/common/components/widgets/simple_text.dart';
 import 'package:delalty/core/resources/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/colors_manager.dart';
@@ -65,7 +66,7 @@ class _MapScreenState extends State<MapScreen> {
           ),
           child: Row(
             children: [
-              Image.asset(
+              SvgPicture.asset(
                 ImageAssets.locationPin,
                 width: 16.r,
                 height: 16.r,

@@ -44,6 +44,11 @@ class ProductResponse extends Equatable implements DataResponse<Product> {
         }
       }
     }
+    if (mainImage.isEmpty && images != null) {
+      mainImage = images!.isNotEmpty
+          ? "${Constants.productImagePath}${images![0].id}.${images![0].extension}"
+          : '';
+    }
     return Product(
       id: id,
       title: title.orEmpty(),

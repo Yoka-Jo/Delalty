@@ -6,7 +6,7 @@ class VerificationCodeResendOtp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleText(
-      AppStrings.resendOtp,
+      AppStrings.resendOtp.tr(context: context),
       textStyle: TextStyleEnum.montserratMedium,
       fontSize: 15.sp,
       color: AppColors.grey3,

@@ -9,6 +9,8 @@ sealed class AllDepartmentsState extends Equatable {
 
 final class AllDepartmentsInitial extends AllDepartmentsState {}
 
+final class ConfirmChoosenCategory extends AllDepartmentsState {}
+
 final class AllDepartmentsChangeSelectedDepartment extends AllDepartmentsState {
   const AllDepartmentsChangeSelectedDepartment();
 }

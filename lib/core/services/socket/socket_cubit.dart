@@ -32,53 +32,101 @@ class SocketCubit extends Cubit<SocketState> {
   List<Chat> chats = [];
   List<RelationShip> relationships = [];
 
+  List<RelationShip> getBlockedUsers() =>
+      relationships.where((element) => element.type == 'BLOCKED').toList();
+
   Chat? getChatByProductId(String id) {
     return chats.where((element) => element.productId == id).singleOrNull;
   }
 
+  void unBlockUser(String id) {
+    relationships.removeWhere((element) => element.user!.id == id);
+  }
+
+  bool isFriend(String id) => relationships
+      .where((element) => (element.type == 'FRIEND' && element.user!.id == id))
+      .isNotEmpty;
+
+  bool hasSentFriendRequest(String id) => relationships
+      .where(
+          (element) => (element.type == 'OUTGOING' && element.user!.id == id))
+      .isNotEmpty;
+
   void _listen() {
     _socket.stream.listen((message) {
-      log("Message: $message");
+      log("SOCKET: $message");
 
       final data = jsonDecode(message);
       switch (data['t']) {
         case SocketEvents.ready:
-          {
-            getReadyData(data);
-            break;
-          }
+          _getReadyData(data);
+          break;
+
         case SocketEvents.chatCreated:
-          {
-            chatCreated(data);
-            break;
-          }
+          _chatCreated(data);
+          break;
+
         case SocketEvents.messageCreated:
-          {
-            emit(SocketInitial());
-            emit(SocketMessageCreated(
-                MessageResponse.fromJson(data['d']).toDomain()));
-          }
+          _messageCreated(data);
+          break;
+
         case SocketEvents.chatUpdated:
+          break;
         case SocketEvents.chatDeleted:
+          break;
+        case SocketEvents.relationshipUpdate:
+          _updateRelationship(data);
+          break;
+        case SocketEvents.relationshipRemove:
+          _removeRelationship(data);
+          break;
         case SocketEvents.hello:
           break;
         default:
       }
     }, onDone: () {
       initialzeSocket();
-      log("Socket is Done");
     }, onError: (e) {
       log("Socket Error: $e");
     });
   }
 
-  void chatCreated(data) {
+  void _removeRelationship(data) {
+    emit(SocketRemoveRelationship());
+  }
+
+  void _updateRelationship(data) {
+    log('Update Relationship');
+    bool isInRelationships = relationships
+        .where((element) => element.user!.id == data['d']['target']['id'])
+        .isNotEmpty;
+    if (isInRelationships) {
+      relationships.map((e) {
+        if (e.user!.id == data['d']['target']['id']) {
+          return RelationShipResponse.fromJson(data['d']);
+        }
+      });
+    } else {
+      relationships.add(RelationShipResponse.fromJson(data['d']).toDomain());
+    }
+  }
+
+  void _messageCreated(data) {
+    emit(SocketInitial());
+    emit(
+      SocketMessageCreated(
+        MessageResponse.fromJson(data['d']).toDomain(),
+      ),
+    );
+  }
+
+  void _chatCreated(data) {
     emit(SocketInitial());
     chats.add(ChatResponse.fromJson(data['d']).toDomain());
     emit(SocketChatCreatedSuccess());
   }
 
-  void getReadyData(data) {
+  void _getReadyData(data) {
     emit(SocketInitial());
     _getChats(data);
     _getRelationShips(data);

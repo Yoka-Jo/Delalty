@@ -80,4 +80,7 @@ abstract class Repository {
   Future<Either<Failure, List<Message>>> getMessages(
     GetMessagesRequest getMessagesRequest,
   );
+  Future<Either<Failure, NoData>> removeRelationship(
+    RemoveRelationshipRequest removeRelationshipRequest,
+  );
 }

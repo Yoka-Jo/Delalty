@@ -56,16 +56,16 @@ class ImageAssets {
   static const String microphone = "assets/images/microphone.svg";
   static const String report = "assets/images/report.svg";
   static const String notifications = "assets/images/notifications.png";
-  static const String locationPin = "assets/images/location_pin.png";
+  static const String locationPin = "assets/images/location_pin.svg";
   static const String onboarding_1 = "assets/images/onboarding_1.png";
   static const String onboarding_2 = "assets/images/onboarding_2.png";
   static const String onboarding_3 = "assets/images/onboarding_3.png";
 
   // static const String calendar = "assets/images/calendar.png";
   static const String pen = "assets/images/pen.png";
-  static const String google = "assets/images/google.png";
-  static const String apple = "assets/images/apple.png";
-  static const String facebook = "assets/images/facebook.png";
+  static const String google = "assets/images/google.svg";
+  static const String apple = "assets/images/apple.svg";
+  static const String facebook = "assets/images/facebook.svg";
   static const String profile = "assets/images/profile.svg";
   static const String shop = "assets/images/shop.svg";
   static const String arrangement = "assets/images/arrangement.svg";

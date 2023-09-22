@@ -109,4 +109,8 @@ abstract class AppServiceClient {
   Future<HttpResponse<List<MessageResponse>>> getMessages(
     @Queries() Map<String, dynamic> query,
   );
+  @DELETE(Constants.removeRelationshipPath)
+  Future<HttpResponse<void>> removeRelationship(
+    @Path() String target_id,
+  );
 }

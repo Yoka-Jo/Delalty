@@ -65,7 +65,8 @@ class _AppScreenState extends State<AppScreen> {
                 FloatingActionButtonLocation.centerDocked,
             floatingActionButton: FloatingActionButton(
               onPressed: () {
-                context.router.push(const AllDepartmentsRoute());
+                context.router.push(
+                    AllDepartmentsRoute(homeCubit: HomeCubit.get(context)));
               },
               backgroundColor: AppColors.primaryColor,
               child: Container(

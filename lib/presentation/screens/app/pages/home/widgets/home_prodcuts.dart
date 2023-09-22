@@ -69,35 +69,35 @@ class HomeProducts extends StatelessWidget {
                         return ProductCardWidget(
                           isLoading: cubit.productsMap[category.id] == null,
                           product: product,
-                          details: Row(
-                            children: [
-                              SimpleText(
-                                'Automatic',
-                                textStyle: TextStyleEnum.poppinsMedium,
-                                fontSize: 7.sp,
-                                color: AppColors.grey3,
-                              ),
-                              SizedBox(width: 2.w),
-                              Image.asset(
-                                ImageAssets.automatic,
-                                width: 15.r,
-                                height: 15.r,
-                              ),
-                              SizedBox(width: 10.w),
-                              SimpleText(
-                                '1500 SS',
-                                textStyle: TextStyleEnum.poppinsMedium,
-                                fontSize: 7.sp,
-                                color: AppColors.grey3,
-                              ),
-                              SizedBox(width: 2.w),
-                              Image.asset(
-                                ImageAssets.engine,
-                                width: 15.r,
-                                height: 15.r,
-                              ),
-                            ],
-                          ),
+                          // details: Row(
+                          //   children: [
+                          //     SimpleText(
+                          //       'Automatic',
+                          //       textStyle: TextStyleEnum.poppinsMedium,
+                          //       fontSize: 7.sp,
+                          //       color: AppColors.grey3,
+                          //     ),
+                          //     SizedBox(width: 2.w),
+                          //     Image.asset(
+                          //       ImageAssets.automatic,
+                          //       width: 15.r,
+                          //       height: 15.r,
+                          //     ),
+                          //     SizedBox(width: 10.w),
+                          //     SimpleText(
+                          //       '1500 SS',
+                          //       textStyle: TextStyleEnum.poppinsMedium,
+                          //       fontSize: 7.sp,
+                          //       color: AppColors.grey3,
+                          //     ),
+                          //     SizedBox(width: 2.w),
+                          //     Image.asset(
+                          //       ImageAssets.engine,
+                          //       width: 15.r,
+                          //       height: 15.r,
+                          //     ),
+                          //   ],
+                          // ),
                         );
                       },
                       separatorBuilder: (context, index) =>

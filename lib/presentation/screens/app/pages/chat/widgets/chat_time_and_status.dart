@@ -15,7 +15,9 @@ class ChatTimeAndStatus extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SimpleText(
-          chat.lastMessage?.content ?? '10:00 PM',
+          chat.lastMessage != null
+              ? getFormattedTime(chat.lastMessage!.createdAt)
+              : '',
           textStyle: TextStyleEnum.poppinsRegular,
           fontSize: 12.sp,
           color: AppColors.grey3,

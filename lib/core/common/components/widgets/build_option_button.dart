@@ -1,5 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-part of 'widgets.dart';
+import 'package:delalty/core/common/components/widgets/simple_text.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../resources/colors_manager.dart';
 
 class BuildOptionButton extends StatelessWidget {
   final String title;

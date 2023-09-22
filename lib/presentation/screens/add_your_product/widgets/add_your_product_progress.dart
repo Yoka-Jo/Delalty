@@ -9,9 +9,10 @@ class AddYourProductProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _ProgressIndicatorStep(
-          title: AppStrings.photos,
+        _ProgressIndicatorStep(
+          title: AppStrings.photos.tr(context: context),
           isFinished: true,
         ),
         Expanded(
@@ -37,8 +38,8 @@ class AddYourProductProgress extends StatelessWidget {
             ),
           ),
         ),
-        const _ProgressIndicatorStep(
-          title: AppStrings.communication,
+        _ProgressIndicatorStep(
+          title: AppStrings.communication.tr(context: context),
           isFinished: false,
         ),
       ],

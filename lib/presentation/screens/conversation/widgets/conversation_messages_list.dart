@@ -29,14 +29,15 @@ class ConversationMessagesList extends StatelessWidget {
               itemBuilder: (context, index) {
                 final message = cubit.messages[index];
                 bool isMe = message.authorId == AppCubit.get(context).user.id;
-                String formattedTime = getFormattedTime(message);
+                String formattedTime = getFormattedTime(message.createdAt);
                 final user = cubit.chat.participants.firstWhere(
                     (element) => element.user!.id == message.authorId);
                 return Column(
                   children: [
                     if (index == 0 ||
                         formattedTime !=
-                            getFormattedTime(cubit.messages[index - 1])) ...[
+                            getFormattedTime(
+                                cubit.messages[index - 1].createdAt)) ...[
                       Align(
                         alignment: Alignment.center,
                         child: SimpleText(
@@ -97,7 +98,7 @@ class ConversationMessagesList extends StatelessWidget {
                                         showFavouriteButton: false,
                                         showIfOnlyOneImage:
                                             message.attachments.length == 1,
-                                        images: [
+                                        images: const [
                                           'https://images.pexels.com/photos/1008737/pexels-photo-1008737.jpeg?cs=srgb&dl=pexels-micah-boerma-1008737.jpg&fm=jpg',
                                           'https://media.istockphoto.com/id/1322277517/photo/wild-grass-in-the-mountains-at-sunset.jpg?s=612x612&w=0&k=20&c=6mItwwFFGqKNKEAzv0mv6TaxhLN3zSE43bWmFN--J5w=',
                                           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-8YVaU1qxZG4eyOlf_VyZRUoaewqKk29YdkDiAo7v&s'
@@ -136,9 +137,5 @@ class ConversationMessagesList extends StatelessWidget {
         );
       }),
     );
-  }
-
-  String getFormattedTime(Message message) {
-    return DateFormat('kk:mm a').format(DateTime.parse(message.createdAt));
   }
 }

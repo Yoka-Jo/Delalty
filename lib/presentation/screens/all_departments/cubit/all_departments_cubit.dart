@@ -14,11 +14,11 @@ class AllDepartmentsCubit extends Cubit<AllDepartmentsState> {
 
   void changeSelectedDepartment(String department) {
     emit(AllDepartmentsInitial());
-    if (selectedDepartment.isNotEmpty) {
-      selectedDepartment = '';
+    if (selectedDepartment == department) {
+      emit(ConfirmChoosenCategory());
     } else {
       selectedDepartment = department;
+      emit(const AllDepartmentsChangeSelectedDepartment());
     }
-    emit(const AllDepartmentsChangeSelectedDepartment());
   }
 }

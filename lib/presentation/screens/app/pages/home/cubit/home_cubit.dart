@@ -121,6 +121,11 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<void> getHomeData() async {
+    if (categories != null &&
+        bestCategories != null &&
+        productsMap.isNotEmpty) {
+      return;
+    }
     await Future.wait(
       [
         _getCategories(),

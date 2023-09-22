@@ -16,17 +16,23 @@ class ProfileAppBar extends StatelessWidget {
               final cubit = SellerProfileCubit.get(context);
 
               final isLoading = SellerProfileCubit.get(context).user == null;
-              return IconButton(
-                padding: EdgeInsets.zero,
-                alignment: Alignment.centerRight,
-                onPressed: isLoading
-                    ? null
-                    : () async => await buildBottomSheet(context, cubit),
-                icon: SvgPicture.asset(ImageAssets.more),
+              return FittedBox(
+                child: Align(
+                  alignment: ChangeLanguageCubit.get(context).isEnglish
+                      ? Alignment.centerRight
+                      : Alignment.centerLeft,
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: isLoading
+                        ? null
+                        : () async => await buildBottomSheet(context, cubit),
+                    icon: Center(child: SvgPicture.asset(ImageAssets.more)),
+                  ),
+                ),
               );
             },
           ),
-          if (ChangeLanguageCubit.get(context).isEnglish) SizedBox(width: 15.w),
+          SizedBox(width: 10.w),
         ],
       ),
     );

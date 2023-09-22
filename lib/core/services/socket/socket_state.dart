@@ -9,6 +9,10 @@ sealed class SocketState extends Equatable {
 
 final class SocketInitial extends SocketState {}
 
+final class SocketRemoveRelationship extends SocketState {}
+
+final class SocketUpdateRelationship extends SocketState {}
+
 final class SocketMessageCreated extends SocketState {
   final Message message;
 

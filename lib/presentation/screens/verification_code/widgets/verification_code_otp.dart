@@ -37,7 +37,7 @@ class VerificationCodeOtp extends StatelessWidget {
           ),
           animationDuration: const Duration(milliseconds: 300),
           enableActiveFill: true,
-          errorAnimationController: cubit.errorAnimationController,
+          // errorAnimationController: cubit.errorAnimationController,
           onCompleted: (code) => cubit.onVerify(code, context),
           beforeTextPaste: (text) {
             return true;
@@ -66,12 +66,12 @@ class VerificationCodeOtp extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SimpleText(
-          AppStrings.expiresAfter,
+          AppStrings.expiresAfter.tr(context: context),
           textStyle: TextStyleEnum.montserratMedium,
           fontSize: 15.sp,
         ),
         SimpleText(
-          " : $stringMinutes.$stringSeconds",
+          " : ${stringMinutes != '00' && stringSeconds != '00' ? '$stringMinutes.$stringSeconds' : '0'}",
           color: AppColors.primaryColor,
           textStyle: TextStyleEnum.montserratMedium,
           fontSize: 15.sp,

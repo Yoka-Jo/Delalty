@@ -27,6 +27,8 @@ class ConversationCubit extends Cubit<ConversationState> {
   final messageController = TextEditingController();
   late Chat chat;
 
+  String get participantId => chat.participants[1].user!.id;
+
   Future<void> getChat(String id, BuildContext context) async {
     emit(ConversationGetChatLoading());
 

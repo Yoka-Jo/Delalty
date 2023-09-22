@@ -23,6 +23,12 @@ class ConversationMoreButton extends StatelessWidget {
       itemBuilder: (context) {
         return [
           PopupMenuItem(
+            onTap: () {
+              RelationshipCubit.get(context).changeRelationship(
+                RelationShipType.BLOCK,
+                ConversationCubit.get(context).participantId,
+              );
+            },
             child: Row(
               children: [
                 SvgPicture.asset(

@@ -6,11 +6,15 @@ class ViewProductSectionButtons extends StatelessWidget {
   });
 
   void _showPopupMenu(BuildContext context, Offset offset) async {
-    double left = offset.dx;
-    double top = offset.dy;
+    late RelativeRect position;
+    if (ChangeLanguageCubit.get(context).isEnglish) {
+      position = RelativeRect.fromLTRB(0, offset.dy, offset.dx, 0);
+    } else {
+      position = RelativeRect.fromLTRB(offset.dx, offset.dy, 0, 0);
+    }
     await showMenu(
       context: context,
-      position: RelativeRect.fromLTRB(left, top, 0, 0),
+      position: position,
       items: [
         PopupMenuItem(
           value: 1,
@@ -74,7 +78,7 @@ class ViewProductSectionButtons extends StatelessWidget {
             child: BuildOutlinedButton(
               title: AppStrings.arrangement.tr(context: context),
               icon: ImageAssets.arrangement,
-              onPressed: () {},
+              onPressed: null,
             ),
           ),
         ),

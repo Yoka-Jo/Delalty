@@ -11,14 +11,15 @@ class AddYourProductAddImages extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: 65.h),
           SimpleText(
-            AppStrings.addArabicPhotos,
+            AppStrings.addArabicPhotos.tr(context: context),
             textStyle: TextStyleEnum.poppinsMedium,
             fontSize: 18.sp,
           ),
           SizedBox(height: 12.h),
           SimpleText(
-            AppStrings.addClearImages,
+            AppStrings.addClearImages.tr(context: context),
             textStyle: TextStyleEnum.poppinsLight,
             fontSize: 12.sp,
             color: AppColors.grey3,
@@ -28,7 +29,7 @@ class AddYourProductAddImages extends StatelessWidget {
           const Spacer(),
           MyElevatedButton(
             height: 50.h,
-            title: AppStrings.next,
+            title: AppStrings.next.tr(context: context),
             onPressed: () {},
           ),
         ],

@@ -28,9 +28,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     AddYourProductRoute.name: (routeData) {
+      final args = routeData.argsAs<AddYourProductRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AddYourProductScreen(),
+        child: AddYourProductScreen(
+          key: args.key,
+          category: args.category,
+        ),
       );
     },
     AdvertisingRoute.name: (routeData) {
@@ -40,9 +44,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     AllDepartmentsRoute.name: (routeData) {
+      final args = routeData.argsAs<AllDepartmentsRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AllDepartmentsScreen(),
+        child: AllDepartmentsScreen(
+          key: args.key,
+          homeCubit: args.homeCubit,
+        ),
       );
     },
     AppRoute.name: (routeData) {
@@ -254,16 +262,40 @@ class AccountVerificationRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AddYourProductScreen]
-class AddYourProductRoute extends PageRouteInfo<void> {
-  const AddYourProductRoute({List<PageRouteInfo>? children})
-      : super(
+class AddYourProductRoute extends PageRouteInfo<AddYourProductRouteArgs> {
+  AddYourProductRoute({
+    Key? key,
+    required Category category,
+    List<PageRouteInfo>? children,
+  }) : super(
           AddYourProductRoute.name,
+          args: AddYourProductRouteArgs(
+            key: key,
+            category: category,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AddYourProductRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<AddYourProductRouteArgs> page =
+      PageInfo<AddYourProductRouteArgs>(name);
+}
+
+class AddYourProductRouteArgs {
+  const AddYourProductRouteArgs({
+    this.key,
+    required this.category,
+  });
+
+  final Key? key;
+
+  final Category category;
+
+  @override
+  String toString() {
+    return 'AddYourProductRouteArgs{key: $key, category: $category}';
+  }
 }
 
 /// generated route for
@@ -282,16 +314,40 @@ class AdvertisingRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AllDepartmentsScreen]
-class AllDepartmentsRoute extends PageRouteInfo<void> {
-  const AllDepartmentsRoute({List<PageRouteInfo>? children})
-      : super(
+class AllDepartmentsRoute extends PageRouteInfo<AllDepartmentsRouteArgs> {
+  AllDepartmentsRoute({
+    Key? key,
+    required HomeCubit homeCubit,
+    List<PageRouteInfo>? children,
+  }) : super(
           AllDepartmentsRoute.name,
+          args: AllDepartmentsRouteArgs(
+            key: key,
+            homeCubit: homeCubit,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AllDepartmentsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<AllDepartmentsRouteArgs> page =
+      PageInfo<AllDepartmentsRouteArgs>(name);
+}
+
+class AllDepartmentsRouteArgs {
+  const AllDepartmentsRouteArgs({
+    this.key,
+    required this.homeCubit,
+  });
+
+  final Key? key;
+
+  final HomeCubit homeCubit;
+
+  @override
+  String toString() {
+    return 'AllDepartmentsRouteArgs{key: $key, homeCubit: $homeCubit}';
+  }
 }
 
 /// generated route for

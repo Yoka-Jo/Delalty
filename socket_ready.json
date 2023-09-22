@@ -2,6 +2,20 @@
   "op": 0,
   "t": "READY",
   "d": {
+    "user": {
+      "id": "9",
+      "name": "Yousef",
+      "image": null,
+      "is_admin": false,
+      "is_company": false,
+      "is_owner": false,
+      "roles": [],
+      "email": "ym8370302@gmail.com",
+      "email_verified_at": "2023-09-14T12:24:21.000Z",
+      "phones": [
+        { "phone": "+966512345666", "verified_at": "2023-09-14T12:28:08.000Z" }
+      ]
+    },
     "chats": [
       {
         "id": "11",
@@ -95,7 +109,7 @@
               "id": "8",
               "name": "Youssef Khalil",
               "is_admin": true,
-              "image": "users/8BOSV088TGrBgFHz1iyLYHcVenmIembdQgdCidgk.png",
+              "image": null,
               "is_company": false
             }
           }
@@ -121,12 +135,177 @@
               "id": "8",
               "name": "Youssef Khalil",
               "is_admin": true,
-              "image": "users/8BOSV088TGrBgFHz1iyLYHcVenmIembdQgdCidgk.png",
+              "image": null,
               "is_company": false,
               "seller": { "id": "8", "verified": false }
             }
           }
         ]
+      },
+      {
+        "id": "13",
+        "type": "PRODUCT",
+        "product_id": "18",
+        "product": {
+          "id": "18",
+          "title": "adadadadadda",
+          "description": "addadadadadad addadadadadad addadadadadad addadadadadad ",
+          "price": "1",
+          "category_id": "1",
+          "visible": true,
+          "main_image_id": "929547db-3103-47a8-bcdf-58adcb16ef70",
+          "values": [],
+          "images": [
+            {
+              "id": "929547db-3103-47a8-bcdf-58adcb16ef70",
+              "extension": "png",
+              "url": "Desktop - 7.png"
+            },
+            {
+              "id": "95c326ac-04c9-4fa0-be58-78c9d0df398e",
+              "extension": "png",
+              "url": "bg.png"
+            }
+          ],
+          "seller": {
+            "id": "1",
+            "verified": false,
+            "user": {
+              "id": "1",
+              "name": "Abdennour Mez 2",
+              "is_admin": true,
+              "image": "8b6a95dc-98d4-4e2f-b3a4-290d7f15bdff.png",
+              "is_company": false
+            }
+          }
+        },
+        "last_message": null,
+        "participants": [
+          {
+            "last_message_read_id": null,
+            "is_chat_owner": true,
+            "user": {
+              "id": "9",
+              "name": "Yousef",
+              "is_admin": false,
+              "image": null,
+              "is_company": false,
+              "seller": null
+            }
+          },
+          {
+            "last_message_read_id": null,
+            "is_chat_owner": false,
+            "user": {
+              "id": "1",
+              "name": "Abdennour Mez 2",
+              "is_admin": true,
+              "image": "8b6a95dc-98d4-4e2f-b3a4-290d7f15bdff.png",
+              "is_company": false,
+              "seller": { "id": "1", "verified": false }
+            }
+          }
+        ]
+      },
+      {
+        "id": "14",
+        "type": "PRODUCT",
+        "product_id": "8",
+        "product": {
+          "id": "8",
+          "title": "Testing product",
+          "description": "Mobile phones come in a variety of shapes, sizes, and colors. They can be either clamshell or candy bar style. Clamshell phones have two parts that fold together, while candy bar phones are a single, rectangular unit.",
+          "price": "15",
+          "category_id": "16",
+          "visible": true,
+          "main_image_id": null,
+          "values": [{ "input_id": "10", "value": 8 }],
+          "images": [
+            {
+              "id": "8548f585-4133-4d7e-a562-c1545d892572",
+              "extension": "png",
+              "url": "Desktop - 3.png"
+            },
+            {
+              "id": "e65637ba-3f79-4cf9-890e-7ecbe3342998",
+              "extension": "png",
+              "url": "bv.png"
+            }
+          ],
+          "seller": {
+            "id": "1",
+            "verified": false,
+            "user": {
+              "id": "1",
+              "name": "Abdennour Mez 2",
+              "is_admin": true,
+              "image": "8b6a95dc-98d4-4e2f-b3a4-290d7f15bdff.png",
+              "is_company": false
+            }
+          }
+        },
+        "last_message": null,
+        "participants": [
+          {
+            "last_message_read_id": null,
+            "is_chat_owner": true,
+            "user": {
+              "id": "9",
+              "name": "Yousef",
+              "is_admin": false,
+              "image": null,
+              "is_company": false,
+              "seller": null
+            }
+          },
+          {
+            "last_message_read_id": null,
+            "is_chat_owner": false,
+            "user": {
+              "id": "1",
+              "name": "Abdennour Mez 2",
+              "is_admin": true,
+              "image": "8b6a95dc-98d4-4e2f-b3a4-290d7f15bdff.png",
+              "is_company": false,
+              "seller": { "id": "1", "verified": false }
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [],
+    "favorites": [
+      {
+        "id": "20",
+        "title": "adwdawdawdaw",
+        "description": "block yamanblock yamanblock yamanblock yamanblock yamanblock yamanblock yamanblock yaman",
+        "price": 12,
+        "category_id": "4",
+        "visible": true,
+        "main_image_id": "dd603413-7875-4462-8b30-ecc531017ad7",
+        "values": [
+          { "input_id": "3", "value": "dawdawdawdadwadaw2wdawa" },
+          { "input_id": "4", "value": 10 },
+          { "input_id": "5", "value": true }
+        ],
+        "images": [
+          {
+            "id": "dd603413-7875-4462-8b30-ecc531017ad7",
+            "extension": "png",
+            "url": "soild-logo.png"
+          }
+        ],
+        "seller": {
+          "id": "5",
+          "verified": false,
+          "user": {
+            "id": "7",
+            "name": "Mahmoud Galal",
+            "is_admin": true,
+            "image": "c89f02a6-7419-4d54-a450-0ea690888e02.png",
+            "is_company": false
+          }
+        }
       }
     ]
   }

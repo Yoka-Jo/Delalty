@@ -3,7 +3,7 @@ part of 'widgets.dart';
 class BuildOutlinedButton extends StatelessWidget {
   final String title;
   final String icon;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   const BuildOutlinedButton({
     Key? key,
     required this.title,

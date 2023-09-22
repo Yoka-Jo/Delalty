@@ -54,7 +54,7 @@ class RepositoryImpl implements Repository {
       () => _appServiceClient.register(
         registerRequest,
       ),
-      statusCode: 200,
+      statusCode: 201,
     );
   }
 
@@ -361,6 +361,18 @@ class RepositoryImpl implements Repository {
       ),
       statusCode: 200,
       convertToAppropriateList: List<Message>.from,
+    );
+  }
+
+  @override
+  Future<Either<Failure, NoData>> removeRelationship(
+    RemoveRelationshipRequest removeRelationshipRequest,
+  ) async {
+    return _repositoryHelpers.callApi<NoData>(
+      () => _appServiceClient.removeRelationship(
+        removeRelationshipRequest.target_id,
+      ),
+      statusCode: 201,
     );
   }
 }
