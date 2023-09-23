@@ -56,8 +56,7 @@ class ProfileAppBar extends StatelessWidget {
                     final dynamicLinkService = DynamicLinkService();
                     final path =
                         await dynamicLinkService.generateDynamicLinkUrl(
-                      path:
-                          '/profile/${SellerProfileCubit.get(context).user!.id}',
+                      path: '/profile/${cubit.user!.id}',
                     );
                     log(path);
                     shareLink(path);

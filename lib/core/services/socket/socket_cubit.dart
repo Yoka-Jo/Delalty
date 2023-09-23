@@ -1,17 +1,19 @@
-import '../../../domain/entities/message.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:equatable/equatable.dart';
-
 import 'dart:convert';
 import 'dart:developer';
-import '../../models/responses.dart';
-import '../../../domain/entities/relationship.dart';
+
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
+
 import '../../../di.dart';
 import '../../../domain/entities/chat.dart';
+import '../../../domain/entities/message.dart';
+import '../../../domain/entities/relationship.dart';
+import '../../models/responses.dart';
 import '../../user_secure_storage.dart';
 import 'socket_events.dart';
+
 part 'socket_state.dart';
 
 class SocketCubit extends Cubit<SocketState> {
@@ -92,6 +94,9 @@ class SocketCubit extends Cubit<SocketState> {
   }
 
   void _removeRelationship(data) {
+    relationships.removeWhere(
+      (element) => element.user!.id == data['d']['id'],
+    );
     emit(SocketRemoveRelationship());
   }
 
@@ -109,6 +114,7 @@ class SocketCubit extends Cubit<SocketState> {
     } else {
       relationships.add(RelationShipResponse.fromJson(data['d']).toDomain());
     }
+    emit(SocketUpdateRelationship());
   }
 
   void _messageCreated(data) {
@@ -157,10 +163,7 @@ class SocketCubit extends Cubit<SocketState> {
     }
   }
 
-  @override
-  Future<void> close() {
+  void dispose() {
     _socket.sink.close();
-    log("Socket connection closed");
-    return super.close();
   }
 }

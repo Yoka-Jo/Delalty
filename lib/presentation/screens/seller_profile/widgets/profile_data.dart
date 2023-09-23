@@ -8,12 +8,12 @@ class ProfileData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sellerCubit = SellerProfileCubit.get(context);
     final createChatCubit = CreateChatCubit.get(context);
     final relationshipCubit = RelationshipCubit.get(context);
-    final userId = sellerCubit.user!.id;
     return BlocBuilder<SocketCubit, SocketState>(
       builder: (context, state) {
+        final sellerCubit = SellerProfileCubit.get(context);
+        final userId = sellerCubit.user!.id;
         return Column(
           children: [
             SizedBox(height: 25.h),
@@ -50,7 +50,7 @@ class ProfileData extends StatelessWidget {
             else if (SocketCubit.get(context).hasSentFriendRequest(userId))
               MyElevatedButton(
                 title: AppStrings.removeFriendRequest.tr(context: context),
-                backgroundColor: Colors.blue,
+                backgroundColor: AppColors.red,
                 onPressed: () {
                   relationshipCubit.removeRelationship(userId);
                 },

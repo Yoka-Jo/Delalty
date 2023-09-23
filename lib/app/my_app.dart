@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -38,11 +38,11 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _openInitialDynamicLinkIfAny();
 
     _incomingDynamicLinksSubscription =
         _dynamicLinkService.onNewDynamicLinkPath().listen(
       (event) {
+        final context = AppContext.context;
         if (event.contains('product')) {
           context.router.push(ProductRoute(productId: event.split('/').last));
         }
@@ -65,14 +65,6 @@ class _MyAppState extends State<MyApp> {
       ChangeThemeCubit.get(context).initTheme(),
       ChangeLanguageCubit.get(context).initLanguage(context)
     ]);
-  }
-
-  Future<void> _openInitialDynamicLinkIfAny() async {
-    final path = await _dynamicLinkService.getInitialDynamicLinkPath();
-    if (path != null) {
-      // context.router.push(path);
-      log(path);
-    }
   }
 
   @override

@@ -1,13 +1,17 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/common/components/widgets/simple_text.dart';
 import '../../../core/resources/routes/app_router.dart';
 import '../../../core/resources/strings_manager.dart';
+import '../../../core/services/dynamic_link_service.dart';
 import '../../../core/user_secure_storage.dart';
 import '../../../data/datasources/local_datasource/local_datasource.dart';
 import '../../../di.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'dart:async';
 
 @RoutePage()
 class SplashScreen extends StatefulWidget {
@@ -18,6 +22,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final _dynamicLinkService = DynamicLinkService();
+
   @override
   void initState() {
     super.initState();
@@ -26,6 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void goToNextScreen() {
     PageRouteInfo<void> route;
+    PageRouteInfo<void>? dynamicLinkPage;
     Timer(
       const Duration(milliseconds: 1500),
       () async {
@@ -41,12 +48,32 @@ class _SplashScreenState extends State<SplashScreen> {
           }
         } else {
           route = const AppRoute();
+          dynamicLinkPage = await _openInitialDynamicLinkIfAny();
         }
         if (context.mounted) {
-          context.router.replace(route);
+          if (dynamicLinkPage != null) {
+            context.router.replaceAll([route, dynamicLinkPage!]);
+          } else {
+            context.router.replace(route);
+          }
         }
       },
     );
+  }
+
+  Future<PageRouteInfo<void>?> _openInitialDynamicLinkIfAny() async {
+    final path = await _dynamicLinkService.getInitialDynamicLinkPath();
+    log('_openInitialDynamicLinkIfAny: $path');
+
+    if (path != null) {
+      if (path.contains('product')) {
+        return ProductRoute(productId: path.split('/').last);
+      }
+      if (path.contains('profile')) {
+        return SellerProfileRoute(sellerId: path.split('/').last);
+      }
+    }
+    return null;
   }
 
   @override

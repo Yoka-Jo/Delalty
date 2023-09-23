@@ -84,6 +84,9 @@ class _ConversationFormFieldState extends State<ConversationFormField> {
                   textInputAction: TextInputAction.done,
                   filledColor: const Color(0xffEEEEEE),
                   hintTxt: AppStrings.messaging.tr(context: context),
+                  onFieldSubmitted: (value) {
+                    ConversationCubit.get(context).sendMessage();
+                  },
                   prefixIcon: InkWell(
                     onTap: () async {
                       await ConversationCubit.get(context).pickImages(context);

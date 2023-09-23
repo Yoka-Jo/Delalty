@@ -98,6 +98,6 @@ class _AppScreenState extends State<AppScreen> {
   void dispose() {
     super.dispose();
     final ctx = AppContext.context;
-    SocketCubit.get(ctx).close();
+    SocketCubit.get(ctx).dispose();
   }
 }
