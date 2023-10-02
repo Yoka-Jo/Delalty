@@ -59,7 +59,7 @@ class ProductResponse extends Equatable implements DataResponse<Product> {
       images: images?.map((item) => item.toDomain()).toList() ?? [],
       seller: seller?.toDomain(),
       visible: visible.orFalse(),
-      mainImageId: mainImage,
+      mainImage: mainImage,
     );
   }
 

@@ -1,4 +1,6 @@
-import 'dart:io';
+import 'dart:convert';
+
+import '../../domain/entities/seller.dart';
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
 
@@ -140,6 +142,22 @@ class RepositoryImpl implements Repository {
   Future<Either<Failure, Product>> createProduct(
     CreateProductRequest createProductRequest,
   ) async {
+    final multipartFiles = <MultipartFile>[];
+
+    for (final file in createProductRequest.images) {
+      final fileBytes = await file.readAsBytes();
+      final filename = file.path.split('/').last;
+      final multipartFile = MultipartFile.fromBytes(
+        fileBytes,
+        filename: filename,
+        contentType:
+            MediaType('application', 'image/${filename.split('.')[1]}'),
+      );
+      multipartFiles.add(multipartFile);
+    }
+
+    final values = createProductRequest.values.map((e) => e.toJson()).toList();
+    log("fromRepo: ${values.length}");
     return _repositoryHelpers.callApi<Product>(
       () => _appServiceClient.createProduct(
         createProductRequest.title,
@@ -147,9 +165,10 @@ class RepositoryImpl implements Repository {
         createProductRequest.price,
         createProductRequest.categoryId,
         createProductRequest.mainImageIndex,
-        File(createProductRequest.file),
+        json.encode(values),
+        multipartFiles,
       ),
-      statusCode: 200,
+      statusCode: 201,
     );
   }
 
@@ -281,7 +300,6 @@ class RepositoryImpl implements Repository {
   @override
   Future<Either<Failure, List<Product>>> getRecentlySearchedProducts() async {
     final res = await _localDataSource.getRecentlySearchedProducts();
-    log('22222-22-2-2-2-2-22-2-');
     log(res.length.toString());
     return Right(res);
   }
@@ -382,6 +400,14 @@ class RepositoryImpl implements Repository {
       () => _appServiceClient.getTrendingProducts(),
       statusCode: 200,
       convertToAppropriateList: List<Product>.from,
+    );
+  }
+
+  @override
+  Future<Either<Failure, Seller>> becomeSeller() async {
+    return _repositoryHelpers.callApi<Seller>(
+      () => _appServiceClient.becomeSeller({}),
+      statusCode: 201,
     );
   }
 }

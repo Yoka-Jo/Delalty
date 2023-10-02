@@ -8,6 +8,7 @@ class ProductSellerInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final seller = ProductCubit.get(context).product.seller;
+    final isMe = seller?.id == AppCubit.get(context).user.id;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -18,7 +19,8 @@ class ProductSellerInfo extends StatelessWidget {
         ),
         SizedBox(height: 18.h),
         Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment:
+              isMe ? CrossAxisAlignment.center : CrossAxisAlignment.start,
           children: [
             ProductSellerImage(
               image: seller?.user?.image ?? '',
@@ -35,8 +37,10 @@ class ProductSellerInfo extends StatelessWidget {
                 ),
                 SizedBox(height: 8.h),
                 const ProductSellerRating(),
-                SizedBox(height: 12.h),
-                const ProductSellerChatButton(),
+                if (!isMe) ...[
+                  SizedBox(height: 12.h),
+                  const ProductSellerChatButton(),
+                ],
               ],
             ),
             const Spacer(),

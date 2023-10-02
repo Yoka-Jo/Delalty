@@ -8,41 +8,46 @@ class AddYourProductProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _ProgressIndicatorStep(
-          title: AppStrings.photos.tr(context: context),
-          isFinished: true,
-        ),
-        Expanded(
-          child: Container(
-            height: 22.h,
-            margin: EdgeInsets.symmetric(horizontal: 15.w),
-            padding: EdgeInsets.all(2.r),
-            decoration: BoxDecoration(
-              color: AppColors.grey2,
-              borderRadius: BorderRadius.circular(10.r),
-              border: Border.all(width: 1, color: AppColors.black10),
+    return BlocBuilder<AddYourProductCubit, AddYourProductState>(
+      builder: (context, state) {
+        final cubit = AddYourProductCubit.get(context);
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _ProgressIndicatorStep(
+              title: AppStrings.photos.tr(context: context),
+              isFinished: false,
             ),
-            child: LinearPercentIndicator(
-              isRTL: context.locale != arabicLocal,
-              lineHeight: 22.h,
-              padding: EdgeInsets.zero,
-              barRadius: Radius.circular(10.r),
-              percent: 0.7,
-              animation: true,
-              animationDuration: 1000,
-              progressColor: AppColors.primaryColor,
-              backgroundColor: Colors.transparent,
+            Expanded(
+              child: Container(
+                height: 22.h,
+                margin: EdgeInsets.symmetric(horizontal: 15.w),
+                padding: EdgeInsets.all(2.r),
+                decoration: BoxDecoration(
+                  color: AppColors.grey2,
+                  borderRadius: BorderRadius.circular(10.r),
+                  border: Border.all(width: 1, color: AppColors.black10),
+                ),
+                child: LinearPercentIndicator(
+                  isRTL: context.locale != arabicLocal,
+                  lineHeight: 22.h,
+                  padding: EdgeInsets.zero,
+                  barRadius: Radius.circular(10.r),
+                  percent: cubit.finishedAddingProductDetails ? 0.7 : 0.2,
+                  animation: true,
+                  animationDuration: 1000,
+                  progressColor: AppColors.primaryColor,
+                  backgroundColor: Colors.transparent,
+                ),
+              ),
             ),
-          ),
-        ),
-        _ProgressIndicatorStep(
-          title: AppStrings.communication.tr(context: context),
-          isFinished: false,
-        ),
-      ],
+            _ProgressIndicatorStep(
+              title: AppStrings.communication.tr(context: context),
+              isFinished: cubit.finishedAddingProductDetails,
+            ),
+          ],
+        );
+      },
     );
   }
 }

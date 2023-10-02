@@ -47,6 +47,8 @@ class AccountVerificationCubit extends Cubit<AccountVerificationState> {
         return const AccountVerificationData();
       case AccountVerificationSteps.idImages:
         return const AccountVerificationIdImages();
+      case AccountVerificationSteps.finish:
+        return const AccountVerificationDataWillBeChecked();
       default:
         return Container();
     }

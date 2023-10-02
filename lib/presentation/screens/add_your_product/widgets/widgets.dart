@@ -1,6 +1,16 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
+import 'package:delalty/core/resources/routes/app_router.dart';
+import 'package:delalty/data/requests/requests.dart';
+import 'package:delalty/presentation/screens/add_your_product/cubit/add_your_product_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/common/components/widgets/build_carousel.dart';
+import '../../../../core/common/components/widgets/build_option_button.dart';
 import '../../../../core/common/components/widgets/default_text_form_field.dart';
 import '../../../../core/common/components/widgets/my_elevated_button.dart';
+import '../../../../core/common/components/widgets/simple_toast.dart';
+import '../../../../core/common/components/widgets/titled_form_field.dart';
 import '../../../../domain/entities/input.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
@@ -19,3 +29,7 @@ part 'add_your_product_body.dart';
 part 'add_your_product_progress.dart';
 part 'selection_of_images_container.dart';
 part 'add_your_product_add_images.dart';
+part 'product_check_boxes.dart';
+part 'product_form_fields_for_category_values.dart';
+part 'product_select_buttons.dart';
+part 'product_data_values.dart';

@@ -30,11 +30,15 @@ class BuildShimmerWidget extends StatelessWidget {
       child: Container(
         width: width ?? MediaQuery.of(context).size.width,
         height: height,
-        margin: hasMargin ? (margin ?? const EdgeInsets.symmetric(vertical: 5)) : EdgeInsets.zero,
+        margin: hasMargin
+            ? (margin ?? const EdgeInsets.symmetric(vertical: 5))
+            : EdgeInsets.zero,
         decoration: BoxDecoration(
             color: baseColor,
             shape: boxShape ?? BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(borderRadius ?? 8.r)),
+            borderRadius: boxShape != null
+                ? null
+                : BorderRadius.circular(borderRadius ?? 8.r)),
       ),
     );
   }

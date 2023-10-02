@@ -15,6 +15,7 @@ import '../../../../core/common/components/widgets/centered_circular_progress_in
 import '../../../../core/common/components/widgets/default_text_form_field.dart';
 import '../../../../core/common/components/widgets/form_fields_icons/camera_icon.dart';
 import '../../../../core/common/components/widgets/my_elevated_button.dart';
+import '../../../../core/common/components/widgets/my_text.dart';
 import '../../../../core/common/components/widgets/simple_text.dart';
 import '../../../../core/common/components/widgets/simple_toast.dart';
 import '../../../../core/common/components/widgets/user_image.dart';

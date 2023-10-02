@@ -52,22 +52,31 @@ class HomeAppBar extends StatelessWidget {
           ],
         ),
         Container(
-          padding: EdgeInsets.all(2.r),
-          height: 45.h,
-          width: 45.h,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.white,
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(45.r),
-            child: const CachedImage(
-              url:
-                  'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-              fit: BoxFit.cover,
+            padding: EdgeInsets.all(2.r),
+            height: 45.h,
+            width: 45.h,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
             ),
-          ),
-        )
+            child: BlocBuilder<AppCubit, AppState>(
+              builder: (context, state) {
+                if (state is AppGetUserDataLoading) {
+                  return BuildShimmerWidget(
+                    height: 45.r,
+                    boxShape: BoxShape.circle,
+                    hasMargin: false,
+                  );
+                }
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(45.r),
+                  child: CachedImage(
+                    url: AppCubit.get(context).user.image,
+                    fit: BoxFit.cover,
+                  ),
+                );
+              },
+            ))
       ],
     );
   }

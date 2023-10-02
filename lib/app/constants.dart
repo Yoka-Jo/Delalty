@@ -25,7 +25,7 @@ class Constants {
   static const String getCategoryPath = 'categories/{id}';
   static const String getCategoriesPath = 'categories';
   static const String getBestCategoriesPath = 'categories/popular';
-  static const String createProductPath = 'products/';
+  static const String createProductPath = 'products';
   static const String addProductToFavoritesPath = 'favorites/{product_id}';
   static const String getFavoritesPath = 'favorites';
   static const String getUserDataPath = 'users/{id}';
@@ -43,4 +43,5 @@ class Constants {
   static const String getMessagesPath = 'messages';
   static const String removeRelationshipPath = 'relationships/{target_id}';
   static const String getTrendingProductsPath = 'products/popular';
+  static const String becomeSellerPath = 'sellers';
 }

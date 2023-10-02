@@ -5,6 +5,66 @@ class SearchFormField extends StatelessWidget {
     super.key,
   });
 
+  void _showFilterMenu(BuildContext context, Offset offset) async {
+    late RelativeRect position = RelativeRect.fromDirectional(
+      textDirection: Directionality.of(context),
+      start: offset.dx,
+      top: offset.dy,
+      end: 0,
+      bottom: 0,
+    );
+    await showMenu(
+      context: context,
+      position: position,
+      items: [
+        PopupMenuItem(
+          value: 1,
+          onTap: () => SearchCubit.get(context).arrangeProducts(true),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SimpleText(
+                AppStrings.price.tr(context: context),
+                textStyle: TextStyleEnum.montserratSemiBold,
+                fontSize: 18.sp,
+              ),
+              const Icon(
+                Icons.arrow_upward,
+                color: AppColors.red,
+              ),
+            ],
+          ),
+        ),
+        PopupMenuItem(
+          value: 2,
+          height: 5.h,
+          child: const Divider(
+            color: AppColors.grey3,
+          ),
+        ),
+        PopupMenuItem(
+          value: 3,
+          onTap: () => SearchCubit.get(context).arrangeProducts(false),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SimpleText(
+                AppStrings.price.tr(context: context),
+                textStyle: TextStyleEnum.montserratSemiBold,
+                fontSize: 18.sp,
+              ),
+              const Icon(
+                Icons.arrow_downward,
+                color: AppColors.primaryColor,
+              )
+            ],
+          ),
+        ),
+      ],
+      elevation: 8.0,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SearchCubit, SearchState>(
@@ -27,9 +87,11 @@ class SearchFormField extends StatelessWidget {
               hintTxt: AppStrings.search.tr(context: context),
               onChangedFunction: cubit.onSearchChange,
               prefixIcon: const SearchIcon(),
-              suffixIcon: cubit.isUserSearching &&
-                      state is SearchForProductsSuccess
-                  ? const FilterIcon()
+              suffixIcon: !cubit.isSearStrEmpty
+                  ? InkWell(
+                      onTapUp: (details) =>
+                          _showFilterMenu(context, details.globalPosition),
+                      child: const FilterIcon())
                   : AvatarGlow(
                       endRadius: 20.r,
                       animate: cubit.isListening,
@@ -48,7 +110,6 @@ class SearchFormField extends StatelessWidget {
                               await cubit.listeningForSpeech();
                             }
                           },
-                          onTapUp: (details) {},
                           child: const MicrophoneIcon(),
                         ),
                       ),

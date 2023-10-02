@@ -1,8 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:delalty/di.dart';
+import 'package:delalty/presentation/screens/add_your_product/cubit/add_your_product_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/entities/category.dart';
 import 'widgets/widgets.dart';
@@ -17,15 +19,18 @@ class AddYourProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    for (var element in category.inputs) {
-      log('name: ${element.name}');
-      log('type: ${element.type}');
-      log('validations: ${element.validations}');
-      log('isRequired: ${element.isRequired}');
+    for (final input in category.inputs) {
+      log(input.type);
+      log(input.validations.toString());
+      log("__________________");
     }
-    return Scaffold(
-      body: AddYourProductBody(
-        category: category,
+
+    return BlocProvider(
+      create: (context) => getIt<AddYourProductCubit>(),
+      child: Scaffold(
+        body: AddYourProductBody(
+          category: category,
+        ),
       ),
     );
   }

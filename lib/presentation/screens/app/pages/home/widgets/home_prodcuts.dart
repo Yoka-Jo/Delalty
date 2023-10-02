@@ -19,6 +19,7 @@ class HomeProducts extends StatelessWidget {
             : cubit.productsMap.length;
 
         return ListView.separated(
+            padding: EdgeInsets.only(bottom: 80.h),
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: itemCount,

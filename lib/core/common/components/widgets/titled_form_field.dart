@@ -13,7 +13,10 @@ class TitledFormField extends StatelessWidget {
   final String hint;
   final String? error;
   final double? hintSize;
-  final dynamic Function(String) onChanged;
+  final dynamic Function(String)? onChanged;
+  final void Function(String?)? onSaved;
+  final String? Function(String?)? validationFunction;
+
   const TitledFormField({
     Key? key,
     required this.title,
@@ -23,7 +26,9 @@ class TitledFormField extends StatelessWidget {
     this.hintSize,
     this.error,
     required this.hint,
-    required this.onChanged,
+    this.onChanged,
+    this.onSaved,
+    this.validationFunction,
   }) : super(key: key);
 
   @override
@@ -47,6 +52,8 @@ class TitledFormField extends StatelessWidget {
           hintTxt: hint,
           hintSize: hintSize,
           errorTxt: error?.tr(context: context),
+          onSaved: onSaved,
+          validationFunction: validationFunction,
           onChangedFunction: onChanged,
         ),
       ],

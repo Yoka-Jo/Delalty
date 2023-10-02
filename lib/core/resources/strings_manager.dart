@@ -9,7 +9,11 @@ class AppStrings {
   static const String appName = "DELALTY";
   static const String bearer = "Bearer ";
 
+  static const String cancel = "cancel";
+  static const String cantSendEmptyMessage = "cant_send_empty_message";
+  static const String youHaveBecomeSellerNow = "you_have_become_seller_now";
   static const String enterYourEmail = "enter_your_email";
+  static const String becomeSeller = "become_seller";
   static const String invalidEmail = "invalid_email";
   static const String chooseLanguage = "choose_language";
   static const String fillField = "fillField";

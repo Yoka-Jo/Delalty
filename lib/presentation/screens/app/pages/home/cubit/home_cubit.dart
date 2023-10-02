@@ -150,8 +150,9 @@ class HomeCubit extends Cubit<HomeState> {
         _getCategories(),
         _getBestCategories(),
         _getTrendingProducts(),
-        getCategoriesProducts(),
       ],
     );
+
+    await getCategoriesProducts();
   }
 }

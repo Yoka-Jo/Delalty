@@ -12,13 +12,17 @@ class MyOutlinedButton extends StatelessWidget {
   final double? titleSize;
   final TextStyleEnum? titleStyle;
   final EdgeInsets? padding;
+  final Color? borderColor;
+  final double? borderRadius;
 
   const MyOutlinedButton({
     Key? key,
     required this.onPressed,
     required this.title,
     this.titleColor,
+    this.borderColor,
     this.titleSize,
+    this.borderRadius,
     this.titleStyle,
     this.padding,
   }) : super(key: key);
@@ -30,9 +34,11 @@ class MyOutlinedButton extends StatelessWidget {
       height: 58.h,
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(borderRadius ?? 0)),
           padding: padding,
-          side: const BorderSide(
-            color: AppColors.primaryColor,
+          side: BorderSide(
+            color: borderColor ?? AppColors.primaryColor,
             width: 1,
           ),
         ),

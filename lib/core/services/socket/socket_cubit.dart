@@ -56,8 +56,6 @@ class SocketCubit extends Cubit<SocketState> {
 
   void _listen() {
     _socket.stream.listen((message) {
-      log("SOCKET: $message");
-
       final data = jsonDecode(message);
       switch (data['t']) {
         case SocketEvents.ready:

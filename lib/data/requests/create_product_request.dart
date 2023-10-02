@@ -1,16 +1,13 @@
 part of 'requests.dart';
 
-@JsonSerializable(createFactory: false)
 class CreateProductRequest {
   final String title;
   final String description;
   final double price;
-  @JsonKey(name: 'category_id')
   final int categoryId;
-  @JsonKey(name: 'main_image_index')
   final int mainImageIndex;
-
-  final String file;
+  final List<File> images;
+  final List<ValueRequest> values;
 
   CreateProductRequest({
     required this.title,
@@ -18,8 +15,18 @@ class CreateProductRequest {
     required this.price,
     required this.categoryId,
     required this.mainImageIndex,
-    required this.file,
+    required this.images,
+    required this.values,
   });
+}
 
-  Map<String, dynamic> toJson() => _$CreateProductRequestToJson(this);
+@JsonSerializable(createFactory: false)
+class ValueRequest {
+  @JsonKey(name: 'input_id')
+  final String inputId;
+  final dynamic value;
+
+  ValueRequest({required this.inputId, required this.value});
+
+  Map<String, dynamic> toJson() => _$ValueRequestToJson(this);
 }

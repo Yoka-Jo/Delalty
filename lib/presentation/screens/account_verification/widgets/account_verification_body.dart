@@ -9,7 +9,7 @@ class AccountVerificationBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AccountVerificationCubit, AccountVerificationState>(
       builder: (context, state) {
-        return AccountVerificationDataWillBeChecked(); //AccountVerificationCubit.get(context).getStepWidget();
+        return AccountVerificationCubit.get(context).getStepWidget();
       },
     );
   }

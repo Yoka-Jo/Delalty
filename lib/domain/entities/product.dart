@@ -12,7 +12,7 @@ class Product {
   final List<ProductImage> images;
   final Seller? seller;
   final bool visible;
-  final String mainImageId;
+  final String mainImage;
 
   Product({
     required this.id,
@@ -24,7 +24,7 @@ class Product {
     required this.images,
     required this.seller,
     required this.visible,
-    required this.mainImageId,
+    required this.mainImage,
   });
 
   Product copyWith({
@@ -49,7 +49,7 @@ class Product {
       images: images ?? this.images,
       seller: seller ?? this.seller,
       visible: visible ?? this.visible,
-      mainImageId: mainImageId ?? this.mainImageId,
+      mainImage: mainImageId ?? this.mainImage,
     );
   }
 }

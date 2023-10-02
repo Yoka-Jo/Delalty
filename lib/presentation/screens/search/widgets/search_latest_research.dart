@@ -40,7 +40,7 @@ class SearchLatestResearch extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(5.r),
                           child: CachedImage(
-                            url: product.mainImageId,
+                            url: product.mainImage,
                             fit: BoxFit.cover,
                           ),
                         ),

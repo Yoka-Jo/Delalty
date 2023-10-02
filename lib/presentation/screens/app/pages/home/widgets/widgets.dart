@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import '../../../../../../core/common/components/widgets/build_shimmer_widget.dart';
 import '../../../../../../core/resources/routes/app_router.dart';
+import '../../../cubit/app_cubit.dart';
 import '../cubit/home_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

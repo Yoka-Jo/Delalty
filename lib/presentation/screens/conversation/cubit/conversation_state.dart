@@ -9,6 +9,8 @@ sealed class ConversationState extends Equatable {
 
 final class ConversationInitial extends ConversationState {}
 
+final class ConversationOnMessageChange extends ConversationState {}
+
 final class ConversationRemoveImageFromSelected extends ConversationState {}
 
 final class ConversationSelectedImageChange extends ConversationState {}

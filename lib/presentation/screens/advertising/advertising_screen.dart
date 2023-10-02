@@ -38,6 +38,7 @@ class AdvertisingScreen extends StatelessWidget {
             SizedBox(height: 23.h),
             Expanded(
               child: ListView.separated(
+                padding: EdgeInsets.only(bottom: 30.h),
                 itemBuilder: (context, index) {
                   return const ProductStatisticsInfo(
                     image:

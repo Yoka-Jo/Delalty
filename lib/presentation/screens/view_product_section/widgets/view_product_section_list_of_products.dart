@@ -45,6 +45,7 @@ class _ViewProductSectionListOfProuctsState
           SizedBox(height: 30.h),
           Expanded(
             child: GridView.builder(
+              padding: EdgeInsets.only(bottom: 50.h),
               controller: controller,
               physics: const BouncingScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -91,10 +92,8 @@ class _ViewProductSectionListOfProuctsState
               itemCount: isGettingProdutsForFirstTime ? 4 : (products.length),
             ),
           ),
-          SizedBox(height: 50.h),
           if (isLoading && !isGettingProdutsForFirstTime) ...[
             const CenteredCircularProgressIndicaotr(),
-            SizedBox(height: 50.h),
           ]
         ],
       ),

@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:delalty/core/common/components/widgets/centered_circular_progress_indicator.dart';
 import 'package:delalty/core/common/components/widgets/simple_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,6 +48,9 @@ class MyElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (isLoading) {
+      return const Center(child: CenteredCircularProgressIndicaotr());
+    }
     List<Widget> rowChildren = [
       SimpleText(
         title,

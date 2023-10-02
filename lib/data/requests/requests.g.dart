@@ -26,15 +26,10 @@ Map<String, dynamic> _$VerifyPhoneRequestToJson(VerifyPhoneRequest instance) =>
       'code': instance.code,
     };
 
-Map<String, dynamic> _$CreateProductRequestToJson(
-        CreateProductRequest instance) =>
+Map<String, dynamic> _$ValueRequestToJson(ValueRequest instance) =>
     <String, dynamic>{
-      'title': instance.title,
-      'description': instance.description,
-      'price': instance.price,
-      'category_id': instance.categoryId,
-      'main_image_index': instance.mainImageIndex,
-      'file': instance.file,
+      'input_id': instance.inputId,
+      'value': instance.value,
     };
 
 Map<String, dynamic> _$AddProductToFavoritesRequestToJson(

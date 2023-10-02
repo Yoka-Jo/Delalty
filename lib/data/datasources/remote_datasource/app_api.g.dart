@@ -288,7 +288,8 @@ class _AppServiceClient implements AppServiceClient {
     double price,
     int categoryId,
     int mainImageIndex,
-    File file,
+    String values,
+    List<MultipartFile> images,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -307,20 +308,18 @@ class _AppServiceClient implements AppServiceClient {
       price.toString(),
     ));
     _data.fields.add(MapEntry(
-      'categoryId',
+      'category_id',
       categoryId.toString(),
     ));
     _data.fields.add(MapEntry(
-      'mainImageIndex',
+      'main_image_index',
       mainImageIndex.toString(),
     ));
-    _data.files.add(MapEntry(
-      'file',
-      MultipartFile.fromFileSync(
-        file.path,
-        filename: file.path.split(Platform.pathSeparator).last,
-      ),
+    _data.fields.add(MapEntry(
+      'values',
+      values,
     ));
+    _data.files.addAll(images.map((i) => MapEntry('images', i)));
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<HttpResponse<ProductResponse>>(Options(
       method: 'POST',
@@ -330,7 +329,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              'products/',
+              'products',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -784,7 +783,7 @@ class _AppServiceClient implements AppServiceClient {
   }
 
   @override
-  Future<HttpResponse<void>> removeRelationship(String target_id) async {
+  Future<HttpResponse<void>> removeRelationship(String targetId) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -797,7 +796,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              'relationships/${target_id}',
+              'relationships/{target_id}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -836,6 +835,36 @@ class _AppServiceClient implements AppServiceClient {
     var value = _result.data!
         .map((dynamic i) => ProductResponse.fromJson(i as Map<String, dynamic>))
         .toList();
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<SellerResponse>> becomeSeller(
+      Map<String, dynamic> body) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<SellerResponse>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'sellers',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = SellerResponse.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }

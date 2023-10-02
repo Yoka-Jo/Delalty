@@ -16,7 +16,7 @@ class ProfileData extends StatelessWidget {
         final userId = sellerCubit.user!.id;
         return Column(
           children: [
-            SizedBox(height: 25.h),
+            SizedBox(height: 10.h),
             Align(
               alignment: Alignment.centerLeft,
               child: SimpleText(
@@ -34,35 +34,38 @@ class ProfileData extends StatelessWidget {
             //   fontSize: 13.sp,
             //   color: AppColors.grey3,
             // ),
-            SizedBox(height: 40.h),
-            if (SocketCubit.get(context).isFriend(userId))
-              MyElevatedButton(
-                title: AppStrings.chat.tr(context: context),
-                icon: ImageAssets.message,
-                onPressed: () {
-                  createChatCubit.createChat(
-                    CreateChatTypes.DIRECT,
-                    context,
-                    participantId: userId,
-                  );
-                },
-              )
-            else if (SocketCubit.get(context).hasSentFriendRequest(userId))
-              MyElevatedButton(
-                title: AppStrings.removeFriendRequest.tr(context: context),
-                backgroundColor: AppColors.red,
-                onPressed: () {
-                  relationshipCubit.removeRelationship(userId);
-                },
-              )
-            else if (!SocketCubit.get(context).isFriend(userId))
-              MyElevatedButton(
-                title: AppStrings.sendFriedRequest.tr(context: context),
-                backgroundColor: Colors.blue,
-                onPressed: () {
-                  relationshipCubit.addFriend(userId);
-                },
-              )
+            SizedBox(height: 30.h),
+            if (SellerProfileCubit.get(context).user!.id !=
+                AppCubit.get(context).user.id) ...[
+              if (SocketCubit.get(context).isFriend(userId))
+                MyElevatedButton(
+                  title: AppStrings.chat.tr(context: context),
+                  icon: ImageAssets.message,
+                  onPressed: () {
+                    createChatCubit.createChat(
+                      CreateChatTypes.DIRECT,
+                      context,
+                      participantId: userId,
+                    );
+                  },
+                )
+              else if (SocketCubit.get(context).hasSentFriendRequest(userId))
+                MyElevatedButton(
+                  title: AppStrings.removeFriendRequest.tr(context: context),
+                  backgroundColor: AppColors.red,
+                  onPressed: () {
+                    relationshipCubit.removeRelationship(userId);
+                  },
+                )
+              else if (!SocketCubit.get(context).isFriend(userId))
+                MyElevatedButton(
+                  title: AppStrings.sendFriedRequest.tr(context: context),
+                  backgroundColor: Colors.blue,
+                  onPressed: () {
+                    relationshipCubit.addFriend(userId);
+                  },
+                )
+            ]
           ],
         );
       },

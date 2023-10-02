@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -43,9 +42,10 @@ abstract class AppServiceClient {
     @Part() String title,
     @Part() String description,
     @Part() double price,
-    @Part() int categoryId,
-    @Part() int mainImageIndex,
-    @Part() File file,
+    @Part(name: 'category_id') int categoryId,
+    @Part(name: 'main_image_index') int mainImageIndex,
+    @Part() String values,
+    @Part() List<MultipartFile> images,
   );
   @POST(Constants.addProductToFavoritesPath)
   Future<HttpResponse<void>> addProductToFavorites(
@@ -111,8 +111,11 @@ abstract class AppServiceClient {
   );
   @DELETE(Constants.removeRelationshipPath)
   Future<HttpResponse<void>> removeRelationship(
-    @Path() String target_id,
+    @Path() String targetId,
   );
   @GET(Constants.getTrendingProductsPath)
   Future<HttpResponse<List<ProductResponse>>> getTrendingProducts();
+  @POST(Constants.becomeSellerPath)
+  Future<HttpResponse<SellerResponse>> becomeSeller(
+      @Body() Map<String, dynamic> body);
 }

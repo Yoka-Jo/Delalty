@@ -1,3 +1,4 @@
+import '../entities/seller.dart';
 import '../entities/message.dart';
 import '../entities/chat.dart';
 import '../../data/requests/add_product_to_recently_searched_request.dart';
@@ -84,4 +85,5 @@ abstract class Repository {
     RemoveRelationshipRequest removeRelationshipRequest,
   );
   Future<Either<Failure, List<Product>>> getTrendingProducts();
+  Future<Either<Failure, Seller>> becomeSeller();
 }

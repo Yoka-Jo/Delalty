@@ -80,7 +80,7 @@ class ProductCardWidget extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5.r),
                 child: CachedImage(
-                  url: product.mainImageId,
+                  url: product.mainImage,
                   alignment: Alignment.topCenter,
                   height: double.infinity,
                   fit: BoxFit.cover,

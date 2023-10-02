@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import '../../../../core/resources/strings_manager.dart';
 import '../../../../data/requests/requests.dart';
 import '../../../../domain/usecases/create_message_usecase.dart';
 import '../../../../domain/usecases/get_messages_usecase.dart';
@@ -26,6 +27,14 @@ class ConversationCubit extends Cubit<ConversationState> {
 
   final messageController = TextEditingController();
   late Chat chat;
+
+  void onMessageChanged(String value) {
+    emit(ConversationInitial());
+    if (images.isNotEmpty && value.isNotEmpty) {
+      messageError = null;
+    }
+    emit(ConversationOnMessageChange());
+  }
 
   String get participantId => chat.participants[1].user!.id;
 
@@ -70,7 +79,13 @@ class ConversationCubit extends Cubit<ConversationState> {
     emit(ConversationRemoveImageFromSelected());
   }
 
+  String? messageError;
   Future<void> sendMessage() async {
+    if (images.isNotEmpty && messageController.text.isEmpty) {
+      messageError = AppStrings.cantSendEmptyMessage;
+      emit(ConversationInitial());
+      return;
+    }
     final response = await _createMessageUseCase(
       CreateMessageRequest(
         chatId: chat.id,

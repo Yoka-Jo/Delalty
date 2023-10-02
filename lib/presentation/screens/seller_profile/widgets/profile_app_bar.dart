@@ -62,21 +62,23 @@ class ProfileAppBar extends StatelessWidget {
                     shareLink(path);
                   },
                 ),
-                SizedBox(height: 30.h),
-                BottomSheetElementWidget(
-                  title: context.tr(AppStrings.reportThisUser),
-                  icon: ImageAssets.userReport,
-                  onTap: () {},
-                ),
-                SizedBox(height: 30.h),
-                BottomSheetElementWidget(
-                  title: context.tr(AppStrings.blockUser),
-                  icon: ImageAssets.userBlock,
-                  onTap: () async {
-                    context.router.pop();
-                    await cubit.blockSeller();
-                  },
-                ),
+                if (cubit.user!.id != AppCubit.get(context).user.id) ...[
+                  SizedBox(height: 30.h),
+                  BottomSheetElementWidget(
+                    title: context.tr(AppStrings.reportThisUser),
+                    icon: ImageAssets.userReport,
+                    onTap: () {},
+                  ),
+                  SizedBox(height: 30.h),
+                  BottomSheetElementWidget(
+                    title: context.tr(AppStrings.blockUser),
+                    icon: ImageAssets.userBlock,
+                    onTap: () async {
+                      context.router.pop();
+                      await cubit.blockSeller();
+                    },
+                  ),
+                ],
               ],
             ));
       },

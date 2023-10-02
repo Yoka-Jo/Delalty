@@ -19,7 +19,7 @@ class AttachmentResponse extends Equatable implements DataResponse<Attachment> {
     return Attachment(
       id: id,
       filename: filename.orEmpty(),
-      url: '${Constants.messageImagePath}$filename',
+      url: '${Constants.messageImagePath}$url',
     );
   }
 

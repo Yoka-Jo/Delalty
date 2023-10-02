@@ -53,7 +53,7 @@ class LocalDataSource {
         ),
       ),
       visible: product.visible,
-      mainImageId: product.mainImageId,
+      mainImageId: product.mainImage,
     );
 
     String? productsJson =

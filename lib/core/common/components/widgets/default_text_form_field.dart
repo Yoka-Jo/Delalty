@@ -43,10 +43,12 @@ class DefaultTextFormField extends StatefulWidget {
   final String? helperText;
   final EdgeInsets? padding;
   final TextDirection? hintTextDirection;
+  final void Function(String?)? onSaved;
 
   const DefaultTextFormField({
     Key? key,
     this.hintTxt,
+    this.onSaved,
     this.padding,
     this.errorTxt,
     this.hintTextDirection,
@@ -95,6 +97,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
     final theme = AppTheme.of(context);
     return StatefulBuilder(
         builder: (context, setState) => TextFormField(
+              onSaved: widget.onSaved,
               textAlign: widget.textAlign ?? TextAlign.start,
               onFieldSubmitted: widget.onFieldSubmitted,
               onEditingComplete: widget.onEditingComplete,

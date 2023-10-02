@@ -7,6 +7,8 @@ class ProductContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMe = ProductCubit.get(context).product.seller!.id ==
+        AppCubit.get(context).user.id;
     return Container(
       padding: EdgeInsets.only(top: 320.h),
       alignment: Alignment.bottomCenter,
@@ -30,14 +32,18 @@ class ProductContainer extends StatelessWidget {
             const ProductModelWidget(),
             SizedBox(height: 12.h),
             const ProductLocation(),
-            SizedBox(height: 12.h),
-            const ProductContactOptions(),
+            if (!isMe) ...[
+              SizedBox(height: 12.h),
+              const ProductContactOptions(),
+            ],
             SizedBox(height: 40.h),
             const ProductSpecification(),
             SizedBox(height: 40.h),
             const ProductDescripe(),
-            SizedBox(height: 28.h),
-            const ProductReport(),
+            if (!isMe) ...[
+              SizedBox(height: 28.h),
+              const ProductReport(),
+            ],
             SizedBox(height: 50.h),
             const ProductSellerInfo(),
             SizedBox(height: 40.h),

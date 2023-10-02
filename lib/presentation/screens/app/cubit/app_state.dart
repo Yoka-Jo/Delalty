@@ -21,3 +21,16 @@ final class AppGetUserDataFailure extends AppState {
   @override
   List<Object> get props => [super.props, message];
 }
+
+final class AppBecomeSellerLoading extends AppState {}
+
+final class AppBecomeSellerSuccess extends AppState {}
+
+final class AppBecomeSellerFailure extends AppState {
+  final String message;
+
+  const AppBecomeSellerFailure(this.message);
+
+  @override
+  List<Object> get props => [super.props, message];
+}

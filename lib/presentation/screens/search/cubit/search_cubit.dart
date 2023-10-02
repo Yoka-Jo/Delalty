@@ -36,6 +36,7 @@ class SearchCubit extends Cubit<SearchState> {
 
   bool isUserSearching = false;
   String searchStr = "";
+  bool get isSearStrEmpty => searchStr.isEmpty;
   final TextEditingController searchController = TextEditingController();
   final SpeechToText speechToText = SpeechToText();
 
@@ -160,6 +161,21 @@ class SearchCubit extends Cubit<SearchState> {
         emit(GetRecentlySearchedProductsSuccess());
       },
     );
+  }
+
+  void arrangeProducts(bool byHigher) {
+    emit(SearchInitial());
+    if (byHigher) {
+      products.sort(
+        (a, b) => b.price - a.price,
+      );
+    } else {
+      products.sort(
+        (a, b) => a.price - b.price,
+      );
+    }
+
+    emit(SearchArrangeProducts());
   }
 
   @override

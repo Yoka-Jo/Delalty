@@ -70,6 +70,7 @@ class FavoriteScreen extends StatelessWidget {
                   }
                   return Expanded(
                     child: ListView.separated(
+                      padding: EdgeInsets.only(bottom: 30.h),
                       itemBuilder: (context, i) {
                         return AspectRatio(
                           aspectRatio: 1.7,

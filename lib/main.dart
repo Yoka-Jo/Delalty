@@ -51,7 +51,7 @@ void main() async {
           create: (_) => getIt<RelationshipCubit>(),
         ),
         BlocProvider(
-          create: (_) => getIt<FavoriteCubit>()..getFavorites(),
+          create: (_) => getIt<FavoriteCubit>(),
         ),
       ],
       child: EasyLocalization(

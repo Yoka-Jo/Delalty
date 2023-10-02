@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../domain/entities/category.dart';
+import '../../../domain/entities/product.dart';
 import '../../../presentation/screens/account_verification/account_verification_screen.dart';
 import '../../../presentation/screens/account_setup/account_setup_screen.dart';
 import '../../../presentation/screens/add_your_product/add_your_product_screen.dart';

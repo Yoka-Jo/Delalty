@@ -71,7 +71,7 @@ class _ProfileTabsState extends State<ProfileTabs>
                       child: Column(
                         children: [
                           const ProfileData(),
-                          SizedBox(height: 35.h),
+                          SizedBox(height: 25.h),
                           // TabBar(
                           //   controller: tabController,
                           //   indicatorColor: AppColors.primaryColor,

@@ -18,7 +18,7 @@ class HomeCategoriesList extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               children: [
                 ...List.generate(
-                  5,
+                  10,
                   (i) => Padding(
                     padding: EdgeInsets.only(right: 25.w),
                     child: Column(
@@ -48,8 +48,9 @@ class HomeCategoriesList extends StatelessWidget {
           height: 74.h,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
-              final category = categories![index];
+              final category = categories[index];
               return InkWell(
                 onTap: () {
                   context.router.push(
@@ -85,7 +86,7 @@ class HomeCategoriesList extends StatelessWidget {
               );
             },
             separatorBuilder: (context, index) => SizedBox(width: 25.w),
-            itemCount: 5,
+            itemCount: categories!.length < 10 ? categories.length : 10,
           ),
         );
       },
