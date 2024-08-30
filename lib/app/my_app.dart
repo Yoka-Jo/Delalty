@@ -95,16 +95,7 @@ class _MyAppState extends State<MyApp> {
                       supportedLocales: context.supportedLocales,
                       localizationsDelegates: context.localizationDelegates,
                       locale: context.locale,
-                      routerConfig: _appRouter.config(
-                        initialRoutes: [
-                          const SplashRoute(),
-                          // LoginRoute(),
-                          // MapRoute(
-                          //   longitude: 31.0414531,
-                          //   latitude: 31.4240395,
-                          // ),
-                        ],
-                      ),
+                      routerConfig: _appRouter.config(),
                     ),
                   );
                 },
