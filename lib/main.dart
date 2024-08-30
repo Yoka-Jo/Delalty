@@ -20,14 +20,14 @@ import 'presentation/screens/favorite/cubit/favorite_cubit.dart';
 void main() async {
   final engine = WidgetsFlutterBinding.ensureInitialized();
   engine.performReassemble();
-  await EasyLocalization.ensureInitialized();
-  // AppNotifications appNotifications = AppNotifications();
-  // await appNotifications.setupNotification();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  await configureDependencies();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await Future.wait([
+    EasyLocalization.ensureInitialized(),
+    Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    ),
+    configureDependencies(),
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]),
+  ]);
 
   runApp(
     MultiBlocProvider(

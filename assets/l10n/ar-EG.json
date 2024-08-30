@@ -21,6 +21,7 @@
   "cant_send_empty_message": "لا يمكن ارسال رسالة فارغة",
   "cancel": "الغاء",
   "ok": "تم",
+  "not_number": "ليس رقم",
   "you_have_become_seller_now": "لقد اصبحت بائعاالآن",
   "session_expired": "الجلسة انتهت",
   "please_login_again": "قم بتسجيل الدخول مرة اخرى",

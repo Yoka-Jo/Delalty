@@ -25,7 +25,7 @@ class VerificationCodeCubit extends Cubit<VerificationCodeState> {
   late Timer timer;
   late Duration otpDuration = _duration;
   final StreamController<ErrorAnimationType> errorAnimationController =
-      StreamController();
+      StreamController.broadcast();
 
   void _startTimer() {
     timer = Timer.periodic(const Duration(seconds: 1), (_) => _addTime());
@@ -50,14 +50,30 @@ class VerificationCodeCubit extends Cubit<VerificationCodeState> {
   }
 
   Future<void> onVerify(String code, BuildContext context) async {
+    if (!validateInput(code)) {
+      return;
+    }
     emit(VerificationCodeLoading());
     await AppCubit.get(context).getUserData();
     final response =
         await _useCase(VerifyPhoneRequest(phone: '', code: int.parse(code)));
     response.fold(
-      (l) => emit(VerificationCodeFailure(l.message)),
+      (l) {
+        errorAnimationController.add(ErrorAnimationType.shake);
+        emit(VerificationCodeFailure(l.message));
+      },
       (authData) => emit(VerificationCodeSuccess()),
     );
+  }
+
+  bool validateInput(String value) {
+    if (value.isNotEmpty && int.tryParse(value) == null) {
+      errorAnimationController.add(ErrorAnimationType.shake);
+      return false;
+    } else {
+      errorAnimationController.add(ErrorAnimationType.clear);
+      return true;
+    }
   }
 
   @override

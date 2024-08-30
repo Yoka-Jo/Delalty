@@ -20,6 +20,7 @@ class VerificationCodeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenPadding = 58.w;
     return BlocProvider(
       create: (context) => getIt<VerificationCodeCubit>(),
       child: Builder(builder: (context) {
@@ -38,32 +39,48 @@ class VerificationCodeScreen extends StatelessWidget {
             },
             builder: (context, state) {
               return SafeArea(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 58.w),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          ImageAssets.verificationCode,
-                          fit: BoxFit.cover,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: screenPadding),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              ImageAssets.verificationCode,
+                              fit: BoxFit.cover,
+                            ),
+                            SimpleText(
+                              AppStrings.verifciationCode.tr(context: context),
+                              textStyle: TextStyleEnum.montserratBold,
+                              fontSize: 25.sp,
+                            ),
+                            SizedBox(height: 29.h),
+                            const VerificationCodeOtpSentToPhone(),
+                          ],
                         ),
-                        SimpleText(
-                          AppStrings.verifciationCode.tr(context: context),
-                          textStyle: TextStyleEnum.montserratBold,
-                          fontSize: 25.sp,
+                      ),
+                      SizedBox(height: 46.h),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30.w),
+                        child: const VerificationCodeOtp(),
+                      ),
+                      SizedBox(height: 20.h),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: screenPadding),
+                        child: Column(
+                          children: [
+                            const VerificationCodeResendOtp(),
+                            SizedBox(height: 20.h),
+                            if (state is VerificationCodeLoading)
+                              const CenteredCircularProgressIndicaotr()
+                          ],
                         ),
-                        SizedBox(height: 29.h),
-                        const VerificationCodeOtpSentToPhone(),
-                        SizedBox(height: 46.h),
-                        const VerificationCodeOtp(),
-                        SizedBox(height: 20.h),
-                        const VerificationCodeResendOtp(),
-                        SizedBox(height: 20.h),
-                        if (state is VerificationCodeLoading)
-                          const CenteredCircularProgressIndicaotr()
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               );

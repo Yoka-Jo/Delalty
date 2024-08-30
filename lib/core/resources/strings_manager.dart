@@ -10,6 +10,7 @@ class AppStrings {
   static const String bearer = "Bearer ";
 
   static const String cancel = "cancel";
+  static const String notNumber = "not_number";
   static const String cantSendEmptyMessage = "cant_send_empty_message";
   static const String youHaveBecomeSellerNow = "you_have_become_seller_now";
   static const String enterYourEmail = "enter_your_email";

@@ -5,13 +5,18 @@ class LoginForgotPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: SimpleText(
-        AppStrings.forgotPassword.tr(context: context),
-        textStyle: TextStyleEnum.montserratRegular,
-        fontSize: 15.sp,
-        color: AppColors.primaryColor,
+    return InkWell(
+      onTap: () {
+        launchUrl(Uri.parse('https://delalty.com/forgot-password'));
+      },
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: SimpleText(
+          AppStrings.forgotPassword.tr(context: context),
+          textStyle: TextStyleEnum.montserratRegular,
+          fontSize: 15.sp,
+          color: AppColors.primaryColor,
+        ),
       ),
     );
   }

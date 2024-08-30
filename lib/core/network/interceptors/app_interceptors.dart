@@ -68,7 +68,11 @@ class AppInterceptors extends Interceptor {
         ),
         actions: [
           TextButton(
-            onPressed: () => context.router.replaceAll([LoginRoute()]),
+            onPressed: () async {
+              getIt<UserSecureStorage>().deleteUserInfo().then(
+                    (value) => context.router.replaceAll([LoginRoute()]),
+                  );
+            },
             child: SimpleText(
               AppStrings.ok.tr(context: context),
               textStyle: TextStyleEnum.montserratBold,

@@ -44,8 +44,10 @@ class RepositoryImpl implements Repository {
   //   await getIt<UserSecureStorage>().upsertUserInfo(user);
   // }
   Future<void> _storeUserTokenAndId(AuthData authData) async {
-    await getIt<UserSecureStorage>()
-        .upsertUserTokenAndId(authData.accessToken, authData.userId);
+    if (authData.verifiedEmail && authData.phoneStatus != 'VERIFIED') {
+      await getIt<UserSecureStorage>()
+          .upsertUserTokenAndId(authData.accessToken, authData.userId);
+    }
   }
 
   @override

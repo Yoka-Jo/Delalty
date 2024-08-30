@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/common/components/widgets/simple_toast.dart';
 import '../../../../core/resources/colors_manager.dart';
 import '../../../../core/resources/routes/app_router.dart';
